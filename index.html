@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WR 13 · Wirtschaft und Recht – Kursübersicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue-900:#0D47A1; --blue-800:#1565C0; --blue-700:#1976D2;
+  --blue-400:#29B6F6; --blue-100:#D6E9FB; --blue-50:#E3F2FD;
+  --green:#43A047; --green-light:#E8F5E9;
+  --orange:#FF9800; --orange-light:#FFF3E0;
+  --purple:#AB47BC; --purple-light:#F3E5F5;
+  --red:#E53935; --red-light:#FFEBEE;
+  --slate:#475569; --slate-50:#F1F5F9;
+  --text:#1A1A1A; --text-secondary:#555555; --text-muted:#AAAAAA;
+  --border:#E0E0E0; --bg-card:#FFFFFF; --bg-page:#F0F4F8;
+  --grad-blue:linear-gradient(135deg,#1976D2,#29B6F6);
+  --radius-sm:8px; --radius-md:12px; --radius-lg:16px;
+  --shadow:0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg:0 4px 20px rgba(0,0,0,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--bg-page);color:var(--text);line-height:1.55;}
+
+/* ── Topbar ── */
+.topbar{background:var(--blue-700);height:52px;position:sticky;top:0;z-index:50;
+  padding:0 2rem;display:flex;align-items:center;gap:1rem;
+  box-shadow:0 2px 12px rgba(25,118,210,0.25);}
+.topbar-logo{font-weight:900;font-size:15px;color:white;text-decoration:none;letter-spacing:0.3px;}
+.topbar-logo span{color:var(--blue-400);}
+.topbar-meta{margin-left:auto;color:rgba(255,255,255,0.85);font-size:13px;font-weight:600;}
+
+/* ── Layout ── */
+.wrap{max-width:1080px;margin:0 auto;padding:2rem;}
+
+/* ── Hero ── */
+.hero{background:var(--grad-blue);border-radius:var(--radius-lg);
+  padding:2.5rem;color:white;position:relative;overflow:hidden;margin-bottom:2rem;}
+.hero::before{content:'§';position:absolute;right:1.5rem;top:-20px;
+  font-size:150px;font-weight:900;color:rgba(255,255,255,0.08);line-height:1;}
+.hero h1{font-size:28px;font-weight:900;margin-bottom:0.4rem;position:relative;}
+.hero p{font-size:15px;font-weight:600;color:rgba(255,255,255,0.92);position:relative;max-width:640px;}
+.hero-stats{display:flex;gap:1.5rem;margin-top:1.4rem;position:relative;flex-wrap:wrap;}
+.hero-stat{background:rgba(255,255,255,0.14);border-radius:var(--radius-md);
+  padding:0.6rem 1.1rem;backdrop-filter:blur(4px);}
+.hero-stat b{display:block;font-size:20px;font-weight:900;}
+.hero-stat span{font-size:12px;font-weight:600;color:rgba(255,255,255,0.85);}
+
+/* ── Lernbereich-Block ── */
+.lb{margin-bottom:2.5rem;}
+.lb-head{display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;}
+.lb-badge{font-size:12px;font-weight:800;color:white;background:var(--blue-700);
+  padding:4px 12px;border-radius:var(--radius-sm);letter-spacing:0.5px;}
+.lb-badge.recht{background:var(--blue-700);}
+.lb-badge.straf{background:var(--slate);}
+.lb-badge.vwl-geld{background:var(--green);}
+.lb-badge.vwl-aussen{background:var(--purple);}
+.lb-title{font-size:18px;font-weight:800;}
+.lb-hours{margin-left:auto;font-size:13px;font-weight:700;color:var(--text-muted);}
+
+/* ── Karten-Grid ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;}
+
+/* ── Stunden-Karte ── */
+.card{background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow);
+  padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:0.7rem;
+  transition:transform 0.15s ease, box-shadow 0.15s ease;position:relative;}
+.card.ready:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.card.locked{opacity:0.72;background:#FAFBFC;}
+
+.card-top{display:flex;align-items:center;gap:0.6rem;}
+.card-num{width:36px;height:36px;flex-shrink:0;border-radius:var(--radius-sm);
+  background:var(--blue-50);color:var(--blue-700);font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;}
+.card.locked .card-num{background:#EEE;color:var(--text-muted);}
+.card-title{font-size:15px;font-weight:800;line-height:1.3;}
+
+.card-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;
+  font-weight:800;padding:3px 9px;border-radius:20px;width:fit-content;letter-spacing:0.3px;}
+.status-ready{background:var(--green-light);color:var(--green);}
+.status-soon{background:var(--slate-50);color:var(--slate);}
+
+.card-desc{font-size:13px;color:var(--text-secondary);font-weight:600;flex-grow:1;}
+
+/* ── Code-Eingabe ── */
+.gate{display:flex;gap:0.5rem;margin-top:0.3rem;}
+.gate input{flex:1;min-width:0;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;
+  padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  text-transform:uppercase;letter-spacing:1px;transition:border-color 0.15s;}
+.gate input:focus{outline:none;border-color:var(--blue-700);}
+.gate input.err{border-color:var(--red);background:var(--red-light);}
+.gate button{background:var(--blue-700);color:white;border:none;border-radius:var(--radius-sm);
+  padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer;
+  transition:background 0.15s;flex-shrink:0;}
+.gate button:hover{background:var(--blue-800);}
+.gate-hint{font-size:11px;color:var(--text-muted);font-weight:700;margin-top:-0.1rem;}
+.gate-hint.err{color:var(--red);}
+
+/* ── Freigeschaltet-Link ── */
+.open-link{display:inline-flex;align-items:center;gap:7px;background:var(--green);
+  color:white;text-decoration:none;font-weight:800;font-size:13px;
+  padding:9px 16px;border-radius:var(--radius-sm);width:fit-content;
+  transition:background 0.15s;}
+.open-link:hover{background:#388E3C;}
+.open-link svg{width:15px;height:15px;}
+
+/* ── Locked-Note ── */
+.locked-note{display:inline-flex;align-items:center;gap:6px;font-size:12px;
+  font-weight:700;color:var(--text-muted);}
+.locked-note svg{width:14px;height:14px;}
+
+/* ── Footer ── */
+.footer{text-align:center;color:var(--text-muted);font-size:12px;font-weight:700;
+  padding:1.5rem 0 0.5rem;border-top:1px solid var(--border);margin-top:1rem;}
+
+@media(max-width:600px){
+  .wrap{padding:1.2rem;}
+  .topbar{padding:0 1.2rem;}
+  .hero{padding:1.8rem;}
+  .hero h1{font-size:22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-logo" href="index.html">Wirtschaft <span>&amp;</span> Recht · Q13</a>
+  <span class="topbar-meta">Gymnasium Bayern</span>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Kursübersicht Q13</h1>
+    <p>Wähle deine Stunde. Freigeschaltete Stunden öffnest du mit dem Code, den du im Unterricht bekommst. Gesperrte Stunden folgen im Lauf des Kurses.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>4</b><span>Teilbereiche</span></div>
+      <div class="hero-stat"><b>~42</b><span>Stunden gesamt</span></div>
+      <div class="hero-stat"><b>2</b><span>freigeschaltet</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ LB 1.1 ZIVILRECHT ══════════════ -->
+  <section class="lb">
+    <div class="lb-head">
+      <span class="lb-badge recht">LB 1.1</span>
+      <span class="lb-title">Zivilrecht – Interessenausgleich beim Kauf</span>
+      <span class="lb-hours">ca. 18 Std.</span>
+    </div>
+    <div class="grid">
+
+      <!-- 1.1.1 FERTIG -->
+      <div class="card ready" data-hash="2416589eb7ac10e6c4cf8be7c7ccea230174d1dfebb0091304d9a53034c3cf8e" data-url="wr_q13_1-1-1_leistungsstoerungen.html">
+        <div class="card-top">
+          <div class="card-num">1.1.1</div>
+          <div class="card-title">Was kann bei der Kaufvertragserfüllung schiefgehen?</div>
+        </div>
+        <span class="card-status status-ready">FREIGESCHALTET</span>
+        <div class="card-desc">Überblick über die Leistungsstörungen beim Kaufvertrag.</div>
+        <div class="card-gate"></div>
+      </div>
+
+      <!-- 1.1.2 FERTIG -->
+      <div class="card ready" data-hash="ce75889b1d8983afa2966eacc38ffc20cfd51371748ba0fa3ebc5f0774ae62d0" data-url="wr_q13_1-1-2_rechtsfolgen.html">
+        <div class="card-top">
+          <div class="card-num">1.1.2</div>
+          <div class="card-title">Rechtliche Möglichkeiten bei Pflichtverletzung</div>
+        </div>
+        <span class="card-status status-ready">FREIGESCHALTET</span>
+        <div class="card-desc">Welche Rechte hast du, wenn dein Vertragspartner seine Pflichten verletzt?</div>
+        <div class="card-gate"></div>
+      </div>
+
+      <!-- 1.1.3 – 1.1.14 GESPERRT -->
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.3</div><div class="card-title">Voraussetzungen für Ansprüche bei Leistungsstörungen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Systematik der Anspruchsprüfung.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.4</div><div class="card-title">Warum sind Verbraucher besonders geschützt?</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Verbraucherschutz im Kaufrecht.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.5</div><div class="card-title">Nebenpflichtverletzung → Schadensersatz</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Schadensersatz bei verletzten Nebenpflichten.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.6</div><div class="card-title">Verzug: Wann gerät der Schuldner in Verzug?</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Voraussetzungen des Schuldnerverzugs.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.7</div><div class="card-title">Schadensersatz neben der Leistung bei verspäteter Leistung</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Ersatz von Verzögerungsschäden.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.8</div><div class="card-title">Rücktritt vom Vertrag + Ersatzkauf</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Loskommen vom Vertrag und Deckungskauf.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.9</div><div class="card-title">Konsequenzen bei zu später Zahlung</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Zahlungsverzug und seine Folgen.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.10</div><div class="card-title">Wann hat eine Ware einen Mangel?</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Subjektiv/objektiv, Montage, Aktualisierung, Aliud. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.11</div><div class="card-title">Erste Rechte des Verbrauchers bei Mangel</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Nacherfüllung als vorrangiges Recht.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.12</div><div class="card-title">Ersatz eines Mangelfolgeschadens</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Schäden durch mangelhafte Ware.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.13</div><div class="card-title">Nachrangige Rechte bei Mangel</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Rücktritt, Minderung, Schadensersatz. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.1.14</div><div class="card-title">Fernabsatzverträge: Widerrufsrecht</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Widerruf im Online-Handel.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">KC</div><div class="card-title">Kompetenzcheck – Gutachtenstil &amp; Fallübungen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Prüfung im Gutachtenstil (S. 80) und Fallvertiefung (S. 83).</div></div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ LB 1.2 STRAFRECHT ══════════════ -->
+  <section class="lb">
+    <div class="lb-head">
+      <span class="lb-badge straf">LB 1.2</span>
+      <span class="lb-title">Strafrecht</span>
+      <span class="lb-hours">ca. 6 Std.</span>
+    </div>
+    <div class="grid">
+      <div class="card locked"><div class="card-top"><div class="card-num">1.2.1</div><div class="card-title">Aufbau einer Straftat: Tatbestandsmäßigkeit</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Objektive und subjektive Tatbestandsmäßigkeit. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.2.2</div><div class="card-title">Rechtswidrigkeit und Schuld</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Die weiteren Stufen des Prüfschemas.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.2.3</div><div class="card-title">Strafbarkeit begründen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Anwendung des Prüfschemas.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.2.4</div><div class="card-title">Strafzwecktheorien im Überblick</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Warum wird bestraft?</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">1.2.5</div><div class="card-title">Strafzumessung + Rechtsfolgen beurteilen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Grundsätze der Strafzumessung.</div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ LB 2.1 GELD UND PREISNIVEAU ══════════════ -->
+  <section class="lb">
+    <div class="lb-head">
+      <span class="lb-badge vwl-geld">LB 2.1</span>
+      <span class="lb-title">Geld und Preisniveau</span>
+      <span class="lb-hours">ca. 10 Std.</span>
+    </div>
+    <div class="grid">
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.1</div><div class="card-title">Preisniveaustabilität: Messung und Ziel</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Warum ist stabiles Preisniveau ein Ziel? (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.2</div><div class="card-title">Auswirkungen von Preis- und Zinsniveau</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Folgen für Haushalte, Unternehmen, Staat.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.3</div><div class="card-title">Geldpolitische Maßnahmen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Zins-/Geldmengensteuerung, Transmissionsmechanismus. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.4</div><div class="card-title">Expansive vs. kontraktive Maßnahmen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Wirkungsweise der Geldpolitik.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.5</div><div class="card-title">Wirkungsgrenzen der Geldpolitik</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Wo stößt Geldpolitik an Grenzen?</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.6</div><div class="card-title">Größen zur Preisbeurteilung</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Monetäre und realwirtschaftliche Größen.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.7</div><div class="card-title">EZB: Mandat und Unabhängigkeit</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Rolle der Europäischen Zentralbank.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.1.8</div><div class="card-title">Geldpolitische Entscheidungen der EZB</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Entscheidungen nachvollziehen (Vertiefung/Check).</div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════ LB 2.2 AUSSENHANDEL UND WÄHRUNG ══════════════ -->
+  <section class="lb">
+    <div class="lb-head">
+      <span class="lb-badge vwl-aussen">LB 2.2</span>
+      <span class="lb-title">Außenhandel und Währung</span>
+      <span class="lb-hours">ca. 8 Std.</span>
+    </div>
+    <div class="grid">
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.1</div><div class="card-title">Leistungsbilanz &amp; außenwirtschaftliches Gleichgewicht</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Ziel des außenwirtschaftlichen Gleichgewichts. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.2</div><div class="card-title">Probleme außenwirtschaftlicher Ungleichgewichte</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Wenn die Bilanz aus dem Gleichgewicht gerät.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.3</div><div class="card-title">Wechselkursbildung im Marktmodell</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Angebot und Nachfrage nach Währung. (2 Std.)</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.4</div><div class="card-title">Außenhandel ↔ Wechselkurse</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Wechselwirkungen darstellen.</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.5</div><div class="card-title">Ursachen und Folgen von Wechselkursschwankungen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Warum schwanken Kurse – und was folgt daraus?</div></div>
+      <div class="card locked"><div class="card-top"><div class="card-num">2.2.6</div><div class="card-title">Außenhandels- und währungspolitische Maßnahmen</div></div><span class="card-status status-soon">IN VORBEREITUNG</span><div class="card-desc">Maßnahmen diskutieren.</div></div>
+    </div>
+  </section>
+
+  <div class="footer">Wirtschaft und Recht · Q13 · Gymnasium Bayern · Weic.</div>
+
+</div>
+
+<script>
+/* SVG-Icons */
+const ICON_ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ICON_LOCK  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+
+async function sha256(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+/* Freigeschaltete Karten mit Code-Gate aufbauen */
+document.querySelectorAll('.card.ready').forEach(card => {
+  const gate = card.querySelector('.card-gate');
+  const hash = card.dataset.hash;
+  const url  = card.dataset.url;
+
+  gate.innerHTML =
+    '<div class="gate">' +
+      '<input type="text" placeholder="Code eingeben" autocomplete="off" spellcheck="false">' +
+      '<button type="button">Öffnen</button>' +
+    '</div>' +
+    '<div class="gate-hint">Code aus dem Unterricht</div>';
+
+  const input  = gate.querySelector('input');
+  const button = gate.querySelector('button');
+  const hint   = gate.querySelector('.gate-hint');
+
+  async function tryUnlock(){
+    const code = input.value.trim().toUpperCase();
+    if(!code){ return; }
+    const digest = await sha256(code);
+    if(digest === hash){
+      gate.innerHTML =
+        '<a class="open-link" href="' + url + '">Stunde öffnen ' + ICON_ARROW + '</a>';
+    } else {
+      input.classList.add('err');
+      hint.classList.add('err');
+      hint.textContent = 'Code stimmt nicht – frag im Unterricht nach.';
+    }
+  }
+
+  button.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', e => { if(e.key === 'Enter') tryUnlock(); });
+  input.addEventListener('input', () => {
+    input.classList.remove('err');
+    hint.classList.remove('err');
+    hint.textContent = 'Code aus dem Unterricht';
+  });
+});
+
+/* Gesperrte Karten: Schloss-Hinweis */
+document.querySelectorAll('.card.locked').forEach(card => {
+  const note = document.createElement('div');
+  note.className = 'locked-note';
+  note.innerHTML = ICON_LOCK + '<span>Folgt im Kursverlauf</span>';
+  card.appendChild(note);
+});
+</script>
+
+</body>
+</html>
