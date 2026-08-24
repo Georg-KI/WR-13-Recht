@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.2 Welche rechtlichen Möglichkeiten gibt es bei einer Pflichtverletzung? · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Indigo === */
+  --blue-900:#312E81;
+  --blue-800:#3730A3;
+  --blue-700:#4F46E5;   /* Primärfarbe */
+  --blue-600:#6366F1;
+  --blue-400:#818CF8;
+  --blue-100:#DDD9FB;
+  --blue-50: #EEF0FF;
+  --blue-grad: linear-gradient(135deg,#4338CA 0%,#4F46E5 55%,#7C3AED 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#0D3B66;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#EEF6FF 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#93C5FD;font-style:normal;font-weight:800;}
+.norm-box a{color:#93C5FD;font-weight:700;text-decoration:none;border-bottom:1px dotted #93C5FD;}
+.norm-box a:hover{color:#BFDBFE;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print (mündliche Abfrage) ─────────── */
+@media print{
+  .topbar,.progress,.nav-btns,.btn-teacher,.pin-modal,
+  .section-num,.hero,.closing{display:none !important;}
+  .step{display:none !important;}
+  .step.teacher-only{display:block !important;}
+  .section:not(.teacher-only){display:none !important;}
+  .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.2</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Störungen</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Forderungen</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Rechtsfolgen</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Zuordnung</div>
+  <div class="step-chip teacher-only" data-step="6" onclick="goStep(6)"><span class="n">6</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunde 2</span>
+  <h1>Welche rechtlichen Möglichkeiten gibt es bei einer Pflichtverletzung?</h1>
+  <p class="hero-sub">Wer will was von wem woraus? – Von der Leistungsstörung zur Forderung.</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du untersuchst Pflichtverletzungen daraufhin, welche Ansprüche und Rechte
+        der Gläubigerin bzw. dem Gläubiger sinnvollerweise zustehen.
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Eine Störung erkennen ist das eine – zu wissen, <em>was man verlangen kann</em>,
+        das andere. Genau hier setzt jede juristische Fallprüfung an.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Zwei Fälle, viel Ärger</div>
+      <div class="section-meta">Plenum · Moderation</div>
+    </div>
+  </header>
+
+  <p>In der letzten Stunde hast du gelernt, <strong>Leistungsstörungen</strong> zu
+  erkennen und einzuordnen. Heute geht es einen Schritt weiter: Wenn eine Pflicht
+  verletzt wurde – was kann die geschädigte Seite dann eigentlich <strong>verlangen</strong>?</p>
+
+  <div class="info-box">
+    Jede juristische Fallbearbeitung beginnt mit einer Leitfrage:
+    <strong>„Wer will was von wem woraus?"</strong> Zuerst klärt man also, welche
+    konkreten Ansprüche eine Gläubigerin bzw. ein Gläubiger gegenüber dem Schuldner
+    geltend machen möchte. Dazu schaust du dir heute zwei Fälle an.
+  </div>
+
+  <div class="fall-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:16px 0;">
+    <div class="fall-card" style="border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;background:#fff;">
+      <div style="font-weight:900;font-size:12px;color:var(--blue-700);letter-spacing:0.5px;margin-bottom:6px;">M1 · KÜCHENZEILE „GOURMAND"</div>
+      <p style="font-size:13.5px;margin-bottom:6px;">Anton Koch (Bistro-Betreiber) bestellt beim Küchenstudio Sauber die Profi-Küchenzeile „Gourmand" in <strong>beige</strong>, Komplettpreis 11.999&nbsp;€, mit Einbau.</p>
+      <p style="font-size:13.5px;margin-bottom:0;">Geliefert wird eine <strong>weiße</strong> Küche. Beim Einbau wird zudem der <strong>Fußboden zerkratzt</strong>. Weil der Anschluss nicht passt, muss ein zweiter Elektriker (Ernst) mit Anfahrtskosten aushelfen.</p>
+    </div>
+    <div class="fall-card" style="border:1.5px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;background:#fff;">
+      <div style="font-weight:900;font-size:12px;color:var(--blue-700);letter-spacing:0.5px;margin-bottom:6px;">M2 · SPIELEKONSOLE ZERSTÖRT TV</div>
+      <p style="font-size:13.5px;margin-bottom:6px;">Ein Kunde kauft beim M-Markt eine neue Spielekonsole auf Raten. Nach kurzer Zeit gibt das mitgelieferte Netzteil an der Steckdose einen lauten Knall von sich.</p>
+      <p style="font-size:13.5px;margin-bottom:0;">Die <strong>Konsole ist defekt</strong> – und tags darauf zeigt sich: Auch das über HDMI verbundene <strong>TV-Gerät</strong> hat einen Schaden und empfängt kein Signal mehr.</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/>
+          <path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Fälle sichten &amp; erste Empörung sammeln</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Was ist in M1 und M2 jeweils schiefgelaufen – und was würdest du an Kochs
+        bzw. an des Kunden Stelle jetzt verlangen?"</p>
+      <p>Tragt im Plenum eure erste, noch ganz umgangssprachliche Einschätzung zusammen.
+      Fachbegriffe brauchst du hier noch nicht – die kommen in den nächsten Schritten.</p>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Szenario M1 &amp; Fall M2: TB S.&nbsp;14. Rechtsfolgen M3: TB S.&nbsp;15.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Moderationshilfe Einstieg
+    </div>
+    <span class="tn-time">Zeitrahmen: ca. 5–7 Min.</span>
+    <p><strong>Anknüpfung:</strong> Diese Stunde baut direkt auf 1.1.1 auf. Kurz zeigen,
+    dass die Schüler die Störungen nun schon <em>benennen</em> können – heute geht es um
+    die <em>Rechtsfolgen</em>. Die Leitfrage „Wer will was von wem woraus?" an die Tafel.</p>
+    <p><strong>So moderierst du:</strong> Beide Fälle (TB S.&nbsp;14) kurz vorstellen bzw.
+    lesen lassen, dann frei sammeln, was schiefging und was man verlangen würde – bewusst
+    noch <em>ohne</em> Fachbegriffe. Diese Vorarbeit wird in Step 2–3 präzisiert.</p>
+    <p><strong>Überleitung:</strong> „Bevor wir Forderungen stellen, ordnen wir kurz ein,
+    <em>welche</em> Störung überhaupt vorliegt." → Step 2.</p>
+  </div>
+</section>
+
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Störungen →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+
+<!-- ═══════════════ STEP 2 · STÖRUNGEN IDENTIFIZIEREN (AUFGABE 1) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Welche Leistungsstörung liegt vor? (Aufgabe 1)</div>
+      <div class="section-meta">Partnerarbeit · Wiederholung aus 1.1.1</div>
+    </div>
+  </header>
+
+  <p>Ordne die konkreten Probleme aus <strong>M1</strong> und <strong>M2</strong> den
+  vier Störungsarten zu, die du aus der letzten Stunde kennst:
+  <strong>verspätete Leistung</strong>, <strong>Unmöglichkeit</strong>,
+  <strong>mangelhafte Leistung</strong> und <strong>Nebenpflichtverletzung</strong>.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <circle cx="13" cy="11" r="5" fill="#0d9488"/>
+          <circle cx="27" cy="11" r="5" fill="#0d9488"/>
+          <path d="M3 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M17 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 1 · Störungen aus M1 &amp; M2 zuordnen</div>
+        <div class="task-form partner">Partnerarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="stoer">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="V">Verspätete Leistung</button>
+          <button class="assign-cat" data-cat="U">Unmöglichkeit</button>
+          <button class="assign-cat" data-cat="M">Mangelhafte Leistung</button>
+          <button class="assign-cat" data-cat="P">Nebenpflichtverletzung</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann die passenden Fälle antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="M"><span class="ai-key">a</span><span class="ai-text">M1: Statt der bestellten beigen Küche wird eine weiße geliefert.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="P"><span class="ai-key">b</span><span class="ai-text">M1: Beim Einbau der Küche wird der Fußboden im Gastbereich zerkratzt.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">c</span><span class="ai-text">M2: Die neu gekaufte Spielekonsole funktioniert nach kurzer Zeit nicht mehr.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">d</span><span class="ai-text">M2: Durch den Defekt der Konsole wird das TV-Gerät des Käufers beschädigt.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="U"><span class="ai-key">e</span><span class="ai-text">M2: Das TV-Gerät ist irreparabel – diese Leistung ist nicht mehr möglich.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgabe 1 mit M1 &amp; M2: TB S.&nbsp;14/15.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweis (nach AL S. 15)
+    </div>
+    <p><strong>Mangelhafte Leistung:</strong> a, c, d &nbsp;·&nbsp;
+    <strong>Nebenpflichtverletzung:</strong> b &nbsp;·&nbsp;
+    <strong>Unmöglichkeit der Leistung:</strong> e.</p>
+    <p>Fall <strong>d</strong> (Folgeschaden am TV) ist wie schon in 1.1.1 ein Grenzfall:
+    Die AL ordnet ihn primär der mangelhaften Leistung zu, <em>ggf.</em> auch der
+    Nebenpflichtverletzung – beide Begründungen sind vertretbar. Diese Doppeldeutigkeit
+    ist hier bewusst zugelassen und wird später (Rechtsfolgen) wieder aufgegriffen.</p>
+    <p><strong>Überleitung:</strong> „Jetzt wisst ihr, <em>was</em> gestört ist. Als
+    Nächstes: Was könnten die Beteiligten deshalb voneinander <em>verlangen</em>?" → Step 3.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Forderungen →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+
+<!-- ═══════════════ STEP 3 · FORDERUNGEN & ROLLENSPIEL (AUFGABE 2 & 3) ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Forderungen formulieren &amp; Interessen ausgleichen (Aufgabe 2 &amp; 3)</div>
+      <div class="section-meta">Einzelarbeit → Rollenspiel · Musterlösung erst nach eigener Antwort</div>
+    </div>
+  </header>
+
+  <p>Um von der Leistungsstörung zu den Rechtsfolgen zu kommen, überlegst du zuerst:
+  Welche <strong>Forderungen</strong> könnten die Beteiligten gegenseitig haben – noch
+  ganz ohne Fachbegriffe? Bedenke dabei beide Seiten: Auch der Vertragspartner hat
+  Interessen. Genau dieser <strong>Perspektivenwechsel</strong> ist der Kern eines
+  <em>gerechten Interessenausgleichs</em>, den der Gesetzgeber anstrebt.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="12" r="7" fill="#4F46E5"/>
+          <path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 2 · Forderungslisten für M1 &amp; M2</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Stelle für <strong>einen</strong> der beiden Fälle eine Liste auf: Was könnte
+      die geschädigte Seite fordern – und was könnte umgekehrt der Vertragspartner
+      fordern? Formuliere in ganzen Sätzen und alltagssprachlich.</p>
+
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="30"
+        data-keywords="lieferung, schadensersatz, boden, kaufpreis, ruecktritt, reparatur, ersatz"
+        data-required="3"
+        placeholder="Herr Koch könnte von Sauber verlangen, dass … Umgekehrt könnte Sauber fordern, dass …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 3 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <strong>M1 · Koch gegen Sauber (mögliche Forderungen):</strong>
+        <ul>
+          <li>Lieferung der Küche in der richtigen Farbe (beige)</li>
+          <li>Schadensersatz für den zerkratzten Fußboden</li>
+          <li>Kostenerstattung für die Anfahrt des Elektrikers Ernst</li>
+          <li>Minderung des Kaufpreises oder Rücktritt vom Vertrag, falls keine Neulieferung erfolgt</li>
+        </ul>
+        <strong>M1 · Forderungen des Küchenstudios:</strong> Zahlung des Kaufpreises,
+        Frist für eine Neulieferung, Ersatz für zusätzliche Anfahrten und Arbeiten.<br><br>
+        <strong>M2 · Kunde gegen M-Markt:</strong>
+        <ul>
+          <li>Reparatur oder eine Ersatzkonsole</li>
+          <li>Schadensersatz für das beschädigte TV-Gerät</li>
+          <li>Ersatz der Versand- bzw. Rücksendekosten</li>
+          <li>Minderung oder Rücktritt, falls Reparatur/Neulieferung ausbleibt</li>
+        </ul>
+        <strong>M2 · Forderungen des M-Markts:</strong> Rückgabe der defekten Konsole;
+        Ausschluss von Ansprüchen bei unsachgemäßem Gebrauch (falsche Kabel/Steckdose).
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 44 40" fill="none">
+          <path d="M4 8h20a3 3 0 013 3v10a3 3 0 01-3 3H14l-6 5v-5H4a3 3 0 01-3-3V11a3 3 0 013-3z" fill="#0d9488"/>
+          <path d="M40 16h-6a3 3 0 00-3 3v8a3 3 0 003 3h2v4l5-4h-1z" fill="#0d9488" opacity="0.55"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 3 · Rollenspiel: Interessen austauschen</div>
+        <div class="task-form partner">Partnerarbeit · Diskussion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Spielt zu einem Fall ein kurzes Streitgespräch nach – eine Person vertritt die
+      geschädigte Seite, die andere den Vertragspartner. Versucht, zu einem gerechten
+      <strong>Interessenausgleich</strong> zu kommen. Wo müsste jede Seite nachgeben?</p>
+
+      <div class="reflect" style="margin-top:14px;">
+        <div class="reflect-icon">
+          <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+            <path d="M18 4l2 2 2-2M18 4v6" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M6 12l24 0" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M9 12l-3 7h6l-3-7zM27 12l-3 7h6l-3-7z" stroke="#475569" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <path d="M18 10v20M12 30h12" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reflect-title">Denk-Impuls <span class="reflect-badge">gerecht?</span></div>
+          <div class="reflect-text">
+            Das Küchenstudio hat mit Fachkräftemangel zu kämpfen – entschuldigt das die
+            Fehllieferung? Und darf ein Kunde erwarten, dass neue Elektronik sicher ist,
+            auch wenn er evtl. selbst ein falsches Kabel benutzt hat?
+            <strong>Wer trägt welches Risiko?</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgaben 2 &amp; 3 mit M1 &amp; M2: TB S.&nbsp;15.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweis zum Rollenspiel &amp; zur Bewertung (Aufgabe 3)
+    </div>
+    <p><strong>Ziel (Lehrplan):</strong> Über den Perspektivenwechsel erfahrbar machen,
+    dass der Gesetzgeber einen <em>gerechten Interessenausgleich</em> schaffen will. Die
+    Forderungslisten (Aufgabe 2) sind die Rohstoffe fürs Streitgespräch.</p>
+    <p><strong>Erwartete Argumentationslinie (aus AL S. 15):</strong> Koch handelte
+    vertragstreu und darf eine vertragsgemäße Lieferung erwarten; der Fachkräftemangel
+    des Studios entschuldigt keinen Vertragsverstoß – Kunden dürfen nicht die
+    Leidtragenden interner Probleme sein. Zugleich hat das Studio nicht vorsätzlich
+    gehandelt, daher wäre eine angemessene <em>Nachbesserungsfrist</em> gerecht, bevor
+    schärfere Sanktionen (z.&nbsp;B. Rücktritt) greifen.</p>
+    <p>Bei M2 analog: Schutzinteresse des Käufers (Vertrauen in sichere Produkte) gegen
+    Haftungsinteresse des Verkäufers abwägen – keine Haftung bei nachweislich
+    unsachgemäßem Gebrauch.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Rechtsfolgen →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+
+<!-- ═══════════════ STEP 4 · M3 · GRUNDLEGENDE RECHTSFOLGEN ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Die grundlegenden Rechtsfolgen (M3)</div>
+      <div class="section-meta">Input · Fachbegriffe für die Forderungen</div>
+    </div>
+  </header>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">gemeinsam</span></div>
+      <div class="reflect-text">
+        Deine Forderungen aus Step 3 haben jetzt noch keine Fachnamen. Genau die
+        liefert <strong>M3</strong>. Kläre offene Fragen aus Step 2/3, bevor es
+        an die Systematik geht.
+      </div>
+    </div>
+  </div>
+
+  <p>Bei einer Pflichtverletzung kommen im Wesentlichen drei grundlegende Rechtsfolgen
+  in Betracht. Sie unterscheiden sich danach, ob die geschuldete Leistung noch erbracht
+  wird oder nicht.</p>
+
+  <!-- Schadensersatz neben der Leistung -->
+  <div class="info-box" style="margin:16px 0;">
+    <strong>1 · Schadensersatz neben der Leistung</strong><br>
+    Dieser Anspruch tritt <em>zusätzlich</em> neben den Anspruch auf die eigentliche
+    Leistung – beide können also parallel bestehen. Ersetzt werden Schäden, die
+    <em>trotz</em> (bzw. neben) der Leistung entstehen: etwa Schäden an anderen
+    Rechtsgütern (Mangelfolgeschaden) oder Schäden durch den verspäteten Erhalt
+    (Verzögerungsschaden, z.&nbsp;B. Mietwagenkosten).
+  </div>
+
+  <!-- Schadensersatz statt der Leistung -->
+  <div class="info-box" style="margin:16px 0;">
+    <strong>2 · Schadensersatz statt der Leistung</strong><br>
+    Dieser Anspruch tritt <em>an die Stelle</em> der ursprünglich geschuldeten Leistung,
+    weil diese nicht mehr erbracht wird. Ersetzt wird der Schaden, der aus dem Ausbleiben
+    der geschuldeten Leistung entsteht – z.&nbsp;B. Mehrkosten für einen Deckungskauf
+    oder ein entgangener Weiterverkaufsgewinn.
+  </div>
+
+  <!-- Rücktritt -->
+  <div class="info-box" style="margin:16px 0;">
+    <strong>3 · Rücktritt</strong><br>
+    Der Rücktritt befreit von der Pflicht zur Gegenleistung bzw. erlaubt, eine bereits
+    erbrachte Gegenleistung zurückzufordern. Durch einen erklärten Rücktritt wird der
+    Vertrag rückabgewickelt: Die empfangenen Leistungen müssen zurückgewährt werden,
+    noch offene Ansprüche aus dem Vertrag erlöschen.
+  </div>
+
+  <div class="norm-box">
+    <div class="norm-title">Fundstellen im BGB (M3)</div>
+    <div class="norm-text">
+      Zentrale Anspruchsgrundlage für Schadensersatz ist
+      <a href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank">§&nbsp;280 BGB</a>;
+      beim Schadensersatz <strong>statt</strong> der Leistung ergänzt durch
+      <a href="https://www.gesetze-im-internet.de/bgb/__281.html" target="_blank">§§&nbsp;281&nbsp;ff. BGB</a>,
+      Art und Umfang nach
+      <a href="https://www.gesetze-im-internet.de/bgb/__249.html" target="_blank">§§&nbsp;249&nbsp;ff. BGB</a>.
+      Der Rücktritt richtet sich nach
+      <a href="https://www.gesetze-im-internet.de/bgb/__323.html" target="_blank">§§&nbsp;323&nbsp;ff. BGB</a>
+      (Erklärung:
+      <a href="https://www.gesetze-im-internet.de/bgb/__349.html" target="_blank">§&nbsp;349 BGB</a>),
+      die Rückabwicklung nach
+      <a href="https://www.gesetze-im-internet.de/bgb/__346.html" target="_blank">§§&nbsp;346&nbsp;ff. BGB</a>.
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M3 „Grundlegende Rechtsfolgen bei Pflichtverletzungen": TB S.&nbsp;15.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Didaktischer Hinweis (DK 1.1.2)
+    </div>
+    <p><strong>Reihenfolge im Buch:</strong> Erst die möglichen <em>Rechtsfolgen</em>
+    aufzeigen, dann (in 1.1.3) die dafür nötigen <em>Tatbestände</em>. Dieser Aufbau
+    erleichtert das vom Lehrplan geforderte Nachvollziehen der Systematik des
+    Leistungsstörungsrechts. Hier bewusst noch <em>keine</em> Voraussetzungen prüfen.</p>
+    <p><strong>Merkhilfe „neben vs. statt":</strong> <em>neben</em> = Leistung kommt
+    trotzdem noch, Schaden entstand daneben (Folgeschaden, Verzögerung); <em>statt</em>
+    = Leistung bleibt aus, der Schaden ersetzt sie. Als Tafelbild fixieren.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Zuordnung →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+
+<!-- ═══════════════ STEP 5 · SICHERUNG · FORDERUNGEN → RECHTSFOLGEN (AUFGABE 4) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Forderungen den Rechtsfolgen zuordnen (Aufgabe 4)</div>
+      <div class="section-meta">Gruppenarbeit · Kernaufgabe des Kapitels</div>
+    </div>
+  </header>
+
+  <p>Jetzt bekommen deine umgangssprachlichen Forderungen aus Step 3 ihre Fachnamen.
+  Ordne jede Forderung der passenden <strong>Rechtsfolge aus M3</strong> zu.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 4 · Forderung ↔ Rechtsfolge</div>
+        <div class="task-form group">Gruppenarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Wähle oben die Rechtsfolge und tippe die dazu passenden Forderungen aus M1 &amp; M2 an.</p>
+      <div class="assign" data-assign="rechtsfolgen">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="N">Schadensersatz neben der Leistung</button>
+          <button class="assign-cat" data-cat="S">Schadensersatz statt der Leistung</button>
+          <button class="assign-cat" data-cat="R">Rücktritt</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann die passenden Forderungen antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="N"><span class="ai-key">a</span><span class="ai-text">M1: Schadensersatz für den zerkratzten Fußboden.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">b</span><span class="ai-text">M1: Kostenerstattung für die Anfahrt des Elektrikers Ernst.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="R"><span class="ai-key">c</span><span class="ai-text">M1: Rücktritt vom Vertrag, wenn keine beige Küche nachgeliefert wird.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="S"><span class="ai-key">d</span><span class="ai-text">M2: Reparatur oder eine Ersatzkonsole (an Stelle der defekten Leistung).</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">e</span><span class="ai-text">M2: Schadensersatz für das beschädigte TV-Gerät.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="S"><span class="ai-key">f</span><span class="ai-text">M2: Ersatz der Versand- bzw. Rücksendekosten.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="R"><span class="ai-key">g</span><span class="ai-text">M2: Rücktritt vom Vertrag, falls Reparatur/Neulieferung ausbleibt.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgabe 4 mit M3: TB S.&nbsp;15. Zuordnung nach AL S.&nbsp;15.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung (nach AL S. 15)
+    </div>
+    <p><strong>Schadensersatz neben der Leistung:</strong> a, b, e &nbsp;·&nbsp;
+    <strong>Schadensersatz statt der Leistung:</strong> d, f &nbsp;·&nbsp;
+    <strong>Rücktritt:</strong> c, g.</p>
+    <p><strong>Hinweis zur Küche selbst:</strong> Die Forderung „Austausch gegen eine
+    beige Küche" ist zunächst <em>Nachbesserung</em> (noch <em>kein</em> Schadensersatz);
+    erst wenn diese ausbleibt, kommt Schadensersatz statt der Leistung bzw. Rücktritt in
+    Betracht. Das ist die Brücke zu 1.1.3 (Voraussetzungen/Fristen).</p>
+    <p>Fall e (TV-Schaden) zeigt: Ein Mangelfolgeschaden an einem <em>anderen</em>
+    Rechtsgut wird über Schadensersatz <em>neben</em> der Leistung erfasst – unabhängig
+    davon, ob man die Störung als mangelhafte Leistung oder Nebenpflichtverletzung deutet.</p>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li>Jede Fallprüfung startet mit <strong>„Wer will was von wem woraus?"</strong> – zuerst die Ansprüche klären.</li>
+      <li>Drei grundlegende Rechtsfolgen: <strong>Schadensersatz neben</strong> der Leistung, <strong>statt</strong> der Leistung und <strong>Rücktritt</strong>.</li>
+      <li><strong>Neben</strong> = Leistung kommt noch, Schaden daneben · <strong>statt</strong> = Leistung bleibt aus · <strong>Rücktritt</strong> = Vertrag rückabwickeln.</li>
+      <li>Ziel des Gesetzgebers bleibt der <strong>gerechte Interessenausgleich</strong> beider Vertragsparteien.</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+
+<!-- ═══════════════ STEP 6 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-6">
+<section class="section teacher-only" id="step6">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">6</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zur Durchführung
+    </div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen zuerst,
+    dann zwei „mittlere" Kompetenzen, abschließend Kreativität als offene Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <!-- ── Wissen ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#4F46E5;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#4F46E5" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#4F46E5" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation / Wissen</div>
+        <div class="task-form" style="color:#4F46E5;">Fachwissen abrufen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Nenne die drei grundlegenden Rechtsfolgen einer
+      Pflichtverletzung und erkläre den Unterschied zwischen Schadensersatz
+      <em>neben</em> und <em>statt</em> der Leistung.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Drei Rechtsfolgen: <strong>Schadensersatz neben der Leistung</strong>,
+        <strong>Schadensersatz statt der Leistung</strong> und <strong>Rücktritt</strong>.<br>
+        <strong>Neben:</strong> tritt zusätzlich zum Anspruch auf die Leistung; die
+        Leistung wird noch erbracht, ersetzt werden daneben entstandene Schäden
+        (Mangelfolge- oder Verzögerungsschaden). <strong>Statt:</strong> tritt an die
+        Stelle der Leistung, weil diese nicht mehr erbracht wird; ersetzt wird der
+        Schaden aus dem Ausbleiben der Leistung (z.&nbsp;B. Deckungskauf).
+        Anspruchsgrundlage jeweils § 280 BGB, für „statt" ergänzt durch §§ 281 ff. BGB.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kritisches Denken ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Analyse / Bewertung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Herr Koch will die weiße Küche sofort zurückgeben und
+      vom Vertrag zurücktreten. Beurteile, ob das direkt gerecht wäre – oder ob dem
+      Küchenstudio zuerst etwas zugestanden werden müsste.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Gute Antwort erkennt den <em>Vorrang der Nacherfüllung</em>: Bevor der Käufer
+        zurücktritt, sollte dem Studio in der Regel eine <strong>angemessene Frist zur
+        Nachbesserung</strong> (Lieferung der beigen Küche) eingeräumt werden. Erst wenn
+        diese fruchtlos verstreicht, sind schärfere Rechtsfolgen wie Rücktritt oder
+        Schadensersatz statt der Leistung gerecht. Begründung: Das Studio hat nicht
+        vorsätzlich gehandelt; der Gesetzgeber will einen <em>Interessenausgleich</em>,
+        nicht die härteste Sanktion sofort. (Überleitung zu den Voraussetzungen in 1.1.3.)
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kommunikation ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kollaboration</div>
+        <div class="task-form" style="color:#0d9488;">Perspektivenwechsel</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Versetze dich in das Küchenstudio. Welche berechtigten
+      Interessen hat <em>die andere Seite</em> im Fall M1 – und wo endet ihr Spielraum?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Berechtigt: Anspruch auf Zahlung des Kaufpreises, Wunsch nach einer Frist zur
+        Neulieferung, Ersatz für zusätzliche Anfahrten/Arbeiten. Auch der Fachkräftemangel
+        erklärt die Lage. <strong>Grenze:</strong> Interne Probleme entschuldigen keinen
+        Vertragsverstoß – Kunden dürfen nicht die Leidtragenden sein. Der Spielraum endet
+        dort, wo Kochs berechtigte Erwartung auf vertragsgemäße Lieferung und Ersatz des
+        Bodenschadens beginnt. Eine faire Lösung wägt beide Interessen ab.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kreativität ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde einen kurzen Alltagsfall, in dem genau
+      <em>zwei</em> der drei Rechtsfolgen zugleich in Betracht kommen, und begründe die
+      Zuordnung.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>:
+        <ul>
+          <li><strong>Passung:</strong> Der Fall trifft eindeutig zwei der drei Rechtsfolgen (neben / statt / Rücktritt).</li>
+          <li><strong>Fachbegriffe:</strong> Die Zuordnung wird korrekt benannt, nicht nur umschrieben.</li>
+          <li><strong>Begründung:</strong> Es wird erklärt, <em>warum</em> die jeweilige Folge passt (Leistung kommt noch / bleibt aus / Vertrag wird rückabgewickelt).</li>
+          <li><strong>Abgrenzung (Bestleistung):</strong> Der Unterschied zwischen den beiden gewählten Folgen wird sauber herausgearbeitet.</li>
+        </ul>
+        Starke Antwort z.&nbsp;B.: „Ein bestelltes Sofa wird zu spät und beschädigt
+        geliefert. <em>Schadensersatz neben der Leistung</em> für die Mietmöbel während
+        der Verspätung; kommt gar kein brauchbares Sofa, <em>Rücktritt</em> vom Vertrag."
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+</main>
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+const TEACHER_PIN = '13579135';
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+function checkPin(){
+  if(pinBuffer === TEACHER_PIN){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(tk.includes(kw) || kw.includes(tk)) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const gate = ta.closest('.task-body').querySelector('.sol-gate');
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+</script>
+
+</body>
+</html>
