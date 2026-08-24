@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.1 Was kann bei der Kaufvertragserfüllung schiefgehen? · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Blau === */
+  --blue-900:#0D47A1;
+  --blue-800:#1565C0;
+  --blue-700:#1976D2;   /* Primärfarbe */
+  --blue-600:#1E88E5;
+  --blue-400:#29B6F6;
+  --blue-100:#D6E9FB;
+  --blue-50: #E3F2FD;
+  --blue-grad: linear-gradient(135deg,#1976D2 0%,#1E88E5 60%,#29B6F6 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#0D3B66;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#EEF6FF 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#93C5FD;font-style:normal;font-weight:800;}
+.norm-box a{color:#93C5FD;font-weight:700;text-decoration:none;border-bottom:1px dotted #93C5FD;}
+.norm-box a:hover{color:#BFDBFE;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print (mündliche Abfrage) ─────────── */
+@media print{
+  .topbar,.progress,.nav-btns,.btn-teacher,.pin-modal,
+  .section-num,.hero,.closing{display:none !important;}
+  .step{display:none !important;}
+  .step.teacher-only{display:block !important;}
+  .section:not(.teacher-only){display:none !important;}
+  .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.1</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Pflichten</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Zuordnung</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Störungsarten</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Sicherung</div>
+  <div class="step-chip teacher-only" data-step="6" onclick="goStep(6)"><span class="n">6</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunde 1</span>
+  <h1>Was kann bei der Kaufvertragserfüllung schiefgehen?</h1>
+  <p class="hero-sub">Pacta sunt servanda – Verträge sind einzuhalten. Aber was, wenn nicht?</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du ordnest Probleme, die bei der Vertragserfüllung auftreten,
+        verschiedenen Arten von Leistungsstörungen zu.
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Kaum ein Kaufvertrag läuft immer glatt: verspätete Lieferung, Mängel,
+        Schäden. Wer die Störungen einordnen kann, kennt auch seine Rechte.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Ein Gebrauchtwagen wechselt den Besitzer</div>
+      <div class="section-meta">Plenum</div>
+    </div>
+  </header>
+
+  <p>Kevin Seller (Unternehmer) verkauft einen gebrauchten <strong>DayHyun K10</strong>
+  an die Privatkäuferin Belinda Bayer. Im Kaufvertrag ist alles geregelt: Kaufpreis
+  13.900,00&nbsp;Euro, Zusatzausstattung wie Winterpaket und Lenkradheizung, und die
+  Zusicherung „kein Unfallschaden". Auf dem Papier ist der Vertrag geschlossen –
+  jetzt muss er noch <strong>erfüllt</strong> werden.</p>
+
+  <div class="info-box">
+    Ein Kaufvertrag entsteht durch die Einigung beider Seiten. Bis das Auto aber
+    tatsächlich übergeben, bezahlt und mangelfrei ist, kann einiges dazwischenkommen.
+    Genau darum geht es in dieser Stunde.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/>
+          <path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Konflikte durchspielen</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Was könnte zwischen Kevin Seller und Belinda Bayer alles schiefgehen,
+        obwohl der Vertrag doch längst geschlossen ist?"</p>
+      <p><strong>Aufgabe 1:</strong> Entwickelt gemeinsam Szenarien für mögliche
+      Konflikte zwischen Verkäufer und Käuferin bei der Erfüllung des Kaufvertrags.</p>
+      <p><strong>Aufgabe 2:</strong> Spielt zu einem Szenario eine kurze Diskussion
+      zwischen Belinda Bayer und Kevin Seller nach und versucht, zu einem gerechten
+      Interessenausgleich zu kommen.</p>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Kaufvertrag &amp; Aufgaben 1–2: TB S.&nbsp;10/11 („Ihre Meinung ist gefragt!").</div>
+  </div>
+
+  <!-- Moderationshilfe (nur Version B) -->
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Moderationshilfe Einstieg
+    </div>
+    <span class="tn-time">Zeitrahmen: ca. 5–7 Min.</span>
+    <p><strong>So moderierst du:</strong> Zeig den Kaufvertrag (TB S.&nbsp;10) und lass
+    die Schüler frei überlegen, was schiefgehen kann. Sammle Szenarien ungewertet an
+    der Tafel. Für Aufgabe 2 zwei Freiwillige ein Streitgespräch spielen lassen.</p>
+    <p><strong>Typische Szenarien (aus dem Fall):</strong></p>
+    <ul>
+      <li>Seller übergibt den Wagen nicht zum vereinbarten Termin.</li>
+      <li>Nach Übergabe verliert der Motor Öl – Seller will nichts gewusst haben.</li>
+      <li>Der zugesicherte „unfallfreie" Wagen hatte doch einen Unfall.</li>
+      <li>Bayer zahlt die 13.900&nbsp;€ nicht rechtzeitig.</li>
+      <li>Winterpaket / Lenkradheizung fehlen entgegen dem Vertrag.</li>
+    </ul>
+    <p><strong>Worauf achten:</strong> Noch keine Fachbegriffe (Verzug, Mangel …)
+    einführen – das erarbeiten die Schüler selbst. <strong>Überleitung:</strong>
+    „Damit wir diese Konflikte ordnen können, schauen wir uns zuerst an, welche
+    Pflichten ein Kaufvertrag überhaupt mit sich bringt." → Step 2.</p>
+  </div>
+</section>
+
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Pflichten →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+
+<!-- ═══════════════ STEP 2 · PFLICHTEN SYSTEMATISIEREN ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Welche Pflichten bringt ein Vertrag mit sich?</div>
+      <div class="section-meta">Einzelarbeit · Musterlösung erst nach eigener Antwort</div>
+    </div>
+  </header>
+
+  <p>Wer aus einem Vertrag zu einer Leistung verpflichtet ist, muss diese Leistung
+  auch erbringen (vgl. <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__241.html" target="_blank">§&nbsp;241 BGB</a>).
+  Der Gesetzgeber unterscheidet dabei zwei Arten von Pflichten:</p>
+
+  <div class="tbm-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:14px 0;">
+    <div class="info-box" style="margin:0;">
+      <strong>Leistungsbezogene Pflichten (Leistungspflichten)</strong><br>
+      Das, was der Vertrag im Kern schuldet – z.&nbsp;B. die Ware übergeben,
+      das Eigentum verschaffen, den Kaufpreis zahlen.
+      (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__241.html" target="_blank">§&nbsp;241 I BGB</a>)
+    </div>
+    <div class="info-box" style="margin:0;">
+      <strong>Nicht leistungsbezogene Pflichten (Nebenpflichten)</strong><br>
+      Schutz-, Aufklärungs- und Rücksichtspflichten, die Schäden des anderen
+      abwenden sollen.
+      (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__241.html" target="_blank">§&nbsp;241 II BGB</a>)
+    </div>
+  </div>
+
+  <p>Hat der Schuldner die geschuldete Leistung vollständig bewirkt, erlischt das
+  Schuldverhältnis (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__362.html" target="_blank">§&nbsp;362 BGB</a>).</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="12" r="7" fill="#1976D2"/>
+          <path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Den Unterschied in eigenen Worten</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Erkläre in eigenen Worten und in ganzen Sätzen den Unterschied zwischen
+      leistungsbezogenen Pflichten und Nebenpflichten. Nenne zu jeder Art ein
+      Beispiel aus einem Kaufvertrag.</p>
+
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="25"
+        data-keywords="leistungspflicht, nebenpflicht, uebergeben, kaufpreis, schutz, ruecksicht"
+        data-required="3"
+        placeholder="Leistungsbezogene Pflichten sind … Nebenpflichten dagegen …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 25 Wörter · 0 von 3 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Leistungsbezogene Pflichten (Leistungspflichten)</strong> sind die
+        Pflichten, wegen denen der Vertrag überhaupt geschlossen wurde – der Kern der
+        Leistung. Beim Kauf: Der Verkäufer muss die Ware <em>übergeben</em> und das
+        Eigentum verschaffen, die Käuferin muss den <em>Kaufpreis</em> zahlen.<br><br>
+        <strong>Nebenpflichten</strong> sind nicht leistungsbezogene Pflichten:
+        Schutz-, Aufklärungs- und Rücksichtspflichten, die verhindern sollen, dass ein
+        Vertragspartner geschädigt wird. Beispiel: Der Verkäufer muss die Käuferin über
+        wichtige Umstände aufklären oder darf beim Anliefern nicht ihr Eigentum
+        beschädigen.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Text M2 „Pflichten aus einem Schuldverhältnis": TB S.&nbsp;12.</div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Zuordnung →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+
+<!-- ═══════════════ STEP 3 · M1 ZUORDNEN ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Kaufpflichten einordnen</div>
+      <div class="section-meta">Partnerarbeit · Leistungspflicht oder Nebenpflicht?</div>
+    </div>
+  </header>
+
+  <p>In <strong>M1</strong> stehen typische Pflichten, die aus einem Kaufvertrag
+  entstehen. Ordnet jede Pflicht der richtigen Kategorie zu: Ist sie eine
+  <strong>Leistungspflicht</strong> (Kern des Vertrags) oder eine
+  <strong>Nebenpflicht</strong> (Schutz/Rücksicht)?</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <circle cx="13" cy="11" r="5" fill="#0d9488"/>
+          <circle cx="27" cy="11" r="5" fill="#0d9488"/>
+          <path d="M3 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M17 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 1 · M1 in die Systematik einordnen</div>
+        <div class="task-form partner">Partnerarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="m1">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="L">Leistungspflicht</button>
+          <button class="assign-cat" data-cat="N">Nebenpflicht</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann auf die Aussagen tippen, die dazugehören. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="L"><span class="ai-key">a</span><span class="ai-text">Die Käuferin ist verpflichtet, den vereinbarten Kaufpreis zu zahlen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">b</span><span class="ai-text">Die Verkäuferin ist verpflichtet, die verkaufte Ware an den Käufer zu übergeben.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">c</span><span class="ai-text">Der Verkäufer muss die Ware sicher verpacken, wenn dies zur Vertragserfüllung gehört (z.&nbsp;B. Versandkauf).</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">d</span><span class="ai-text">Der Verkäufer muss die Käuferin über bestimmte Umstände aufklären, die für die Verwendung der Ware wesentlich sind.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">e</span><span class="ai-text">Der Käufer muss die Sache abnehmen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">f</span><span class="ai-text">Der Käufer muss dem Verkäufer rechtzeitig mitteilen, wohin die Sache geliefert werden soll.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">g</span><span class="ai-text">Jede Vertragspartei muss vermeiden, dass durch ihr Verhalten Schäden für die andere Partei entstehen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">h</span><span class="ai-text">Die gekaufte Sache muss frei von Sach- und Rechtsmängeln sein.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="L"><span class="ai-key">i</span><span class="ai-text">Der Verkäufer muss dem Käufer das Eigentum an der Ware verschaffen.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M1 „Typische Pflichten beim Kauf" &amp; Aufgabe 1: TB S.&nbsp;12/13.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweis
+    </div>
+    <p><strong>Leistungspflichten:</strong> a, b, c, e, f, h, i &nbsp;·&nbsp;
+    <strong>Nebenpflichten:</strong> d, g.</p>
+    <p>Es bietet sich an, die Systematik als Tafelbild zu fixieren (deduktiv von M2
+    her). Nebenpflichten sind hier vor allem Aufklärungs- (d) und Rücksichtspflichten (g).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Störungsarten →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+
+<!-- ═══════════════ STEP 4 · LEISTUNGSSTÖRUNGEN ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Vier Arten von Leistungsstörungen</div>
+      <div class="section-meta">nach dem Zwischencheck · Wissen anwenden</div>
+    </div>
+  </header>
+
+  <!-- Zwischencheck -->
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">
+        Zwischencheck
+        <span class="reflect-badge">gemeinsam</span>
+      </div>
+      <div class="reflect-text">
+        Bevor du die Störungen einordnest: Sitzt der Unterschied zwischen
+        Leistungspflicht und Nebenpflicht? <strong>Jetzt ist Zeit für deine Fragen</strong>
+        – melde dich, wenn aus Step 2/3 noch etwas unklar ist.
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Moderationshilfe Zwischencheck
+    </div>
+    <span class="tn-time">Zeitrahmen: 5–10 Min. (nicht länger!)</span>
+    <p><strong>Ziel:</strong> Vor der Zuordnung die vier Störungsarten klar
+    voneinander abgrenzen (vgl. Tafelbild 1.1.1). Kurz gemeinsam klären, dann üben.</p>
+    <p><strong>Mögliche Rückfragen ans Plenum:</strong></p>
+    <ul>
+      <li>Wann ist eine Leistung <em>verspätet</em>, wann <em>unmöglich</em>?</li>
+      <li>Was unterscheidet eine <em>mangelhafte Leistung</em> von einer <em>Nebenpflichtverletzung</em>?</li>
+    </ul>
+    <p><strong>Begriffshinweis (vgl. Fachwissen S.&nbsp;55):</strong> „Pflichtverletzung"
+    und „Leistungsstörung" sind schwer zu trennen. Im engeren Sinn meint Leistungsstörung
+    eine Pflichtverletzung bei <em>leistungsbezogenen</em> Pflichten; im weiteren Sinn
+    fasst der Begriff alle Pflichtverletzungen im Schuldrecht (auch Nebenpflichten). Wo
+    sie nicht als Tatbestand (z.&nbsp;B. § 280 I BGB) auftreten, dürfen sie synonym
+    gebraucht werden.</p>
+  </div>
+
+  <p>Wenn eine Pflicht nicht ordnungsgemäß erfüllt wird, spricht man von einer
+  <strong>Leistungsstörung</strong>. Man unterscheidet vier Grundtypen:
+  <strong>verspätete Leistung</strong>, <strong>Unmöglichkeit der Leistung</strong>,
+  <strong>mangelhafte Leistung</strong> und <strong>Nebenpflichtverletzung</strong>.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 2 · M3-Beispiele zuordnen</div>
+        <div class="task-form group">Gruppenarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Ordnet die Beispiele aus <strong>M3</strong> der passenden Leistungsstörung zu.</p>
+      <div class="assign" data-assign="m3">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="V">Verspätete Leistung</button>
+          <button class="assign-cat" data-cat="U">Unmöglichkeit</button>
+          <button class="assign-cat" data-cat="M">Mangelhafte Leistung</button>
+          <button class="assign-cat" data-cat="P">Nebenpflichtverletzung</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann die passenden Fälle antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="V"><span class="ai-key">a</span><span class="ai-text">Ein Verkäufer wartet vergebens auf die Begleichung des Kaufpreises, obwohl der Zahlungstermin längst überschritten ist.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="U"><span class="ai-key">b</span><span class="ai-text">Die online bestellte Jeans wird in der falschen Größe geliefert.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">c</span><span class="ai-text">Eine Frau rutscht im Supermarkt auf einer am Boden liegenden Tomate aus, fällt hin und bricht sich das Handgelenk.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">d</span><span class="ai-text">Bei der Lieferung des neuen Sofas zerkratzen die Möbelpacker den neuen Parkettboden.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">e</span><span class="ai-text">Ein Onlineshop garantiert Lieferung in max. drei Tagen. Die Ware ist auch am fünften Tag noch nicht geliefert.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">f</span><span class="ai-text">Der beim Versandhaus bestellte Schlafzimmerschrank ist nicht mehr lieferbar, weil der Hersteller in Konkurs ging.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="U"><span class="ai-key">g</span><span class="ai-text">Ein Kunde kauft den neuen Bestseller. Beim Lesen stellt er fest, dass 30 Seiten in der Mitte unbedruckt sind.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">h</span><span class="ai-text">Der gekaufte, aber noch nicht übereignete Gebrauchtwagen erleidet bei einem Unfall einen Totalschaden.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">i</span><span class="ai-text">Der Gast gibt an, auf Nüsse allergisch zu reagieren. Dennoch wird ihm ein nusshaltiges Dessert gereicht – er erleidet einen Allergieschock.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M3 „Verschiedene Pflichtverletzungen" &amp; Aufgabe 2: TB S.&nbsp;13.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung (Zuordnung nach AL S. 13)
+    </div>
+    <p><strong>Verspätete Leistung:</strong> a, e, f, h &nbsp;·&nbsp;
+    <strong>Unmöglichkeit der Leistung:</strong> b, g &nbsp;·&nbsp;
+    <strong>Mangelhafte Leistung:</strong> c, d, i</p>
+    <p>Die Kategorie „Nebenpflichtverletzung" wird in der Aufgabenstellung als
+    mögliche Störungsart mit angeboten – in der Musterlösung von S.&nbsp;13 fällt kein
+    Fall darunter (c, d und i werden dort der mangelhaften Leistung zugeordnet). Die
+    Nebenpflichtverletzung wird eigenständig über die Karikatur (Step 5) vertieft.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Sicherung →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+
+<!-- ═══════════════ STEP 5 · SICHERUNG (KARIKATUR) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Sicherung: Die Karikatur deuten</div>
+      <div class="section-meta">Einzelarbeit · fakultativ · typischer Abitur-Aufgabentyp</div>
+    </div>
+  </header>
+
+  <p>Die Karikatur <strong>M4</strong> (Dave Allen, 2008) zeigt eine Szene in der
+  Steinzeit: Ein Zeitungshändler („NEWSAGENT") hinter einem Tresen, davor eine Frau,
+  die berichtet: <em>„He says you demolished his front door when you delivered the
+  paper this morning."</em> Im Hintergrund ein zweiter Mann und Gesteinsbrocken.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 3 · Karikatur beschreiben und interpretieren</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Beschreibung + Deutung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Beschreibe die Karikatur und interpretiere sie mithilfe der Begriffe
+      dieser Stunde. Welche Pflicht hat der Zusteller erfüllt, welche verletzt?</p>
+
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="30"
+        data-keywords="zeitung, leistungspflicht, liefern, nebenpflicht, haustuer, schaden, eigentum"
+        data-required="4"
+        placeholder="Beschreibung: … Interpretation: Die Leistungspflicht des Zustellers ist … Seine Nebenpflicht …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 4 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Beschreibung:</strong> Ein Steinzeit-Szenario. Hinter einem Tresen mit
+        der Aufschrift „NEWSAGENT" steht ein Mann; davor eine Frau, die ihm ausrichtet,
+        er habe die Haustür des Nachbarn zerstört, als er morgens die Zeitung lieferte.
+        Im Hintergrund der geschädigte Mann und zwei Gesteinsbrocken.<br><br>
+        <strong>Interpretation:</strong> Die <em>Leistungspflicht</em> des Zustellers ist
+        es, die Zeitung pünktlich zu liefern – diese hat er erfüllt (er hat sie wie
+        üblich zugestellt). Zugleich besteht die <em>Nebenpflicht</em>, dabei kein
+        Eigentum des Kunden zu beschädigen. Weil die Zeitung in der Steinzeit in Stein
+        gemeißelt ist, zerstört er beim Zustellen die Haustür – eine klare
+        <strong>Nebenpflichtverletzung</strong>.<br><br>
+        Beschreibung + Interpretation einer Karikatur ist ein typischer Aufgabentyp der
+        Abiturprüfung.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Karikatur M4 (Dave Allen, 2008) &amp; Aufgabe 3: TB S.&nbsp;13.</div>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li>Ein Vertrag bringt <strong>Leistungspflichten</strong> (Kern) und <strong>Nebenpflichten</strong> (Schutz/Rücksicht) mit sich (§ 241 BGB).</li>
+      <li>Wird eine Pflicht nicht ordnungsgemäß erfüllt, liegt eine <strong>Leistungsstörung</strong> vor.</li>
+      <li>Vier Grundtypen: verspätete Leistung, Unmöglichkeit, mangelhafte Leistung, Nebenpflichtverletzung.</li>
+      <li>Ziel des Gesetzgebers ist ein <strong>gerechter Interessenausgleich</strong> zwischen den Vertragsparteien.</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+
+<!-- ═══════════════ STEP 6 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-6">
+<section class="section teacher-only" id="step6">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">6</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zur Durchführung
+    </div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen
+    zuerst, dann zwei „mittlere" Kompetenzen, abschließend Kreativität als offene
+    Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <!-- ── Wissen ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#7B1FA2;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#7B1FA2" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#7B1FA2" font-family="Nunito,sans-serif">W</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Wissen</div>
+        <div class="task-form" style="color:#7B1FA2;">Reproduktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erläutere den Unterschied zwischen leistungsbezogenen
+      Pflichten und Nebenpflichten (§ 241 BGB) und nenne je ein Beispiel aus dem
+      Autokauf-Fall Seller/Bayer.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Leistungspflichten</strong> sind der Kern des Vertrags – das, wozu er
+        geschlossen wurde (§ 241 I BGB). Im Fall: Seller muss den DayHyun K10 übergeben
+        und das Eigentum verschaffen, Bayer muss die 13.900 € zahlen.<br>
+        <strong>Nebenpflichten</strong> sind Schutz-, Aufklärungs- und Rücksichtspflichten
+        (§ 241 II BGB), die Schäden des Partners verhindern. Im Fall: Seller muss Bayer
+        über wesentliche Umstände (z. B. Vorschäden) aufklären und darf beim Übergeben
+        nicht ihr Eigentum beschädigen. Rechtsfolge der Erfüllung: Erlöschen des
+        Schuldverhältnisses (§ 362 BGB).
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kritisches Denken ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Analyse / Bewertung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Fall d aus M3 (die Möbelpacker zerkratzen bei der
+      Lieferung den Parkettboden) lässt sich nicht eindeutig einordnen. Begründe, ob
+      du ihn als mangelhafte Leistung oder als Nebenpflichtverletzung siehst.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Beide Zuordnungen sind vertretbar – entscheidend ist die Begründung. <br>
+        <strong>Für Nebenpflichtverletzung:</strong> Die eigentliche Leistung (Lieferung
+        des Sofas) ist mangelfrei; beschädigt wird ein <em>anderes</em> Rechtsgut des
+        Käufers (der Parkettboden). Das ist typisch für die Verletzung einer
+        Schutz-/Rücksichtspflicht (§ 241 II BGB).<br>
+        <strong>Für mangelhafte Leistung</strong> (so die Zuordnung in der
+        Buch-Musterlösung S. 13): Die Schlechtleistung tritt im Rahmen der
+        Leistungserbringung auf und wird dort als Teil der mangelhaften Ausführung
+        gefasst.<br>
+        Gute Antwort: erkennt die Doppeldeutigkeit und trennt sauber „Mangel an der
+        Sache selbst" von „Schaden an einem anderen Rechtsgut".
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kommunikation ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation</div>
+        <div class="task-form" style="color:#0d9488;">Adressatengerecht erklären</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Belinda Bayer stellt beim Kaufwagen einen Mangel fest
+      und ruft verärgert bei Kevin Seller an. Wie sollte ein Gespräch ablaufen, damit
+      beide zu einem gerechten Interessenausgleich kommen? Woran erkennt man gelungene
+      Kommunikation?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Gute Antwort beschreibt ein sachliches Vorgehen: Bayer schildert den Mangel
+        konkret und belegt ihn (statt Vorwürfe zu machen); Seller hört zu, fragt nach
+        und benennt seine Sicht. Beide suchen eine Lösung, die beide Interessen
+        berücksichtigt (z. B. Nachbesserung, Preisminderung), statt auf der eigenen
+        Position zu beharren. <br>
+        Merkmale gelungener Kommunikation: sachlich statt emotional, konkret statt
+        pauschal, zuhören und nachfragen, gemeinsames Ziel (Interessenausgleich) im
+        Blick. Genau diesen Ausgleich soll auch der Gesetzgeber ermöglichen.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kreativität ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde ein eigenes Alltagsbeispiel zu einer der vier
+      Leistungsstörungen und begründe die Zuordnung.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>
+        anhand folgender Kriterien:
+        <ul>
+          <li><strong>Passung:</strong> Das Beispiel trifft eindeutig die gewählte
+          Störungsart (verspätete Leistung, Unmöglichkeit, mangelhafte Leistung oder
+          Nebenpflichtverletzung).</li>
+          <li><strong>Fachbegriffe:</strong> Die Zuordnung wird mit dem korrekten
+          Fachbegriff benannt und nicht nur umgangssprachlich beschrieben.</li>
+          <li><strong>Begründung:</strong> Es wird erklärt, <em>warum</em> der Fall zu
+          dieser Kategorie gehört (welche Pflicht wie gestört ist).</li>
+          <li><strong>Abgrenzung (für volle Punktzahl):</strong> Es wird deutlich, wodurch
+          sich der Fall von einer benachbarten Störungsart unterscheidet.</li>
+        </ul>
+        Beispiel für eine starke Antwort: „Ich bestelle eine Geburtstagstorte für Samstag,
+        sie wird aber erst Montag geliefert – <em>verspätete Leistung</em>, weil die
+        Leistung noch möglich ist, aber nach dem Termin erfolgt. Wäre die Torte für
+        <em>diesen</em> Samstag fest gebunden und der Tag vorbei, wäre es
+        <em>Unmöglichkeit</em>."
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+</main>
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+const TEACHER_PIN = '13579135';
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+function checkPin(){
+  if(pinBuffer === TEACHER_PIN){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(tk.includes(kw) || kw.includes(tk)) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const gate = ta.closest('.task-body').querySelector('.sol-gate');
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+</script>
+
+</body>
+</html>
