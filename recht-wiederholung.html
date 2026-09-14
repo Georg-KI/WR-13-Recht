@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recht – Wiederholung · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Violett (Wiederholung / Neustart Q13) === */
+  --vio-900:#4A148C;
+  --vio-800:#6A1B9A;
+  --vio-700:#7B1FA2;   /* Primärfarbe */
+  --vio-600:#8E24AA;
+  --vio-500:#AB47BC;
+  --vio-100:#F3E5F5;
+  --vio-50: #FAF5FF;
+  --vio-grad: linear-gradient(135deg,#7B1FA2 0%,#1976D2 100%);
+
+  /* === Akzente === */
+  --blue:    #1976D2;
+  --blue-50: #E3F2FD;
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--vio-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--vio-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{background:#FBBF24;color:#7C2D12;border-color:#FBBF24;}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--vio-600);color:var(--vio-700);}
+.step-chip.active{background:var(--vio-700);color:#fff;border-color:var(--vio-700);}
+.step-chip .n{
+  background:var(--vio-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.active .n{background:rgba(255,255,255,0.3);}
+.step-chip.teacher-only{
+  background:var(--amber-bg);
+  border-color:var(--amber-bd);
+  color:var(--amber-tx);
+  display:none;
+}
+.step-chip.teacher-only .n{background:var(--amber-bd);color:var(--amber-tx);}
+body.version-b .step-chip.teacher-only{display:flex;}
+
+/* ─────────── Main ─────────── */
+main{max-width:920px;margin:0 auto;padding:28px 20px 80px;}
+
+.step{display:none;animation:fadeUp 0.4s ease both;}
+.step.active{display:block;}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--vio-grad);
+  border-radius:var(--radius-lg);
+  padding:32px 30px;
+  color:#fff !important;opacity:1 !important;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  margin-bottom:24px;
+}
+.hero::before{
+  content:'§';position:absolute;right:22px;top:-24px;
+  font-size:150px;font-weight:900;color:rgba(255,255,255,0.10);
+}
+.hero h1{font-size:26px;font-weight:900;color:#fff !important;margin-bottom:8px;line-height:1.2;}
+.hero p{font-size:15px;color:rgba(255,255,255,0.92) !important;max-width:600px;}
+.hero .kicker{
+  display:inline-block;background:rgba(255,255,255,0.2);
+  padding:4px 12px;border-radius:20px;font-size:12px;font-weight:800;
+  letter-spacing:0.5px;margin-bottom:14px;color:#fff !important;
+}
+
+/* ─────────── Section ─────────── */
+.section{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);
+  padding:24px 24px;
+  margin-bottom:20px;
+  animation:fadeUp 0.4s ease both;
+}
+.section-title{
+  font-size:18px;font-weight:900;color:var(--vio-800);
+  margin-bottom:6px;display:flex;align-items:center;gap:10px;
+}
+.section-title .badge-num{
+  background:var(--vio-700);color:#fff;
+  width:26px;height:26px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;flex-shrink:0;
+}
+.section-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+
+/* ─────────── Task-Box ─────────── */
+.task{
+  border:1.5px solid var(--vio-500);
+  border-radius:var(--radius-md);overflow:hidden;
+  margin-bottom:18px;
+}
+.task-header{
+  background:var(--vio-700);padding:11px 14px;
+  display:flex;align-items:center;gap:12px;
+}
+.task-icon{
+  background:#fff;border-radius:8px;
+  width:42px;height:42px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.task-htext{display:flex;flex-direction:column;gap:2px;}
+.task-htext .t{color:#fff;font-weight:800;font-size:14px;}
+.task-htext .s{color:rgba(255,255,255,0.85);font-weight:600;font-size:11px;letter-spacing:0.3px;}
+.task-body{background:var(--bg-page);padding:16px 16px;}
+.task-body .q{font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;}
+
+/* ─────────── Quiz-Optionen ─────────── */
+.quiz-q{margin-bottom:4px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;font-size:14px;font-weight:600;
+  text-align:left;cursor:pointer;font-family:inherit;color:var(--text);
+  transition:all 0.13s;display:flex;align-items:center;gap:10px;
+}
+.quiz-opt:hover:not(:disabled){border-color:var(--vio-500);background:var(--vio-50);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-opt .mk{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--border);display:inline-flex;
+  align-items:center;justify-content:center;font-size:12px;font-weight:900;
+}
+.quiz-opt.correct{border-color:var(--green);background:var(--green-50);color:#14532D;}
+.quiz-opt.correct .mk{border-color:var(--green);background:var(--green);color:#fff;}
+.quiz-opt.wrong{border-color:var(--red);background:var(--red-50);color:#7F1D1D;}
+.quiz-opt.wrong .mk{border-color:var(--red);background:var(--red);color:#fff;}
+.quiz-feedback{
+  display:none;margin-top:10px;padding:9px 13px;border-radius:var(--radius-sm);
+  font-size:13px;font-weight:700;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;}
+.btn-retry{
+  display:none;margin-top:10px;background:#fff;
+  border:1.5px solid var(--vio-500);color:var(--vio-700);
+  padding:7px 15px;border-radius:var(--radius-sm);
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+}
+.btn-retry:hover{background:var(--vio-50);}
+
+/* ─────────── Zuordnung (Match) ─────────── */
+.match-grid{display:flex;flex-direction:column;gap:10px;}
+.match-row{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:9px 12px;
+}
+.match-row .term{font-size:14px;font-weight:700;color:var(--text);}
+.match-row select{
+  font-family:inherit;font-size:13px;font-weight:600;
+  padding:7px 10px;border:1.5px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);cursor:pointer;
+  min-width:190px;
+}
+.match-row select:focus{outline:none;border-color:var(--vio-500);}
+.match-row.correct{border-color:var(--green);background:var(--green-50);}
+.match-row.wrong{border-color:var(--red);background:var(--red-50);}
+.match-row.correct select{border-color:var(--green);}
+.match-row.wrong select{border-color:var(--red);}
+
+/* ─────────── Ordnen (Sortier-Dropdowns) ─────────── */
+.order-grid{display:flex;flex-direction:column;gap:9px;}
+.order-row{
+  display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:9px 12px;
+}
+.order-row .pos{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  background:var(--vio-100);color:var(--vio-800);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:14px;
+}
+.order-row select{
+  font-family:inherit;font-size:13px;font-weight:600;width:100%;
+  padding:7px 10px;border:1.5px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);cursor:pointer;
+}
+.order-row select:focus{outline:none;border-color:var(--vio-500);}
+.order-row.correct{border-color:var(--green);background:var(--green-50);}
+.order-row.wrong{border-color:var(--red);background:var(--red-50);}
+
+/* ─────────── Textaufgabe ─────────── */
+.answer-area{
+  width:100%;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);padding:10px 12px;
+  font-family:inherit;font-size:14px;color:var(--text);
+  resize:vertical;min-height:80px;background:#fff;
+}
+.answer-area:focus{outline:none;border-color:var(--vio-500);}
+
+/* ─────────── Prüf-Button generisch ─────────── */
+.btn-check{
+  margin-top:12px;background:var(--vio-700);color:#fff;border:none;
+  padding:9px 18px;border-radius:var(--radius-sm);
+  font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;
+  transition:all 0.15s;
+}
+.btn-check:hover{background:var(--vio-800);transform:translateY(-1px);}
+.btn-reset{
+  margin-top:12px;margin-left:8px;background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:9px 16px;border-radius:var(--radius-sm);
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+}
+.btn-reset:hover{border-color:var(--vio-500);color:var(--vio-700);}
+
+.check-result{
+  display:none;margin-top:12px;padding:10px 14px;
+  border-radius:var(--radius-sm);font-size:13px;font-weight:700;
+}
+.check-result.show{display:block;}
+.check-result.ok{background:var(--green-50);color:#14532D;}
+.check-result.partial{background:var(--orange-50);color:#78350F;}
+.check-result.no{background:var(--red-50);color:#7F1D1D;}
+
+/* ─────────── Musterlösung (nur Lehrkraft) ─────────── */
+.solution{
+  display:none;margin-top:14px;
+  background:var(--green-50);border:1.5px solid var(--green);
+  border-left:4px solid var(--green);
+  border-radius:var(--radius-sm);padding:13px 15px;
+}
+.solution .sol-title{
+  font-size:11px;font-weight:900;color:#14532D;
+  text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.solution .sol-body{font-size:14px;color:#14532D;line-height:1.6;}
+.solution .sol-body ul{margin:6px 0 0 18px;}
+.solution .sol-body li{margin-bottom:4px;}
+.solution .sol-body strong{color:#0F5132;}
+/* Nur in Lehrkraftversion sichtbar */
+body.version-b .solution.teacher-sol{display:block;}
+
+/* Hinweis für Schüler, dass Lösung im Plenum kommt */
+.sol-hint{
+  margin-top:12px;font-size:12px;color:var(--muted);
+  font-style:italic;display:flex;align-items:center;gap:6px;
+}
+body.version-b .sol-hint{display:none;}
+
+/* ─────────── Lehrkraft-Notiz (amber) ─────────── */
+.teacher-note{
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);padding:14px 16px;margin-top:14px;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-head{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;
+}
+.teacher-note-body{font-size:13px;color:#78350F;line-height:1.55;}
+
+/* ─────────── Info-Box ─────────── */
+.info-box{border-radius:var(--radius-sm);padding:12px 14px;margin:14px 0;font-size:13.5px;line-height:1.55;}
+.info-box.blue{background:var(--blue-50);border-left:3px solid var(--blue);color:#0D47A1;}
+.info-box.purple{background:var(--purple-50);border-left:3px solid var(--purple);color:#4A1272;}
+.info-box.teal{background:var(--teal-50);border-left:3px solid var(--teal);color:#134E4A;}
+.info-box strong{font-weight:800;}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--vio-700);text-decoration:none;
+  border-bottom:1px dotted var(--vio-700);font-weight:800;
+}
+a.para-link:hover{color:var(--vio-500);}
+
+/* ─────────── Nav-Buttons unten ─────────── */
+.step-nav{
+  display:flex;justify-content:space-between;gap:12px;
+  margin-top:26px;
+}
+.step-nav button{
+  font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;
+  padding:11px 22px;border-radius:var(--radius-md);border:none;
+  transition:all 0.15s;
+}
+.nav-prev{background:#fff;border:1.5px solid var(--border) !important;color:var(--text-2);}
+.nav-prev:hover{border-color:var(--vio-500) !important;color:var(--vio-700);}
+.nav-next{background:var(--vio-700);color:#fff;}
+.nav-next:hover{background:var(--vio-800);transform:translateY(-1px);}
+.nav-prev:disabled{opacity:0.4;cursor:not-allowed;}
+
+/* Score-Panel (Selbsttest-Bilanz) */
+.score-panel{
+  background:var(--vio-grad);color:#fff;
+  border-radius:var(--radius-lg);padding:24px;text-align:center;
+  box-shadow:var(--shadow-lg);
+}
+.score-panel h2{font-size:20px;font-weight:900;margin-bottom:8px;color:#fff;}
+.score-panel .big{font-size:44px;font-weight:900;margin:8px 0;}
+.score-panel p{color:rgba(255,255,255,0.9);font-size:14px;}
+.score-panel .btn-check{background:rgba(255,255,255,0.2);}
+.score-panel .btn-check:hover{background:rgba(255,255,255,0.32);}
+
+/* ─────────── PIN-Modal ─────────── */
+.pin-modal{
+  display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(15,23,42,0.6);
+  align-items:center;justify-content:center;padding:20px;
+}
+.pin-modal.show{display:flex;}
+.pin-box{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:26px 24px;width:100%;max-width:300px;
+  box-shadow:var(--shadow-lg);
+}
+.pin-modal.error .pin-box{animation:shake 0.4s;}
+.pin-box h3{font-size:16px;font-weight:900;color:var(--text);text-align:center;margin-bottom:4px;}
+.pin-box .pin-hint{font-size:12px;color:var(--muted);text-align:center;margin-bottom:16px;}
+.pin-dots{display:flex;gap:9px;justify-content:center;margin-bottom:18px;}
+.pin-dot{width:13px;height:13px;border-radius:50%;background:var(--border);transition:all 0.15s;}
+.pin-dot.filled{background:var(--vio-700);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.pin-key{
+  aspect-ratio:1;border:1.5px solid var(--border);background:#fff;
+  border-radius:var(--radius-sm);font-size:18px;font-weight:800;
+  cursor:pointer;font-family:inherit;color:var(--text);transition:all 0.12s;
+}
+.pin-key:hover{background:var(--vio-50);border-color:var(--vio-500);}
+.pin-actions{display:flex;gap:10px;margin-top:14px;}
+.pin-actions button{
+  flex:1;padding:9px;border-radius:var(--radius-sm);
+  border:1.5px solid var(--border);background:#fff;
+  font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;color:var(--text-2);
+}
+.pin-actions button:hover{border-color:var(--vio-500);color:var(--vio-700);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
+
+@media(max-width:560px){
+  .hero h1{font-size:22px;}
+  .match-row{grid-template-columns:1fr;}
+  .match-row select{min-width:0;width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ Topbar ═══════════════ -->
+<div class="topbar">
+  <div class="topbar-logo">WR<span class="ovr">&nbsp;&amp;&nbsp;Recht</span></div>
+  <div class="topbar-chip">RECHT · WIEDERHOLUNG</div>
+  <button class="btn-teacher" id="teacherBtn" onclick="toggleTeacher()">Lehrkraft</button>
+</div>
+
+<!-- ═══════════════ Progress ═══════════════ -->
+<div class="progress">
+  <a class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span> BGB &amp; Normanalyse</a>
+  <a class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span> Anspruchssystematik</a>
+  <a class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span> Fälle &amp; Gutachten</a>
+  <a class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span> Bilanz</a>
+  <a class="step-chip teacher-only" data-step="5" onclick="goStep(5)"><span class="n">5</span> Abfrage</a>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════════════ STEP 1 ══════════════════════════════════════════════ -->
+<section class="step active" id="step-1">
+
+  <div class="hero">
+    <span class="kicker">Q13 · AUFTAKT</span>
+    <h1>Recht – der letzte Schliff</h1>
+    <p>Wir reaktivieren den Recht-Stoff aus Q12: BGB-Aufbau, Normanalyse, das Anspruchssystem und der Gutachtenstil. Arbeite die Aufgaben allein durch – du bekommst sofort zurückgemeldet, ob deine Antwort stimmt. Die ausführlichen Lösungen besprechen wir gemeinsam im Plenum.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="badge-num">1</span> Aufbau des BGB &amp; Normanalyse</div>
+    <div class="section-sub">Wie ist das BGB gegliedert und wie liest man eine Rechtsnorm?</div>
+
+    <!-- MC 1 -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 1 · Multiple Choice</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="quiz-q">
+          <div class="q">In welchem Buch des BGB steht das allgemeine Schuldrecht (z. B. Schadensersatz wegen Pflichtverletzung)?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Buch 1 – Allgemeiner Teil</button>
+            <button class="quiz-opt" data-correct="1"><span class="mk"></span> Buch 2 – Recht der Schuldverhältnisse</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Buch 3 – Sachenrecht</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Buch 5 – Erbrecht</button>
+          </div>
+          <div class="quiz-feedback ok">✓ Richtig.</div>
+          <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Lösung folgt im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Buch 2 („Recht der Schuldverhältnisse", §§ 241–853) enthält das Schuldrecht mit dem <strong>allgemeinen Teil</strong> (Leistungsstörungen, Schadensersatz nach <a href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank" class="para-link">§ 280 BGB</a>) und dem <strong>besonderen Teil</strong> (einzelne Vertragstypen wie der Kauf, <a href="https://www.gesetze-im-internet.de/bgb/__433.html" target="_blank" class="para-link">§ 433 BGB</a>). Buch 1 ist der Allgemeine Teil (§§ 1–240), Buch 3 das Sachenrecht (Eigentum, Besitz).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MC 2 -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 2 · Multiple Choice</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="quiz-q">
+          <div class="q">Eine Rechtsnorm besteht aus Tatbestand und Rechtsfolge. Was beschreibt der <em>Tatbestand</em>?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="1"><span class="mk"></span> Die Voraussetzungen, die erfüllt sein müssen</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Die Konsequenz, die eintritt</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Den Namen des Gesetzbuchs</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Das zuständige Gericht</button>
+          </div>
+          <div class="quiz-feedback ok">✓ Richtig.</div>
+          <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Lösung folgt im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Der <strong>Tatbestand</strong> nennt die Voraussetzungen („Wenn …"), die <strong>Rechtsfolge</strong> die Konsequenz („… dann"). Beispiel <a href="https://www.gesetze-im-internet.de/bgb/__985.html" target="_blank" class="para-link">§ 985 BGB</a>: Tatbestand = Eigentümer + Besitzer; Rechtsfolge = Herausgabeanspruch. Bei der Normanalyse werden die Tatbestandsmerkmale einzeln geprüft (Subsumtion).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Definitions-Zuordnung -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 3 · Begriffe zuordnen</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="q">Ordne jedem Rechtsbegriff die passende Definition zu.</div>
+        <div class="match-grid" id="match1">
+          <div class="match-row" data-answer="besitz">
+            <span class="term">Besitz</span>
+            <select><option value="">– wählen –</option><option value="eigentum">rechtliche Herrschaft über eine Sache</option><option value="besitz">tatsächliche Sachherrschaft über eine Sache</option><option value="anspruch">Recht, von einem anderen ein Tun/Unterlassen zu verlangen</option><option value="rechtsgeschaeft">Willenserklärung(en) mit gewollter Rechtsfolge</option></select>
+          </div>
+          <div class="match-row" data-answer="eigentum">
+            <span class="term">Eigentum</span>
+            <select><option value="">– wählen –</option><option value="eigentum">rechtliche Herrschaft über eine Sache</option><option value="besitz">tatsächliche Sachherrschaft über eine Sache</option><option value="anspruch">Recht, von einem anderen ein Tun/Unterlassen zu verlangen</option><option value="rechtsgeschaeft">Willenserklärung(en) mit gewollter Rechtsfolge</option></select>
+          </div>
+          <div class="match-row" data-answer="anspruch">
+            <span class="term">Anspruch (§ 194 BGB)</span>
+            <select><option value="">– wählen –</option><option value="eigentum">rechtliche Herrschaft über eine Sache</option><option value="besitz">tatsächliche Sachherrschaft über eine Sache</option><option value="anspruch">Recht, von einem anderen ein Tun/Unterlassen zu verlangen</option><option value="rechtsgeschaeft">Willenserklärung(en) mit gewollter Rechtsfolge</option></select>
+          </div>
+          <div class="match-row" data-answer="rechtsgeschaeft">
+            <span class="term">Rechtsgeschäft</span>
+            <select><option value="">– wählen –</option><option value="eigentum">rechtliche Herrschaft über eine Sache</option><option value="besitz">tatsächliche Sachherrschaft über eine Sache</option><option value="anspruch">Recht, von einem anderen ein Tun/Unterlassen zu verlangen</option><option value="rechtsgeschaeft">Willenserklärung(en) mit gewollter Rechtsfolge</option></select>
+          </div>
+        </div>
+        <button class="btn-check" onclick="checkMatch('match1', this)">Prüfen</button>
+        <button class="btn-reset" onclick="resetMatch('match1', this)">Zurücksetzen</button>
+        <div class="check-result" id="match1-res"></div>
+        <div class="sol-hint">🔒 Auflösung im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">
+            <strong>Besitz</strong> = tatsächliche Sachherrschaft (wer die Sache in der Hand hat) · <strong>Eigentum</strong> = rechtliche Herrschaft (wem sie gehört) · <strong>Anspruch</strong> = Recht, von einem anderen ein Tun oder Unterlassen zu verlangen (<a href="https://www.gesetze-im-internet.de/bgb/__194.html" target="_blank" class="para-link">§ 194 BGB</a>) · <strong>Rechtsgeschäft</strong> = eine oder mehrere Willenserklärungen, die auf eine gewollte Rechtsfolge gerichtet sind (z. B. Vertrag).
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="step-nav">
+    <button class="nav-prev" disabled>← Zurück</button>
+    <button class="nav-next" onclick="goStep(2)">Weiter → Anspruchssystematik</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STEP 2 ══════════════════════════════════════════════ -->
+<section class="step" id="step-2">
+
+  <div class="section">
+    <div class="section-title"><span class="badge-num">2</span> Systematik der Ansprüche</div>
+    <div class="section-sub">Anspruchsgrundlagen zuordnen und die Prüfreihenfolge beherrschen.</div>
+
+    <!-- Ordnen: Prüfreihenfolge -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7B1FA2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 4 · Ordnen</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="q">Bringe die Prüfreihenfolge der Anspruchsgrundlagen in die richtige Ordnung („Wer will was von wem woraus?").</div>
+        <div class="order-grid" id="order1">
+          <div class="order-row" data-answer="vertrag">
+            <span class="pos">1</span>
+            <select><option value="">– Schritt wählen –</option><option value="vertrag">Vertragliche Ansprüche</option><option value="vertragsaehnlich">Vertragsähnliche Ansprüche (c.i.c., GoA)</option><option value="dinglich">Dingliche Ansprüche (z. B. § 985)</option><option value="delikt">Deliktische / gesetzliche Ansprüche (§ 823 ff.)</option></select>
+          </div>
+          <div class="order-row" data-answer="vertragsaehnlich">
+            <span class="pos">2</span>
+            <select><option value="">– Schritt wählen –</option><option value="vertrag">Vertragliche Ansprüche</option><option value="vertragsaehnlich">Vertragsähnliche Ansprüche (c.i.c., GoA)</option><option value="dinglich">Dingliche Ansprüche (z. B. § 985)</option><option value="delikt">Deliktische / gesetzliche Ansprüche (§ 823 ff.)</option></select>
+          </div>
+          <div class="order-row" data-answer="dinglich">
+            <span class="pos">3</span>
+            <select><option value="">– Schritt wählen –</option><option value="vertrag">Vertragliche Ansprüche</option><option value="vertragsaehnlich">Vertragsähnliche Ansprüche (c.i.c., GoA)</option><option value="dinglich">Dingliche Ansprüche (z. B. § 985)</option><option value="delikt">Deliktische / gesetzliche Ansprüche (§ 823 ff.)</option></select>
+          </div>
+          <div class="order-row" data-answer="delikt">
+            <span class="pos">4</span>
+            <select><option value="">– Schritt wählen –</option><option value="vertrag">Vertragliche Ansprüche</option><option value="vertragsaehnlich">Vertragsähnliche Ansprüche (c.i.c., GoA)</option><option value="dinglich">Dingliche Ansprüche (z. B. § 985)</option><option value="delikt">Deliktische / gesetzliche Ansprüche (§ 823 ff.)</option></select>
+          </div>
+        </div>
+        <button class="btn-check" onclick="checkOrder('order1', this)">Prüfen</button>
+        <button class="btn-reset" onclick="resetOrder('order1', this)">Zurücksetzen</button>
+        <div class="check-result" id="order1-res"></div>
+        <div class="sol-hint">🔒 Auflösung im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Klassische Prüfreihenfolge: <strong>1. vertraglich → 2. vertragsähnlich → 3. dinglich → 4. deliktisch/gesetzlich.</strong> Grund: Man beginnt mit dem, was die Parteien selbst vereinbart haben, und arbeitet sich zu den gesetzlichen Ansprüchen vor. So vermeidet man Wertungswidersprüche (z. B. dass ein vertraglicher Haftungsausschluss über das Deliktsrecht umgangen wird).</div>
+        </div>
+        <div class="teacher-note">
+          <div class="teacher-note-head">💡 Hinweis für die Lehrkraft</div>
+          <div class="teacher-note-body">Je nach Lehrbuchtradition wird die Reihenfolge dinglich ↔ deliktisch gelegentlich getauscht. Hier folgt sie der Buchner-Systematik. Auf die Begründung „von der Parteivereinbarung zum Gesetz" abheben.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MC: Anspruchsgrundlage zuordnen -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 5 · Multiple Choice</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="quiz-q">
+          <div class="q">Welche Norm ist die zentrale Anspruchsgrundlage, wenn der Eigentümer seine Sache vom Besitzer herausverlangt?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> § 433 BGB</button>
+            <button class="quiz-opt" data-correct="1"><span class="mk"></span> § 985 BGB</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> § 823 BGB</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> § 280 BGB</button>
+          </div>
+          <div class="quiz-feedback ok">✓ Richtig.</div>
+          <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Lösung folgt im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body"><a href="https://www.gesetze-im-internet.de/bgb/__985.html" target="_blank" class="para-link">§ 985 BGB</a> – der dingliche Herausgabeanspruch. Voraussetzungen: Anspruchsteller ist <strong>Eigentümer</strong>, Anspruchsgegner ist <strong>Besitzer</strong>, und der Besitzer hat <strong>kein Recht zum Besitz</strong> (<a href="https://www.gesetze-im-internet.de/bgb/__986.html" target="_blank" class="para-link">§ 986 BGB</a>). § 433 betrifft den Kaufvertrag, § 823 die unerlaubte Handlung, § 280 die Pflichtverletzung im Schuldverhältnis.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MC: gutgläubiger Erwerb -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 6 · Multiple Choice</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="quiz-q">
+          <div class="q">Ein gutgläubiger Erwerb vom Nichtberechtigten (§ 932 BGB) ist ausgeschlossen, wenn die Sache …</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> gebraucht ist</button>
+            <button class="quiz-opt" data-correct="1"><span class="mk"></span> dem Eigentümer gestohlen wurde, verloren ging oder sonst abhandenkam</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> über 500 € wert ist</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> im Ausland gekauft wurde</button>
+          </div>
+          <div class="quiz-feedback ok">✓ Richtig.</div>
+          <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Lösung folgt im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Bei <strong>abhandengekommenen</strong> Sachen (gestohlen, verloren) ist der gutgläubige Erwerb nach <a href="https://www.gesetze-im-internet.de/bgb/__935.html" target="_blank" class="para-link">§ 935 BGB</a> ausgeschlossen – der ursprüngliche Eigentümer bleibt Eigentümer. Ausnahme: Geld, Inhaberpapiere und öffentlich versteigerte Sachen. Gutgläubigkeit selbst richtet sich nach <a href="https://www.gesetze-im-internet.de/bgb/__932.html" target="_blank" class="para-link">§ 932 BGB</a> (kein Kennen/grob fahrlässiges Nichtkennen der fehlenden Berechtigung).</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="step-nav">
+    <button class="nav-prev" onclick="goStep(1)">← Zurück</button>
+    <button class="nav-next" onclick="goStep(3)">Weiter → Fälle &amp; Gutachten</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STEP 3 ══════════════════════════════════════════════ -->
+<section class="step" id="step-3">
+
+  <div class="section">
+    <div class="section-title"><span class="badge-num">3</span> Gutachtenstil &amp; kurze Fälle</div>
+    <div class="section-sub">Vom Obersatz zur Subsumtion – und drei kurze Anwendungsfälle.</div>
+
+    <!-- Ordnen: Gutachtenstil -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7B1FA2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 7 · Ordnen</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="q">Bringe die vier Schritte des Gutachtenstils in die richtige Reihenfolge.</div>
+        <div class="order-grid" id="order2">
+          <div class="order-row" data-answer="obersatz">
+            <span class="pos">1</span>
+            <select><option value="">– Schritt wählen –</option><option value="obersatz">Obersatz (Frage / Vermutung)</option><option value="definition">Definition (Tatbestandsmerkmal erklären)</option><option value="subsumtion">Subsumtion (Sachverhalt unter die Norm)</option><option value="ergebnis">Ergebnis (Antwort auf den Obersatz)</option></select>
+          </div>
+          <div class="order-row" data-answer="definition">
+            <span class="pos">2</span>
+            <select><option value="">– Schritt wählen –</option><option value="obersatz">Obersatz (Frage / Vermutung)</option><option value="definition">Definition (Tatbestandsmerkmal erklären)</option><option value="subsumtion">Subsumtion (Sachverhalt unter die Norm)</option><option value="ergebnis">Ergebnis (Antwort auf den Obersatz)</option></select>
+          </div>
+          <div class="order-row" data-answer="subsumtion">
+            <span class="pos">3</span>
+            <select><option value="">– Schritt wählen –</option><option value="obersatz">Obersatz (Frage / Vermutung)</option><option value="definition">Definition (Tatbestandsmerkmal erklären)</option><option value="subsumtion">Subsumtion (Sachverhalt unter die Norm)</option><option value="ergebnis">Ergebnis (Antwort auf den Obersatz)</option></select>
+          </div>
+          <div class="order-row" data-answer="ergebnis">
+            <span class="pos">4</span>
+            <select><option value="">– Schritt wählen –</option><option value="obersatz">Obersatz (Frage / Vermutung)</option><option value="definition">Definition (Tatbestandsmerkmal erklären)</option><option value="subsumtion">Subsumtion (Sachverhalt unter die Norm)</option><option value="ergebnis">Ergebnis (Antwort auf den Obersatz)</option></select>
+          </div>
+        </div>
+        <button class="btn-check" onclick="checkOrder('order2', this)">Prüfen</button>
+        <button class="btn-reset" onclick="resetOrder('order2', this)">Zurücksetzen</button>
+        <div class="check-result" id="order2-res"></div>
+        <div class="sol-hint">🔒 Auflösung im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body"><strong>Obersatz → Definition → Subsumtion → Ergebnis.</strong> Merksatz: „Fraglich ist, ob … (Obersatz). Darunter versteht man … (Definition). Hier ist … (Subsumtion). Also … (Ergebnis)." Im Gutachtenstil steht die Prüfung <em>vor</em> dem Ergebnis – im Gegensatz zum Urteilsstil, der mit dem Ergebnis beginnt.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kurze Textaufgabe: Definition -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 8 · Definition formulieren</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="q">Definiere in einem Satz den Begriff <strong>„Kaufvertrag"</strong> und nenne die zentrale Norm. Prüfe anschließend selbst, ob deine Antwort die Kernpunkte enthält.</div>
+        <textarea class="answer-area" placeholder="Deine Definition …"></textarea>
+        <button class="btn-check" onclick="revealSelfcheck(this)">Selbstkontrolle anzeigen</button>
+        <div class="check-result partial selfcheck">
+          <strong>Diese Punkte sollte deine Antwort enthalten:</strong>
+          <ul style="margin:6px 0 0 18px;">
+            <li>Gegenseitiger Vertrag / zwei übereinstimmende Willenserklärungen</li>
+            <li>Verkäufer: Pflicht zur Übergabe und Eigentumsverschaffung</li>
+            <li>Käufer: Pflicht zur Kaufpreiszahlung und Abnahme</li>
+            <li>Zentrale Norm: § 433 BGB</li>
+          </ul>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Besprechung im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Der Kaufvertrag (<a href="https://www.gesetze-im-internet.de/bgb/__433.html" target="_blank" class="para-link">§ 433 BGB</a>) ist ein gegenseitiger Vertrag, durch den sich der <strong>Verkäufer</strong> verpflichtet, dem Käufer die Sache zu übergeben und das <strong>Eigentum</strong> zu verschaffen (Abs. 1), während sich der <strong>Käufer</strong> verpflichtet, den Kaufpreis zu zahlen und die Sache abzunehmen (Abs. 2). Zu trennen: Verpflichtungsgeschäft (Kaufvertrag) und Verfügungsgeschäft (Übereignung nach § 929) – Trennungs- und Abstraktionsprinzip.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kurzfall Schadensersatz -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 9 · Kurzfall</span><span class="s">Partnerarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="info-box purple"><strong>Fall:</strong> Malerin M soll bei K die Wohnung streichen. Sie stellt den Farbeimer unachtsam ab; er kippt um und ruiniert Ks echten Teppich (Wert 2.000 €). K verlangt Ersatz. Woraus kann sich der Anspruch ergeben – und was ist die entscheidende Voraussetzung?</div>
+        <textarea class="answer-area" placeholder="Anspruchsgrundlage(n) + entscheidende Voraussetzung …"></textarea>
+        <button class="btn-check" onclick="revealSelfcheck(this)">Selbstkontrolle anzeigen</button>
+        <div class="check-result partial selfcheck">
+          <strong>Kernpunkte:</strong>
+          <ul style="margin:6px 0 0 18px;">
+            <li>Vertraglich: § 280 Abs. 1 BGB (Pflichtverletzung aus dem Werkvertrag – Schutzpflicht § 241 Abs. 2)</li>
+            <li>Deliktisch: § 823 Abs. 1 BGB (Eigentumsverletzung)</li>
+            <li>Entscheidend: Verschulden (Vorsatz/Fahrlässigkeit) – hier Fahrlässigkeit (+)</li>
+          </ul>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Besprechung im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Zwei Anspruchsgrundlagen kommen in Betracht: <strong>vertraglich</strong> <a href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank" class="para-link">§ 280 Abs. 1 BGB</a> (Verletzung einer Schutzpflicht aus dem Werkvertrag, <a href="https://www.gesetze-im-internet.de/bgb/__241.html" target="_blank" class="para-link">§ 241 Abs. 2 BGB</a>) und <strong>deliktisch</strong> <a href="https://www.gesetze-im-internet.de/bgb/__823.html" target="_blank" class="para-link">§ 823 Abs. 1 BGB</a> (widerrechtliche Eigentumsverletzung). Beide setzen <strong>Verschulden</strong> voraus (<a href="https://www.gesetze-im-internet.de/bgb/__276.html" target="_blank" class="para-link">§ 276 BGB</a>): M handelte fahrlässig, also (+). Rechtsfolge: Schadensersatz, Naturalrestitution nach <a href="https://www.gesetze-im-internet.de/bgb/__249.html" target="_blank" class="para-link">§ 249 BGB</a> (2.000 €). Reihenfolge beachten: erst vertraglich, dann deliktisch prüfen.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MC Abschluss -->
+    <div class="task">
+      <div class="task-header">
+        <div class="task-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="task-htext"><span class="t">Aufgabe 10 · Multiple Choice</span><span class="s">Einzelarbeit</span></div>
+      </div>
+      <div class="task-body">
+        <div class="quiz-q">
+          <div class="q">Was unterscheidet den <em>Gutachtenstil</em> vom <em>Urteilsstil</em>?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-correct="1"><span class="mk"></span> Der Gutachtenstil prüft erst und nennt das Ergebnis am Ende</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Der Gutachtenstil ist immer kürzer</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Der Urteilsstil verwendet keine Paragraphen</button>
+            <button class="quiz-opt" data-correct="0"><span class="mk"></span> Es gibt keinen Unterschied</button>
+          </div>
+          <div class="quiz-feedback ok">✓ Richtig.</div>
+          <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+        </div>
+        <div class="sol-hint">🔒 Ausführliche Lösung folgt im Plenum.</div>
+        <div class="solution teacher-sol">
+          <div class="sol-title">✓ Musterlösung</div>
+          <div class="sol-body">Der <strong>Gutachtenstil</strong> beginnt mit einer Frage/Vermutung (Obersatz), prüft Schritt für Schritt (Definition, Subsumtion) und stellt das <strong>Ergebnis ans Ende</strong>. Der <strong>Urteilsstil</strong> stellt das Ergebnis an den Anfang und begründet es dann („K hat gegen V einen Anspruch …, weil …"). In der Schule/Klausur wird bei problematischen Punkten der Gutachtenstil verlangt.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="step-nav">
+    <button class="nav-prev" onclick="goStep(2)">← Zurück</button>
+    <button class="nav-next" onclick="goStep(4)">Weiter → Meine Bilanz</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STEP 4 ══════════════════════════════════════════════ -->
+<section class="step" id="step-4">
+
+  <div class="section">
+    <div class="section-title"><span class="badge-num">4</span> Deine Selbsttest-Bilanz</div>
+    <div class="section-sub">Wie sicher sitzt der Recht-Stoff schon wieder?</div>
+
+    <div class="score-panel">
+      <h2>Multiple-Choice-Quiz</h2>
+      <div class="big" id="scoreDisplay">– / 5</div>
+      <p id="scoreText">Klicke unten, um deine richtig beantworteten MC-Aufgaben zu zählen.</p>
+      <button class="btn-check" style="margin-top:16px;" onclick="tallyScore()">Meinen Stand zählen</button>
+    </div>
+
+    <div class="info-box teal" style="margin-top:20px;">
+      <strong>Nächster Schritt:</strong> Notiere dir die zwei Themen, bei denen du am unsichersten warst. Genau die besprechen wir gleich gemeinsam – bring deine Fragen mit.
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-head">💡 Ablauf-Vorschlag (45 Min.)</div>
+      <div class="teacher-note-body">
+        ~5 Min. Ankommen &amp; Ziel · ~25 Min. Schüler arbeiten Steps 1–3 im eigenen Tempo (Sofort-Feedback richtig/falsch) · ~12 Min. gemeinsame Auflösung im Plenum – hier die Lehrkraftversion (PIN) am Beamer öffnen, dann erscheinen alle Musterlösungen (grün) · ~3 Min. eine kurze mündliche Abfrage (Step 5) als Einstiegsdiagnose für Q13.
+      </div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button class="nav-prev" onclick="goStep(3)">← Zurück</button>
+    <button class="nav-next" onclick="goStep(1)" style="background:var(--vio-600);">↻ Von vorn</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STEP 5 (Lehrkraft) ══════════════════════════════════════════════ -->
+<section class="step" id="step-5">
+
+  <div class="section">
+    <div class="section-title"><span class="badge-num">5</span> Mündliche Abfrage <span style="font-size:12px;font-weight:700;color:var(--amber-tx);background:var(--amber-bg);padding:3px 10px;border-radius:12px;border:1px solid var(--amber-bd);">nur Lehrkraft</span></div>
+    <div class="section-sub">4K-Modell – je eine Frage pro Kompetenzbereich, mit Erwartungshorizont.</div>
+
+    <div class="teacher-note" style="display:block;">
+      <div class="teacher-note-head">🧠 Wissen</div>
+      <div class="teacher-note-body">
+        <strong>Frage:</strong> Nennen Sie die Prüfreihenfolge der Anspruchsgrundlagen und begründen Sie, warum vertragliche Ansprüche zuerst geprüft werden.<br>
+        <em>Erwartung:</em> vertraglich → vertragsähnlich → dinglich → deliktisch; Begründung: von der Parteivereinbarung zum Gesetz, Vermeidung von Wertungswidersprüchen.
+      </div>
+    </div>
+
+    <div class="teacher-note" style="display:block;">
+      <div class="teacher-note-head">🔍 Kritisches Denken</div>
+      <div class="teacher-note-body">
+        <strong>Frage:</strong> D kauft auf dem Flohmarkt ein Fahrrad, das dem Verkäufer nicht gehört. Unter welcher Bedingung wird D Eigentümer – und unter welcher nicht? Begründen Sie, welche Lösung überzeugender ist.<br>
+        <em>Erwartung:</em> gutgläubiger Erwerb § 932 möglich, aber § 935 (abhandengekommen/gestohlen) schließt aus; Abwägung Verkehrsschutz ↔ Eigentümerschutz.
+      </div>
+    </div>
+
+    <div class="teacher-note" style="display:block;">
+      <div class="teacher-note-head">💬 Kommunikation</div>
+      <div class="teacher-note-body">
+        <strong>Frage:</strong> Erklären Sie einem Mitschüler in eigenen Worten den Unterschied zwischen Besitz und Eigentum an einem Alltagsbeispiel.<br>
+        <em>Erwartung:</em> tatsächliche vs. rechtliche Herrschaft; z. B. Mietwagen (Besitz beim Mieter, Eigentum bei der Firma).
+      </div>
+    </div>
+
+    <div class="teacher-note" style="display:block;">
+      <div class="teacher-note-head">💡 Kreativität</div>
+      <div class="teacher-note-body">
+        <strong>Frage:</strong> Konstruieren Sie einen kurzen Fall, in dem sowohl ein vertraglicher als auch ein deliktischer Schadensersatzanspruch in Betracht kommt.<br>
+        <em>Erwartung:</em> plausibler Sachverhalt mit Vertragsbeziehung + Eigentums-/Körperverletzung, § 280 und § 823 sauber getrennt.
+      </div>
+    </div>
+
+    <button class="btn-check" onclick="window.print()" style="margin-top:8px;">🖨 Abfrage drucken</button>
+  </div>
+
+  <div class="step-nav">
+    <button class="nav-prev" onclick="goStep(4)">← Zurück</button>
+    <button class="nav-next" onclick="goStep(1)">↻ Von vorn</button>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ PIN-Modal ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-box">
+    <h3>Lehrkraft-Zugang</h3>
+    <p class="pin-hint">6-stelligen PIN eingeben</p>
+    <div class="pin-dots" id="pinDots">
+      <span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span>
+      <span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (6-stellig) ═══════════════
+const TEACHER_PIN = '123456';
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){ document.getElementById('pinModal').classList.remove('show'); pinReset(); }
+function pinIn(d){
+  if(pinBuffer.length >= 6) return;
+  pinBuffer += d; renderDots();
+  if(pinBuffer.length === 6) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){ pinBuffer=''; renderDots(); document.getElementById('pinModal').classList.remove('error'); }
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+function checkPin(){
+  if(pinBuffer === TEACHER_PIN){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 6) checkPin();
+});
+
+// ═══════════════ MC-Quiz Logic ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const feedback = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  if(feedback && !feedback.dataset.orig) feedback.dataset.orig = feedback.innerHTML;
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      const correct = opt.dataset.correct === '1';
+      opts.forEach(o=>o.disabled = true);
+      if(correct){
+        opt.classList.add('correct');
+        opt.querySelector('.mk').textContent = '✓';
+        feedback.classList.add('show','ok');
+        feedback.innerHTML = '✓ Richtig.';
+        q.dataset.solved = '1';
+      } else {
+        opt.classList.add('wrong');
+        opt.querySelector('.mk').textContent = '✗';
+        feedback.classList.add('show','no');
+        feedback.innerHTML = '✗ Leider falsch. Versuch es noch einmal.';
+        if(retry) retry.style.display = 'inline-block';
+        q.dataset.solved = '0';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{
+    o.disabled = false;
+    o.classList.remove('correct','wrong');
+    o.querySelector('.mk').textContent = '';
+  });
+  const fb = q.querySelector('.quiz-feedback');
+  fb.classList.remove('show','no');
+  fb.classList.add('ok');
+  fb.innerHTML = fb.dataset.orig;
+  fb.classList.remove('show');
+  q.dataset.solved = '';
+  btn.style.display = 'none';
+}
+
+// ═══════════════ Match (Begriffe zuordnen) ═══════════════
+function checkMatch(id, btn){
+  const box = document.getElementById(id);
+  const rows = box.querySelectorAll('.match-row');
+  let right=0, total=rows.length, empty=false;
+  rows.forEach(r=>{
+    const sel = r.querySelector('select');
+    r.classList.remove('correct','wrong');
+    if(sel.value===''){ empty=true; return; }
+    if(sel.value === r.dataset.answer){ r.classList.add('correct'); right++; }
+    else { r.classList.add('wrong'); }
+  });
+  const res = document.getElementById(id+'-res');
+  res.classList.add('show'); res.classList.remove('ok','partial','no');
+  if(empty){ res.classList.add('partial'); res.textContent='Bitte alle Felder ausfüllen.'; return; }
+  if(right===total){ res.classList.add('ok'); res.textContent='✓ Alles richtig zugeordnet!'; }
+  else { res.classList.add('no'); res.textContent='✗ '+right+' von '+total+' richtig. Die grün markierten stimmen.'; }
+}
+function resetMatch(id, btn){
+  const box = document.getElementById(id);
+  box.querySelectorAll('.match-row').forEach(r=>{
+    r.classList.remove('correct','wrong');
+    r.querySelector('select').value='';
+  });
+  const res=document.getElementById(id+'-res'); res.classList.remove('show','ok','partial','no');
+}
+
+// ═══════════════ Order (Ordnen) ═══════════════
+function checkOrder(id, btn){
+  const box = document.getElementById(id);
+  const rows = box.querySelectorAll('.order-row');
+  let right=0, total=rows.length, empty=false;
+  rows.forEach(r=>{
+    const sel = r.querySelector('select');
+    r.classList.remove('correct','wrong');
+    if(sel.value===''){ empty=true; return; }
+    if(sel.value === r.dataset.answer){ r.classList.add('correct'); right++; }
+    else { r.classList.add('wrong'); }
+  });
+  const res = document.getElementById(id+'-res');
+  res.classList.add('show'); res.classList.remove('ok','partial','no');
+  if(empty){ res.classList.add('partial'); res.textContent='Bitte alle Positionen belegen.'; return; }
+  if(right===total){ res.classList.add('ok'); res.textContent='✓ Reihenfolge stimmt!'; }
+  else { res.classList.add('no'); res.textContent='✗ '+right+' von '+total+' an der richtigen Stelle. Grün = korrekt.'; }
+}
+function resetOrder(id, btn){
+  const box = document.getElementById(id);
+  box.querySelectorAll('.order-row').forEach(r=>{
+    r.classList.remove('correct','wrong');
+    r.querySelector('select').value='';
+  });
+  const res=document.getElementById(id+'-res'); res.classList.remove('show','ok','partial','no');
+}
+
+// ═══════════════ Selbstkontrolle (Textaufgaben) ═══════════════
+function revealSelfcheck(btn){
+  const sc = btn.parentElement.querySelector('.selfcheck');
+  const open = sc.classList.toggle('show');
+  btn.textContent = open ? 'Selbstkontrolle verbergen' : 'Selbstkontrolle anzeigen';
+}
+
+// ═══════════════ Score-Bilanz (MC zählen) ═══════════════
+function tallyScore(){
+  const qs = document.querySelectorAll('.quiz-q');
+  let solved=0;
+  qs.forEach(q=>{ if(q.dataset.solved==='1') solved++; });
+  const total = qs.length;
+  document.getElementById('scoreDisplay').textContent = solved+' / '+total;
+  const t = document.getElementById('scoreText');
+  const pct = solved/total;
+  if(pct===1) t.textContent='Stark! Der Recht-Stoff sitzt. 🎯';
+  else if(pct>=0.6) t.textContent='Solide Grundlage – die offenen Punkte klären wir gleich zusammen.';
+  else t.textContent='Kein Problem – dafür machen wir die Wiederholung. Markier dir die Lücken.';
+}
+</script>
+
+</body>
+</html>
