@@ -663,6 +663,53 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
   display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
   text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
 }
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#67E8F9;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(103,232,249,0.14);
+  border:1.5px dashed rgba(103,232,249,0.5);
+  color:#CFFAFE;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(103,232,249,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#0E7490;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(14,116,144,0.35);border-style:solid;border-color:#22D3EE;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
 </style>
 </head>
 <body>
@@ -914,43 +961,61 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
   </header>
 
   <p>Der Anspruch auf Schadensersatz neben der Leistung ergibt sich aus
-  <strong>§§&nbsp;280 I, 241 II BGB</strong>. Arbeite die vier Tatbestandsvoraussetzungen
-  des <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank">§&nbsp;280 I BGB</a>
-  heraus und ordne jedem Merkmal die passende Kurzdefinition zu.</p>
+  <strong>§§&nbsp;280 I, 241 II BGB</strong>. Die vier Tatbestandsmerkmale stecken
+  wörtlich im Gesetzestext – du musst sie nur <em>herausarbeiten</em>. Lies den
+  Originaltext des <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank">§&nbsp;280 I BGB</a>
+  genau und ordne jeder markierten Passage das passende Merkmal zu. Beachte auch, auf
+  welche anderen Normen das Merkmal verweist.</p>
 
   <div class="task">
     <div class="task-head">
       <div class="task-icon">
-        <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
-          <circle cx="18" cy="12" r="7" fill="#0E7490"/>
-          <path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#0E7490" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#0E7490" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#0E7490" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#0E7490" font-family="Georgia, serif">§</text>
         </svg>
       </div>
       <div>
-        <div class="task-title">Aufgabe 3 · Merkmal ↔ Definition</div>
-        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Klick-Zuordnung</div>
+        <div class="task-title">Aufgabe 3 · Tatbestandsmerkmale aus dem Normtext herausarbeiten</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Passage im Gesetzestext markieren</div>
       </div>
     </div>
     <div class="task-body">
-      <div class="assign" data-assign="tbm280">
-        <div class="assign-catbar">
-          <button class="assign-cat active" data-cat="SV">Schuldverhältnis</button>
-          <button class="assign-cat" data-cat="PV">Pflichtverletzung</button>
-          <button class="assign-cat" data-cat="VM">Vertretenmüssen</button>
-          <button class="assign-cat" data-cat="KS">Kausaler Schaden</button>
+      <div class="nmark" data-nmark="p280">
+        <div class="nmark-catbar">
+          <button class="nmark-cat active" data-cat="SV" data-short="Schuldverhältnis">Schuldverhältnis<span class="nc-sub">→ Kaufvertrag § 433</span></button>
+          <button class="nmark-cat" data-cat="PV" data-short="Pflichtverletzung">Pflichtverletzung<span class="nc-sub">→ Nebenpflicht § 241 II</span></button>
+          <button class="nmark-cat" data-cat="KS" data-short="Kausaler Schaden">Kausaler Schaden<span class="nc-sub">→ Umfang §§ 249 ff.</span></button>
+          <button class="nmark-cat" data-cat="VM" data-short="Vertretenmüssen">Vertretenmüssen<span class="nc-sub">→ §§ 276, 278</span></button>
         </div>
-        <div class="assign-hint">Merkmal oben wählen, dann die passende Definition antippen. Nochmal tippen hebt die Zuordnung auf.</div>
-        <div class="assign-items">
-          <div class="assign-item" data-correct="SV"><span class="ai-key">a</span><span class="ai-text">Es besteht eine rechtliche Sonderverbindung – hier ein wirksamer Kaufvertrag (§ 433 BGB).</span><span class="ai-chosen">—</span></div>
-          <div class="assign-item" data-correct="PV"><span class="ai-key">b</span><span class="ai-text">Eine Pflicht aus dem Schuldverhältnis wird nicht erfüllt – hier die Nebenpflicht aus § 241 II BGB.</span><span class="ai-chosen">—</span></div>
-          <div class="assign-item" data-correct="VM"><span class="ai-key">c</span><span class="ai-text">Der Schuldner hat die Pflichtverletzung zu verantworten – Vorsatz oder Fahrlässigkeit (§§ 276, 278 BGB).</span><span class="ai-chosen">—</span></div>
-          <div class="assign-item" data-correct="KS"><span class="ai-key">d</span><span class="ai-text">Durch die Pflichtverletzung ist ein ersatzfähiger Schaden entstanden, der ohne sie nicht eingetreten wäre.</span><span class="ai-chosen">—</span></div>
+        <div class="nmark-hint">Merkmal oben wählen, dann die passende Textstelle im Paragrafen antippen. Nochmal tippen hebt die Markierung auf.</div>
+
+        <div class="nmark-law">
+          <div class="nlaw-title">§ 280 Schadensersatz wegen Pflichtverletzung · Absatz 1</div>
+          <span class="nsatz">¹</span><span class="nabs">Verletzt der Schuldner eine
+          <span class="npass" data-correct="PV">Pflicht aus dem<span class="npass-tag"></span></span>
+          <span class="npass" data-correct="SV">Schuldverhältnis<span class="npass-tag"></span></span>,
+          so kann der Gläubiger
+          <span class="npass" data-correct="KS">Ersatz des hierdurch entstehenden Schadens<span class="npass-tag"></span></span>
+          verlangen.</span>
+          <span class="nsatz">²</span><span class="nabs">Dies gilt nicht, wenn der Schuldner die
+          <span class="npass" data-correct="VM">Pflichtverletzung nicht zu vertreten hat<span class="npass-tag"></span></span>.</span>
         </div>
+
         <div class="assign-actions">
-          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
-          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
-          <span class="assign-score"></span>
+          <button class="btn btn-primary" onclick="checkNmark(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetNmark(this)">Zurücksetzen</button>
+          <span class="assign-score nmark-score"></span>
         </div>
+      </div>
+
+      <div class="info-box" style="margin:16px 0 0;">
+        <strong>Achtung – zwei Lesarten einer Passage:</strong> „Pflicht aus dem" und
+        „Schuldverhältnis" gehören grammatikalisch zusammen, prüfen aber <em>zwei
+        verschiedene</em> Merkmale: die <strong>Pflichtverletzung</strong> (verweist auf
+        die Nebenpflicht aus § 241 II) und das <strong>Schuldverhältnis</strong> (der
+        wirksame Kaufvertrag, § 433). Genau diese Trennung macht die saubere Prüfung aus.
       </div>
     </div>
   </div>
@@ -982,12 +1047,21 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
       Lösung &amp; Hinweis (nach AL S. 21)
     </div>
-    <p><strong>Zuordnung:</strong> Schuldverhältnis → a · Pflichtverletzung → b ·
-    Vertretenmüssen → c · kausaler Schaden → d.</p>
+    <p><strong>Zuordnung der Normtext-Passagen:</strong></p>
+    <ul>
+      <li>„<em>Schuldverhältnis</em>" → <strong>I. Schuldverhältnis</strong> (wirksamer Kaufvertrag, § 433 BGB)</li>
+      <li>„<em>Pflicht aus dem …</em>" / „Verletzt der Schuldner eine Pflicht" → <strong>II. Pflichtverletzung</strong> (hier Nebenpflicht, § 241 II BGB)</li>
+      <li>„<em>Ersatz des hierdurch entstehenden Schadens</em>" → <strong>IV. kausaler Schaden</strong> („hierdurch" = Kausalität; Umfang §§ 249 ff.)</li>
+      <li>„<em>die Pflichtverletzung nicht zu vertreten hat</em>" (S. 2) → <strong>III. Vertretenmüssen</strong> (negativ formuliert! §§ 276, 278 über § 280 I S. 2)</li>
+    </ul>
+    <p><strong>Kernpunkt der Aufgabe:</strong> Zwei Feinheiten, die das bloße
+    Begriffe-Matchen verhindern: (1) Das Vertretenmüssen steht <em>negativ</em> in Satz 2
+    („nicht zu vertreten") – das Merkmal muss trotzdem positiv geprüft werden. (2) „Pflicht"
+    und „Schuldverhältnis" stehen direkt nebeneinander, prüfen aber zwei verschiedene
+    Merkmale. Wer das erkennt, hat den Tatbestand wirklich durchdrungen.</p>
     <p><strong>Didaktische Reduktion:</strong> „Kausaler Schaden" wird vereinfachend für
     einen ersatzfähigen, durch die Pflichtverletzung verursachten Schaden verwendet (keine
-    Vertiefung von Kausalitätslehren). Die Merkmale bauen direkt auf der Normenanalyse aus
-    1.1.3 auf – hier nur auf § 280 I fokussiert.</p>
+    Vertiefung von Kausalitätslehren). Baut direkt auf der Normenanalyse aus 1.1.3 auf.</p>
   </div>
 </section>
 
@@ -1014,6 +1088,13 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
   an – im <strong>Gutachtenstil</strong>. Du gehst von einer Frage aus (Obersatz), prüfst
   Schritt für Schritt jedes Merkmal und kommst erst am Ende zum Ergebnis (Rechtsfolge).</p>
 
+  <div class="info-box" style="margin:0 0 4px;">
+    <strong>So arbeitest du:</strong> In jedem Prüfschritt fehlt ein Baustein – mal die
+    <em>Definition</em> (die abstrakte Voraussetzung), mal die <em>Subsumtion</em> (die
+    Anwendung auf den Fall). Schreib den fehlenden Teil selbst. Die Musterlösung schaltet
+    sich erst frei, wenn dein Text lang genug ist und die wichtigsten Fachbegriffe enthält.</p>
+  </div>
+
   <div class="gframe">
     <span class="gframe-tag">Obersatz</span>
     Der Käufer könnte gegen den Möbelhändler einen Anspruch auf
@@ -1032,10 +1113,36 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
       <div class="gstep-def">Zunächst müsste ein Schuldverhältnis bestehen. Dieses könnte
       durch einen Kaufvertrag begründet sein, der durch zwei übereinstimmende
       Willenserklärungen (Antrag und Annahme) zustande kommt.</div>
-      <span class="glabel">Subsumtion</span>
-      <div class="gstep-def" style="margin-bottom:0;">Aus dem Sachverhalt ergibt sich, dass die
-      Lieferung des Sofas „vertragsgemäß" (M1,&nbsp;1) erfolgte – also auf Basis eines
-      <strong>wirksamen Kaufvertrags</strong>. ✔ Schuldverhältnis (+)</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Wende die Definition auf den Fall an:
+      Woran erkennst du im Sachverhalt, dass ein wirksamer Kaufvertrag vorliegt? Nutze den
+      Beleg aus M1.</p>
+
+      <textarea class="answer-area gate-input" rows="3"
+        data-min-words="18"
+        data-keywords="sachverhalt, vertragsgemaess, kaufvertrag, wirksam, sofa"
+        data-required="2"
+        placeholder="Aus dem Sachverhalt ergibt sich, dass … (Beleg: M1) … Damit liegt ein … vor."></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 18 Wörter · 0 von 2 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Aus dem Sachverhalt ergibt sich, dass die Lieferung des Sofas „vertragsgemäß"
+        (M1,&nbsp;1) erfolgte – also auf Basis eines <strong>wirksamen Kaufvertrags</strong>.
+        Ein Schuldverhältnis liegt damit vor. ✔ Schuldverhältnis (+)
+      </div>
     </div>
   </div>
 
@@ -1046,12 +1153,39 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
       <div class="gstep-title">Pflichtverletzung<span class="gnorm">§ 280 I S. 1 BGB → Nebenpflichtverletzung (§ 241 II BGB)</span></div>
     </div>
     <div class="gstep-body">
-      <span class="glabel">Definition</span>
-      <div class="gstep-def">Weiter müsste eine Pflichtverletzung vorliegen. In Betracht
-      kommt die Verletzung einer <em>Schutz- und Sorgfaltspflicht</em>, denn das
-      Schuldverhältnis verpflichtet jeden Teil zur Rücksicht auf die Rechte, Rechtsgüter
-      und Interessen des anderen (§&nbsp;241 II BGB).</div>
-      <span class="glabel">Subsumtion</span>
+      <span class="glabel">Definition – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Formuliere die Definition selbst:
+      Welche Art von Pflicht kommt hier in Betracht, und worauf verpflichtet das
+      Schuldverhältnis jeden Teil? Nenne die einschlägige Norm.</p>
+
+      <textarea class="answer-area gate-input" rows="3"
+        data-min-words="20"
+        data-keywords="schutzpflicht, ruecksicht, rechtsgueter, 241, sorgfalt, nebenpflicht"
+        data-required="3"
+        placeholder="Weiter müsste eine Pflichtverletzung vorliegen. In Betracht kommt die Verletzung einer … Das Schuldverhältnis verpflichtet jeden Teil zur …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 20 Wörter · 0 von 3 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Weiter müsste eine Pflichtverletzung vorliegen. In Betracht kommt die Verletzung
+        einer <strong>Schutz- und Sorgfaltspflicht</strong>, denn das Schuldverhältnis
+        verpflichtet jeden Teil zur <strong>Rücksicht auf die Rechte, Rechtsgüter und
+        Interessen</strong> des anderen (§&nbsp;241 II BGB).
+      </div>
+
+      <span class="glabel" style="display:block;margin-top:12px;">Subsumtion (Muster)</span>
       <div class="gstep-def" style="margin-bottom:0;">Bei der Erfüllung seiner Pflichten hat
       der ausliefernde Möbelhändler diese Sorgfaltspflicht verletzt, indem er das Eigentum
       des Kunden – „eine wertvolle Vase" (M1,&nbsp;1) – zerstörte. ✔ Pflichtverletzung (+)</div>
@@ -1113,10 +1247,38 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
       <div class="gstep-title">Kausaler Schaden<span class="gnorm">§ 280 I S. 1 BGB</span></div>
     </div>
     <div class="gstep-body">
-      <span class="glabel">Definition</span>
-      <div class="gstep-def">Durch die Pflichtverletzung müsste ein ersatzfähiger Schaden
-      entstanden sein.</div>
-      <span class="glabel">Subsumtion</span>
+      <span class="glabel">Definition – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Formuliere die Definition selbst: Was
+      muss durch die Pflichtverletzung entstanden sein, damit das Merkmal erfüllt ist?
+      Denk an das Wort „hierdurch" im Normtext (Kausalität).</p>
+
+      <textarea class="answer-area gate-input" rows="3"
+        data-min-words="15"
+        data-keywords="pflichtverletzung, ersatzfaehig, schaden, entstanden, kausal, hierdurch"
+        data-required="2"
+        placeholder="Durch die Pflichtverletzung müsste ein … Schaden entstanden sein, der …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 15 Wörter · 0 von 2 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Durch die Pflichtverletzung müsste ein <strong>ersatzfähiger Schaden</strong>
+        entstanden sein, der ohne die Pflichtverletzung nicht eingetreten wäre (Kausalität,
+        „hierdurch").
+      </div>
+
+      <span class="glabel" style="display:block;margin-top:12px;">Subsumtion (Muster)</span>
       <div class="gstep-def" style="margin-bottom:0;">Es ist ein Schaden in Höhe des Werts
       der irreparablen Vase entstanden, der ohne die Pflichtverletzung des Möbelhändlers
       nicht eingetreten wäre. ✔ kausaler Schaden (+)</div>
@@ -1145,10 +1307,14 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
     <em>einfachen</em> Fall wiederholt (Lehrplan: Rückgriff auf rechtstechnische
     Kompetenzen). Betone den Unterschied Gutachten- vs. Urteilsstil: erst Frage/Hypothese
     (Konjunktiv „könnte"), dann Prüfung, <em>dann</em> Ergebnis.</p>
-    <p><strong>Einsatz:</strong> Nur Schritt III ist offen gelassen, damit die Lernenden
-    eine Subsumtion selbst formulieren; I, II, IV dienen als Muster. Wer schneller ist,
-    bearbeitet mit der Vorlage (Mediencode 108) Fall 2 oder 3 vollständig. Die
-    ausgearbeitete Lösung liegt als Arbeitsblatt (TB-Zusatz) vor.</p>
+    <p><strong>Einsatz:</strong> In <em>jedem</em> der vier Schritte schreiben die
+    Lernenden selbst – abwechselnd die Subsumtion (I, III) oder die Definition (II, IV);
+    der jeweils andere Teil ist als Muster vorgegeben, damit der Aufbau sichtbar bleibt.
+    Das Gate verlangt Mindestlänge + Fachbegriffe, die Musterlösung erscheint erst danach.
+    Wer schneller ist, bearbeitet mit der Vorlage (Mediencode 108) Fall 2 oder 3
+    vollständig. Die ausgearbeitete Lösung liegt als Arbeitsblatt (TB-Zusatz) vor.</p>
+    <p><strong>Lehrkraft-Modus:</strong> Im freigeschalteten Modus sind alle Gates offen –
+    so kannst du die Musterlösungen direkt zeigen.</p>
   </div>
 </section>
 
@@ -1746,6 +1912,57 @@ function resetAssign(btn){
   });
   const score = box.querySelector('.assign-score');
   score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
 }
 </script>
 
