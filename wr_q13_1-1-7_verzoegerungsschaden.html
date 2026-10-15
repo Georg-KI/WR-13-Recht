@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.7 Schadensersatz neben der Leistung bei verspäteter Leistung · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Rost / Kupfer === */
+  --blue-900:#5C1D08;
+  --blue-800:#7C2D12;
+  --blue-700:#9A3412;   /* Primärfarbe */
+  --blue-600:#C2410C;
+  --blue-400:#FB923C;
+  --blue-100:#FED7AA;
+  --blue-50: #FFF7ED;
+  --blue-grad: linear-gradient(135deg,#7C2D12 0%,#9A3412 55%,#EA580C 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#431407;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#EEF6FF 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#93C5FD;font-style:normal;font-weight:800;}
+.norm-box a{color:#93C5FD;font-weight:700;text-decoration:none;border-bottom:1px dotted #93C5FD;}
+.norm-box a:hover{color:#BFDBFE;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
+@media print{
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+
+/* ─────────── Gutachten-Schritt (Prüfungsaufbau I–IV) ─────────── */
+.gstep{
+  border:1.5px solid var(--border);border-radius:var(--radius-md);
+  margin:12px 0;overflow:hidden;background:#fff;
+}
+.gstep-head{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.gstep-num{
+  background:var(--blue-700);color:#fff;flex-shrink:0;
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.gstep-title{font-weight:800;font-size:14px;color:var(--text);}
+.gstep-title .gnorm{display:block;font-size:11.5px;font-weight:700;color:var(--blue-700);margin-top:1px;}
+.gstep-body{padding:13px 14px;font-size:13.5px;line-height:1.55;}
+.gstep-body .glabel{font-weight:800;color:var(--blue-800);font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+.gstep-def{color:var(--text-2);margin:4px 0 10px;}
+/* Obersatz / Rechtsfolge Rahmenkarten */
+.gframe{
+  border-left:3px solid var(--blue-700);background:var(--blue-50);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;
+  font-size:14px;line-height:1.55;color:#431407;
+}
+.gframe .gframe-tag{
+  display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
+}
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#FDBA74;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(253,186,116,0.14);
+  border:1.5px dashed rgba(253,186,116,0.5);
+  color:#FFEDD5;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(253,186,116,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#9A3412;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(194,65,12,0.45);border-style:solid;border-color:#FB923C;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
+
+/* ─────────── 1.1.6: Brief, Schema, Halbzeit, Teil-Banner ─────────── */
+.fall-card.letter{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);
+  padding:14px 18px;margin:0 0 16px;font-size:14px;line-height:1.6;box-shadow:var(--shadow);}
+.letter-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border);
+  padding-bottom:7px;margin-bottom:9px;}
+.schema{border:1.5px solid var(--blue-100);background:var(--blue-50);border-radius:var(--radius-md);
+  padding:14px 16px;margin:16px 0;}
+.schema-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:10px;}
+.schema-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.schema-item{background:#fff;border:1.5px solid var(--blue-400);border-radius:8px;
+  padding:6px 10px;font-weight:800;font-size:13px;color:var(--text);text-align:center;line-height:1.2;}
+.schema-item small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);}
+.schema-plus{font-weight:900;color:var(--blue-700);font-size:16px;}
+.schema-result{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.pause-card{display:flex;gap:14px;align-items:center;margin:18px 0 4px;
+  border:1.5px dashed var(--slate);border-radius:var(--radius-md);padding:14px 18px;
+  color:var(--slate);background:var(--slate-50);}
+.pause-title{font-weight:900;font-size:16px;}
+.pause-text{font-size:13.5px;color:var(--text-2);}
+.step-chip.halftime{border-style:dashed;}
+.part-banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:12px 18px;
+  border-radius:var(--radius-lg);background:var(--blue-grad);color:#fff;box-shadow:var(--shadow);}
+.part-tag{background:rgba(255,255,255,0.22);padding:3px 11px;border-radius:14px;
+  font-size:12px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;}
+.part-title{font-weight:900;font-size:17px;}
+
+/* ─────────── 1.1.7: Fallkarten-Raster ─────────── */
+.fall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0 6px;}
+.fall-card{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;}
+.fall-card p{font-size:13.5px;margin:0;line-height:1.55;}
+.fall-card-tag{font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.3px;}
+
+/* ─────────── 1.1.7: Quiz-Erklärung nach richtiger Antwort ─────────── */
+.quiz-explain{display:none;margin-top:6px;font-size:13px;line-height:1.5;color:var(--text-2);
+  padding:8px 12px;border-radius:6px;background:var(--slate-50);border-left:3px solid var(--slate);}
+.quiz-explain.show{display:block;}
+
+/* ─────────── 1.1.7: Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── 1.1.7: Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#7C2D12;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #9A3412;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #9A3412;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#9A3412 !important;border:2px solid #9A3412;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #9A3412;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#9A3412;border:2px solid #9A3412;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#9A3412;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#9A3412;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#9A3412;border:2px solid #9A3412;}
+.p-doc .p-closing{border:2px solid #9A3412;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#9A3412;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#7C2D12;border-bottom:2px solid #9A3412;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#7C2D12;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.7</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Verzögerungsschaden</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Normtext</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Fall Weber</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Üben &amp; Briefe</div>
+  <div class="step-chip teacher-only" data-step="6" onclick="goStep(6)"><span class="n">6</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise und Abfrage sind nicht enthalten.</span>
+</div>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG (M1) ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunde 8</span>
+  <h1>Kann die Käuferin bzw. der Käufer wegen einer verspäteten Leistung Schadensersatz neben der Leistung verlangen?</h1>
+  <p class="hero-sub">Die Küche kommt nicht – und die Kosten laufen. Wer zahlt sie?</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du prüfst im Gutachtenstil, ob eine Käuferin oder ein Käufer wegen einer
+        verspäteten Leistung Ersatz des Verzögerungsschadens nach §§&nbsp;280 I, II, 286 BGB
+        verlangen kann – und welche Kosten wirklich ersatzfähig sind.
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Wer zu spät liefert, muss nicht automatisch alles zahlen. Ob z.&nbsp;B. Anwaltskosten
+        ersetzt werden, hängt davon ab, <em>wann</em> sie entstehen – vor oder nach Eintritt
+        des Verzugs.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Theodor wartet immer noch (M1)</div>
+      <div class="section-meta">Plenum · Moderation</div>
+    </div>
+  </header>
+
+  <div class="fall-card letter">
+    <div class="letter-head">
+      <span><strong>Theodor Weber</strong> – erste eigene Wohnung, aber keine Küche</span>
+      <span>vier Wochen nach seinem Mahnschreiben</span>
+    </div>
+    <p>Du kennst Theodor aus 1.1.6: Er hat das Möbelhaus mit einem Schreiben nach
+    Internet-Vorlage gemahnt und dabei mit <strong>„Schadensersatz wegen Nichterfüllung“</strong>
+    gedroht und angekündigt, <strong>Mahn-, Anwalts- und Gerichtskosten</strong> zu
+    verlangen. Inzwischen sind vier Wochen vergangen. Das Möbelhaus hat nur mitgeteilt, die
+    Küche sei <strong>auf Lager</strong> – man habe <strong>vergessen</strong>, sie
+    auszuliefern. Theodor fragt sich: Soll ich mir jetzt einen Anwalt nehmen? Und was, wenn
+    ich auf den Kosten sitzenbleibe?</p>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/>
+          <path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Impuls · Was will Theodor eigentlich?</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Theodor will seine Küche immer noch haben. Passt dann seine Drohung mit
+        ‚Schadensersatz wegen Nichterfüllung‘? Und was könnte er <em>zusätzlich</em> zur Küche
+        verlangen?“</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Neben oder statt der Leistung?</strong> Beim <strong>Schadensersatz neben der
+    Leistung</strong> bleibt die Leistung geschuldet – Theodor bekommt seine Küche <em>und</em>
+    zusätzlich Ersatz für den Schaden, der durch die Verspätung entsteht
+    (<strong>Verzögerungsschaden</strong>, §§&nbsp;280 I, II, 286 BGB). Beim
+    <strong>Schadensersatz statt der Leistung</strong> verzichtet der Käufer auf die Küche
+    und verlangt Geld an ihrer Stelle (§&nbsp;281 BGB – Thema in 1.1.8). Der alte Begriff
+    „Schadensersatz wegen Nichterfüllung“ meint genau diesen Fall.
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M1 „Schadensersatz bei verspäteter Lieferung?“: TB S.&nbsp;27. Ausgangsfall: Kapitel 1.1.6 M1 (TB S.&nbsp;22).</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Moderationshilfe Einstieg
+    </div>
+    <span class="tn-time">Zeitrahmen: ca. 5 Min.</span>
+    <p><strong>Leitfragen:</strong></p>
+    <ul>
+      <li>Will Theodor die Küche noch? → Ja → es geht um Ersatz <em>neben</em> der Leistung.</li>
+      <li>„Schadensersatz wegen Nichterfüllung“ = veralteter Begriff für SE <em>statt</em> der Leistung (§&nbsp;281) – setzt eine Fristsetzung voraus und bedeutet: Geld statt Küche. Passt nicht zu Theodors Interesse.</li>
+      <li>Was könnte ihm durch die Verspätung entstanden sein? (Sammeln: Mahn-, Anwalts-, Gerichtskosten, ggf. Mehrkosten der Haushaltsführung.)</li>
+    </ul>
+    <p><strong>Anknüpfung:</strong> In 1.1.6 wurde geprüft, dass das Möbelhaus durch Theodors
+    Schreiben vom 01.10.2025 in Verzug gekommen ist (bei der dort gesetzten Frist bis 22.10.
+    spätestens mit deren Ablauf). Heute: Was folgt daraus?</p>
+    <p><strong>Überleitung → Step 2:</strong> „Welche dieser Kosten sind wirklich ein
+    Verzögerungsschaden?“</p>
+  </div>
+</section>
+
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Verzögerungsschaden →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+
+<!-- ═══════════════ STEP 2 · VERZÖGERUNGSSCHADEN (M2 · AUFGABE 1) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Was ist ein Verzögerungsschaden? (M2 · Aufgabe 1)</div>
+      <div class="section-meta">Partnerarbeit · Zuordnen und begründen</div>
+    </div>
+  </header>
+
+  <div class="info-box">
+    <strong>Verzögerungsschaden (Verzugsschaden):</strong> Schaden, der bei
+    <em>rechtzeitiger</em> Leistung nicht entstanden wäre.<br>
+    <strong>M2 · Anwaltskosten außerhalb eines Prozesses – Kernaussagen:</strong>
+    <ul style="margin:6px 0 0 18px;">
+      <li>Sie sind als Kosten der Rechtsverfolgung zu ersetzen
+      (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__249.html" target="_blank">§&nbsp;249 II S.&nbsp;1 BGB</a>),
+      wenn ein <strong>Schadensersatzanspruch</strong> besteht und anwaltliche Hilfe
+      <strong>notwendig</strong> ist.</li>
+      <li>Notwendig ist ein Anwalt vor allem, wenn der Gegner sich <strong>weigert</strong>,
+      den Schaden dem Grunde oder der Höhe nach zu begleichen – entscheidend ist, was ein
+      wirtschaftlich denkender Mensch im Einzelfall für nötig halten durfte.</li>
+      <li>Als Verzugsschaden (§§&nbsp;280 II, 286 BGB) zählen sie nur, wenn der Gegner
+      <strong>schon vor</strong> der Einschaltung des Anwalts in Verzug war.</li>
+      <li>Die Kosten der <strong>ersten Mahnung, die den Verzug erst auslöst</strong>, sind
+      <em>kein</em> Verzugsschaden – sie trägt der Gläubiger selbst.</li>
+    </ul>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 44 36" fill="none">
+          <circle cx="12" cy="10" r="6.5" fill="#0d9488"/>
+          <circle cx="32" cy="10" r="6.5" fill="#0d9488"/>
+          <path d="M1 34c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M21 34c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 1a · Welche Kosten kann Theodor ersetzt verlangen?</div>
+        <div class="task-form partner">Partnerarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Ordnet jeden Kostenposten zu. Achtet dabei vor allem auf den <strong>Zeitpunkt</strong>:
+      Ist das Möbelhaus zu diesem Zeitpunkt schon in Verzug?</p>
+      <div class="assign" data-assign="kosten">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="V">Verzögerungsschaden</button>
+          <button class="assign-cat" data-cat="N">nicht ersatzfähig</button>
+          <button class="assign-cat" data-cat="S">SE statt der Leistung</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Posten antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="N"><span class="ai-key">a</span><span class="ai-text">Porto für Theodors erstes Mahnschreiben vom 01.10.2025, mit dem er das Möbelhaus in Verzug setzt.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">b</span><span class="ai-text">Porto für ein zweites Mahnschreiben, das Theodor nach Eintritt des Verzugs verschickt.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">c</span><span class="ai-text">Mehrkosten fürs Essengehen im August – also noch bevor die Küche überhaupt fällig war.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">d</span><span class="ai-text">Nachweisbare Mehrkosten der Haushaltsführung (z.&nbsp;B. auswärts essen), die seit Eintritt des Verzugs entstehen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">e</span><span class="ai-text">Anwaltskosten, nachdem das Möbelhaus trotz Verzug die Lieferung verweigert und Theodor deshalb einen Anwalt einschaltet.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="S"><span class="ai-key">f</span><span class="ai-text">Theodor verzichtet auf die Küche „Margit“ und kauft bei einem anderen Händler eine vergleichbare Küche – 900&nbsp;€ teurer.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 44 38" fill="none">
+          <rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/>
+          <path d="M6 19l-4 6 8-4" fill="#0d9488"/>
+          <rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/>
+          <path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/>
+          <path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 1b · Begründen: Warum können Theodors Kosten ein Verzugsschaden sein?</div>
+        <div class="task-form partner">Partnerarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Begründet mit M2, warum die in M1 genannten Mahn-, Anwalts- und Gerichtskosten ein
+      Verzugsschaden sein <em>können</em> – und unter welcher Bedingung sie es nicht sind.
+      Nennt die Anspruchsgrundlage.</p>
+
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="rechtzeitig, verzug, rechtsverfolgung, 280, 286, mahnung, notwendig, anwalt"
+        data-required="5"
+        placeholder="Ein Verzugsschaden ist ein Schaden, der … Theodor kann ihn nach §§ … ersetzt verlangen. Kosten der Rechtsverfolgung … Voraussetzung ist aber, dass …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Ein Verzugsschaden ist ein Schaden, der bei <strong>rechtzeitiger</strong> Leistung
+        nicht entstanden wäre. Entsteht Theodor infolge der verspäteten Lieferung ein solcher
+        Schaden, kann er ihn als Schadensersatz neben der Leistung nach
+        <strong>§§&nbsp;280 I, II, 286 BGB</strong> ersetzt verlangen. Dazu gehören auch Kosten
+        der <strong>Rechtsverfolgung</strong> (Mahn-, Anwalts-, Gerichtskosten): Muss Theodor
+        wegen des Verzugs rechtliche Schritte einleiten, sind die Kosten zu ersetzen, wenn die
+        Maßnahmen zu diesem Zeitpunkt sachdienlich bzw. <strong>notwendig</strong> erscheinen
+        (M2). Entscheidend ist der Zeitpunkt: Der <strong>Verzug</strong> muss bereits
+        <strong>eingetreten</strong> sein, bevor die Kosten entstehen. Deshalb sind die Kosten
+        der <strong>Erstmahnung</strong>, die den Verzug erst auslöst, nicht ersatzfähig.<br>
+        <em>Außerdem:</em> Für die „Schadensersatz wegen Nichterfüllung“-Drohung müsste Theodor
+        erst einmal einen konkreten Schaden nachweisen (z.&nbsp;B. erhöhte Kosten der
+        Haushaltsführung).
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M2 „Erstattung außergerichtlicher Anwaltskosten“ (nach Onderka) &amp; Aufgabe 1: TB S.&nbsp;27/29. Kapitel 1.1.6 M1. Fachwissen S.&nbsp;66&nbsp;ff.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweis (nach AL S. 29, ergänzt)
+    </div>
+    <p><strong>Zuordnung:</strong> a nicht ersatzfähig (verzugsbegründende Erstmahnung, M2
+    Z.&nbsp;34&nbsp;ff.) · b Verzögerungsschaden · c nicht ersatzfähig (vor Fälligkeit kein
+    Verzug, Schaden nicht durch die Verzögerung verursacht) · d Verzögerungsschaden (Beweislast
+    bei Theodor) · e Verzögerungsschaden (Anwalt nach Verzugseintritt + Weigerung →
+    notwendig, M2) · f gehört zum SE <em>statt</em> der Leistung (Deckungskauf → 1.1.8).</p>
+    <p><strong>Achtung – Abweichung von AL/Tafelbild:</strong> AL Aufgabe 1 und das Tafelbild
+    nennen pauschal „Mahn-, Anwalts- und Gerichtskosten“. Nach M2 sind die Kosten der
+    <em>verzugsbegründenden</em> Mahnung ausgenommen. Gerichtskosten werden im Prozess
+    ohnehin dem Unterlegenen auferlegt (M2 Z.&nbsp;1–4) – nicht vertiefen.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Normtext →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+
+<!-- ═══════════════ STEP 3 · NORMTEXT §§ 280 I, II, 286 ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Wo steht das im Gesetz? §§ 280 I, II und 286 BGB</div>
+      <div class="section-meta">Einzelarbeit · Passagen im Gesetzestext zuordnen</div>
+    </div>
+  </header>
+
+  <p>Der Anspruch auf Ersatz des Verzögerungsschadens setzt sich aus <em>drei</em> Normen
+  zusammen. Ordne jeder markierten Passage aus
+  <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__280.html" target="_blank">§&nbsp;280 BGB</a>
+  und <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__286.html" target="_blank">§&nbsp;286 BGB</a>
+  das passende Merkmal zu. Ein Merkmal kommt zweimal vor.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Normanalyse · Die Merkmale des Anspruchs im Gesetzestext</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Passage im Gesetzestext markieren</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="nmark" data-nmark="p280-286">
+        <div class="nmark-catbar">
+          <button class="nmark-cat active" data-cat="SV" data-short="Schuldverhältnis">Schuldverhältnis<span class="nc-sub">→ Kaufvertrag § 433</span></button>
+          <button class="nmark-cat" data-cat="PV" data-short="Pflichtverletzung">Pflichtverletzung<span class="nc-sub">→ Nichtleistung trotz Möglichkeit &amp; Fälligkeit</span></button>
+          <button class="nmark-cat" data-cat="ZV" data-short="Zusatz: Verzug">Zusatzvoraussetzung<span class="nc-sub">→ Verzug § 286</span></button>
+          <button class="nmark-cat" data-cat="MA" data-short="Mahnung">Mahnung<span class="nc-sub">→ Ausnahmen § 286 II</span></button>
+          <button class="nmark-cat" data-cat="VM" data-short="Vertretenmüssen">Vertretenmüssen<span class="nc-sub">→ §§ 276, 278</span></button>
+          <button class="nmark-cat" data-cat="KS" data-short="Kausaler Schaden">Kausaler Schaden<span class="nc-sub">→ Umfang §§ 249 ff.</span></button>
+        </div>
+        <div class="nmark-hint">Merkmal oben wählen, dann die passende Textstelle antippen. Nochmal tippen hebt die Markierung auf.</div>
+
+        <div class="nmark-law">
+          <div class="nlaw-title">§ 280 Schadensersatz wegen Pflichtverletzung · Absatz 1</div>
+          <span class="nsatz">¹</span><span class="nabs">Verletzt der Schuldner eine
+          <span class="npass" data-correct="PV">Pflicht aus dem<span class="npass-tag"></span></span>
+          <span class="npass" data-correct="SV">Schuldverhältnis<span class="npass-tag"></span></span>,
+          so kann der Gläubiger
+          <span class="npass" data-correct="KS">Ersatz des hierdurch entstehenden Schadens<span class="npass-tag"></span></span>
+          verlangen.</span>
+          <span class="nsatz">²</span><span class="nabs">Dies gilt nicht, wenn der Schuldner die
+          <span class="npass" data-correct="VM">Pflichtverletzung nicht zu vertreten hat<span class="npass-tag"></span></span>.</span>
+
+          <div class="nlaw-title" style="margin-top:14px;">§ 280 · Absatz 2</div>
+          <span class="nabs">Schadensersatz wegen Verzögerung der Leistung kann der Gläubiger nur
+          <span class="npass" data-correct="ZV">unter der zusätzlichen Voraussetzung des § 286<span class="npass-tag"></span></span>
+          verlangen.</span>
+
+          <div class="nlaw-title" style="margin-top:14px;">§ 286 Verzug des Schuldners · Absatz 1 Satz 1 und Absatz 4</div>
+          <span class="nsatz">I</span><span class="nabs">
+          <span class="npass" data-correct="PV">Leistet der Schuldner<span class="npass-tag"></span></span>
+          <span class="npass" data-correct="MA">auf eine Mahnung des Gläubigers<span class="npass-tag"></span></span>
+          nicht, die nach dem Eintritt der Fälligkeit erfolgt, so kommt er durch die Mahnung in
+          Verzug.</span>
+          <span class="nsatz">IV</span><span class="nabs">Der Schuldner kommt nicht in Verzug,
+          solange die Leistung
+          <span class="npass" data-correct="VM">infolge eines Umstands unterbleibt, den er nicht zu vertreten hat<span class="npass-tag"></span></span>.</span>
+        </div>
+
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkNmark(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetNmark(this)">Zurücksetzen</button>
+          <span class="assign-score nmark-score"></span>
+        </div>
+      </div>
+
+      <div class="schema">
+        <div class="schema-title">Prüfschema · Schadensersatz neben der Leistung bei Verzögerung (§§ 280 I, II, 286 BGB)</div>
+        <div class="schema-row">
+          <span class="schema-item">I. Schuldverhältnis<small>§ 433</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">II. Pflichtverletzung<small>Nichtleistung trotz Möglichkeit &amp; Fälligkeit</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">III. Mahnung<small>oder Entbehrlichkeit § 286 II</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">IV. Vertretenmüssen<small>§§ 280 I S. 2, 286 IV, 276, 278</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">V. Kausaler Schaden<small>§§ 249 ff.</small></span><span class="schema-plus">=</span>
+          <span class="schema-item schema-result">Anspruch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <path d="M11 18l4.5 4.5L25 13" stroke="#475569" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Merke <span class="reflect-badge">Verknüpfung</span></div>
+      <div class="reflect-text">
+        Der Anspruch ist der aus 1.1.5 bekannte <strong>§&nbsp;280 I</strong> – nur mit einer
+        <strong>Zusatzvoraussetzung</strong>: Über §&nbsp;280 II kommt der
+        <strong>Verzug nach §&nbsp;286</strong> (Mahnung!) hinzu. Das Vertretenmüssen steht
+        zweimal im Gesetz (§&nbsp;280 I S.&nbsp;2 und §&nbsp;286 IV), wird aber nur
+        <strong>einmal</strong> geprüft.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Vorlage zur (vereinfachten) Prüfung im Gutachtenstil: Mediencode 82024-112. Fachwissen S.&nbsp;66&nbsp;ff.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweis
+    </div>
+    <ul>
+      <li>„Pflicht aus dem“ / „Leistet der Schuldner [… nicht]“ → <strong>Pflichtverletzung</strong> (hier: Nichtleistung trotz Möglichkeit und Fälligkeit)</li>
+      <li>„Schuldverhältnis“ → <strong>Schuldverhältnis</strong></li>
+      <li>„Ersatz des hierdurch entstehenden Schadens“ → <strong>kausaler Schaden</strong></li>
+      <li>„Pflichtverletzung nicht zu vertreten hat“ und § 286 IV → <strong>Vertretenmüssen</strong> (zweimal)</li>
+      <li>„unter der zusätzlichen Voraussetzung des § 286“ → <strong>Zusatzvoraussetzung Verzug</strong></li>
+      <li>„auf eine Mahnung des Gläubigers“ → <strong>Mahnung</strong></li>
+    </ul>
+    <p><strong>Kernpunkt:</strong> §&nbsp;280 II ist die „Brücke“ zu §&nbsp;286. Das Schema
+    entspricht dem Tafelbild und der Vorlage 82024-112 (I–V). Die Möglichkeit der Leistung
+    wird in der Vorlage unter II. mitgeprüft (anders als in 1.1.6, wo sie eigener Punkt war).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Fall Weber →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+
+<!-- ═══════════════ STEP 4 · GUTACHTEN (AUFGABE 2) ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Theodors Anspruch im Gutachtenstil (Aufgabe 2)</div>
+      <div class="section-meta">Einzelarbeit, dann Partnerarbeit · Prüfung im Gutachtenstil</div>
+    </div>
+  </header>
+
+  <p>Prüfe, ob Theodor vom Möbelhaus Schadensersatz neben der Leistung nach
+  §§&nbsp;280 I, II, 286 BGB verlangen kann. In drei Schritten schreibst du selbst die
+  <strong>Subsumtion</strong>. Die Musterlösung schaltet sich erst frei, wenn dein Text lang
+  genug ist und die wichtigsten Fachbegriffe enthält.</p>
+
+  <div class="gframe">
+    <span class="gframe-tag">Obersatz</span>
+    Theodor Weber könnte gegen das Möbelhaus einen Anspruch auf <strong>Schadensersatz neben
+    der Leistung bei einer verspäteten Leistung</strong> (Ersatz des Verzögerungsschadens) in
+    Höhe der ihm entstehenden Kosten der Rechtsverfolgung aus
+    <strong>§§&nbsp;280 I, II, 286 BGB</strong> haben.
+  </div>
+
+  <!-- I. Schuldverhältnis -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">I</div>
+      <div class="gstep-title">Schuldverhältnis<span class="gnorm">§ 280 I S. 1 BGB → wirksamer Kaufvertrag (§ 433 BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Muster</span>
+      <div class="gstep-def" style="margin-bottom:0;">Es müsste ein Schuldverhältnis bestehen.
+      Dieses könnte durch einen Kaufvertrag begründet sein, der durch zwei übereinstimmende
+      Willenserklärungen (Antrag und Annahme) zustande kommt. Theodor hat am 05.08.2025 beim
+      Möbelhaus die Einbauküche „Margit“ bestellt und damit einen wirksamen Kaufvertrag
+      geschlossen. ✔ Schuldverhältnis (+)</div>
+    </div>
+  </div>
+
+  <!-- II. Pflichtverletzung -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">II</div>
+      <div class="gstep-title">Pflichtverletzung<span class="gnorm">Nichtleistung trotz Möglichkeit und Fälligkeit (§§ 286 I S. 1, 271, 475 I BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Darüber hinaus müsste eine Pflichtverletzung vorliegen. Diese
+      könnte in der Verzögerung der Leistung liegen, d.&nbsp;h. in der Nichtleistung trotz
+      Möglichkeit und Fälligkeit.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Prüfe alle drei Teile: Wurde geliefert? Ist
+      die Lieferung noch möglich? Ist sie fällig? Belege mit M1 und denk an den
+      Verbrauchsgüterkauf.</p>
+
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="30"
+        data-keywords="nicht erfuellt, lager, moeglich, verbrauchsgueterkauf, 475, 30 tage, faellig, unverbindlich"
+        data-required="5"
+        placeholder="Bis heute hat das Möbelhaus … Die Leistung ist noch möglich, weil … Da es sich um einen … handelt, …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Bis heute hat das Möbelhaus seine Pflicht zur Übergabe und Übereignung der Küche aus
+        §&nbsp;433 I BGB <strong>nicht erfüllt</strong>; Theodor wartet weiter auf die
+        Lieferung. Die Leistung ist auch noch <strong>möglich</strong>, denn die Küche ist laut
+        M1 „auf <strong>Lager</strong>“. Da es sich um einen <strong>Verbrauchsgüterkauf</strong>
+        handelt, richtet sich die Fälligkeit nach <strong>§&nbsp;475 I BGB</strong>: Ohne
+        bestimmte Leistungszeit muss der Unternehmer spätestens <strong>30&nbsp;Tage</strong>
+        nach Vertragsschluss übergeben. Der Liefertermin 18.09.2025 war nur
+        <strong>unverbindlich</strong>; seit Vertragsschluss sind aber inzwischen rund drei
+        Monate vergangen. Die Leistung ist also <strong>fällig</strong>. ✔ Pflichtverletzung (+)
+      </div>
+    </div>
+  </div>
+
+  <!-- III. Mahnung -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">III</div>
+      <div class="gstep-title">Mahnung<span class="gnorm">§ 286 I S. 1 BGB oder Entbehrlichkeit nach § 286 II BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Muster (aus 1.1.6 bekannt)</span>
+      <div class="gstep-def" style="margin-bottom:0;">Als zusätzliche Voraussetzung des Verzugs
+      müsste eine Mahnung vorliegen oder entbehrlich sein. Eine Mahnung ist die an den Schuldner
+      gerichtete eindeutige und bestimmte Aufforderung, die geschuldete Leistung zu erbringen.
+      Theodor hat das Möbelhaus am 01.10.2025 schriftlich zur Lieferung aufgefordert. Die darin
+      gesetzte Frist war nicht nötig, das Schreiben erfüllt aber die Anforderungen an eine
+      Mahnung; spätestens mit Ablauf der Frist ist das Möbelhaus in Verzug. ✔ Mahnung (+)</div>
+    </div>
+  </div>
+
+  <!-- IV. Vertretenmüssen -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">IV</div>
+      <div class="gstep-title">Vertretenmüssen<span class="gnorm">§§ 280 I S. 2, 286 IV, 276, 278 BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Außerdem müsste das Möbelhaus die Verzögerung zu vertreten haben.
+      Der Schuldner hat grundsätzlich Vorsatz und Fahrlässigkeit zu vertreten, wenn eine
+      strengere oder mildere Haftung weder bestimmt noch aus dem Schuldverhältnis zu entnehmen
+      ist – insbesondere aus der Übernahme einer Garantie oder eines Beschaffungsrisikos
+      (§&nbsp;276 I BGB). Auch das Verschulden von Erfüllungsgehilfen muss er vertreten
+      (§&nbsp;278 BGB).</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Warum ist die Küche nicht gekommen? Hat das
+      Möbelhaus vorsätzlich oder fahrlässig gehandelt? Bonus: Was ändert sich, wenn die Küche
+      eine Gattungsschuld ist?</p>
+
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="30"
+        data-keywords="vergessen, vorsatz, fahrlaessig, sorgfalt, sorgfaeltig, 276, gattungsschuld, beschaffungsrisiko"
+        data-required="4"
+        placeholder="Laut M1 hat das Möbelhaus … Das ist nicht wissentlich und willentlich, aber … Geht man von einer Gattungsschuld aus, …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 4 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Laut M1 ist die Küche zwar auf Lager, das Möbelhaus hat aber <strong>vergessen</strong>,
+        sie auszuliefern. Glaubt man dieser Aussage, hat es die Leistung nicht wissentlich und
+        willentlich (kein <strong>Vorsatz</strong>), wohl aber <strong>fahrlässig</strong>
+        verzögert: Die im Verkehr erforderliche <strong>Sorgfalt</strong> wurde außer Acht
+        gelassen (§&nbsp;276 I, II BGB). Das Möbelhaus hat die Verzögerung damit zu vertreten.
+        (Ist die Küche „Margit“ eine <strong>Gattungsschuld</strong>, ergibt sich das
+        Vertretenmüssen regelmäßig auch aus der Übernahme des
+        <strong>Beschaffungsrisikos</strong>. Dagegen spricht, dass Küchen oft individuell auf
+        die Räume abgestimmt werden und dann eine Stückschuld vorliegt.) ✔ Vertretenmüssen (+)
+      </div>
+    </div>
+  </div>
+
+  <!-- V. Kausaler Schaden -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">V</div>
+      <div class="gstep-title">Kausaler Schaden<span class="gnorm">§ 280 I S. 1 BGB, Umfang §§ 249 ff. BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Durch die Pflichtverletzung müsste ein ersatzfähiger Schaden
+      entstanden sein. Nach §&nbsp;249 I BGB ist der Zustand herzustellen, der bestehen würde,
+      wenn der zum Ersatz verpflichtende Umstand nicht eingetreten wäre
+      (Differenzhypothese).</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Welche der Kosten aus M1 wären ohne die
+      Verspätung nicht entstanden – und welche sind trotzdem nicht ersatzfähig? Nutze dein
+      Ergebnis aus Step 2.</p>
+
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="30"
+        data-keywords="rechtzeitig, rechtsverfolgung, mahnung, verzug, anwalt, ersatzfaehig, ersetzt"
+        data-required="4"
+        placeholder="Wäre die Küche rechtzeitig geliefert worden, … Die Kosten der ersten Mahnung … Anwaltskosten …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 4 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Wäre die Küche <strong>rechtzeitig</strong> geliefert worden, wären keine Kosten der
+        <strong>Rechtsverfolgung</strong> nötig gewesen. Die Kosten der
+        <strong>Erstmahnung</strong> vom 01.10.2025 sind allerdings
+        <strong>nicht ersatzfähig</strong>, weil das Möbelhaus erst durch sie in
+        <strong>Verzug</strong> kam (M2). <strong>Anwaltskosten</strong> sind bisher nicht
+        angefallen. Entstehen sie jetzt – nach Verzugseintritt –, können sie als
+        Verzögerungsschaden ersetzt werden, sofern die Einschaltung eines Anwalts notwendig war
+        (M2). Gleiches gilt für spätere Gerichtskosten. ✔ kausaler Schaden (+), soweit Kosten
+        nach Verzugseintritt entstehen
+      </div>
+    </div>
+  </div>
+
+  <div class="gframe">
+    <span class="gframe-tag">Rechtsfolge</span>
+    Theodor Weber hat damit gegen das Möbelhaus einen Schadensersatzanspruch aus
+    <strong>§§&nbsp;280 I, II, 286 BGB</strong> – bzw. hätte ihn, sobald nach Verzugseintritt
+    Anwalts- oder Gerichtskosten anfallen. Der Umfang richtet sich nach den
+    <strong>§§&nbsp;249&nbsp;ff. BGB</strong>. Die Kosten seiner eigenen ersten Mahnung trägt
+    er selbst.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 44 36" fill="none">
+          <circle cx="12" cy="10" r="6.5" fill="#0d9488"/>
+          <circle cx="32" cy="10" r="6.5" fill="#0d9488"/>
+          <path d="M1 34c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M21 34c0-6.075 4.925-11 11-11s11 4.925 11 11" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 2 (Teil 2) · Soll Theodor sich einen Anwalt nehmen?</div>
+        <div class="task-form partner">Partnerarbeit · Abwägen mit M2</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Beantwortet ausgehend von eurem Gutachten und mit <strong>M2</strong> Theodors Frage
+      aus M1. Nennt Argumente dafür und dagegen und kommt zu einer Empfehlung.</p>
+
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="45"
+        data-keywords="verzugsschaden, notwendig, noetig, weigert, reagiert, geantwortet, vorstrecken, insolvenz, pleite, sitzen, risiko, kosten"
+        data-required="5"
+        placeholder="Dafür spricht, dass … (M2, Z. …) · Dagegen spricht, dass … · Wir empfehlen Theodor …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Mögliche Argumente anzeigen
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 45 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Es gibt nicht die eine richtige Empfehlung – wichtig ist deine Begründung.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Dafür:</strong> Die Verzugsvoraussetzungen liegen vor. Anwaltsgebühren, die jetzt
+        entstehen, könnte Theodor grundsätzlich als <strong>Verzugsschaden</strong> geltend machen
+        (M2, Z.&nbsp;28&nbsp;ff.).<br>
+        <strong>Dagegen:</strong> Ersatzfähig sind die Kosten nur, wenn anwaltliche Hilfe
+        <strong>notwendig</strong> ist – typischerweise, wenn der Gegner sich dem Grunde oder der
+        Höhe nach <strong>weigert</strong> (M2, Z.&nbsp;18&nbsp;ff.). Das Möbelhaus hat aber auf
+        die Mahnung <strong>reagiert</strong> und gibt ein Versehen zu; ein wirtschaftlich
+        denkender Mensch würde jetzt vielleicht noch keinen Anwalt einschalten (M2,
+        Z.&nbsp;23&nbsp;ff.). Außerdem müsste Theodor die Kosten <strong>vorstrecken</strong> –
+        geht das Möbelhaus z.&nbsp;B. in <strong>Insolvenz</strong>, bleibt er darauf
+        <strong>sitzen</strong>.<br>
+        <strong>Mögliche Empfehlung:</strong> Erst noch einmal selbst nachdrücklich zur
+        Lieferung auffordern; einen Anwalt einschalten, wenn das Möbelhaus sich weiter weigert
+        oder nicht reagiert.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis &amp; Vorlage</div>
+    <div class="book-ref-text">Aufgabe 2 mit M1, M2: TB S.&nbsp;27/29. Vorlage zur (vereinfachten) Prüfung im Gutachtenstil: Mediencode 82024-112. Ausführlich: Methoden S.&nbsp;205&nbsp;ff. (Gutachtenstil S.&nbsp;209&nbsp;f.).</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweis zu Aufgabe 2 (Tafelbild, AL S. 29)
+    </div>
+    <p><strong>Aufbau:</strong> Vorlage 82024-112, Schritte I–V. Die Lernenden schreiben die
+    Subsumtion in II, IV und V; I und III sind als Muster vorgegeben (III wurde in 1.1.6
+    ausführlich geprüft). Die ausgearbeitete Lösung liegt als Arbeitsblatt (Tafelbild) vor.</p>
+    <p><strong>Abweichung vom Tafelbild:</strong> Der Obersatz des Tafelbilds nennt „Mahn-,
+    Anwalts- und Gerichtskosten“. Hier bewusst enger („Kosten der Rechtsverfolgung“), weil die
+    verzugsbegründende Erstmahnung nach M2 nicht ersatzfähig ist – das wird in V. sichtbar.</p>
+    <p><strong>Feinheit Mahnung (nur bei Nachfrage):</strong> Bei einer Mahnung mit Frist tritt
+    Verzug nach verbreiteter Ansicht erst mit Fristablauf (22.10.2025) ein. Vier Wochen nach dem
+    Schreiben ist das ohnehin der Fall.</p>
+    <p><strong>Teil 2 (Anwalt):</strong> bewusst offen; AL nennt pro (Verzugsschaden) und
+    contra (Notwendigkeit, Reaktion des Möbelhauses, Vorstreckrisiko/Insolvenz).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Üben &amp; Briefe →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+
+<!-- ═══════════════ STEP 5 · ÜBEN & TRANSFER (AUFGABEN 3–6) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Üben &amp; Transfer: Abwandlung, Vertretenmüssen, Briefe (M3–M5)</div>
+      <div class="section-meta">Gruppenarbeit · arbeitsteilig</div>
+    </div>
+  </header>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">bevor du weiterübst</span></div>
+      <div class="reflect-text">
+        Was sitzt schon, wo hakt's noch? Kannst du die fünf Prüfschritte ohne Spickzettel
+        nennen – und erklären, warum Theodors erste Mahnung ihn selbst Geld kostet?
+        <strong>Jetzt ist Zeit für deine Fragen.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aufgabe 3 · Abwandlung -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 3 · Abwandlung: fester Liefertermin + Anwalt</div>
+        <div class="task-form" style="color:var(--blue-700);">Selbstcheck · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="info-box" style="margin-top:0;">
+        <strong>Abwandlung:</strong> Im Kaufvertrag war ein <strong>verbindlicher</strong>
+        Liefertermin vereinbart (statt des unverbindlichen 18.09.2025). Nachdem er verstrichen
+        ist, lässt Theodor das Mahnschreiben von einem <strong>Anwalt</strong> verfassen.
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Braucht Theodor für den Verzug überhaupt eine Mahnung?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – ohne Mahnung gibt es nie einen Verzug.</button>
+          <button class="quiz-opt" data-correct="1">Nein – die Leistungszeit ist nach dem Kalender bestimmt (§ 286 II Nr. 1 BGB).</button>
+          <button class="quiz-opt" data-correct="0">Nein – beim Verbrauchsgüterkauf ist die Mahnung immer entbehrlich (§ 475 I BGB).</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Mit Ablauf des verbindlichen Termins ist das Möbelhaus ohne Mahnung in Verzug. §&nbsp;475 I regelt nur die <em>Fälligkeit</em>, nicht die Mahnung.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Sind die Anwaltskosten für das Mahnschreiben in dieser Abwandlung ein Verzugsschaden?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Nein – erst das Mahnschreiben setzt das Möbelhaus in Verzug.</button>
+          <button class="quiz-opt" data-correct="1">Grundsätzlich ja – der Verzug bestand schon; ersatzfähig, wenn der Anwalt notwendig war (M2).</button>
+          <button class="quiz-opt" data-correct="0">Nein – Anwaltskosten sind nie ersatzfähig, wenn es nicht zum Prozess kommt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Genau hier liegt der Unterschied zum Ausgangsfall: Dort löst erst die Mahnung den Verzug aus – ihre Kosten sind nicht ersatzfähig. In der Abwandlung beginnt der Verzug schon mit dem Termin; das Anwaltsschreiben kommt <em>danach</em>. Bleibt nur die Frage, ob ein Anwalt schon nötig war.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aufgabe 4 · M3 -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+          <path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 4 · Kann die Verkäuferseite etwas dafür? (M3)</div>
+        <div class="task-form group">Gruppenarbeit · Zuordnen, dann erörtern</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="info-box" style="margin-top:0;">
+        <strong>Faustregel (M3):</strong> Alles, was nicht <strong>höhere Gewalt</strong> ist,
+        hat die Lieferantin bzw. der Lieferant zu vertreten.
+      </div>
+      <p><strong>Schritt 1:</strong> Wendet die Faustregel auf die vier Fallvarianten an.</p>
+      <div class="assign" data-assign="vertreten">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="J">nach Faustregel: zu vertreten</button>
+          <button class="assign-cat" data-cat="N">nicht zu vertreten</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann die passende Variante antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="J"><span class="ai-key">A</span><span class="ai-text">Die Küche ist auf Lager, wird aber wegen Personalmangels nicht ausgeliefert.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="J"><span class="ai-key">B</span><span class="ai-text">Die Verkäuferin hat die Küche selbst nicht vom Hersteller bekommen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">C</span><span class="ai-text">Der Verkäufer hat keine Angestellten und ist selbst schwer erkrankt.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="N"><span class="ai-key">D</span><span class="ai-text">Die Kundin hat bei der Bestellung eine falsche Adresse angegeben.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+
+      <p style="margin-top:14px;"><strong>Schritt 2:</strong> Erörtert vor dem Hintergrund
+      eines gerechten Interessenausgleichs, ob die Verkäuferseite die Verspätung in den
+      Varianten <strong>A</strong> und <strong>B</strong> wirklich zu vertreten haben soll.
+      Unter welchen Bedingungen ist welche Position überzeugender?</p>
+
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="45"
+        data-keywords="hoehere gewalt, fahrlaessig, sorgfalt, personal, hersteller, lieferant, gattungsschuld, beschaffungsrisiko, einfluss, beweislast"
+        data-required="4"
+        placeholder="Für ein Vertretenmüssen in A spricht … Dagegen … In B kommt es darauf an, ob … Insgesamt überzeugt …, wenn …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Mögliche Erörterung anzeigen
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 45 Wörter · 0 von 4 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Ein „korrektes“ Ergebnis ist nicht verlangt – es zählt die Argumentation.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Ausgangspunkt:</strong> Das Vertretenmüssen wird gesetzlich vermutet – die
+        <strong>Beweislast</strong> liegt beim Schuldner, der sich entlasten muss
+        (§&nbsp;286 IV).<br>
+        <strong>C und D:</strong> Vorsatz scheidet in allen Varianten aus. Bei einer eigenen
+        schweren Erkrankung (C) oder einer falschen Adressangabe der Kundin (D) hat der Schuldner
+        auch nicht <strong>fahrlässig</strong> gehandelt – kein Vertretenmüssen.<br>
+        <strong>A (Personalmangel):</strong> Ist das <strong>höhere Gewalt</strong>? Dagegen
+        spricht, dass der Schuldner durch sorgfältige <strong>Personalplanung</strong> Einfluss
+        nehmen kann – dann hat er die nötige <strong>Sorgfalt</strong> außer Acht gelassen.
+        Dafür spräche ein plötzlicher, unvorhersehbarer Ausfall (z.&nbsp;B. Krankheitswelle).<br>
+        <strong>B (Hersteller liefert nicht):</strong> Bei einer
+        <strong>Gattungsschuld</strong> übernimmt der Verkäufer regelmäßig das
+        <strong>Beschaffungsrisiko</strong> (§&nbsp;276 I) – er hat die Verzögerung dann zu
+        vertreten; auch ein gutes Management des <strong>Lieferanten</strong> liegt in seiner
+        Hand. Ist die Küche individuell angefertigt (Stückschuld), haftet er zunächst nur für
+        Verschulden.<br>
+        <strong>Interessenausgleich:</strong> Wer Einfluss auf das Risiko hat und es
+        kalkulieren kann, soll es eher tragen – die Käuferin kann Personal- und Lieferprobleme
+        des Händlers nicht beeinflussen.
+      </div>
+    </div>
+  </div>
+
+  <!-- Aufgaben 5 & 6 · Briefe arbeitsteilig -->
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">M4 · Gruppe A · Plattenspieler</div>
+      <p>Karl Lukas, Hobby-Antikhändler mit Kleinunternehmen, kauft über eine Online-Plattform
+      einen alten Plattenspieler für knapp 400&nbsp;€ plus 7,99&nbsp;€ Versand, um die
+      Einzelteile weiterzuverkaufen. Er zahlt sofort (27.02.). Der Verkäufer vertröstet ihn
+      zwei Wochen lang mit Ausreden. Lukas setzt über die Plattform eine Frist bis
+      <strong>22.03.</strong> und droht mit Anwalt und Klage. Jetzt verlangt der Verkäufer
+      <strong>44&nbsp;€ zusätzliche Versandkosten</strong> und will erst nach Zahlung
+      versenden. Lukas fragt per Online-Rechtsberatung (30&nbsp;€): Muss ich zahlen? Bekomme
+      ich meinen <strong>entgangenen Gewinn</strong>? Wer trägt die 30&nbsp;€?</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">M5 · Gruppe B · Eigentumswohnung</div>
+      <p>Familie Meier hat eine Eigentumswohnung gekauft. Der Bauträger wird
+      <strong>zwei Monate</strong> später fertig als vereinbart. Die alte Mietwohnung ist schon
+      gekündigt – die Familie muss für zwei Monate ins <strong>Hotel: 6.000&nbsp;€</strong>.
+      Bei ihrer Recherche stößt sie auf ein Urteil des <strong>OLG Brandenburg
+      (27.05.2020, 4&nbsp;U&nbsp;87/19)</strong>: Wer während des Verzugs keinen vergleichbaren
+      Wohnraum hat, kann eine <em>Nutzungsausfallentschädigung</em> verlangen; tatsächlich
+      angefallene Kosten einer Ersatzunterkunft sind darauf in voller Höhe anzurechnen.</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Hilfe zum Briefaufbau:</strong> Musterbriefe der Verbraucherzentrale zu Verträgen
+    und Reklamationen (Mediencode 82024-110):
+    <a class="para-link" href="https://www.verbraucherzentrale.de/musterbriefe/vertraege-reklamation" target="_blank">verbraucherzentrale.de/musterbriefe</a>.
+    Achtet auf: Begrüßung · Sachlage · Forderung mit Begründung (§§) · weiteres Vorgehen ·
+    Verabschiedung.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 32" fill="none">
+          <rect x="3" y="5" width="34" height="23" rx="3" stroke="#7B1FA2" stroke-width="2.4" fill="none"/>
+          <path d="M4 7l16 12L36 7" stroke="#7B1FA2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 5 · Gruppe A: Antwortschreiben an Karl Lukas (M4)</div>
+        <div class="task-form group">Gruppenarbeit · juristisch fundierter Brief</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Ihr seid die Anwältin bzw. der Anwalt von <em>habe-ich-recht.de</em>. Beantwortet alle
+      drei Fragen von Karl Lukas juristisch fundiert.</p>
+
+      <textarea class="answer-area gate-input" rows="9"
+        data-min-words="80"
+        data-keywords="433, kaufpreis, verzug, 286, frist, 280, entgangener gewinn, 252, beratung, insolvent"
+        data-required="6"
+        placeholder="Sehr geehrter Herr Lukas, …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterbrief freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 80 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Sehr geehrter Herr Lukas,<br>
+        nach Ihren Angaben komme ich zu folgender rechtlicher Einschätzung:<br><br>
+        <strong>1. Die 44&nbsp;€:</strong> Die zusätzlichen Versandkosten müssen Sie nicht zahlen.
+        Sie haben einen Anspruch auf Lieferung zu dem im Kaufvertrag vereinbarten
+        <strong>Kaufpreis</strong> inklusive 7,99&nbsp;€ Versand (§&nbsp;433 I BGB). Ein
+        Kaufvertrag wird nicht nachträglich einseitig geändert.<br><br>
+        <strong>2. Entgangener Gewinn:</strong> Der Verkäufer ist in <strong>Verzug</strong>
+        (§&nbsp;286 BGB): Die Leistung ist fällig und möglich, sie wurde nicht erbracht, und Sie
+        haben ihn gemahnt – mit Ihrer <strong>Frist</strong>setzung, die spätestens mit Ablauf
+        des 22.03. den Verzug begründet. Die Ausreden (Tod des Vaters, angeblich kein
+        Geldeingang) entlasten ihn nicht; er verzögert die Übereignung offenbar vorsätzlich oder
+        zumindest fahrlässig. Damit können Sie Ihren Verzögerungsschaden als Schadensersatz
+        neben der Leistung nach <strong>§§&nbsp;280 I, II, 286 BGB</strong> verlangen. Dazu kann
+        auch der <strong>entgangene Gewinn</strong> aus dem Weiterverkauf der Einzelteile
+        gehören (§§&nbsp;249, <strong>252</strong> BGB) – allerdings nur, soweit er nach dem
+        gewöhnlichen Lauf der Dinge zu erwarten war (§&nbsp;252 S.&nbsp;2 BGB). Ob das bei Ihrer
+        besonderen Ware der Fall ist, kann ich nicht beurteilen: Hatten Sie schon konkrete
+        Käufer?<br><br>
+        <strong>3. Die 30&nbsp;€:</strong> Die Kosten dieser Beratung entstehen heute – zu einem
+        Zeitpunkt, zu dem der Verkäufer bereits in Verzug ist. Sie können sie deshalb als
+        Verzögerungsschaden ersetzt verlangen (§&nbsp;249 BGB). Ist der Verkäufer allerdings
+        <strong>insolvent</strong> oder nicht greifbar, bleiben Sie unter Umständen darauf
+        sitzen.<br><br>
+        Ich hoffe, ich konnte Ihnen weiterhelfen.<br>
+        Mit freundlichen Grüßen<br>
+        [Name]
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 32" fill="none">
+          <rect x="3" y="5" width="34" height="23" rx="3" stroke="#7B1FA2" stroke-width="2.4" fill="none"/>
+          <path d="M4 7l16 12L36 7" stroke="#7B1FA2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 6 · Gruppe B: Brief der Familie Meier an den Bauträger (M5)</div>
+        <div class="task-form group">Gruppenarbeit · juristisch fundierter Brief</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Verfasst aus Sicht der Familie Meier einen juristisch fundierten Brief, mit dem sie
+      ihren Anspruch auf Schadensersatz neben der Leistung geltend macht. Vereinfachende
+      Annahme: Der Kauf der Wohnung ist ein Kaufvertrag nach §&nbsp;433 BGB.</p>
+
+      <textarea class="answer-area gate-input" rows="9"
+        data-min-words="80"
+        data-keywords="hotel, 6 000, gekuendigt, kalender, 286, verzug, 280, verzugsschaden, nutzungsausfall, vertreten"
+        data-required="6"
+        placeholder="Sehr geehrter Herr …, Ihre Mitteilung, dass … Da Sie …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterbrief freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 80 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <em>Begrüßung:</em> Sehr geehrter Herr [Name des Bauträgers],<br><br>
+        <em>Sachlage:</em> Ihre Mitteilung, dass wir die gekaufte Eigentumswohnung erst zwei
+        Monate nach dem vereinbarten Übergabetermin beziehen können, hat uns erreicht. Im
+        Vertrauen auf Ihre pünktliche Vertragserfüllung haben wir unsere Mietwohnung zu diesem
+        Termin <strong>gekündigt</strong> und müssen sie räumen. Eine Ersatzwohnung ist so
+        schnell nicht zu finden; wir ziehen deshalb vorübergehend ins
+        <strong>Hotel</strong>. Die Kosten für die Familie betragen für zwei Monate laut
+        Angebot <strong>6.000&nbsp;€</strong>. Unsere Möbel können wir bei Freunden
+        unterstellen, sodass keine Lagerkosten entstehen.<br><br>
+        <em>Forderung und Begründung:</em> Der Übergabetermin [Datum] ist im Vertrag nach dem
+        <strong>Kalender</strong> bestimmt. Erbringen Sie die Leistung bis dahin nicht, kommen
+        Sie ohne weitere Mahnung in <strong>Verzug</strong> (§&nbsp;286 I, II Nr.&nbsp;1 BGB).
+        Umstände, die die Verzögerung entschuldigen, sind uns nicht bekannt – Sie haben sie
+        daher zu <strong>vertreten</strong>. Wir fordern deshalb die Hotelkosten als
+        <strong>Verzugsschaden</strong>, d.&nbsp;h. als Schadensersatz neben der Leistung nach
+        <strong>§§&nbsp;280 I, II, 286 BGB</strong>. Eine
+        <strong>Nutzungsausfall</strong>entschädigung verlangen wir nicht zusätzlich, da die
+        tatsächlich entstandenen Kosten der Ersatzunterkunft nach der Rechtsprechung darauf
+        anzurechnen wären (OLG Brandenburg, 4&nbsp;U&nbsp;87/19).<br><br>
+        <em>Weiteres Vorgehen:</em> Bitte teilen Sie uns mit, wie Sie den Schadensersatz
+        abwickeln möchten – direkt mit dem Hotel oder über uns.<br><br>
+        <em>Verabschiedung:</em> Mit freundlichen Grüßen<br>
+        Familie Meier
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M3 „Kann die Verkäuferin oder der Verkäufer etwas dafür?“, M4 „Lieferverzug bei einem Plattenspieler“, M5 „Bauträger in Verzug“ &amp; Aufgaben 3–6: TB S.&nbsp;28/29. Musterbriefe: Mediencode 82024-110. Methoden S.&nbsp;205&nbsp;ff.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zu den Aufgaben 3–6 (AL S. 29, korrigiert)
+    </div>
+    <span class="tn-time">Zwischencheck: ca. 5 Min.</span>
+    <p><strong>Organisation:</strong> Aufgabe 3 und 4 in der Gruppe, die Briefe (5/6)
+    arbeitsteilig – Gruppe A Lukas, Gruppe B Meier. Reicht die Zeit nicht, Briefe als
+    Hausaufgabe; Vorlesen/Vergleich in der Folgestunde.</p>
+    <p><strong>Aufgabe 3 – AL fehlerhaft:</strong> Die AL nennt (1) § 286 II Nr. 1 korrekt,
+    behauptet dann aber (2), die Anwaltskosten seien kein Verzögerungsschaden, weil erst das
+    Mahnschreiben den Verzug auslöse. Das trifft nur den Ausgangsfall. In der Abwandlung
+    besteht Verzug bereits ab dem verbindlichen Termin → das Anwaltsschreiben kommt danach →
+    Kosten grundsätzlich ersatzfähig, Grenze: Notwendigkeit (M2). Die Quiz-Lösung ist
+    entsprechend angelegt; der Kontrast zum Ausgangsfall ist der eigentliche Lerneffekt.</p>
+    <p><strong>Aufgabe 4:</strong> AL: „korrektes“ Erfassen der Rechtslage nicht verlangt. Die
+    Klick-Zuordnung prüft nur die Anwendung der <em>Faustregel</em> (A, B zu vertreten; C, D
+    nicht). Ob A und B tatsächlich höhere Gewalt sind, ist Gegenstand der Erörterung.</p>
+    <p><strong>Aufgabe 5 (Lukas):</strong> Lukas kauft als Händler (Kleinunternehmen) →
+    Verbrauchsgüterkaufrecht spielt keine Rolle; Fälligkeit nach § 271 I sofort. AL formuliert
+    „spätestens mit der Fristsetzung in Verzug“ – präziser: mit Ablauf der Frist (22.03.). Die
+    30&nbsp;€ fallen ca. vier Wochen nach dem Kauf, also danach an. Optional: Die Weigerung,
+    ohne die 44&nbsp;€ zu liefern, lässt sich auch als ernsthafte und endgültige Verweigerung
+    (§ 286 II Nr. 3) diskutieren.</p>
+    <p><strong>Aufgabe 6 (Meier) – AL korrigiert:</strong> Die AL begründet den Verzug mit
+    „Eintritt der Fälligkeit (§ 475 I BGB)“. Zwei Fehler: § 475 I gilt nur beim
+    Verbrauchsgüterkauf über <em>Waren</em> (bewegliche Sachen), nicht für eine Wohnung; und
+    Fälligkeit allein begründet keinen Verzug. Richtig: Mahnung entbehrlich nach § 286 II
+    Nr. 1 (Übergabetermin nach dem Kalender bestimmt). Der Musterbrief ist entsprechend
+    angepasst. Die AL schreibt den Brief vor Fälligkeit; eine rückblickende Fassung ist
+    ebenso möglich.</p>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li><strong>Schadensersatz neben der Leistung</strong> bei Verspätung: Die Leistung bleibt geschuldet, zusätzlich wird der <strong>Verzögerungsschaden</strong> ersetzt – Anspruchsgrundlage <strong>§§ 280 I, II, 286 BGB</strong>.</li>
+      <li>Prüfschema: <strong>Schuldverhältnis · Pflichtverletzung</strong> (Nichtleistung trotz Möglichkeit und Fälligkeit) <strong>· Mahnung</strong> (oder Entbehrlichkeit) <strong>· Vertretenmüssen · kausaler Schaden</strong>.</li>
+      <li>Verzögerungsschaden = Schaden, der bei <strong>rechtzeitiger</strong> Leistung nicht entstanden wäre – er muss <strong>nach</strong> Verzugseintritt entstehen.</li>
+      <li>Kosten der <strong>verzugsbegründenden Erstmahnung</strong> sind nicht ersatzfähig; Anwaltskosten nur, wenn der Anwalt <strong>notwendig</strong> war.</li>
+      <li>Das Vertretenmüssen wird vermutet (§ 286 IV): Der <strong>Schuldner</strong> muss sich entlasten – höhere Gewalt entlastet, eigene Organisationsmängel nicht.</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+
+<!-- ═══════════════ STEP 6 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-6">
+<section class="section teacher-only" id="step6">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">6</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zur Durchführung
+    </div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen zuerst,
+    dann zwei „mittlere“ Kompetenzen, abschließend Kreativität als offene Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <!-- ── Wissen ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#9A3412;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#9A3412" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#9A3412" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation / Wissen</div>
+        <div class="task-form" style="color:#9A3412;">Fachwissen abrufen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Nenne die Anspruchsgrundlage und die fünf Prüfungspunkte für
+      Schadensersatz neben der Leistung bei verspäteter Leistung. Grenze ihn vom Schadensersatz
+      statt der Leistung ab.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>§§ 280 I, II, 286 BGB.</strong> I. Schuldverhältnis (§ 433) · II.
+        Pflichtverletzung: Nichtleistung trotz Möglichkeit und Fälligkeit (§§ 271, 475 I) · III.
+        Mahnung oder Entbehrlichkeit (§ 286 I, II) · IV. Vertretenmüssen (§§ 280 I S. 2,
+        286 IV, 276, 278) · V. kausaler Schaden, Umfang §§ 249 ff.<br>
+        <strong>Abgrenzung:</strong> Neben der Leistung = Leistung bleibt geschuldet, Ersatz
+        des Verzögerungsschadens. Statt der Leistung (§ 281) = Geld anstelle der Leistung,
+        setzt grundsätzlich eine erfolglose Fristsetzung voraus, nicht den Verzug.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kritisches Denken ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Zeitpunkt beurteilen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Theodor hätte gleich seine <em>erste</em> Mahnung von einem
+      Anwalt schreiben lassen können. Muss das Möbelhaus die Anwaltskosten tragen? Wie wäre es,
+      wenn ein verbindlicher Liefertermin vereinbart gewesen wäre?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Ausgangsfall (unverbindlicher Termin):</strong> Nein. Erst die Mahnung setzt das
+        Möbelhaus in Verzug; Kosten der verzugsbegründenden Erstmahnung sind kein
+        Verzugsschaden („kein Verzögerungsschaden ohne Verzug“, M2).<br>
+        <strong>Verbindlicher Termin:</strong> Mahnung entbehrlich (§ 286 II Nr. 1), Verzug ab
+        Terminablauf → das spätere Anwaltsschreiben ist grundsätzlich Verzögerungsschaden,
+        sofern die Einschaltung notwendig war.<br>
+        Gute Antwort argumentiert über den <em>Zeitpunkt</em> des Verzugseintritts und nennt
+        die Grenze der Notwendigkeit.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kollaboration ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kollaboration</div>
+        <div class="task-form" style="color:#0d9488;">Perspektivenwechsel (M4)</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Karl Lukas verlangt seinen entgangenen Gewinn. Versetze dich in
+      den Verkäufer: Welche Einwände würdest du erheben? Unter welchen Bedingungen ist Lukas'
+      Position überzeugender?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Verkäufer:</strong> Gewinn nicht nach dem gewöhnlichen Lauf der Dinge zu
+        erwarten (§ 252 S. 2) – Einzelteile alter Plattenspieler sind schwer verkäuflich; Höhe
+        unbewiesen; Gewinn ist bei späterer Lieferung immer noch erzielbar.<br>
+        <strong>Lukas überzeugender,</strong> wenn er konkrete Käufer oder feste Abnehmer
+        nachweisen kann, regelmäßig mit solchen Teilen handelt (Geschäftsmodell) und ein
+        Geschäft gerade wegen der Verzögerung geplatzt ist.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kreativität ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde einen eigenen Kauffall mit Lieferverzug, in dem
+      <em>ein</em> Kostenposten ersatzfähig ist und <em>ein</em> anderer nicht. Begründe die
+      Unterscheidung.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>:
+        <ul>
+          <li><strong>Passung:</strong> Verzug liegt vor (Fälligkeit, Mahnung oder Entbehrlichkeit, Vertretenmüssen).</li>
+          <li><strong>Ersatzfähiger Posten:</strong> entsteht nach Verzugseintritt und wäre bei rechtzeitiger Leistung nicht entstanden (z.&nbsp;B. Mietwagen, Hotel, zweite Mahnung).</li>
+          <li><strong>Nicht ersatzfähiger Posten:</strong> entsteht vor Verzugseintritt (z.&nbsp;B. Erstmahnung) oder gehört zum SE statt der Leistung (Deckungskauf).</li>
+          <li><strong>Bestleistung:</strong> korrekte Normen (§§ 280 I, II, 286, 249 ff.) und Hinweis auf die Notwendigkeit bei Anwaltskosten.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+</main>
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(kw.includes(tk) && tk.length >= 3) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const container = ta.closest('.task-body') || ta.closest('.gstep-body');
+  const gate = container ? container.querySelector('.sol-gate') : null;
+  if(!gate) return;
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
+}
+
+// ═══════════════ Quiz (Sofort-Rückmeldung) ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const fb = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      opts.forEach(o=>o.disabled = true);
+      fb.classList.remove('ok','no');
+      if(opt.dataset.correct === '1'){
+        opt.classList.add('correct');
+        fb.textContent = '✓ Richtig.'; fb.classList.add('show','ok');
+      } else {
+        opt.classList.add('wrong');
+        fb.textContent = '✗ Leider falsch. Versuch es noch einmal.'; fb.classList.add('show','no');
+        if(retry) retry.style.display = 'inline-block';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{ o.disabled=false; o.classList.remove('correct','wrong'); });
+  const fb = q.querySelector('.quiz-feedback'); fb.classList.remove('show','ok','no'); fb.textContent='';
+  const ex = q.querySelector('.quiz-explain'); if(ex) ex.classList.remove('show');
+  btn.style.display = 'none';
+}
+
+// ═══════════════ 1.1.7: Quiz-Erklärung ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  q.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const ex = q.querySelector('.quiz-explain');
+      if(ex && opt.dataset.correct === '1') ex.classList.add('show');
+    });
+  });
+});
+
+// ═══════════════ 1.1.7: Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · 1.1.7 Schadensersatz neben der Leistung bei verspäteter Leistung';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ cl.outerHTML = '<div class="p-closing"><h3>Das nimmst du mit</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#7C2D12;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#7C2D12;border-bottom:1.5pt solid #9A3412;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#7C2D12;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #9A3412;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#9A3412;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe{border-left:4pt solid #9A3412;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_1-1-7_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+</script>
+
+</body>
+</html>
