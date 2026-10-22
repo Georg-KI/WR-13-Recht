@@ -787,8 +787,8 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
       <p style="font-size:13.5px;margin:0;">Ein Zoo verkauft Tierfutter am Automaten. Der Automat ist alt und locker. Als ein <strong>Kind</strong> daran rüttelt, löst er sich und fällt dem Kind auf den Fuß.</p>
     </div>
     <div class="fall-card" style="border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;">
-      <div style="font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;">FALL 3 · KLIMAANLAGE</div>
-      <p style="font-size:13.5px;margin:0;">Ein Händler vergisst den Hinweis, dass die Klimaanlage erst ab 10&nbsp;°C Raumtemperatur laufen darf. Der Käufer nutzt sie darunter – die <strong>Anlage nimmt Schaden</strong>.</p>
+      <div style="font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;">FALL 3 · HOLZLASUR</div>
+      <p style="font-size:13.5px;margin:0;">Eine Kundin erzählt im Baumarkt, dass sie mit der Holzlasur ihren Kaninchenstall streichen will. Der Verkäufer weiß, dass die Lasur für Tiere giftig ist, sagt aber nichts. Ein <strong>Kaninchen erkrankt</strong> und muss zum Tierarzt.</p>
     </div>
   </div>
 
@@ -840,7 +840,7 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
     <ul>
       <li><strong>Fall 1:</strong> Schadensersatz in Höhe des Werts der Vase (§&nbsp;249 BGB).</li>
       <li><strong>Fall 2:</strong> Behandlungskosten (§&nbsp;249) <em>und</em> angemessenes Schmerzensgeld (§&nbsp;253); ggf. Hinweis auf Schmerzensgeldtabellen, Abgrenzung zu § 823 I / § 833 BGB.</li>
-      <li><strong>Fall 3:</strong> Reparaturkosten oder ggf. Wert der Anlage.</li>
+      <li><strong>Fall 3:</strong> Tierarztkosten (§&nbsp;249 BGB; bei Tieren auch über den Tierwert hinaus, §&nbsp;251 II 2 BGB – nicht vertiefen).</li>
     </ul>
     <p><strong>Gemeinsames Muster:</strong> Die Hauptleistung ist jeweils okay – der
     Schaden entsteht an einem <em>anderen</em> Rechtsgut. Das ist der Kern der
@@ -909,7 +909,7 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
         <div class="assign-items">
           <div class="assign-item" data-correct="S"><span class="ai-key">1</span><span class="ai-text">Sofa-Lieferung: Der Händler zerbricht beim Tragen die wertvolle Vase (Eigentum des Kunden).</span><span class="ai-chosen">—</span></div>
           <div class="assign-item" data-correct="G"><span class="ai-key">2</span><span class="ai-text">Futterautomat: Der lockere Automat fällt einem Kind auf den Fuß (Gesundheit des Kunden).</span><span class="ai-chosen">—</span></div>
-          <div class="assign-item" data-correct="A"><span class="ai-key">3</span><span class="ai-text">Klimaanlage: Der Händler versäumt den Hinweis zur Mindesttemperatur – die Anlage nimmt Schaden.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="A"><span class="ai-key">3</span><span class="ai-text">Holzlasur: Der Verkäufer verschweigt, dass die Lasur für Tiere giftig ist – ein Kaninchen erkrankt.</span><span class="ai-chosen">—</span></div>
         </div>
         <div class="assign-actions">
           <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
@@ -933,8 +933,15 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
     <p><strong>Alle drei:</strong> Verletzung einer Schutz-/Sorgfaltspflicht nach
     §&nbsp;241 II BGB. <strong>Fall 1</strong> → Rücksicht auf das <em>Eigentum</em>
     (Vase). <strong>Fall 2</strong> → Rücksicht auf die <em>Gesundheit</em> (Sicherung/
-    Kontrolle des Automaten). <strong>Fall 3</strong> → vorvertragliche
-    <em>Beratungs-/Aufklärungspflicht</em> (Käufer vertraut auf die Sachkunde).</p>
+    Kontrolle des Automaten). <strong>Fall 3</strong> → <em>Beratungs-/Aufklärungspflicht</em>
+    (die Kundin vertraut erkennbar auf die Sachkunde des Verkäufers).</p>
+    <p><strong>Fall 3 geändert (statt „Klimaanlage“ aus TB/AL):</strong> Seit der Kaufrechtsreform
+    2022 gehören Anleitungen und Gebrauchshinweise zur Mangelfreiheit (§&nbsp;434 III Nr.&nbsp;4 BGB). Ein
+    fehlender Hinweis zur Mindesttemperatur macht die Klimaanlage daher eher <em>mangelhaft</em>; zudem
+    wird die Kaufsache selbst beschädigt – kein „anderes Rechtsgut“. Der Fall passte damit nicht zum
+    Muster der Stunde. Im Ersatzfall ist die Lasur selbst mangelfrei (bestimmungsgemäß für Holz), verletzt
+    wird eine Aufklärungspflicht mit Blick auf den mitgeteilten Verwendungszweck, geschädigt wird ein anderes
+    Rechtsgut (das Tier).</p>
     <p><strong>Vertiefung (fakultativ):</strong> Fall 2 lässt sich zu einer c.&nbsp;i.&nbsp;c.
     (§&nbsp;311 II BGB) abwandeln, wenn der Automat schon bei der Kaufanbahnung fällt;
     Abgrenzung zur deliktischen Haftung (§ 823 I BGB) nur erwähnen, nicht vertiefen.</p>
@@ -1683,7 +1690,19 @@ function goStep(n){
 }
 
 // ═══════════════ TEACHER PIN (8-stellig) ═══════════════
-const TEACHER_PIN = '13579135';
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
 let pinBuffer = '';
 function toggleTeacher(){
   if(document.body.classList.contains('version-b')){
@@ -1717,8 +1736,8 @@ function renderDots(){
     d.classList.toggle('filled', i < pinBuffer.length);
   });
 }
-function checkPin(){
-  if(pinBuffer === TEACHER_PIN){
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
     document.body.classList.add('version-b');
     document.getElementById('teacherBtn').classList.add('active');
     document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
@@ -1777,7 +1796,7 @@ function levenshtein(a,b){
 function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
 function normalize(s){
   return s.toLowerCase()
-    .replace(/[.,;:!?()"„“”»«\-\/]/g,' ')
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
     .replace(/ß/g,'ss')
     .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
     .replace(/\s+/g,' ')
@@ -1792,8 +1811,10 @@ function keywordHit(keyword, tokens){
   const parts=kw.split(' ');
   if(parts.length===1){
     return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
       if(Math.abs(tk.length-kw.length)>2) return false;
-      if(tk.includes(kw) || kw.includes(tk)) return true;
+      if(kw.includes(tk) && tk.length >= 3) return true;
       return levenshtein(tk,kw) <= tol(kw.length);
     });
   }
