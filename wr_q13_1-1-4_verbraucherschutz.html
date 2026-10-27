@@ -578,17 +578,24 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
   40%,80%{transform:translateX(8px);}
 }
 
-/* ─────────── Print (mündliche Abfrage) ─────────── */
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
 @media print{
-  .topbar,.progress,.nav-btns,.btn-teacher,.pin-modal,
-  .section-num,.hero,.closing{display:none !important;}
-  .step{display:none !important;}
-  .step.teacher-only{display:block !important;}
-  .section:not(.teacher-only){display:none !important;}
-  .section.teacher-only{display:block !important;page-break-inside:avoid;
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
     border:none;box-shadow:none;padding:0;}
   body{background:#fff;}
   main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
 }
 
 /* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
@@ -631,6 +638,80 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
 .assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
 .assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
 .assign-score.done{color:var(--green);}
+
+/* ─────────── Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#991B1B;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #B91C1C;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #B91C1C;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#B91C1C !important;border:2px solid #B91C1C;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #B91C1C;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#B91C1C;border:2px solid #B91C1C;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#B91C1C;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#B91C1C;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#B91C1C;border:2px solid #B91C1C;}
+.p-doc .p-closing{border:2px solid #B91C1C;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#B91C1C;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#991B1B;border-bottom:2px solid #B91C1C;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#991B1B;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+.p-doc .norm-box{background:#fff !important;color:#000;border:1px solid #999;border-left:4px solid #B91C1C;box-shadow:none;}
+.p-doc .norm-box .norm-title{color:#B91C1C;}
+.p-doc .norm-box .norm-text,.p-doc .norm-box .norm-text strong,.p-doc .norm-box a{color:#000;border:none;}
 </style>
 </head>
 <body>
@@ -658,6 +739,19 @@ body:not(.version-b) .step.teacher-only{display:none !important;}
 </nav>
 
 <main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise und Abfrage sind nicht enthalten.</span>
+</div>
+
 
 <!-- ═══════════════ STEP 1 · EINSTIEG ═══════════════ -->
 <section class="step active" id="step-1">
@@ -1433,7 +1527,19 @@ function goStep(n){
 }
 
 // ═══════════════ TEACHER PIN (8-stellig) ═══════════════
-const TEACHER_PIN = '13579135';
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
 let pinBuffer = '';
 function toggleTeacher(){
   if(document.body.classList.contains('version-b')){
@@ -1467,8 +1573,8 @@ function renderDots(){
     d.classList.toggle('filled', i < pinBuffer.length);
   });
 }
-function checkPin(){
-  if(pinBuffer === TEACHER_PIN){
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
     document.body.classList.add('version-b');
     document.getElementById('teacherBtn').classList.add('active');
     document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
@@ -1527,7 +1633,7 @@ function levenshtein(a,b){
 function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
 function normalize(s){
   return s.toLowerCase()
-    .replace(/[.,;:!?()"„“”»«\-\/]/g,' ')
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
     .replace(/ß/g,'ss')
     .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
     .replace(/\s+/g,' ')
@@ -1542,8 +1648,10 @@ function keywordHit(keyword, tokens){
   const parts=kw.split(' ');
   if(parts.length===1){
     return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
       if(Math.abs(tk.length-kw.length)>2) return false;
-      if(tk.includes(kw) || kw.includes(tk)) return true;
+      if(kw.includes(tk) && tk.length >= 3) return true;
       return levenshtein(tk,kw) <= tol(kw.length);
     });
   }
@@ -1660,6 +1768,179 @@ function resetAssign(btn){
   });
   const score = box.querySelector('.assign-score');
   score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · 1.1.4 Warum sind Verbraucher beim Kauf besonders geschützt?';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ cl.outerHTML = '<div class="p-closing"><h3>Das nimmst du mit</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#991B1B;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#991B1B;border-bottom:1.5pt solid #B91C1C;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#991B1B;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #B91C1C;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#B91C1C;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe{border-left:4pt solid #B91C1C;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.norm-box{border:1pt solid #999;border-left:4pt solid #B91C1C;padding:4pt 8pt;margin:6pt 0;}.norm-title{font-weight:bold;color:#B91C1C;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_1-1-4_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
 }
 </script>
 
