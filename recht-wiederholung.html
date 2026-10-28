@@ -950,7 +950,19 @@ function goStep(n){
 }
 
 // ═══════════════ TEACHER PIN (6-stellig) ═══════════════
-const TEACHER_PIN = '123456';
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = 'f834be9f09b1f3f5cdcd6458780729b8';
+const PIN_ITER = 150000;
+const PIN_HASH = '54b16199e1271ab477fcdbc39f166cdded7134fcaf68e3730e6cc3524fda8156';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
 let pinBuffer = '';
 function toggleTeacher(){
   if(document.body.classList.contains('version-b')){
@@ -975,8 +987,8 @@ function renderDots(){
     d.classList.toggle('filled', i < pinBuffer.length);
   });
 }
-function checkPin(){
-  if(pinBuffer === TEACHER_PIN){
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
     document.body.classList.add('version-b');
     document.getElementById('teacherBtn').classList.add('active');
     document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
