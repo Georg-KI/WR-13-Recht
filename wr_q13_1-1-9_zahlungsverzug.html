@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.9 Zahlungsverzug · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Ocker/Bronze === */
+  --blue-900:#713F12;
+  --blue-800:#854D0E;
+  --blue-700:#A16207;   /* Primärfarbe */
+  --blue-600:#CA8A04;
+  --blue-400:#EAB308;
+  --blue-100:#FEF08A;
+  --blue-50: #FEFCE8;
+  --blue-grad: linear-gradient(135deg,#854D0E 0%,#A16207 55%,#B7791F 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#431407;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#FEFCE8 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#FDE68A;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#FDE68A;font-style:normal;font-weight:800;}
+.norm-box a{color:#FDE68A;font-weight:700;text-decoration:none;border-bottom:1px dotted #FDE68A;}
+.norm-box a:hover{color:#FEF08A;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
+@media print{
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+
+/* ─────────── Gutachten-Schritt (Prüfungsaufbau I–IV) ─────────── */
+.gstep{
+  border:1.5px solid var(--border);border-radius:var(--radius-md);
+  margin:12px 0;overflow:hidden;background:#fff;
+}
+.gstep-head{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.gstep-num{
+  background:var(--blue-700);color:#fff;flex-shrink:0;
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.gstep-title{font-weight:800;font-size:14px;color:var(--text);}
+.gstep-title .gnorm{display:block;font-size:11.5px;font-weight:700;color:var(--blue-700);margin-top:1px;}
+.gstep-body{padding:13px 14px;font-size:13.5px;line-height:1.55;}
+.gstep-body .glabel{font-weight:800;color:var(--blue-800);font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+.gstep-def{color:var(--text-2);margin:4px 0 10px;}
+/* Obersatz / Rechtsfolge Rahmenkarten */
+.gframe{
+  border-left:3px solid var(--blue-700);background:var(--blue-50);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;
+  font-size:14px;line-height:1.55;color:#431407;
+}
+.gframe .gframe-tag{
+  display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
+}
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#FDE68A;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(253,230,138,0.14);
+  border:1.5px dashed rgba(253,230,138,0.5);
+  color:#FEF3C7;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(253,230,138,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#2563EB;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(202,138,4,0.45);border-style:solid;border-color:#EAB308;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
+
+/* ─────────── 1.1.6: Brief, Schema, Halbzeit, Teil-Banner ─────────── */
+.fall-card.letter{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);
+  padding:14px 18px;margin:0 0 16px;font-size:14px;line-height:1.6;box-shadow:var(--shadow);}
+.letter-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border);
+  padding-bottom:7px;margin-bottom:9px;}
+.schema{border:1.5px solid var(--blue-100);background:var(--blue-50);border-radius:var(--radius-md);
+  padding:14px 16px;margin:16px 0;}
+.schema-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:10px;}
+.schema-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.schema-item{background:#fff;border:1.5px solid var(--blue-400);border-radius:8px;
+  padding:6px 10px;font-weight:800;font-size:13px;color:var(--text);text-align:center;line-height:1.2;}
+.schema-item small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);}
+.schema-plus{font-weight:900;color:var(--blue-700);font-size:16px;}
+.schema-result{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.pause-card{display:flex;gap:14px;align-items:center;margin:18px 0 4px;
+  border:1.5px dashed var(--slate);border-radius:var(--radius-md);padding:14px 18px;
+  color:var(--slate);background:var(--slate-50);}
+.pause-title{font-weight:900;font-size:16px;}
+.pause-text{font-size:13.5px;color:var(--text-2);}
+.step-chip.halftime{border-style:dashed;}
+.part-banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:12px 18px;
+  border-radius:var(--radius-lg);background:var(--blue-grad);color:#fff;box-shadow:var(--shadow);}
+.part-tag{background:rgba(255,255,255,0.22);padding:3px 11px;border-radius:14px;
+  font-size:12px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;}
+.part-title{font-weight:900;font-size:17px;}
+
+/* ─────────── 1.1.7: Fallkarten-Raster ─────────── */
+.fall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0 6px;}
+.fall-card{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;}
+.fall-card p{font-size:13.5px;margin:0;line-height:1.55;}
+.fall-card-tag{font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.3px;}
+
+/* ─────────── 1.1.7: Quiz-Erklärung nach richtiger Antwort ─────────── */
+.quiz-explain{display:none;margin-top:6px;font-size:13px;line-height:1.5;color:var(--text-2);
+  padding:8px 12px;border-radius:6px;background:var(--slate-50);border-left:3px solid var(--slate);}
+.quiz-explain.show{display:block;}
+
+/* ─────────── 1.1.7: Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── 1.1.7: Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#854D0E;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #A16207;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #A16207;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#A16207 !important;border:2px solid #A16207;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #A16207;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#A16207;border:2px solid #A16207;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#A16207;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#A16207;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#A16207;border:2px solid #A16207;}
+.p-doc .p-closing{border:2px solid #A16207;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#A16207;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#854D0E;border-bottom:2px solid #A16207;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#854D0E;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+
+/* ─────────── 1.1.8: Gesetzestext-Kasten (aus 1.1.6) ─────────── */
+.norm-box{background:#0F172A;border-radius:var(--radius-md);padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;}
+.norm-box .norm-title{font-size:12px;font-weight:800;color:#FDE68A;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#FDE68A;font-style:normal;font-weight:800;}
+
+/* ─────────── 1.1.8: Differenzmethode (Balken) ─────────── */
+.diff-chart{margin:14px 0 18px;border:1.5px solid var(--blue-100);background:var(--blue-50);
+  border-radius:var(--radius-md);padding:14px 16px;}
+.diff-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:8px;}
+.dc-row{display:flex;align-items:center;gap:10px;margin:7px 0;}
+.dc-label{width:170px;flex-shrink:0;font-size:12.5px;font-weight:800;color:var(--text-2);line-height:1.25;}
+.dc-track{flex:1;display:flex;gap:2px;min-width:0;}
+.dc-bar{display:flex;align-items:center;justify-content:center;height:32px;border-radius:6px;
+  color:#fff;font-size:12px;font-weight:800;padding:0 6px;text-align:center;line-height:1.1;
+  overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.dc-a{background:var(--blue-700);}
+.dc-b{background:var(--blue-400);color:#713F12;}
+.dc-c{background:#0d9488;min-width:52px;}
+@media (max-width:560px){
+  .dc-row{flex-direction:column;align-items:stretch;gap:3px;}
+  .dc-label{width:auto;}
+}
+
+/* ─────────── 1.1.8: Druckregeln für norm-box und Balken ─────────── */
+.p-doc .norm-box{background:#fff !important;color:#000;border:1px solid #999;border-left:4px solid #A16207;box-shadow:none;}
+.p-doc .norm-box .norm-title{color:#A16207;}
+.p-doc .norm-box .norm-text,.p-doc .norm-box .norm-text strong{color:#000;}
+.p-doc .diff-chart{background:#fff;border:1px solid #999;page-break-inside:avoid;}
+
+/* ─────────── 1.1.9: Verzugszinsen-Rechner ─────────── */
+.zinsrechner{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--blue-700);
+  border-radius:var(--radius-md);padding:16px 18px;margin:18px 0;box-shadow:var(--shadow);}
+.zr-title{font-weight:900;color:var(--blue-800);font-size:15px;margin-bottom:6px;}
+.zr-bz{font-size:13px;color:var(--text-2);margin-bottom:12px;}
+.zr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.zr-grid label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:800;color:var(--text-2);}
+.zr-grid .zr-wide{grid-column:1/-1;}
+.zr-grid input,.zr-grid select{font:inherit;font-size:14px;font-weight:600;padding:8px 10px;border:1.5px solid var(--border);
+  border-radius:8px;background:#fff;color:var(--text);width:100%;}
+.zr-grid input:focus,.zr-grid select:focus{outline:none;border-color:var(--blue-700);}
+.zr-out{margin-top:12px;font-size:15px;font-weight:800;color:var(--blue-800);background:var(--blue-50);
+  border-radius:8px;padding:10px 12px;}
+.zr-formel{font-size:12px;color:var(--muted);margin-top:6px;font-weight:600;}
+@media (max-width:600px){.zr-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.9</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Verzug mit Geld</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Vier Rechnungen</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Was es kostet</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Zusatz: Melanie</div>
+  <div class="step-chip teacher-only" data-step="6" onclick="goStep(6)"><span class="n">6</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise und Abfrage sind nicht enthalten.</span>
+</div>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG (M2) ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunde 10</span>
+  <h1>Welche Konsequenzen drohen, wenn die Käuferin bzw. der Käufer eine Rechnung zu spät bezahlt?</h1>
+  <p class="hero-sub">Diesmal ist die Käuferin der Schuldner: Ab wann ist man mit einer Rechnung im Verzug – und was kostet das?</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du bestimmst, ab wann eine Käuferin oder ein Käufer mit der Zahlung in
+        <strong>Verzug</strong> ist (§&nbsp;286 BGB, besonders Abs.&nbsp;3), und erläuterst die
+        Rechtsfolgen: <strong>Verzugsschaden</strong> und <strong>Verzugszinsen</strong>
+        (§§&nbsp;280 I, II, 286, 288 BGB).
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Kauf auf Rechnung, Handyvertrag, Abo: Du bekommst ständig Rechnungen. Wer die Regeln
+        kennt, tappt nicht in teure Mahngebühren und Zinsen – und erkennt, wenn ein Händler zu
+        viel verlangt.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Stimmt das? Vier Sätze über Rechnungen (M2)</div>
+      <div class="section-meta">Plenum · Moderation</div>
+    </div>
+  </header>
+
+  <p>Diese vier Sätze hört man oft. Entscheide spontan: <strong>Stimmt das – oder ist es ein
+  Rechtsirrtum?</strong> Merk dir deine Einschätzung. Aufgelöst wird in Schritt&nbsp;3.</p>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">A</div>
+      <p>„Man hat grundsätzlich <strong>30 Tage</strong> Zeit, eine Rechnung zu bezahlen.“</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">B</div>
+      <p>„Als Verbraucherin oder Verbraucher muss man eine Rechnung erst nach der
+      <strong>zweiten Mahnung</strong> bezahlen.“</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">C</div>
+      <p>„Durch einen <strong>Hinweis auf der Rechnung</strong> kann der Verkäufer die
+      gesetzliche Zahlungsfrist von 30 Tagen verkürzen.“</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">D</div>
+      <p>„Zahlungsunfähigkeit schützt nicht vor Zahlungsverzug, denn <strong>Geld hat man zu
+      haben</strong>.“</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation"><svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/>
+          <path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Impuls · Daumen hoch oder runter?</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Bisher war immer der <em>Verkäufer</em> zu spät. Heute ist es die <em>Käuferin</em> –
+        sie zahlt nicht. Was davon gilt auch für sie?“</p>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M2 „Populäre Rechtsirrtümer“: TB S.&nbsp;34 · Fachwissen S.&nbsp;72&nbsp;f.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Moderationshilfe Einstieg</div>
+    <span class="tn-time">Zeitrahmen: ca. 5 Min.</span>
+    <ul>
+      <li>Kurzes Stimmungsbild zu A–D (Handzeichen), Ergebnis an der Tafel festhalten,
+      <strong>nicht auflösen</strong> – Auflösung in Schritt 3 (Aufgabe 2).</li>
+      <li>Überleitung: In 1.1.6 und 1.1.7 ging es um die Lieferung. Auch die Zahlungspflicht
+      (§ 433 II) kann verspätet erfüllt werden – Verzug gilt für beide Seiten.</li>
+      <li>Erwartbar: A und C werden meist für richtig gehalten. Genau daran hängt die Stunde.</li>
+    </ul>
+    <p><strong>Alternativer Einstieg – M1 (Inkasso-Trendumfrage 2022, TB S.&nbsp;34):</strong>
+    Bei über der Hälfte der Schuldner hat sich die Zahlungsmoral 2022 gegenüber 2021
+    verschlechtert (privat 57&nbsp;%, gewerblich 51&nbsp;%), meist nur leicht (48&nbsp;% bzw.
+    41&nbsp;%). Impuls: „Was passiert in einer Volkswirtschaft, wenn Rechnungen spät bezahlt
+    werden?“ → Liquiditätsengpässe, weniger Investitionen, im Extremfall Insolvenzen und
+    Arbeitsplatzverluste (Aufgabe 1, AL). <em>Vorsicht:</em> Die Daten sind alt und
+    wahrscheinlich von den Nachwirkungen der Corona-Zeit geprägt; einen allgemeinen Trend
+    belegen sie nicht (so auch die AL). Deshalb hier nur als Option.</p>
+  </div>
+</section>
+
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Verzug mit Geld →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+
+<!-- ═══════════════ STEP 2 · VERZUG BEI GELDSCHULDEN, § 286 III (AUFGABE 3) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Wann ist man mit Geld im Verzug? (§ 286 III · Aufgabe 3)</div>
+      <div class="section-meta">Einzelarbeit · Gesetzestext erschließen</div>
+    </div>
+  </header>
+
+  <p>Das Prüfschema für den Verzug kennst du aus 1.1.6. Bei einer <strong>Geldschuld</strong> –
+  etwa der Pflicht zur Kaufpreiszahlung aus §&nbsp;433 II BGB – sind zwei Punkte immer erfüllt,
+  und für die Mahnung gibt es eine zusätzliche Regel.</p>
+
+  <div class="schema">
+    <div class="schema-title">Prüfschema · Zahlungsverzug (§ 286 BGB)</div>
+    <div class="schema-row">
+      <span class="schema-item">I. Nichtleistung trotz Fälligkeit<small>§§ 271 I, 475 I</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">II. Möglichkeit<small>bei Geld immer (+)</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">III. Mahnung<small>oder entbehrlich § 286 II · oder 30-Tage-Regel § 286 III</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">IV. Vertretenmüssen<small>bei Geld immer (+)</small></span><span class="schema-plus">=</span>
+      <span class="schema-item schema-result">Verzug</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>„Geld hat man zu haben.“</strong> Wer nicht zahlen kann, wird dadurch nicht
+    entlastet: Für die eigene finanzielle Leistungsfähigkeit muss jeder einstehen. Die Zahlung
+    bleibt deshalb immer <strong>möglich</strong>, und das <strong>Vertretenmüssen</strong> liegt
+    immer vor. <strong>Fällig</strong> ist der Kaufpreis grundsätzlich sofort (§&nbsp;271 I);
+    beim Kauf vom Unternehmer kann der Verkäufer ihn nur <em>unverzüglich</em> verlangen
+    (§&nbsp;475 I). Beim <strong>Kauf auf Rechnung</strong> ist vereinbart, dass erst die
+    Rechnung abgewartet wird – fällig wird die Zahlung dann mit ihrem Zugang.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text>
+        </svg></div>
+      <div>
+        <div class="task-title">Normanalyse · § 286 Absatz 3 BGB</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Passage im Gesetzestext markieren</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="nmark" data-nmark="p286-3">
+        <div class="nmark-catbar">
+          <button class="nmark-cat active" data-cat="AW" data-short="Wer?">Wer?<span class="nc-sub">→ für welche Forderungen gilt die Regel</span></button>
+          <button class="nmark-cat" data-cat="RF" data-short="Rechtsfolge">Rechtsfolge<span class="nc-sub">→ was passiert</span></button>
+          <button class="nmark-cat" data-cat="FR" data-short="30-Tage-Frist">30-Tage-Frist<span class="nc-sub">→ ab wann sie läuft</span></button>
+          <button class="nmark-cat" data-cat="VS" data-short="Verbraucherschutz">Verbraucherschutz<span class="nc-sub">→ Sonderregel für Verbraucher</span></button>
+          <button class="nmark-cat" data-cat="NV" data-short="Nur Unternehmer">Nur für Nicht-Verbraucher<span class="nc-sub">→ Ersatzregel bei unklarem Zugang</span></button>
+        </div>
+        <div class="nmark-hint">Merkmal oben wählen, dann die passende Textstelle antippen. Nochmal tippen hebt die Markierung auf.</div>
+
+        <div class="nmark-law">
+          <div class="nlaw-title">§ 286 Verzug des Schuldners · Absatz 3</div>
+          <span class="nabs"><span class="nsatz">S. 1</span>
+          <span class="npass" data-correct="AW">Der Schuldner einer Entgeltforderung<span class="npass-tag"></span></span>
+          <span class="npass" data-correct="RF">kommt spätestens in Verzug<span class="npass-tag"></span></span>,
+          <span class="npass" data-correct="FR">wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang einer Rechnung oder gleichwertigen Zahlungsaufstellung leistet<span class="npass-tag"></span></span>;
+          dies gilt gegenüber einem Schuldner, der Verbraucher ist,
+          <span class="npass" data-correct="VS">nur, wenn auf diese Folgen in der Rechnung oder Zahlungsaufstellung besonders hingewiesen worden ist<span class="npass-tag"></span></span>.
+          <span class="nsatz">S. 2</span> Wenn der Zeitpunkt des Zugangs der Rechnung oder
+          Zahlungsaufstellung unsicher ist, kommt
+          <span class="npass" data-correct="NV">der Schuldner, der nicht Verbraucher ist, spätestens 30 Tage nach Fälligkeit und Empfang der Gegenleistung in Verzug<span class="npass-tag"></span></span>.</span>
+        </div>
+
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkNmark(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetNmark(this)">Zurücksetzen</button>
+          <span class="assign-score nmark-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Rechnung und Hinweis</div>
+        <div class="task-form" style="color:var(--blue-700);">Selbstcheck · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Ein Onlineshop schreibt in seine AGB: „Sie geraten 30 Tage nach Erhalt der Rechnung automatisch in Verzug.“ Auf der Rechnung selbst steht dazu nichts. Gilt § 286 III gegenüber einer Verbraucherin?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – die AGB sind Teil des Vertrags, das genügt.</button>
+          <button class="quiz-opt" data-correct="1">Nein – der Hinweis muss in der Rechnung oder Zahlungsaufstellung selbst stehen.</button>
+          <button class="quiz-opt" data-correct="0">Ja – die 30-Tage-Regel gilt immer, ein Hinweis ist nur höflich.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;286 III S.&nbsp;1 Hs.&nbsp;2 verlangt einen <strong>besonderen</strong> Hinweis <strong>in der Rechnung</strong>. Ein Satz in den AGB oder ein nachgeschobener Hinweis reicht nicht – die Verbraucherin soll die Folge genau dann vor Augen haben, wenn sie die Rechnung in der Hand hält.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Eine Firma weiß nicht mehr, wann ihre Rechnung bei einer <em>anderen Firma</em> angekommen ist. Die Ware wurde am 01.03. geliefert und die Zahlung war mit Lieferung fällig. Wann ist die Kundin spätestens in Verzug?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">30 Tage nach Fälligkeit und Empfang der Ware (§ 286 III S. 2).</button>
+          <button class="quiz-opt" data-correct="0">Nie – ohne Zugangsnachweis kein Verzug.</button>
+          <button class="quiz-opt" data-correct="0">Sofort mit der Lieferung.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Für Schuldner, die <strong>keine</strong> Verbraucher sind, gibt es die Ersatzregel des §&nbsp;286 III S.&nbsp;2: Ist der Zugang der Rechnung unsicher, läuft die 30-Tage-Frist ab Fälligkeit und Empfang der Gegenleistung. Für Verbraucher gilt diese Ersatzregel nicht.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none">
+          <rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/>
+          <path d="M6 19l-4 6 8-4" fill="#0d9488"/>
+          <rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/>
+          <path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/>
+          <path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgabe 3 · Wie und warum schützt § 286 III Verbraucher?</div>
+        <div class="task-form partner">Partnerarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Legt dar, <strong>wie</strong> und <strong>warum</strong> der Gesetzgeber Verbraucherinnen
+      und Verbraucher in §&nbsp;286 III BGB besonders schützt.</p>
+
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="hinweis, rechnung, 30 tage, verbraucher, ersatzregel, empfang, unsicher, schutz, rechtskenntnis, unerfahren, informiert, kosten, zinsen, falle, ueberrascht"
+        data-required="5"
+        placeholder="Wie: Gegenüber Verbrauchern greift die 30-Tage-Regel nur, wenn … Außerdem gilt Satz 2 … Warum: Der Gesetzgeber geht davon aus, dass …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Wie?</strong> (1) Gegenüber einem <strong>Verbraucher</strong> tritt der Verzug nach
+        <strong>30 Tagen</strong> nur ein, wenn in der <strong>Rechnung</strong> besonders auf
+        diese Folge <strong>hingewiesen</strong> wurde (S.&nbsp;1 Hs.&nbsp;2). Ein Hinweis in den
+        AGB oder ein nachträglicher Hinweis genügt nicht. (2) Die
+        <strong>Ersatzregel</strong> bei <strong>unsicherem</strong> Zugang der Rechnung – 30 Tage ab
+        <strong>Empfang</strong> der Gegenleistung – gilt für Verbraucher nicht (S.&nbsp;2).<br>
+        <strong>Warum?</strong> Der Gesetzgeber geht davon aus, dass Verbraucher weniger
+        <strong>Rechtskenntnis</strong> haben und im Geschäftsverkehr <strong>unerfahren</strong>er
+        sind als Unternehmen. Sie sollen nicht <strong>überrascht</strong> werden: Wer zahlen
+        muss, soll wissen, ab wann <strong>Zinsen</strong> und weitere <strong>Kosten</strong>
+        drohen. Das ist ein Ausgleich für das Informationsgefälle – ein Fall von
+        <strong>Verbraucherschutz</strong> (vgl. 1.1.4).
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgabe 3: TB S.&nbsp;37 · Fachwissen „Voraussetzungen eines Zahlungsverzugs“ S.&nbsp;72 · Gesetzestext:
+      <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__286.html" target="_blank">§&nbsp;286 BGB</a></div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise (AL S. 37)</div>
+    <span class="tn-time">Zeitrahmen: ca. 10 Min.</span>
+    <ul>
+      <li>„Der Schuldner einer Entgeltforderung“ → <strong>Wer?</strong> (Entgeltforderung = Zahlung als Gegenleistung für eine Lieferung oder Leistung, z.&nbsp;B. Kaufpreis)</li>
+      <li>„kommt spätestens in Verzug“ → <strong>Rechtsfolge</strong>; „spätestens“: Eine Mahnung oder ein vereinbarter Termin kann früher Verzug auslösen.</li>
+      <li>„wenn er nicht innerhalb von 30 Tagen nach Fälligkeit und Zugang …“ → <strong>30-Tage-Frist</strong></li>
+      <li>„nur, wenn auf diese Folgen … besonders hingewiesen“ → <strong>Verbraucherschutz</strong></li>
+      <li>Satz 2 → <strong>Nur für Nicht-Verbraucher</strong></li>
+    </ul>
+    <p><strong>Aufgabe 3:</strong> AL deckungsgleich. Ergänzt: Hinweis in AGB genügt nicht
+    (Fachwissen S.&nbsp;72).</p>
+    <p><strong>Systematik (bei Nachfrage):</strong> Das Tafelbild führt § 286 III als „Mahnung
+    entbehrlich“. Genau genommen ist Abs. 3 ein <em>eigener</em> Verzugstatbestand neben
+    Abs. 1/2 – für die Schülerprüfung ist die Vereinfachung in Ordnung. §&nbsp;475 I gilt nach
+    seinem Wortlaut („die nach § 433 zu erbringenden Leistungen“, „die Vertragsparteien“) für
+    beide Seiten, also auch für die Kaufpreiszahlung.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Vier Rechnungen →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+
+<!-- ═══════════════ STEP 3 · M3 (AUFGABE 4) + AUFLÖSUNG M2 (AUFGABE 2) ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Vier Rechnungen, vier Ergebnisse (M3 · Aufgabe 4, Auflösung M2)</div>
+      <div class="section-meta">Partnerarbeit · zuordnen, Datum bestimmen</div>
+    </div>
+  </header>
+
+  <p>Alle vier kaufen am <strong>01.10.</strong> ein – und alle vier können nicht pünktlich
+  zahlen. Ab wann sind sie in Verzug?</p>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">a · Klaus · Gebrauchtwagen</div>
+      <p>Im <strong>Vertrag</strong> steht: Lieferung am 01.10., Zahlung „bis
+      <strong>zwei Wochen nach Lieferung</strong>“. Das Auto kommt pünktlich. Im Oktober ist
+      Klaus knapp bei Kasse.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">b · Udo · Smartphone</div>
+      <p>Kauf auf Rechnung im Elektronikmarkt; über Zahlungsbedingungen wird
+      <strong>nicht</strong> gesprochen. Eine Woche später (08.10.) kommt die Rechnung:
+      „Ohne Abzug innerhalb der nächsten <strong>10 Tage</strong> nach Zugang zahlbar.“ Udo hatte mit
+      30 Tagen gerechnet.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">c · Melek · Fernseher</div>
+      <p>Kauf auf Rechnung. Melek stimmt den <strong>AGB</strong> zu: Zahlung innerhalb von
+      <strong>10 Tagen nach Rechnungserhalt</strong>. Die Rechnung kommt am 08.10. und
+      wiederholt diesen Hinweis. Melek hatte mit 30 Tagen gerechnet.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">d · Lydia · E-Roller</div>
+      <p>Kauf auf Rechnung, keine Zahlungsbedingungen besprochen. Zwei Wochen später (15.10.)
+      kommt die Rechnung mit dem Hinweis: „Gemäß <strong>§&nbsp;286 III BGB</strong> geraten Sie
+      auch ohne Mahnung automatisch in Verzug, wenn Sie nicht innerhalb von 30 Tagen nach
+      Fälligkeit und Zugang zahlen.“</p>
+    </div>
+  </div>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 286 Absatz 2 Nr. 1 und 2 BGB · Der Mahnung bedarf es nicht, wenn …</div>
+    <div class="norm-text">
+      <strong>Nr. 1</strong> für die Leistung eine Zeit nach dem Kalender bestimmt ist,<br>
+      <strong>Nr. 2</strong> der Leistung ein Ereignis vorauszugehen hat und eine angemessene Zeit
+      für die Leistung in der Weise bestimmt ist, dass sie sich von dem Ereignis an nach dem
+      Kalender berechnen lässt, …
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Zwei Hilfen:</strong> (1) „<strong>Bestimmt</strong>“ heißt: im Vertrag
+    <strong>vereinbart</strong> – auch über AGB, denen man zugestimmt hat. Was der Verkäufer
+    nachträglich und einseitig auf die Rechnung schreibt, ist nur ein Zahlungsziel.
+    (2) Fristen rechnen: Der Tag des Ereignisses zählt nicht mit (§&nbsp;187 I BGB). Am letzten
+    Tag der Frist darf man noch zahlen – in Verzug ist man ab dem <strong>Folgetag</strong>.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none">
+          <rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/>
+          <path d="M6 19l-4 6 8-4" fill="#0d9488"/>
+          <rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/>
+          <path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/>
+          <path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgabe 4a · Auf welchem Weg kommt der Verzug?</div>
+        <div class="task-form partner">Partnerarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="m3">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="T">Termin berechenbar (§ 286 II Nr. 2)</button>
+          <button class="assign-cat" data-cat="D">30-Tage-Regel (§ 286 III)</button>
+          <button class="assign-cat" data-cat="M">Verzug nur durch Mahnung</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Fall antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="T"><span class="ai-key">a</span><span class="ai-text">Klaus: Zahlung laut Vertrag „bis zwei Wochen nach Lieferung“.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">b</span><span class="ai-text">Udo: Rechnung mit „innerhalb der nächsten 10 Tage zahlbar“, sonst nichts vereinbart.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="T"><span class="ai-key">c</span><span class="ai-text">Melek: 10 Tage nach Rechnungserhalt, über die AGB vereinbart.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="D"><span class="ai-key">d</span><span class="ai-text">Lydia: Rechnung mit ausdrücklichem Hinweis auf § 286 III.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgabe 4b · Ab wann in Verzug?</div>
+        <div class="task-form" style="color:var(--blue-700);">Partnerarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">a) Klaus – das Auto wurde am 01.10. geliefert.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">ab 01.10. – mit der Lieferung</button>
+          <button class="quiz-opt" data-correct="1">ab 16.10. – die zwei Wochen enden mit dem 15.10.</button>
+          <button class="quiz-opt" data-correct="0">erst nach einer Mahnung</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ereignis (Lieferung) + vertraglich bestimmte Frist, die sich nach dem Kalender berechnen lässt → Mahnung entbehrlich (§&nbsp;286 II Nr.&nbsp;2). Fristende 15.10., Verzug ab 16.10. Dass Klaus knapp bei Kasse ist, ändert nichts.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">b) Udo – Rechnung am 08.10. erhalten.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">ab 19.10. – die 10 Tage auf der Rechnung sind verbindlich.</button>
+          <button class="quiz-opt" data-correct="0">ab 08.11. – automatisch nach 30 Tagen (§ 286 III).</button>
+          <button class="quiz-opt" data-correct="1">Erst wenn der Händler ihn mahnt – automatisch kommt Udo gar nicht in Verzug.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die 10 Tage hat der Händler <strong>einseitig</strong> auf die Rechnung geschrieben – vereinbart war nichts, also kein §&nbsp;286 II. Und §&nbsp;286 III greift bei Udo als Verbraucher nur mit Hinweis auf die Verzugsfolgen in der Rechnung – der fehlt. Bleibt die <strong>Mahnung</strong>. Udos Rechnung mit „30 Tagen“ stimmt trotzdem nicht: Mahnt der Händler, ist Udo sofort in Verzug.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">c) Melek – Rechnung am 08.10. erhalten.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">ab 19.10. – die 10 Tage sind über die AGB vereinbart.</button>
+          <button class="quiz-opt" data-correct="0">ab 08.11. – Verbraucher haben immer 30 Tage.</button>
+          <button class="quiz-opt" data-correct="0">erst nach einer Mahnung – wie bei Udo.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Der Unterschied zu Udo: Melek hat der kürzeren Frist <strong>zugestimmt</strong>. Ereignis (Rechnungszugang 08.10.) + vereinbarte Frist → §&nbsp;286 II Nr.&nbsp;2. Fristende 18.10., Verzug ab 19.10.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">d) Lydia – Rechnung mit Hinweis am 15.10. erhalten.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">ab 31.10. – 30 Tage ab dem Kauf</button>
+          <button class="quiz-opt" data-correct="1">ab 15.11. – 30 Tage nach Fälligkeit und Zugang der Rechnung</button>
+          <button class="quiz-opt" data-correct="0">gar nicht – ohne Geld kein Verzug</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Fällig wird die Zahlung beim Kauf auf Rechnung mit deren Zugang (15.10.). Mit Hinweis gilt §&nbsp;286 III auch für Verbraucher: Fristende 14.11., Verzug ab 15.11. „Woher soll sie das Geld nehmen?“ – Geld hat man zu haben.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgabe 2 · Und jetzt: Rechtsirrtum oder nicht? (M2)</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Vergleiche mit deiner Einschätzung aus dem Einstieg.</p>
+      <div class="quiz-q">
+        <div class="quiz-prompt">A „Man hat grundsätzlich 30 Tage Zeit, eine Rechnung zu bezahlen.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Stimmt – das steht in § 286 III.</button>
+          <button class="quiz-opt" data-correct="1">So nicht: Fällig ist die Rechnung sofort. Die 30 Tage sind nur die späteste Grenze – und gegenüber Verbrauchern nur mit Hinweis.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Fällig ist sofort (§&nbsp;271 I) bzw. unverzüglich (§&nbsp;475 I). Eine Mahnung oder ein vereinbarter Termin (Klaus, Melek) kann viel früher Verzug auslösen. Und ohne Hinweis kommt ein Verbraucher nach 30 Tagen gar nicht automatisch in Verzug (Udo). Der wahre Kern: Ohne Mahnung und ohne Termin tritt der Verzug „spätestens“ nach 30 Tagen ein (Lydia).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">B „Als Verbraucher muss man erst nach der zweiten Mahnung zahlen.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Stimmt – die erste Mahnung ist nur eine Erinnerung.</button>
+          <button class="quiz-opt" data-correct="1">Rechtsirrtum – zahlen muss man ab Fälligkeit; eine Mahnung genügt für den Verzug.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;286 I verlangt <em>eine</em> Mahnung. Zweite und dritte Mahnungen schicken Unternehmen nur, um Druck zu machen oder ein gerichtliches Mahnverfahren vorzubereiten.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">C „Durch einen Hinweis auf der Rechnung kann der Verkäufer die 30-Tage-Frist verkürzen.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Rechtsirrtum – eine kürzere Zahlungsfrist muss vorher vereinbart werden, z. B. über AGB (Melek, nicht Udo).</button>
+          <button class="quiz-opt" data-correct="0">Stimmt – der Verkäufer bestimmt die Zahlungsbedingungen.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Einseitig geht das nicht. Bei Udo ist das „10-Tage-Ziel“ deshalb kein Termin im Sinne des §&nbsp;286 II – bei Melek schon, weil sie den AGB zugestimmt hat.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">D „Zahlungsunfähigkeit schützt nicht vor Zahlungsverzug.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Stimmt – Geld hat man zu haben.</button>
+          <button class="quiz-opt" data-correct="0">Rechtsirrtum – wer nicht zahlen kann, hat das nicht zu vertreten (§ 286 IV).</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Für die eigene Zahlungsfähigkeit muss man immer einstehen. §&nbsp;286 IV hilft nicht: Fehlendes Geld ist kein Umstand, den der Schuldner „nicht zu vertreten“ hat.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M3 „Bis wann muss man als Verbraucherin oder Verbraucher eine Rechnung bezahlen?“: TB S.&nbsp;35 · Aufgaben 2 &amp; 4: TB S.&nbsp;37 · Fachwissen S.&nbsp;72</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise (AL S. 37, korrigiert)</div>
+    <span class="tn-time">Zeitrahmen: ca. 15 Min.</span>
+    <p><strong>Lösungsschlüssel 4a:</strong> a → § 286 II Nr. 2 · b → nur Mahnung · c → § 286 II Nr. 2 · d → § 286 III.</p>
+    <p><strong>Fehler in der AL (Aufg. 4, Udo):</strong> Die AL nennt „Verzugseintritt bei
+    Mahnung <u>oder automatisch nach § 286 III</u> … ca. mit Ablauf des 7.11.“. Das ist falsch:
+    Udo ist Verbraucher, seine Rechnung enthält keinen Hinweis auf die Verzugsfolgen →
+    § 286 III S. 1 Hs. 2 greift nicht. Verzug tritt <strong>nur durch Mahnung</strong> ein.
+    Genau dieser Kontrast zu Lydia (d) ist der Kern von M3 und der Grund für Aufgabe 3.</p>
+    <p><strong>Udo, bei Nachfrage:</strong> Das einseitige Zahlungsziel ist keine
+    Leistungszeitbestimmung nach § 286 II Nr. 1/2 (es fehlt die Vereinbarung). Eine Mahnung vor
+    Ablauf der 10 Tage wäre aber widersprüchlich – der Händler hat ja selbst Zeit
+    eingeräumt. Praktisch: Mahnung ab 19.10. → Verzug mit Zugang der Mahnung.</p>
+    <p><strong>Melek, bei Nachfrage:</strong> Ob eine kurze Zahlungsfrist in AGB gegenüber
+    Verbrauchern hält, ist am Maßstab des § 309 Nr. 4 BGB (Freistellung von der Mahnung) bzw.
+    § 307 zu prüfen. Eine angemessene, kalendermäßig berechenbare Frist nach Rechnungszugang
+    wird überwiegend für zulässig gehalten. Für die Klasse: zulässig.</p>
+    <p><strong>Daten:</strong> AL „ca. mit Ablauf des 15.10. / 18.10. / 14.11.“ = Verzug ab
+    16.10. / 19.10. / 15.11. (Fristende mit Ablauf des letzten Tages, § 188 I/II). Die AL
+    nimmt bei b eine Woche, bei d zwei Wochen bis zum Zugang an.</p>
+    <p><strong>Aufgabe 2 (M2) – AL präzisiert:</strong> Die AL hält A „bezogen auf den
+    Verzugseintritt“ für richtig. Präziser: Die 30 Tage sind eine <em>Höchst</em>grenze und
+    greifen bei Verbrauchern nur mit Hinweis – deshalb im Quiz „So nicht“. B, C falsch, D
+    richtig (deckungsgleich mit der AL).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Was es kostet →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+
+<!-- ═══════════════ STEP 4 · RECHTSFOLGEN (M4, M5 · AUFGABEN 5 & 6) ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Was der Zahlungsverzug kostet (M4, M5 · Aufgaben 5 &amp; 6)</div>
+      <div class="section-meta">Einzelarbeit · erläutern und rechnen</div>
+    </div>
+  </header>
+
+  <p>Ist die Käuferin in Verzug, kann der Verkäufer – zusätzlich zum Kaufpreis – zweierlei
+  verlangen. Beides kennst du in ähnlicher Form schon aus 1.1.7.</p>
+
+  <div class="schema">
+    <div class="schema-title">Rechtsfolgen des Zahlungsverzugs</div>
+    <div class="schema-row">
+      <span class="schema-item">Kaufpreis<small>§ 433 II – bleibt geschuldet</small></span><span class="schema-plus">+</span>
+      <span class="schema-item schema-result">Verzugsschaden<small style="color:#fff;">§§ 280 I, II, 286 · z. B. Anwaltskosten</small></span><span class="schema-plus">+</span>
+      <span class="schema-item schema-result">Verzugszinsen<small style="color:#fff;">§ 288</small></span>
+    </div>
+    <div class="schema-row" style="margin-top:8px;">
+      <span class="schema-item">Will der Verkäufer die Sache zurück?<small>Frist setzen → Rücktritt § 323, Rückgabe § 346 I (wie 1.1.8)</small></span>
+    </div>
+  </div>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 288 BGB · Verzugszinsen und sonstiger Verzugsschaden (Abs. 1–4)</div>
+    <div class="norm-text">
+      <strong>(1)</strong> Eine Geldschuld ist während des Verzugs zu verzinsen. Der
+      Verzugszinssatz beträgt für das Jahr fünf Prozentpunkte über dem Basiszinssatz.<br>
+      <strong>(2)</strong> Bei Rechtsgeschäften, an denen ein Verbraucher nicht beteiligt ist,
+      beträgt der Zinssatz für Entgeltforderungen neun Prozentpunkte über dem Basiszinssatz.<br>
+      <strong>(3)</strong> Der Gläubiger kann aus einem anderen Rechtsgrund höhere Zinsen
+      verlangen.<br>
+      <strong>(4)</strong> Die Geltendmachung eines weiteren Schadens ist nicht ausgeschlossen.
+    </div>
+  </div>
+
+  <div class="zinsrechner" id="zinsrechner">
+    <div class="zr-title">Verzugszinsen-Rechner</div>
+    <div class="zr-bz">Basiszinssatz (§&nbsp;247 BGB) seit <span class="bz-date"></span>:
+      <strong><span class="bz"></span>&nbsp;%</strong> – er ändert sich zum 1.&nbsp;Januar und 1.&nbsp;Juli
+      (<a class="para-link" href="https://www.bundesbank.de/de/bundesbank/organisation/agb-und-regelungen/basiszinssatz-607820" target="_blank">aktueller Wert: Bundesbank</a>).</div>
+    <div class="zr-grid">
+      <label>Offener Betrag (€)<input type="number" id="zrBetrag" value="1000" min="0" step="1"></label>
+      <label>Tage im Verzug<input type="number" id="zrTage" value="30" min="0" step="1"></label>
+      <label class="zr-wide">Wer ist beteiligt?
+        <select id="zrArt">
+          <option value="5">Ein Verbraucher ist beteiligt → 5 Prozentpunkte (§ 288 I)</option>
+          <option value="9">Nur Unternehmen, Entgeltforderung → 9 Prozentpunkte (§ 288 II)</option>
+        </select>
+      </label>
+    </div>
+    <div class="zr-out" id="zrOut"></div>
+    <div class="zr-formel">Zinsen = Betrag × Zinssatz × Tage ÷ 365</div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Zinsen</div>
+        <div class="task-form" style="color:var(--blue-700);">Selbstcheck · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Angenommen, Lydias E-Roller (d) kostet 1.000&nbsp;€ und sie zahlt erst am 14.12. Ab wann laufen Verzugszinsen?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">ab dem Kauf (01.10.)</button>
+          <button class="quiz-opt" data-correct="0">ab Zugang der Rechnung (15.10.)</button>
+          <button class="quiz-opt" data-correct="1">ab Beginn des Verzugs (15.11.)</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Verzinst wird „während des Verzugs“ (§&nbsp;288 I) – bei Lydia also ab dem 15.11. bis zur Zahlung. Probier's im Rechner aus: 1.000&nbsp;€, 30 Tage, Verbraucher.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Ein Händler hat wegen Lydias Verspätung einen Kredit zu 12&nbsp;% aufnehmen müssen. Bekommt er nur die gesetzlichen Zinsen?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – § 288 I legt den Zinssatz abschließend fest.</button>
+          <button class="quiz-opt" data-correct="1">Nein – weist er den höheren Zinsschaden nach, kann er ihn als weiteren Schaden verlangen (§ 288 IV i. V. m. §§ 280 I, II, 286).</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die gesetzlichen Zinsen gibt es ohne Nachweis eines Schadens – als Mindestentschädigung. Wer einen höheren Schaden <strong>nachweist</strong>, bekommt diesen (§&nbsp;288 IV). Doppelt gibt es die Zinsen aber nicht: entweder gesetzlich oder der höhere Schaden.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgaben 5 &amp; 6 · Rechtsfolgen erläutern, Zinsen erklären</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Erläutere mit M4, welche Rechtsfolgen einer Käuferin drohen, die eine Rechnung zu spät
+      bezahlt. Erkläre dann, wie Verzugszinsen berechnet werden (§&nbsp;288 I–IV, M5) und warum
+      die Regelung einen <strong>gerechten Interessenausgleich</strong> schafft und Verbraucher
+      schützt.</p>
+
+      <textarea class="answer-area gate-input" rows="7"
+        data-min-words="50"
+        data-keywords="verzugsschaden, 280, 286, anwalt, rechtsverfolgung, verzugszinsen, 288, basiszinssatz, prozentpunkte, verbraucher, unternehmen, nachweis, hoeher, ausgleich, entschaedigung, anreiz, puenktlich"
+        data-required="7"
+        placeholder="Wer in Zahlungsverzug ist, muss … ersetzen (§§ …). Außerdem … Der Zinssatz beträgt … Gerecht ist das, weil …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 50 Wörter · 0 von 7 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <strong>Rechtsfolgen (M4):</strong> (1) Ersatz des <strong>Verzugsschaden</strong>s als
+        Schadensersatz neben der Leistung nach §§&nbsp;<strong>280</strong> I, II,
+        <strong>286</strong> – in der Praxis vor allem Kosten der
+        <strong>Rechtsverfolgung</strong> wie <strong>Anwalt</strong>skosten (die
+        verzugsbegründende Erstmahnung selbst ist nicht ersatzfähig, vgl. 1.1.7). (2)
+        <strong>Verzugszinsen</strong> aus §&nbsp;<strong>288</strong>. Der Kaufpreis bleibt
+        natürlich geschuldet.<br>
+        <strong>Berechnung (M5):</strong> Zinsen laufen ab Beginn des Verzugs bis zur Zahlung.
+        Der Satz liegt über dem <strong>Basiszinssatz</strong> (§&nbsp;247; derzeit
+        <span class="bz"></span>&nbsp;%): bei Beteiligung eines <strong>Verbraucher</strong>s 5
+        <strong>Prozentpunkte</strong> darüber (= <span class="bz5"></span>&nbsp;%), bei
+        Entgeltforderungen nur zwischen <strong>Unternehmen</strong> 9 Prozentpunkte
+        (= <span class="bz9"></span>&nbsp;%). Höhere Zinsen gibt es aus einem anderen Rechtsgrund,
+        z.&nbsp;B. einer Vereinbarung (Abs.&nbsp;3), oder als weiteren Schaden mit
+        <strong>Nachweis</strong>, z.&nbsp;B. <strong>höher</strong>e Kreditzinsen (Abs.&nbsp;4).<br>
+        <strong>Interessenausgleich:</strong> Der Gläubiger bekommt eine
+        <strong>Entschädigung</strong> dafür, dass ihm das Geld fehlt – ohne seinen Schaden
+        beweisen zu müssen. Zugleich setzen die Zinsen einen <strong>Anreiz</strong>,
+        <strong>pünktlich</strong> zu zahlen; das hält den Geschäftsverkehr am Laufen.
+        <strong>Verbraucherschutz:</strong> Verbraucher zahlen den niedrigeren Satz (5 statt 9
+        Prozentpunkte) – Unternehmen können Zahlungsrisiken besser einkalkulieren.
+      </div>
+    </div>
+  </div>
+
+  <div class="reflect">
+    <div class="reflect-icon"><svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg></div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">bevor du gehst</span></div>
+      <div class="reflect-text">
+        Kannst du ohne Spickzettel sagen, warum Udo und Lydia zu unterschiedlichen Zeitpunkten
+        in Verzug kommen – und was Lydia der Verzug kostet? <strong>Jetzt ist Zeit für deine
+        Fragen.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M4 „Was sind die Rechtsfolgen des Zahlungsverzugs?“: TB S.&nbsp;35&nbsp;f. · M5 „Achtung Verzugszinsen!“: TB S.&nbsp;36 · Aufgaben 5 &amp; 6: TB S.&nbsp;37 · Fachwissen S.&nbsp;72&nbsp;f.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise (AL S. 37, aktualisiert)</div>
+    <span class="tn-time">Zeitrahmen: ca. 10 Min. + 3 Min. Zwischencheck</span>
+    <p><strong>Basiszinssatz aktualisiert:</strong> AL (1,27 %, Stand 2025) und Fachwissen
+    (Rechenbeispiel mit 2,27 %) sind veraltet. Seit 01.07.2026 gilt <strong><span class="bz"></span>&nbsp;%</strong>
+    → <span class="bz5"></span>&nbsp;% bzw. <span class="bz9"></span>&nbsp;%. Der Wert steht in
+    dieser Datei an <strong>einer</strong> Stelle (JS-Konstante <code>BASISZINS</code>) –
+    nächste Änderung zum 01.01.2027 prüfen.</p>
+    <p><strong>„Fiktive“ Verzugszinsen</strong> (Fachwissen/AL): gemeint ist, dass die
+    gesetzlichen Zinsen ohne Nachweis eines Schadens geschuldet sind – „abstrakte“
+    Mindestentschädigung. Zinsbeginn: Tag nach Verzugseintritt (§ 187 I analog); Online-Rechner
+    unterscheiden sich hier teils um einen Tag (so auch Fachwissen S.&nbsp;73).</p>
+    <p><strong>40-€-Pauschale (§ 288 V, M7/Aufgabe 9):</strong> bewusst nicht in der Stunde
+    (Entscheidung 28.10.2026), nur als Hinweis im Handout: nur wenn der <em>Schuldner</em> kein
+    Verbraucher ist. Die Behauptung in M7/Fachwissen, Verbraucher könnten sie bei verspäteter
+    Erstattung nach Widerruf verlangen, ist zweifelhaft: Der Rückzahlungsanspruch ist nach der
+    BGH-Definition (Entgelt als Gegenleistung für Lieferung/Leistung) wohl keine
+    Entgeltforderung.</p>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li>Auch die <strong>Käuferin</strong> kann in Verzug kommen. Bei Geldschulden sind Möglichkeit und Vertretenmüssen immer gegeben: <strong>Geld hat man zu haben</strong>.</li>
+      <li>Verzug durch <strong>Mahnung</strong> – oder ohne Mahnung, wenn ein Zahlungstermin <strong>vereinbart</strong> ist (§ 286 II). Ein einseitiges Zahlungsziel auf der Rechnung genügt nicht.</li>
+      <li><strong>§ 286 III:</strong> spätestens 30 Tage nach Fälligkeit und Zugang der Rechnung – gegenüber Verbrauchern <strong>nur mit Hinweis in der Rechnung</strong>.</li>
+      <li>Rechtsfolgen: <strong>Verzugsschaden</strong> (§§ 280 I, II, 286) und <strong>Verzugszinsen</strong> (§ 288): 5 Prozentpunkte über dem Basiszinssatz, nur zwischen Unternehmen 9; höherer Schaden mit Nachweis (§ 288 IV).</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Zusatz: Melanie →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+
+<!-- ═══════════════ STEP 5 · ZUSATZ / HAUSAUFGABE: M6 (AUFGABEN 7 & 8) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Zusatz oder Hausaufgabe: Melanie und das Refurbished-Handy (M6 · Aufgaben 7 &amp; 8)</div>
+      <div class="section-meta">Einzelarbeit · Prüfung im Gutachtenstil</div>
+    </div>
+  </header>
+
+  <div class="fall-card letter">
+    <div class="letter-head">
+      <span><strong>M6 · Refurbished ist in!</strong> – Shop „Longlife“</span>
+      <span>28.10. bis 03.12.</span>
+    </div>
+    <p>Die Studentin Melanie T. kauft am <strong>28.10.</strong> im Refurbished-Shop „Longlife“
+    ein generalüberholtes Smartphone für <strong>600&nbsp;€</strong>. Sie hat keinen Geldbeutel
+    dabei; vereinbart wird, dass sie <strong>in den nächsten Tagen</strong> zum Bezahlen kommt
+    und das Handy dann mitnimmt. Am 03.11. kommt sie, hat aber kein Geld und verspricht, es
+    binnen einer Woche aufzutreiben. Der Inhaber ruft am <strong>13.11.</strong> und am
+    <strong>17.11.</strong> an und fordert sie auf, das Geld endlich vorbeizubringen. Am
+    <strong>03.12.</strong> hat sie immer noch nicht bezahlt. Ein anderer Kunde will das Handy
+    für 560&nbsp;€. „Longlife“ erklärt Melanie am Telefon den <strong>Rücktritt</strong> und
+    verlangt <strong>40&nbsp;€</strong> Schadensersatz für den geringeren Preis. Außerdem hat
+    der Inhaber sein Konto vom <strong>04.11. bis 03.12.</strong> mit <strong>14&nbsp;%</strong>
+    Dispozinsen überzogen und will dafür <strong>6,90&nbsp;€</strong> (14&nbsp;% von 600&nbsp;€
+    für 30 Tage).</p>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg></div>
+      <div>
+        <div class="task-title">Aufgabe 7 · Die 40 € für den geringeren Kaufpreis</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung (Wiederholung 1.1.8)</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Kann „Longlife“ die 40&nbsp;€ als Schadensersatz statt der Leistung (§§ 280 I, III, 281) verlangen?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – Melanie war in Verzug, das genügt.</button>
+          <button class="quiz-opt" data-correct="1">Nein – „Longlife“ hat ihr keine angemessene Frist gesetzt; die Anrufe waren Mahnungen, keine Fristsetzung.</button>
+          <button class="quiz-opt" data-correct="0">Nein – Melanie hat die Verspätung nicht zu vertreten, weil sie kein Geld hatte.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Schadensersatz <em>statt</em> der Leistung braucht den erfolglosen Ablauf einer angemessenen <strong>Frist</strong> (§&nbsp;281 I) – Verzug allein reicht nicht. Entbehrlich ist die Frist auch nicht: Melanie hat nicht ernsthaft und endgültig verweigert, und ein neuer Interessent ist kein „besonderer Umstand“ (§&nbsp;281 II).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Und der Rücktritt vom 03.12.?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Unwirksam – auch § 323 I verlangt eine erfolglose Fristsetzung. Der Kaufvertrag besteht weiter.</button>
+          <button class="quiz-opt" data-correct="0">Wirksam – beim Zahlungsverzug darf der Verkäufer immer sofort zurücktreten.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Für den Verkäufer gelten dieselben Regeln wie in 1.1.8 für den Käufer: erst Frist setzen, dann zurücktreten. Ohne Rücktrittsrecht geht die Rücktrittserklärung ins Leere – Melanie schuldet weiter 600&nbsp;€, „Longlife“ weiter das Handy.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:18px;"><strong>Aufgabe 8:</strong> Prüfe im Gutachtenstil, ob „Longlife“
+  die Dispozinsen von 6,90&nbsp;€ von Melanie verlangen kann. Drei Schritte schreibst du selbst.</p>
+
+  <div class="gframe">
+    <span class="gframe-tag">Obersatz</span>
+    „Longlife“ könnte gegen Melanie T. einen Anspruch auf <strong>Schadensersatz neben der
+    Leistung</strong> bei einer verspäteten Leistung (Ersatz des Verzögerungsschadens) in Höhe
+    der Dispozinsen von <strong>6,90&nbsp;€</strong> aus <strong>§§&nbsp;280 I, II, 286
+    BGB</strong> haben.
+  </div>
+
+  <!-- I. Schuldverhältnis -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">I</div>
+      <div class="gstep-title">Schuldverhältnis<span class="gnorm">§ 280 I S. 1 BGB → wirksamer Kaufvertrag (§ 433 BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Muster</span>
+      <div class="gstep-def" style="margin-bottom:0;">Es müsste ein Schuldverhältnis bestehen.
+      Dieses könnte durch einen Kaufvertrag begründet sein, der durch zwei übereinstimmende
+      Willenserklärungen (Antrag und Annahme) zustande kommt. Melanie T. hat am 28.10. bei
+      „Longlife“ ein Smartphone für 600&nbsp;€ gekauft. Ein wirksamer Kaufvertrag liegt vor.
+      ✔ Schuldverhältnis (+)</div>
+    </div>
+  </div>
+
+  <!-- II. Pflichtverletzung -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">II</div>
+      <div class="gstep-title">Pflichtverletzung<span class="gnorm">Nichtleistung trotz Möglichkeit und Fälligkeit (§§ 286 I S. 1, 271, 475 I BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Darüber hinaus müsste eine Pflichtverletzung vorliegen. Diese
+      könnte in der Verzögerung der Leistung liegen, d.&nbsp;h. in der Nichtleistung trotz
+      Möglichkeit und Fälligkeit.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Hat Melanie gezahlt? Ist die Zahlung noch
+      möglich? Wann wurde sie fällig – was wurde dazu vereinbart? Achtung: Hat Melanie das
+      Handy schon?</p>
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="30"
+        data-keywords="433, nicht gezahlt, geld hat man zu haben, moeglich, faellig, naechsten tagen, vereinbart, handy, mitnehmen"
+        data-required="5"
+        placeholder="Bis zum 03.12. hat Melanie … Die Zahlung ist noch möglich, weil … Fällig ist sie, weil vereinbart wurde, dass …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Bis zum 03.12. hat Melanie T. ihre Pflicht zur Kaufpreiszahlung aus §&nbsp;<strong>433</strong>
+        II BGB <strong>nicht</strong> erfüllt, sie hat <strong>nicht gezahlt</strong>. Da es sich
+        um eine Geldschuld handelt, bleibt die Leistung <strong>möglich</strong>
+        („<strong>Geld hat man zu haben</strong>“). Die Zahlung ist auch <strong>fällig</strong>:
+        <strong>Vereinbart</strong> war, dass sie „in den <strong>nächsten Tagen</strong>“ zum
+        Bezahlen kommt und das <strong>Handy</strong> dann <strong>mitnimmt</strong>; diese Tage
+        sind spätestens im November verstrichen. (Das Handy hat Melanie also noch
+        <em>nicht</em> – „Longlife“ hält es bereit.) ✔ Pflichtverletzung (+)
+      </div>
+    </div>
+  </div>
+
+  <!-- III. Mahnung -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">III</div>
+      <div class="gstep-title">Mahnung<span class="gnorm">§ 286 I S. 1 BGB oder Entbehrlichkeit (§ 286 II, III BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Als zusätzliche Voraussetzung des Verzugs müsste eine Mahnung
+      vorliegen oder entbehrlich sein. Eine Mahnung ist die eindeutige und bestimmte
+      Aufforderung des Gläubigers an den Schuldner, die geschuldete Leistung zu erbringen.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Gab es einen kalendermäßigen Termin? Gab es
+      eine Rechnung mit Hinweis? Wann wurde gemahnt – und ab wann ist Melanie in Verzug?</p>
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="30"
+        data-keywords="kein termin, kalender, 286 ii, nicht entbehrlich, rechnung, 286 iii, anruf, 13 11, aufforderung, mahnung, verzug"
+        data-required="5"
+        placeholder="Ein Termin nach dem Kalender wurde nicht … § 286 III greift nicht, weil … Am 13.11. …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        „In den nächsten Tagen“ ist <strong>kein</strong> nach dem <strong>Kalender</strong>
+        bestimmter <strong>Termin</strong> – §&nbsp;<strong>286 II</strong> greift
+        <strong>nicht</strong>, die Mahnung ist <strong>nicht entbehrlich</strong>. Eine
+        <strong>Rechnung</strong> mit Hinweis gab es nicht, also auch kein §&nbsp;<strong>286 III</strong>.
+        Am <strong>13.11.</strong> ruft der Inhaber an und fordert Melanie auf, „das Geld nun
+        endlich vorbeizubringen“. Diese eindeutige <strong>Aufforderung</strong> ist eine
+        <strong>Mahnung</strong>; sie ist auch am Telefon wirksam. Melanie ist damit ab dem
+        13.11. in <strong>Verzug</strong>. ✔ Mahnung (+)
+      </div>
+    </div>
+  </div>
+
+  <!-- IV. Vertretenmüssen -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">IV</div>
+      <div class="gstep-title">Vertretenmüssen<span class="gnorm">§§ 280 I S. 2, 286 IV, 276 BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Muster</span>
+      <div class="gstep-def" style="margin-bottom:0;">Außerdem müsste Melanie T. – die
+      <em>Schuldnerin</em> – die Verzögerung zu vertreten haben. Das wird nach §&nbsp;280 I S.&nbsp;2
+      vermutet. Auf fehlendes Geld kann sie sich nicht berufen; für ihre Zahlungsfähigkeit muss
+      jeder einstehen. ✔ Vertretenmüssen (+)</div>
+    </div>
+  </div>
+
+  <!-- V. Schaden -->
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">V</div>
+      <div class="gstep-title">Kausaler Schaden und Ergebnis<span class="gnorm">§ 280 I S. 1, §§ 249 ff., § 288 IV BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Durch die Pflichtverletzung müsste ein ersatzfähiger Schaden
+      entstanden sein. Nach §&nbsp;249 I ist der Zustand herzustellen, der ohne das schädigende
+      Ereignis bestünde (Differenzhypothese).</div>
+      <span class="glabel">Subsumtion und Ergebnis – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Wären die Dispozinsen ohne die
+      Verspätung angefallen? Für welchen Zeitraum muss Melanie haften – ab Verzug oder ab dem
+      04.11.? Rechne nach. (Tipp: 14&nbsp;% von 600&nbsp;€ sind 84&nbsp;€ im Jahr.)</p>
+      <textarea class="answer-area gate-input" rows="4"
+        data-min-words="35"
+        data-keywords="dispozinsen, rechtzeitig, kausal, 249, ab verzug, 14 11, 20 tage, 4 60, nicht 6 90, 288 iv, hoeher"
+        data-required="5"
+        placeholder="Hätte Melanie rechtzeitig gezahlt, … Ersetzt wird aber nur der Schaden ab Verzug, also … 600 € × 14 % × … ÷ 365 = …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Hätte Melanie <strong>rechtzeitig</strong> gezahlt, wären die
+        <strong>Dispozinsen</strong> nicht angefallen – der Schaden ist
+        <strong>kausal</strong> (§&nbsp;<strong>249</strong> I). Ersatzfähig ist aber nur der
+        Schaden <strong>ab Verzug</strong>: Melanie ist seit dem 13.11. in Verzug, gezählt werden
+        die Tage vom <strong>14.11.</strong> bis zum 03.12. – das sind <strong>20 Tage</strong>
+        (nicht 30). 600&nbsp;€ × 14&nbsp;% × 20 ÷ 365 = <strong>4,60&nbsp;€</strong>.<br>
+        <strong>Ergebnis:</strong> „Longlife“ hat gegen Melanie T. einen Anspruch auf
+        Schadensersatz neben der Leistung aus §§&nbsp;280 I, II, 286 BGB in Höhe von 4,60&nbsp;€,
+        <strong>nicht 6,90&nbsp;€</strong>. Dass die Dispozinsen über dem gesetzlichen Satz
+        liegen, schadet nicht: Ein <strong>höher</strong>er nachgewiesener Schaden kann statt
+        der gesetzlichen Zinsen verlangt werden (§&nbsp;<strong>288 IV</strong>). Die gesetzlichen
+        Verzugszinsen (<span class="bz5"></span>&nbsp;%) wären nur
+        <span class="bz-calc" data-amount="600" data-days="20" data-pp="5"></span>&nbsp;€.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M6 „Refurbished ist in!“: TB S.&nbsp;36 · Aufgaben 7 &amp; 8: TB S.&nbsp;37 · Vorlage zur (vereinfachten) Prüfung im Gutachtenstil: Mediencode 82024-126 · Gutachtenstil S.&nbsp;209&nbsp;f.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise zu Aufgaben 7 &amp; 8 (AL S. 37, Tafelbilder korrigiert)</div>
+    <p><strong>Einsatz:</strong> Zusatzübung für Schnelle oder Hausaufgabe (Entscheidung
+    28.10.2026). Besprechung zu Beginn von 1.1.10 (ca. 5 Min.).</p>
+    <p><strong>Fehler in AL und beiden Tafelbildern (Aufg. 7 und 8):</strong></p>
+    <ul>
+      <li>Fälligkeit „weil sie die Leistung ja schon erhalten hat“ – <strong>falsch</strong>:
+      Laut M6 soll Melanie das Handy erst beim Bezahlen mitnehmen. Fällig wird die Zahlung
+      wegen der Absprache „in den nächsten Tagen“.</li>
+      <li>Punkt IV: „müsste der <u>Verkäufer</u> … zu vertreten haben“ → richtig: die
+      <strong>Schuldnerin</strong> Melanie.</li>
+      <li>Tafelbild Aufg. 8, Punkt II: „§ 75 I“ → <strong>§ 475 I</strong>. Seitenangaben
+      „S. 54“ stammen aus einer alten Auflage (richtig: S. 36).</li>
+      <li>AL Aufg. 8 rechnet mit 1,27 % (2025) – aktualisiert auf <span class="bz"></span>&nbsp;%.</li>
+    </ul>
+    <p><strong>Aufgabe 7 – ergänzt:</strong> Ergebnis der AL (kein Anspruch, Frist fehlt)
+    stimmt. Ergänzt: Auch der <strong>Rücktritt</strong> vom 03.12. ist mangels Fristsetzung
+    unwirksam (§ 323 I) – Parallele zu 1.1.8. Bei Nachfrage: Hat „Longlife“ das Handy schon an
+    den neuen Kunden verkauft, kann es seine eigene Pflicht gegenüber Melanie nicht mehr
+    erfüllen – dann ist „Longlife“ der Schuldner mit Problem.</p>
+    <p><strong>Nur für die Lehrkraft:</strong> Kaufpreis und Übergabe sind Zug um Zug zu
+    leisten (§ 320). Verzug der Käuferin setzt dann voraus, dass der Verkäufer seine Leistung
+    anbietet; bei vereinbarter Abholung im Laden genügt die Bereitstellung (§ 295). Für die
+    Klasse nicht nötig.</p>
+    <p><strong>Zeitraum:</strong> Verzug mit Zugang der Mahnung (13.11.), Zinsen ab dem
+    Folgetag; 14.11.–03.12. = 17 + 3 = 20 Tage. 600 × 0,14 × 20 / 365 = 4,60 €; 30 Tage = 6,90 €.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+
+<!-- ═══════════════ STEP 6 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-6">
+<section class="section teacher-only" id="step6">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">6</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise zur Durchführung</div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen zuerst,
+    dann zwei „mittlere“ Kompetenzen, abschließend Kreativität als offene Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#A16207;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#A16207" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#A16207" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation / Wissen</div>
+        <div class="task-form" style="color:#A16207;">Fachwissen abrufen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Nenne die Voraussetzungen des Zahlungsverzugs und die
+      Rechtsfolgen. Was ist bei Geldschulden besonders?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Voraussetzungen (§ 286):</strong> Nichtleistung trotz Fälligkeit (§§ 271 I,
+        475 I), Möglichkeit, Mahnung oder Entbehrlichkeit (§ 286 II) bzw. 30-Tage-Regel
+        (§ 286 III), Vertretenmüssen. <strong>Besonderheit:</strong> „Geld hat man zu haben“ –
+        Möglichkeit und Vertretenmüssen immer (+).<br>
+        <strong>Rechtsfolgen:</strong> Verzugsschaden (§§ 280 I, II, 286, z. B. Anwaltskosten),
+        Verzugszinsen (§ 288: 5 bzw. 9 Prozentpunkte über dem Basiszinssatz), weiterer Schaden
+        (§ 288 IV). Bestleistung: Hinweispflicht gegenüber Verbrauchern in § 286 III; Rücktritt
+        nur nach Fristsetzung (§ 323).
+      </div>
+    </div>
+  </div>
+
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Unterscheiden und begründen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Udo und Lydia haben beide eine Rechnung ohne vorherige
+      Absprache bekommen. Warum ist Lydia ab dem 15.11. automatisch in Verzug, Udo aber nicht?
+      Ist das gerecht gegenüber Udos Händler?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Lydias Rechnung enthält den besonderen <strong>Hinweis</strong> auf die Verzugsfolgen
+        → § 286 III gilt auch für sie als Verbraucherin. Udos Rechnung nennt nur ein
+        einseitiges Zahlungsziel (kein § 286 II, weil nicht vereinbart) und keinen Hinweis →
+        Verzug nur durch Mahnung.<br>
+        <strong>Bewertung:</strong> gerecht, weil der Händler es selbst in der Hand hat (ein Satz
+        auf der Rechnung oder eine Mahnung genügt), während der Verbraucher die Rechtsfolgen
+        oft nicht kennt. Gute Antwort nennt das Informationsgefälle als Grund.
+      </div>
+    </div>
+  </div>
+
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kollaboration</div>
+        <div class="task-form" style="color:#0d9488;">Perspektivenwechsel</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Du berätst einen Elektronikmarkt, der viele Kunden auf Rechnung
+      kaufen lässt und ständig auf seinem Geld sitzt. Was empfiehlst du – rechtlich sauber und
+      kundenfreundlich?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        (1) Hinweis nach § 286 III auf jede Rechnung – dann Verzug spätestens nach 30 Tagen
+        ohne Mahnung. (2) Oder eine kalendermäßig berechenbare Zahlungsfrist <em>vereinbaren</em>,
+        z. B. in den AGB (§ 286 II Nr. 2). (3) Nach Fälligkeit freundlich, aber eindeutig mahnen.
+        (4) Gegenüber Verbrauchern 5 Prozentpunkte Zinsen, keine 40-€-Pauschale.
+        Kundenfreundlich: Erinnerung vor Fristablauf, Ratenzahlung anbieten.
+      </div>
+    </div>
+  </div>
+
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde einen Kauf auf Rechnung, bei dem die Käuferin schon
+      <em>vor</em> Ablauf von 30 Tagen in Verzug gerät – auf zwei verschiedenen Wegen.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>:
+        <ul>
+          <li><strong>Weg 1 – Mahnung</strong> nach Fälligkeit (§ 286 I), z. B. eine Woche nach Rechnungszugang.</li>
+          <li><strong>Weg 2 – vereinbarter Termin</strong> (§ 286 II Nr. 1 „zahlbar bis 15.03.“ oder Nr. 2 „14 Tage nach Lieferung“) – Vereinbarung, nicht bloß auf der Rechnung.</li>
+          <li><strong>Bestleistung:</strong> korrekte Fristberechnung (Verzug ab Folgetag) und Hinweis, dass § 286 III nur „spätestens“ gilt.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+
+</main>
+
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(kw.includes(tk) && tk.length >= 3) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const container = ta.closest('.task-body') || ta.closest('.gstep-body');
+  const gate = container ? container.querySelector('.sol-gate') : null;
+  if(!gate) return;
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
+}
+
+// ═══════════════ Quiz (Sofort-Rückmeldung) ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const fb = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      opts.forEach(o=>o.disabled = true);
+      fb.classList.remove('ok','no');
+      if(opt.dataset.correct === '1'){
+        opt.classList.add('correct');
+        fb.textContent = '✓ Richtig.'; fb.classList.add('show','ok');
+      } else {
+        opt.classList.add('wrong');
+        fb.textContent = '✗ Leider falsch. Versuch es noch einmal.'; fb.classList.add('show','no');
+        if(retry) retry.style.display = 'inline-block';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{ o.disabled=false; o.classList.remove('correct','wrong'); });
+  const fb = q.querySelector('.quiz-feedback'); fb.classList.remove('show','ok','no'); fb.textContent='';
+  const ex = q.querySelector('.quiz-explain'); if(ex) ex.classList.remove('show');
+  btn.style.display = 'none';
+}
+
+// ═══════════════ 1.1.7: Quiz-Erklärung ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  q.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const ex = q.querySelector('.quiz-explain');
+      if(ex && opt.dataset.correct === '1') ex.classList.add('show');
+    });
+  });
+});
+
+
+// ═══════════════ 1.1.9: Basiszinssatz – nur hier pflegen! ═══════════════
+// § 247 BGB, ändert sich zum 1.1. und 1.7. (Bekanntgabe der Bundesbank). Nächste Prüfung: 01.01.2027.
+const BASISZINS = 1.52;
+const BASISZINS_SEIT = '01.07.2026';
+function fmtDE(n, d){ return n.toLocaleString('de-DE', {minimumFractionDigits:d, maximumFractionDigits:d}); }
+function fillBasiszins(){
+  document.querySelectorAll('.bz').forEach(e=>e.textContent = fmtDE(BASISZINS,2));
+  document.querySelectorAll('.bz5').forEach(e=>e.textContent = fmtDE(BASISZINS+5,2));
+  document.querySelectorAll('.bz9').forEach(e=>e.textContent = fmtDE(BASISZINS+9,2));
+  document.querySelectorAll('.bz-date').forEach(e=>e.textContent = BASISZINS_SEIT);
+  document.querySelectorAll('.bz-calc').forEach(e=>{
+    const z = (+e.dataset.amount) * (BASISZINS + (+e.dataset.pp)) / 100 * (+e.dataset.days) / 365;
+    e.textContent = fmtDE(z,2);
+  });
+}
+function updateZinsrechner(){
+  const out = document.getElementById('zrOut'); if(!out) return;
+  const betrag = Math.max(0, parseFloat(document.getElementById('zrBetrag').value)||0);
+  const tage = Math.max(0, parseFloat(document.getElementById('zrTage').value)||0);
+  const pp = parseFloat(document.getElementById('zrArt').value);
+  const satz = BASISZINS + pp;
+  const z = betrag * satz / 100 * tage / 365;
+  out.innerHTML = 'Zinssatz: '+fmtDE(BASISZINS,2)+' % + '+pp+' Prozentpunkte = <strong>'+fmtDE(satz,2)+' %</strong> pro Jahr<br>'+
+    'Verzugszinsen: '+fmtDE(betrag,2)+' € × '+fmtDE(satz,2)+' % × '+tage+' ÷ 365 = <strong>'+fmtDE(z,2)+' €</strong>';
+}
+fillBasiszins();
+['zrBetrag','zrTage','zrArt'].forEach(id=>{ const e=document.getElementById(id); if(e){ e.addEventListener('input', updateZinsrechner); e.addEventListener('change', updateZinsrechner); } });
+updateZinsrechner();
+
+// ═══════════════ 1.1.7: Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · 1.1.9 Konsequenzen einer zu spät gezahlten Rechnung';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ cl.outerHTML = '<div class="p-closing"><h3>Das nimmst du mit</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 9b) 1.1.9: Zinsrechner → Formelkasten
+  root.querySelectorAll('.zinsrechner').forEach(z=>{
+    const d = document.createElement('div'); d.className = 'info-box';
+    d.innerHTML = '<strong>Verzugszinsen berechnen:</strong> Zinsen = Betrag × Zinssatz × Tage ÷ 365. '+
+      'Basiszinssatz (§ 247 BGB) seit '+BASISZINS_SEIT+': '+fmtDE(BASISZINS,2)+' % (ändert sich zum 1.1. und 1.7.) → '+
+      'mit Verbraucher: '+fmtDE(BASISZINS+5,2)+' % · nur Unternehmen: '+fmtDE(BASISZINS+9,2)+' %.';
+    z.replaceWith(d);
+  });
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#854D0E;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#854D0E;border-bottom:1.5pt solid #A16207;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#854D0E;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #A16207;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#A16207;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep,.norm-box,.diff-chart{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe,.norm-box{border-left:4pt solid #A16207;}'+
+  '.norm-title,.diff-title,.dc-label{font-weight:bold;}'+
+  '.dc-bar{display:inline-block;border:1pt solid #A16207;padding:1pt 6pt;margin:1pt 2pt;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_1-1-9_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+</script>
+
+</body>
+</html>
