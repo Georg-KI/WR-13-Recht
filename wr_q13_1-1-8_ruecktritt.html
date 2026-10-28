@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.8 Rücktritt vom Vertrag und Ersatzkauf · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Marineblau === */
+  --blue-900:#0F1E4A;
+  --blue-800:#172E6E;
+  --blue-700:#1E3A8A;   /* Primärfarbe */
+  --blue-600:#1D4ED8;
+  --blue-400:#60A5FA;
+  --blue-100:#BFDBFE;
+  --blue-50: #EFF6FF;
+  --blue-grad: linear-gradient(135deg,#172E6E 0%,#1E3A8A 55%,#2B5BD7 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#431407;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#EEF6FF 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#93C5FD;font-style:normal;font-weight:800;}
+.norm-box a{color:#93C5FD;font-weight:700;text-decoration:none;border-bottom:1px dotted #93C5FD;}
+.norm-box a:hover{color:#BFDBFE;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
+@media print{
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+
+/* ─────────── Gutachten-Schritt (Prüfungsaufbau I–IV) ─────────── */
+.gstep{
+  border:1.5px solid var(--border);border-radius:var(--radius-md);
+  margin:12px 0;overflow:hidden;background:#fff;
+}
+.gstep-head{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.gstep-num{
+  background:var(--blue-700);color:#fff;flex-shrink:0;
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.gstep-title{font-weight:800;font-size:14px;color:var(--text);}
+.gstep-title .gnorm{display:block;font-size:11.5px;font-weight:700;color:var(--blue-700);margin-top:1px;}
+.gstep-body{padding:13px 14px;font-size:13.5px;line-height:1.55;}
+.gstep-body .glabel{font-weight:800;color:var(--blue-800);font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+.gstep-def{color:var(--text-2);margin:4px 0 10px;}
+/* Obersatz / Rechtsfolge Rahmenkarten */
+.gframe{
+  border-left:3px solid var(--blue-700);background:var(--blue-50);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;
+  font-size:14px;line-height:1.55;color:#431407;
+}
+.gframe .gframe-tag{
+  display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
+}
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(147,197,253,0.14);
+  border:1.5px dashed rgba(147,197,253,0.5);
+  color:#DBEAFE;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(147,197,253,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#2563EB;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(37,99,235,0.45);border-style:solid;border-color:#60A5FA;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
+
+/* ─────────── 1.1.6: Brief, Schema, Halbzeit, Teil-Banner ─────────── */
+.fall-card.letter{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);
+  padding:14px 18px;margin:0 0 16px;font-size:14px;line-height:1.6;box-shadow:var(--shadow);}
+.letter-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border);
+  padding-bottom:7px;margin-bottom:9px;}
+.schema{border:1.5px solid var(--blue-100);background:var(--blue-50);border-radius:var(--radius-md);
+  padding:14px 16px;margin:16px 0;}
+.schema-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:10px;}
+.schema-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.schema-item{background:#fff;border:1.5px solid var(--blue-400);border-radius:8px;
+  padding:6px 10px;font-weight:800;font-size:13px;color:var(--text);text-align:center;line-height:1.2;}
+.schema-item small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);}
+.schema-plus{font-weight:900;color:var(--blue-700);font-size:16px;}
+.schema-result{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.pause-card{display:flex;gap:14px;align-items:center;margin:18px 0 4px;
+  border:1.5px dashed var(--slate);border-radius:var(--radius-md);padding:14px 18px;
+  color:var(--slate);background:var(--slate-50);}
+.pause-title{font-weight:900;font-size:16px;}
+.pause-text{font-size:13.5px;color:var(--text-2);}
+.step-chip.halftime{border-style:dashed;}
+.part-banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:12px 18px;
+  border-radius:var(--radius-lg);background:var(--blue-grad);color:#fff;box-shadow:var(--shadow);}
+.part-tag{background:rgba(255,255,255,0.22);padding:3px 11px;border-radius:14px;
+  font-size:12px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;}
+.part-title{font-weight:900;font-size:17px;}
+
+/* ─────────── 1.1.7: Fallkarten-Raster ─────────── */
+.fall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0 6px;}
+.fall-card{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;}
+.fall-card p{font-size:13.5px;margin:0;line-height:1.55;}
+.fall-card-tag{font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.3px;}
+
+/* ─────────── 1.1.7: Quiz-Erklärung nach richtiger Antwort ─────────── */
+.quiz-explain{display:none;margin-top:6px;font-size:13px;line-height:1.5;color:var(--text-2);
+  padding:8px 12px;border-radius:6px;background:var(--slate-50);border-left:3px solid var(--slate);}
+.quiz-explain.show{display:block;}
+
+/* ─────────── 1.1.7: Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── 1.1.7: Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#172E6E;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #1E3A8A;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #1E3A8A;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#1E3A8A !important;border:2px solid #1E3A8A;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #1E3A8A;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#1E3A8A;border:2px solid #1E3A8A;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#1E3A8A;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#1E3A8A;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#1E3A8A;border:2px solid #1E3A8A;}
+.p-doc .p-closing{border:2px solid #1E3A8A;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#1E3A8A;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#172E6E;border-bottom:2px solid #1E3A8A;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#172E6E;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+
+/* ─────────── 1.1.8: Gesetzestext-Kasten (aus 1.1.6) ─────────── */
+.norm-box{background:#0F172A;border-radius:var(--radius-md);padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;}
+.norm-box .norm-title{font-size:12px;font-weight:800;color:#93C5FD;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#93C5FD;font-style:normal;font-weight:800;}
+
+/* ─────────── 1.1.8: Differenzmethode (Balken) ─────────── */
+.diff-chart{margin:14px 0 18px;border:1.5px solid var(--blue-100);background:var(--blue-50);
+  border-radius:var(--radius-md);padding:14px 16px;}
+.diff-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:8px;}
+.dc-row{display:flex;align-items:center;gap:10px;margin:7px 0;}
+.dc-label{width:170px;flex-shrink:0;font-size:12.5px;font-weight:800;color:var(--text-2);line-height:1.25;}
+.dc-track{flex:1;display:flex;gap:2px;min-width:0;}
+.dc-bar{display:flex;align-items:center;justify-content:center;height:32px;border-radius:6px;
+  color:#fff;font-size:12px;font-weight:800;padding:0 6px;text-align:center;line-height:1.1;
+  overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.dc-a{background:var(--blue-700);}
+.dc-b{background:var(--blue-400);color:#0F1E4A;}
+.dc-c{background:#0d9488;min-width:52px;}
+@media (max-width:560px){
+  .dc-row{flex-direction:column;align-items:stretch;gap:3px;}
+  .dc-label{width:auto;}
+}
+
+/* ─────────── 1.1.8: Druckregeln für norm-box und Balken ─────────── */
+.p-doc .norm-box{background:#fff !important;color:#000;border:1px solid #999;border-left:4px solid #1E3A8A;box-shadow:none;}
+.p-doc .norm-box .norm-title{color:#1E3A8A;}
+.p-doc .norm-box .norm-text,.p-doc .norm-box .norm-text strong{color:#000;}
+.p-doc .diff-chart{background:#fff;border:1px solid #999;page-break-inside:avoid;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.8</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Zwei Wege raus</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Die Rechnung</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Theodors E-Mail</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Drei Fälle</div>
+  <div class="step-chip teacher-only" data-step="6" onclick="goStep(6)"><span class="n">6</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise und Abfrage sind nicht enthalten.</span>
+</div>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG (M1) ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunde 9</span>
+  <h1>Kann die Käuferin bzw. der Käufer vom Vertrag zurücktreten und einen Ersatzkauf tätigen?</h1>
+  <p class="hero-sub">Theodor reicht's: Er will die Küche nicht mehr – er will sein Geld zurück und die Mehrkosten ersetzt.</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du prüfst bei einer verspäteten Leistung, ob die Käuferin oder der Käufer
+        <strong>zurücktreten</strong> (§&nbsp;323 BGB) und/oder <strong>Schadensersatz statt
+        der Leistung</strong> verlangen kann (§§&nbsp;280 I, III, 281 BGB) – und berechnest,
+        was dabei herauskommt.
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Wer auf eine Lieferung nicht mehr warten will, muss sauber vorgehen: Ohne
+        <em>Fristsetzung</em> geht meist nichts – und ein vorschneller Ersatzkauf kann teuer
+        werden.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Theodor will nicht mehr warten (M1)</div>
+      <div class="section-meta">Plenum · Moderation</div>
+    </div>
+  </header>
+
+  <div class="fall-card letter">
+    <div class="letter-head">
+      <span><strong>Theodor Weber</strong> – Küche „Margit“, Kauf vom 05.08.2025</span>
+      <span>Ende Oktober 2025</span>
+    </div>
+    <p>Du kennst Theodor aus 1.1.6 und 1.1.7: Er hat die Einbauküche „Margit“ für
+    <strong>1.499&nbsp;€</strong> gekauft und bezahlt. Mit seinem Schreiben vom 01.10.2025
+    hat er das Möbelhaus aufgefordert, <strong>bis 22.10.2025</strong> zu liefern. Die Frist
+    ist abgelaufen – keine Küche. Jetzt entdeckt Theodor, dass ein anderes Möbelhaus genau
+    dieses Modell ebenfalls anbietet, allerdings für <strong>1.699&nbsp;€</strong>. Er hat
+    genug vom ewigen Pizza-Bestellen und schlägt dort zu.</p>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation">
+        <svg width="22" height="22" viewBox="0 0 40 36" fill="none">
+          <path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/>
+          <path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Impuls · Und jetzt hat Theodor zwei Küchen bezahlt?</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Theodor hat jetzt 3.198&nbsp;€ für <em>eine</em> Küche ausgegeben. Was kann er vom
+        ersten Möbelhaus zurückverlangen – und was nicht?“</p>
+    </div>
+  </div>
+
+  <div class="schema">
+    <div class="schema-title">Weiter geht's: Will Theodor die Küche „Margit“ vom ersten Möbelhaus noch?</div>
+    <div class="schema-row">
+      <span class="schema-item">Ja<small>Küche + Ersatz des Verzögerungsschadens</small></span><span class="schema-plus">→</span>
+      <span class="schema-item">SE <em>neben</em> der Leistung<small>§§ 280 I, II, 286 · 1.1.7</small></span>
+    </div>
+    <div class="schema-row" style="margin-top:8px;">
+      <span class="schema-item">Nein<small>Geld statt Küche</small></span><span class="schema-plus">→</span>
+      <span class="schema-item schema-result">Rücktritt<small style="color:#fff;">§ 323</small></span><span class="schema-plus">+</span>
+      <span class="schema-item schema-result">SE <em>statt</em> der Leistung<small style="color:#fff;">§§ 280 I, III, 281</small></span>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M1 „Alternatives Küchenangebot eines anderen Möbelhauses“: TB S.&nbsp;30. Ausgangsfall: Kapitel 1.1.6 M1 und 1.1.7 M1.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Moderationshilfe Einstieg
+    </div>
+    <span class="tn-time">Zeitrahmen: ca. 5 Min.</span>
+    <p><strong>Leitfragen:</strong></p>
+    <ul>
+      <li>Was hat sich gegenüber 1.1.7 geändert? → Theodor will die Küche vom ersten Möbelhaus <em>nicht mehr</em>.</li>
+      <li>Was will er stattdessen? → (1) seine 1.499&nbsp;€ zurück, (2) die 200&nbsp;€ Mehrkosten.</li>
+      <li>Darf er einfach woanders kaufen? → Sammeln, nicht auflösen. Überleitung: Das Gesetz kennt dafür zwei Wege, und beide setzen eine <strong>Frist</strong> voraus.</li>
+    </ul>
+    <p><strong>Sachverhalt:</strong> Dass Theodor bei Vertragsschluss bezahlt hat, setzt das Buch
+    (Aufgabe 1, AL) voraus; in 1.1.6/1.1.7 kam es nicht vor. Die Frist bis 22.10.2025 (ca.
+    drei Wochen) gilt als angemessen. Ersatzkauf <em>nach</em> Fristablauf – das hält die
+    Stunde einfach; die Gefahr eines verfrühten Ersatzkaufs ist Abfrage-Thema
+    (Kritisches Denken).</p>
+  </div>
+</section>
+
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Zwei Wege raus →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+
+<!-- ═══════════════ STEP 2 · NORMTEXT §§ 323, 281 (AUFGABE 2) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Zwei Wege raus: Rücktritt und Schadensersatz statt der Leistung (Aufgabe 2)</div>
+      <div class="section-meta">Einzelarbeit · Passagen im Gesetzestext zuordnen</div>
+    </div>
+  </header>
+
+  <p>Lies die drei Normen und ordne jeder markierten Passage das passende Merkmal zu. Achte
+  besonders darauf, <strong>wo</strong> sich die beiden Rechte unterscheiden. Ein Merkmal
+  kommt in beiden Normen vor.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 36 40" fill="none">
+          <path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/>
+          <path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Normanalyse · §§ 323 I, 280 III und 281 I BGB</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Passage im Gesetzestext markieren</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="nmark" data-nmark="p323-281">
+        <div class="nmark-catbar">
+          <button class="nmark-cat active" data-cat="GV" data-short="Gegenseitiger Vertrag">Gegenseitiger Vertrag<span class="nc-sub">→ Kaufvertrag § 433</span></button>
+          <button class="nmark-cat" data-cat="PV" data-short="Pflichtverletzung">Pflichtverletzung<span class="nc-sub">→ Nichtleistung trotz Möglichkeit &amp; Fälligkeit</span></button>
+          <button class="nmark-cat" data-cat="FR" data-short="Fristsetzung">Fristsetzung<span class="nc-sub">→ erfolglos, angemessen</span></button>
+          <button class="nmark-cat" data-cat="ZV" data-short="Zusatzvoraussetzungen">Zusatzvoraussetzungen<span class="nc-sub">→ Brücke zu § 281</span></button>
+          <button class="nmark-cat" data-cat="VS" data-short="§ 280 I (Vertretenmüssen, Schaden)">Verweis auf § 280 I<span class="nc-sub">→ Vertretenmüssen, kausaler Schaden</span></button>
+          <button class="nmark-cat" data-cat="RF" data-short="Rechtsfolge">Rechtsfolge<span class="nc-sub">→ was der Gläubiger darf</span></button>
+        </div>
+        <div class="nmark-hint">Merkmal oben wählen, dann die passende Textstelle antippen. Nochmal tippen hebt die Markierung auf.</div>
+
+        <div class="nmark-law">
+          <div class="nlaw-title">§ 323 Rücktritt wegen nicht oder nicht vertragsgemäß erbrachter Leistung · Absatz 1</div>
+          <span class="nabs">Erbringt
+          <span class="npass" data-correct="GV">bei einem gegenseitigen Vertrag<span class="npass-tag"></span></span>
+          der Schuldner
+          <span class="npass" data-correct="PV">eine fällige Leistung nicht<span class="npass-tag"></span></span>
+          oder nicht vertragsgemäß, so kann der Gläubiger,
+          <span class="npass" data-correct="FR">wenn er dem Schuldner erfolglos eine angemessene Frist zur Leistung<span class="npass-tag"></span></span>
+          oder Nacherfüllung bestimmt hat,
+          <span class="npass" data-correct="RF">vom Vertrag zurücktreten<span class="npass-tag"></span></span>.</span>
+
+          <div class="nlaw-title" style="margin-top:14px;">§ 280 Schadensersatz wegen Pflichtverletzung · Absatz 3</div>
+          <span class="nabs">Schadensersatz statt der Leistung kann der Gläubiger nur
+          <span class="npass" data-correct="ZV">unter den zusätzlichen Voraussetzungen des § 281<span class="npass-tag"></span></span>,
+          des § 282 oder des § 283 verlangen.</span>
+
+          <div class="nlaw-title" style="margin-top:14px;">§ 281 Schadensersatz statt der Leistung wegen nicht oder nicht wie geschuldet erbrachter Leistung · Absatz 1 Satz 1</div>
+          <span class="nabs">Soweit der Schuldner
+          <span class="npass" data-correct="PV">die fällige Leistung nicht<span class="npass-tag"></span></span>
+          oder nicht wie geschuldet erbringt, kann der Gläubiger
+          <span class="npass" data-correct="VS">unter den Voraussetzungen des § 280 Abs. 1<span class="npass-tag"></span></span>
+          <span class="npass" data-correct="RF">Schadensersatz statt der Leistung verlangen<span class="npass-tag"></span></span>,
+          <span class="npass" data-correct="FR">wenn er dem Schuldner erfolglos eine angemessene Frist zur Leistung<span class="npass-tag"></span></span>
+          oder Nacherfüllung bestimmt hat.</span>
+        </div>
+
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkNmark(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetNmark(this)">Zurücksetzen</button>
+          <span class="assign-score nmark-score"></span>
+        </div>
+      </div>
+
+      <div class="schema">
+        <div class="schema-title">Prüfschema · Rücktritt bei Verzögerung der Leistung (§ 323 BGB)</div>
+        <div class="schema-row">
+          <span class="schema-item">I. Gegenseitiger Vertrag<small>§ 433</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">II. Pflichtverletzung<small>Nichtleistung trotz Möglichkeit &amp; Fälligkeit</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">III. Frist erfolglos abgelaufen<small>oder entbehrlich § 323 II</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">IV. Kein Ausschluss<small>§ 323 VI</small></span><span class="schema-plus">=</span>
+          <span class="schema-item schema-result">Rücktrittsrecht</span>
+        </div>
+      </div>
+      <div class="schema">
+        <div class="schema-title">Prüfschema · Schadensersatz statt der Leistung bei Verzögerung (§§ 280 I, III, 281 BGB)</div>
+        <div class="schema-row">
+          <span class="schema-item">I. Schuldverhältnis<small>§ 433</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">II. Pflichtverletzung<small>Nichtleistung trotz Möglichkeit &amp; Fälligkeit</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">III. Frist erfolglos abgelaufen<small>oder entbehrlich § 281 II</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">IV. Vertretenmüssen<small>§§ 280 I S. 2, 276, 278</small></span><span class="schema-plus">+</span>
+          <span class="schema-item">V. Kausaler Schaden<small>§§ 249 ff.</small></span><span class="schema-plus">=</span>
+          <span class="schema-item schema-result">Anspruch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <path d="M11 18l4.5 4.5L25 13" stroke="#475569" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Merke <span class="reflect-badge">der eine Unterschied</span></div>
+      <div class="reflect-text">
+        Beide Rechte brauchen eine <strong>erfolglose Fristsetzung</strong>. Nur der
+        Schadensersatz verweist auf §&nbsp;280 I – und holt damit das
+        <strong>Vertretenmüssen</strong> ins Boot. Der <strong>Rücktritt</strong> funktioniert
+        auch dann, wenn den Verkäufer <strong>keine Schuld</strong> trifft. Und: Rücktritt und
+        Schadensersatz lassen sich kombinieren (§&nbsp;325 BGB).
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Selbstcheck · Rücktritt oder Schadensersatz?</div>
+        <div class="task-form" style="color:var(--blue-700);">Selbstcheck · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Abwandlung: Das Möbelhaus beweist, dass ein Blitzschlag das Lager samt der für Theodor zusammengestellten Küche zerstört hat und Ersatz erst in sechs Wochen kommt – niemand im Haus hat einen Fehler gemacht. Die Frist läuft ab. Was ändert sich?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Theodor verliert beide Rechte.</button>
+          <button class="quiz-opt" data-correct="1">Der Schadensersatz scheitert am Vertretenmüssen – zurücktreten kann Theodor trotzdem.</button>
+          <button class="quiz-opt" data-correct="0">Theodor kann Schadensersatz verlangen, aber nicht zurücktreten.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;323 verweist nicht auf §&nbsp;280 I – der Rücktritt hängt nicht vom Verschulden ab. §&nbsp;281 dagegen setzt über §&nbsp;280 I S.&nbsp;2 voraus, dass der Schuldner die Pflichtverletzung zu vertreten hat – und ein Blitzschlag ist ein Ereignis, auf das das Möbelhaus keinen Einfluss hatte.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Muss sich Theodor zwischen Rücktritt und Schadensersatz entscheiden?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – wer zurücktritt, hat auf weitere Ansprüche verzichtet.</button>
+          <button class="quiz-opt" data-correct="1">Nein – der Rücktritt schließt Schadensersatz nicht aus (§ 325 BGB).</button>
+          <button class="quiz-opt" data-correct="0">Nein – aber nur beim Verbrauchsgüterkauf.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;325 BGB: Das Recht, bei einem gegenseitigen Vertrag Schadensersatz zu verlangen, wird durch den Rücktritt nicht ausgeschlossen (M2). Theodor kann also sein Geld zurückfordern <em>und</em> die Mehrkosten verlangen.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner">
+        <svg width="22" height="22" viewBox="0 0 44 38" fill="none">
+          <rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/>
+          <path d="M6 19l-4 6 8-4" fill="#0d9488"/>
+          <rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/>
+          <path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/>
+          <path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 2 · Wozu eigentlich die Fristsetzung?</div>
+        <div class="task-form partner">Partnerarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Erläutert am Beispiel von Theodors Küche, welche Bedeutung die Fristsetzung für den
+      Schadensersatz statt der Leistung (§&nbsp;281 BGB) und den Rücktritt (§&nbsp;323 BGB)
+      hat. Warum verlangt das Gesetz sie, bevor Theodor sich vom Vertrag lösen darf?</p>
+
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="frist, letzte, chance, gelegenheit, moeglichkeit, angemessen, 281, 323, vertrag, erfuellen, 200, rechtssicherheit, verlaesslich, festhalten"
+        data-required="5"
+        placeholder="Die Fristsetzung gibt dem Möbelhaus … Erst wenn sie erfolglos abgelaufen ist, … Das Gesetz will damit …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        Die Fristsetzung gibt dem Schuldner eine <strong>letzte Chance</strong>, den
+        <strong>Vertrag</strong> doch noch zu <strong>erfüllen</strong>, bevor der Gläubiger die
+        einschneidenden Rechte geltend machen kann. Erst wenn eine <strong>angemessene</strong>
+        Frist erfolglos abgelaufen ist (oder ausnahmsweise entbehrlich ist, §§&nbsp;281 II,
+        323 II), darf er zurücktreten (§&nbsp;<strong>323</strong> I) oder Schadensersatz statt der
+        Leistung verlangen (§§&nbsp;280 I, III, <strong>281</strong> I).<br>
+        <em>Am Beispiel:</em> Bevor das Möbelhaus die <strong>200&nbsp;€</strong> Mehrkosten des
+        Ersatzkaufs tragen und den Kaufpreis zurückzahlen muss, sollte es bis zum 22.10.2025
+        noch einmal die Gelegenheit haben, die Küche zu liefern.<br>
+        <em>Grundgedanke:</em> Verträge sind einzuhalten (<em>pacta sunt servanda</em>) – zuerst
+        soll erfüllt werden. Das schafft <strong>Rechtssicherheit</strong> und macht den
+        Geschäftsverkehr <strong>verlässlich</strong>: Keine Seite kann sich bei der ersten
+        Verspätung einfach vom Vertrag lösen.
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M2 „Rücktritt und Schadensersatz statt der Leistung“ &amp; Aufgabe 2: TB S.&nbsp;30/33. Vorlagen zur (vereinfachten) Prüfung im Gutachtenstil: Mediencode 82024-114. Fachwissen S.&nbsp;68&nbsp;ff.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweise (AL S. 33, korrigiert)
+    </div>
+    <ul>
+      <li>„bei einem gegenseitigen Vertrag“ → <strong>gegenseitiger Vertrag</strong></li>
+      <li>„eine fällige Leistung nicht“ / „die fällige Leistung nicht“ → <strong>Pflichtverletzung</strong></li>
+      <li>„wenn er … erfolglos eine angemessene Frist zur Leistung“ (2×) → <strong>Fristsetzung</strong> – das Merkmal, das in beiden Normen vorkommt</li>
+      <li>„unter den zusätzlichen Voraussetzungen des § 281“ → <strong>Zusatzvoraussetzungen</strong></li>
+      <li>„unter den Voraussetzungen des § 280 Abs. 1“ → <strong>Verweis auf § 280 I</strong> (Vertretenmüssen + Schaden)</li>
+      <li>„vom Vertrag zurücktreten“ / „Schadensersatz statt der Leistung verlangen“ → <strong>Rechtsfolge</strong></li>
+    </ul>
+    <p><strong>Fehler in der AL (Aufg. 2):</strong> Die AL zitiert „§§ 280 I, <u>II</u>, 281“. Richtig
+    ist <strong>§ 280 I, III</strong> – Abs. 2 ist der Verzögerungsschaden aus 1.1.7. Die
+    Gutachten-Vorlage 82024-114 zitiert richtig.</p>
+    <p><strong>Fehler im Tafelbild:</strong> „wenn kein Ausschluss nach § 323 <u>IV</u> BGB“ ist
+    falsch – Abs. 4 erlaubt den Rücktritt <em>vor</em> Fälligkeit. Ausschlussgründe:
+    <strong>§ 323 VI</strong> (Gläubiger allein oder weit überwiegend verantwortlich; so auch die
+    Vorlage 82024-114) und § 323 V 2 (unerhebliche Pflichtverletzung – greift nur bei
+    Schlechtleistung, bei Verzögerung praktisch nie). Im Schema steht deshalb § 323 VI.</p>
+    <p><strong>Nur bei Nachfrage:</strong> Der Rücktritt setzt keinen Verzug voraus (keine
+    Mahnung nötig) – die Fristsetzung ersetzt sie. In Theodors Fall war das Schreiben vom
+    01.10. beides: Mahnung (1.1.7) und Fristsetzung (heute).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Die Rechnung →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+
+<!-- ═══════════════ STEP 3 · DIFFERENZMETHODE (M2 · AUFGABE 1) ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Die Rechnung: Was bekommt Theodor zurück? (M2 · Aufgabe 1)</div>
+      <div class="section-meta">Einzelarbeit · rechnen und begründen</div>
+    </div>
+  </header>
+
+  <p>Tritt Theodor zurück und verlangt er zusätzlich Schadensersatz, wird der Schaden nach der
+  <strong>Differenzmethode</strong> berechnet: Schaden ist der Unterschied zwischen dem
+  ursprünglich vereinbarten Preis und dem Preis, den er beim Ersatzkauf zahlen musste (M2).</p>
+
+  <div class="diff-chart" aria-label="Differenzmethode schematisch">
+    <div class="diff-title">Differenzmethode – schematisch</div>
+    <div class="dc-row">
+      <span class="dc-label">Kaufpreis beim 1. Möbelhaus</span>
+      <span class="dc-track"><span class="dc-bar dc-a" style="width:82%;">Kaufpreis</span></span>
+    </div>
+    <div class="dc-row">
+      <span class="dc-label">Kaufpreis des Ersatzkaufs</span>
+      <span class="dc-track"><span class="dc-bar dc-b" style="width:100%;">Kaufpreis des Ersatzkaufs</span></span>
+    </div>
+    <div class="dc-row">
+      <span class="dc-label">Was Theodor verlangen kann</span>
+      <span class="dc-track"><span class="dc-bar dc-a" style="width:82%;">Rückgewähr über Rücktritt</span><span class="dc-bar dc-c" style="width:18%;">SE statt</span></span>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/>
+          <path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="19" cy="28" r="1.8" fill="#E53935"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 1 · Rechne für Theodor nach</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">a) Wie viel hat Theodor insgesamt für Küchen bezahlt?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">1.699&nbsp;€</button>
+          <button class="quiz-opt" data-correct="1">3.198&nbsp;€</button>
+          <button class="quiz-opt" data-correct="0">200&nbsp;€</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">1.499&nbsp;€ beim ersten Möbelhaus + 1.699&nbsp;€ beim Ersatzkauf = 3.198&nbsp;€.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">b) Was muss das erste Möbelhaus zurückgewähren, wenn Theodor zurücktritt?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">1.499&nbsp;€ – den empfangenen Kaufpreis (§ 346 I BGB).</button>
+          <button class="quiz-opt" data-correct="0">1.699&nbsp;€ – so viel kostet die Küche heute.</button>
+          <button class="quiz-opt" data-correct="0">Nichts – Theodor hat ja inzwischen eine Küche.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Nach dem Rücktritt wird der Vertrag rückabgewickelt: Die empfangenen Leistungen sind zurückzugewähren (§&nbsp;346 I). Das Möbelhaus hat 1.499&nbsp;€ empfangen – mehr nicht.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">c) Wie hoch ist Theodors möglicher Anspruch auf Schadensersatz statt der Leistung?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">1.699&nbsp;€</button>
+          <button class="quiz-opt" data-correct="0">1.499&nbsp;€</button>
+          <button class="quiz-opt" data-correct="1">200&nbsp;€</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Differenzmethode: 1.699&nbsp;€ (Ersatzkauf) − 1.499&nbsp;€ (vereinbarter Preis) = 200&nbsp;€. Zusammen mit der Rückgewähr steht Theodor so, als hätte das erste Möbelhaus pünktlich geliefert: Er hat eine Küche und hat dafür 1.499&nbsp;€ ausgegeben.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">d) Weitergedacht: Angenommen, die Ersatzküche hätte nur 1.399&nbsp;€ gekostet. Was dann?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Theodor muss dem ersten Möbelhaus 100&nbsp;€ zahlen.</button>
+          <button class="quiz-opt" data-correct="1">Rücktritt: 1.499&nbsp;€ zurück. Schadensersatz: 0&nbsp;€ – es fehlt an einem Schaden.</button>
+          <button class="quiz-opt" data-correct="0">Theodor kann nicht mehr zurücktreten, weil er gespart hat.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ohne Mehrkosten kein Schaden – der Schadensersatz scheitert am Merkmal „kausaler Schaden“. Der Rücktritt hängt davon nicht ab; das Geld bekommt Theodor trotzdem zurück.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="norm-box">
+    <div class="norm-title">Rechtsfolgen im Gesetz · zum Nachschlagen</div>
+    <div class="norm-text">
+      <strong>§ 349</strong> Der Rücktritt erfolgt durch Erklärung gegenüber dem anderen Teil.<br>
+      <strong>§ 346 I</strong> Hat sich eine Vertragspartei vertraglich den Rücktritt vorbehalten
+      oder steht ihr ein gesetzliches Rücktrittsrecht zu, so sind im Falle des Rücktritts die
+      empfangenen Leistungen zurückzugewähren und die gezogenen Nutzungen herauszugeben.<br>
+      <strong>§ 325</strong> Das Recht, bei einem gegenseitigen Vertrag Schadensersatz zu
+      verlangen, wird durch den Rücktritt nicht ausgeschlossen.<br>
+      <strong>§ 281 IV</strong> Der Anspruch auf die Leistung ist ausgeschlossen, sobald der
+      Gläubiger statt der Leistung Schadensersatz verlangt hat.
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Was heißt das für Theodor?</strong> Er muss den Rücktritt <strong>erklären</strong>
+    (§&nbsp;349) – das Rücktrittsrecht allein reicht nicht. Verlangt er Schadensersatz statt der
+    Leistung, kann er die Küche „Margit“ danach <strong>nicht mehr</strong> verlangen
+    (§&nbsp;281 IV) – das Möbelhaus darf sie ihm dann aber auch nicht mehr aufdrängen.
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M2 mit Grafik zur Differenzmethode &amp; Aufgabe 1: TB S.&nbsp;30/33. Fachwissen S.&nbsp;68&nbsp;ff.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Lösung &amp; Hinweise (AL S. 33)
+    </div>
+    <p><strong>Aufgabe 1:</strong> a) 3.198&nbsp;€ · b) 1.499&nbsp;€ · c) 200&nbsp;€ – deckungsgleich
+    mit der AL. d) ist eine eigene Ergänzung (Schaden als Voraussetzung, Unabhängigkeit des
+    Rücktritts).</p>
+    <p><strong>Differenzmethode vs. Surrogationsmethode (M2, nur bei Nachfrage):</strong> Bei
+    der Surrogationsmethode erbringt der Gläubiger seine Gegenleistung weiter und verlangt den
+    vollen Wert der Leistung. Nach dem Rücktritt passt das nicht mehr – Theodor bekommt seinen
+    Kaufpreis ja zurück. Deshalb Differenzmethode.</p>
+    <p><strong>Normtexte:</strong> §§ 325, 346 I, 349, 281 IV wörtlich nach aktuellem
+    Gesetzestext.</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Theodors E-Mail →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+
+<!-- ═══════════════ STEP 4 · ZWISCHENCHECK + E-MAIL (AUFGABE 3) ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Theodors E-Mail an das erste Möbelhaus (Aufgabe 3)</div>
+      <div class="section-meta">Einzelarbeit · juristisch fundiert formulieren</div>
+    </div>
+  </header>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">bevor du weiterübst</span></div>
+      <div class="reflect-text">
+        Was sitzt schon, wo hakt's noch? Kannst du ohne Spickzettel sagen, was Rücktritt und
+        Schadensersatz statt der Leistung gemeinsam haben – und worin sie sich unterscheiden?
+        <strong>Jetzt ist Zeit für deine Fragen.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 40 32" fill="none">
+          <rect x="3" y="5" width="34" height="23" rx="3" stroke="#1976D2" stroke-width="2.4" fill="none"/>
+          <path d="M4 7l16 12L36 7" stroke="#1976D2" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Aufgabe 3 · Rücktritt erklären, Geld zurückfordern, Mehrkosten verlangen</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · E-Mail</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Verfasse in Theodors Namen eine E-Mail an das erste Möbelhaus, in der du
+      <strong>juristisch fundiert</strong> die Rückzahlung des Kaufpreises und Schadensersatz
+      statt der Leistung forderst.</p>
+      <div class="info-box" style="margin-top:6px;">
+        <strong>Aufbau:</strong> Begrüßung · Sachlage (Kauf, Frist, Ersatzkauf) ·
+        <strong>Forderung 1</strong>: Rücktritt erklären und Rückzahlung verlangen – mit Norm ·
+        <strong>Forderung 2</strong>: Mehrkosten als Schadensersatz – mit Norm und
+        Vertretenmüssen · Gesamtbetrag · Verabschiedung.
+      </div>
+
+      <textarea class="answer-area gate-input" rows="10"
+        data-min-words="80"
+        data-keywords="ruecktritt, 323, 349, frist, 346, 1 499, statt der leistung, 281, 200, vertreten, 1 699, vermutet"
+        data-required="7"
+        placeholder="Sehr geehrte Damen und Herren, am 05.08.2025 habe ich bei Ihnen …"></textarea>
+
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Muster-E-Mail freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 80 Wörter · 0 von 7 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+
+      <div class="solution">
+        <em>Begrüßung:</em> Sehr geehrte Damen und Herren,<br><br>
+        <em>Sachlage:</em> am 05.08.2025 habe ich bei Ihnen die Einbauküche „Margit“ für
+        1.499&nbsp;€ gekauft und sofort bezahlt. Mit meinem Schreiben vom 01.10.2025 habe ich
+        Sie aufgefordert, die Küche bis zum 22.10.2025 zu liefern. Auch diese
+        <strong>Frist</strong> ist erfolglos verstrichen. Ich habe die Küche deshalb bei einem
+        anderen Möbelhaus gekauft – leider für 1.699&nbsp;€.<br><br>
+        <em>Forderung 1:</em> Hiermit erkläre ich den <strong>Rücktritt</strong> vom Kaufvertrag
+        (§&nbsp;<strong>349</strong> BGB). Da Sie die fällige und mögliche Lieferung trotz
+        angemessener Fristsetzung nicht erbracht haben, steht mir das Rücktrittsrecht nach
+        §&nbsp;<strong>323</strong> I BGB zu. Aus der Rückabwicklung (§&nbsp;<strong>346</strong>
+        I BGB) ergibt sich, dass Sie mir den gezahlten Kaufpreis von
+        <strong>1.499&nbsp;€</strong> zurückzahlen müssen.<br><br>
+        <em>Forderung 2:</em> Außerdem verlange ich die Mehrkosten des Ersatzkaufs von
+        <strong>200&nbsp;€</strong> als Schadensersatz <strong>statt der Leistung</strong>
+        (§§&nbsp;280 I, III, <strong>281</strong> BGB); der Rücktritt schließt das nicht aus
+        (§&nbsp;325 BGB). Sie haben Ihre Pflicht aus dem Kaufvertrag verletzt, und die Frist ist
+        abgelaufen. Dass Sie die Verzögerung zu <strong>vertreten</strong> haben, wird gesetzlich
+        <strong>vermutet</strong> (§&nbsp;280 I S.&nbsp;2 BGB); nach Ihrer eigenen Auskunft war
+        die Küche auf Lager und wurde nur vergessen – das ist mindestens fahrlässig
+        (§&nbsp;276 II BGB). Wäre pünktlich geliefert worden, hätte ich nur 1.499&nbsp;€ statt
+        <strong>1.699&nbsp;€</strong> bezahlt.<br><br>
+        <em>Gesamtbetrag:</em> Bitte überweisen Sie mir 1.699&nbsp;€ (1.499&nbsp;€ + 200&nbsp;€)
+        bis zum [Datum] auf das Ihnen bekannte Konto.<br><br>
+        <em>Verabschiedung:</em> Mit freundlichen Grüßen<br>
+        Theodor Weber
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgabe 3 mit M1, Kapitel 1.1.6 M1 und 1.1.7 M1: TB S.&nbsp;33. Methoden zu den Aufgaben S.&nbsp;212&nbsp;f.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zu Aufgabe 3 (AL S. 33, korrigiert)
+    </div>
+    <span class="tn-time">Zwischencheck: ca. 5 Min.</span>
+    <p><strong>Fehler/Schwächen der AL-Musterlösung:</strong></p>
+    <ul>
+      <li>Datum der Fristsetzung: AL „01.01.2025“ → richtig <strong>01.10.2025</strong> (Tafelbild, 1.1.6/1.1.7).</li>
+      <li>Rücktritt „nach §§ 433, 349“: Das Rücktritts<em>recht</em> folgt aus § 323, die
+      Erklärung aus § 349; § 433 ist nur die Grundlage des Vertrags.</li>
+      <li>Vertretenmüssen: Die AL begründet es positiv („offensichtlich vergessen“). Juristisch
+      entscheidend ist die <strong>Vermutung des § 280 I S. 2</strong> – Theodor muss das
+      Verschulden nicht beweisen, das Möbelhaus müsste sich entlasten. Die Muster-E-Mail
+      nennt beides.</li>
+      <li>§ 325 fehlt in der AL; ergänzt, weil M2 genau diese Kombination behandelt.</li>
+    </ul>
+    <p><strong>Gate:</strong> 7 von 12 Kernbegriffen, mind. 80 Wörter. Beträge zählen als
+    Begriffe (1.499 / 1.699 / 200).</p>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Drei Fälle →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+
+<!-- ═══════════════ STEP 5 · FÄLLE M4–M6 (AUFGABE 6) + ZUSATZ M3 ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Drei Fälle, drei Knackpunkte (M4–M6 · Aufgabe 6)</div>
+      <div class="section-meta">Gruppenarbeit · arbeitsteilig, dann vorstellen</div>
+    </div>
+  </header>
+
+  <p>Jede Gruppe übernimmt <strong>einen</strong> Fall: erst den Selbstcheck, dann die
+  Rechte der Käuferin bzw. des Käufers juristisch fundiert darlegen. Erörtert dabei vor allem
+  das Merkmal, bei dem der Sachverhalt nicht eindeutig ist.</p>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">M4 · Gruppe A · Blumen zum Muttertag</div>
+      <p>Marie bestellt telefonisch bei einem Blumenhandel am Wohnort ihrer Mutter Tulpen als
+      Muttertagsgeschenk. Zugesagt ist: <strong>garantiert</strong> persönliche Zustellung
+      bis <strong>drei Tage vor Muttertag</strong>. Die Blumen kommen erst am
+      <strong>Montag danach</strong>. Die Händlerin erklärt, ihr seien die Tulpen ausgegangen.
+      Die Mutter freut sich trotzdem.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">M5 · Gruppe B · Wohnmobil</div>
+      <p>Stefan kauft am 25.02.2025 bei einem Autohaus ein neues Wohnmobil aus dem Bestand und
+      bezahlt sofort; einen Liefertermin gibt es nicht. Am 26.02. bekommt er den
+      Fahrzeugbrief. Am 27.02. erfährt er: Wegen einer <strong>Rückrufaktion des
+      Herstellers</strong> darf das Wohnmobil vorerst nicht ausgeliefert werden – wann es
+      weitergeht, weiß niemand. Stefan hat einen <strong>Urlaub</strong> geplant und schon
+      Versicherung und Zulassung bezahlt. Er will zurücktreten und die Kosten ersetzt
+      haben.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">M6 · Gruppe C · Musical-Tickets</div>
+      <p>Julia verkauft als <strong>Privatperson</strong> über ein Onlineportal Musical-Karten
+      und schickt sie noch am selben Tag per <strong>Expressversand</strong> ab. Die Post
+      verzögert die Zustellung, die Karten kommen erst <strong>nach der Vorstellung</strong>
+      an. Der Käufer verlangt Kaufpreis und Versandkosten zurück und dazu die
+      <strong>Mehrkosten</strong> für Ersatzkarten vom Schwarzmarkt – sonst Anwalt.</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Hilfen:</strong> Beim Kauf durch eine Privatperson geht die Gefahr mit der Übergabe
+    an das Versandunternehmen auf den Käufer über
+    (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__447.html" target="_blank">§&nbsp;447 I BGB</a>).
+    Das Eigentum an einem Fahrzeug geht unabhängig von der Übergabe des Fahrzeugbriefs über.
+    Die Fristsetzung kann entbehrlich sein
+    (<a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__323.html" target="_blank">§&nbsp;323 II BGB</a>,
+    <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__281.html" target="_blank">§&nbsp;281 II BGB</a>).
+  </div>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 323 Absatz 2 BGB · Die Fristsetzung ist entbehrlich, wenn …</div>
+    <div class="norm-text">
+      <strong>Nr. 1</strong> der Schuldner die Leistung ernsthaft und endgültig verweigert,<br>
+      <strong>Nr. 2</strong> der Schuldner die Leistung bis zu einem im Vertrag bestimmten Termin
+      oder innerhalb einer im Vertrag bestimmten Frist nicht bewirkt, obwohl die termin- oder
+      fristgerechte Leistung nach einer Mitteilung des Gläubigers an den Schuldner vor
+      Vertragsschluss oder auf Grund anderer den Vertragsabschluss begleitenden Umstände für
+      den Gläubiger wesentlich ist, oder<br>
+      <strong>Nr. 3</strong> im Falle einer nicht vertragsgemäß erbrachten Leistung besondere
+      Umstände vorliegen, die unter Abwägung der beiderseitigen Interessen den sofortigen
+      Rücktritt rechtfertigen.
+    </div>
+  </div>
+
+  <!-- Gruppe A · M4 -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Gruppe A · Blumen zum Muttertag (M4)</div>
+        <div class="task-form group">Gruppenarbeit · Selbstcheck, dann darlegen und erörtern</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Hätte Marie <em>vor</em> der Lieferung ohne Fristsetzung zurücktreten können, als der Termin verstrichen war?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Nein – ohne Fristsetzung gibt es nie einen Rücktritt.</button>
+          <button class="quiz-opt" data-correct="1">Ja – der Termin war garantiert und für Marie erkennbar wesentlich (§ 323 II Nr. 2 BGB).</button>
+          <button class="quiz-opt" data-correct="0">Ja – beim Verbrauchsgüterkauf ist die Frist immer entbehrlich.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ein Muttertagsgeschenk mit garantiertem Termin: Die Pünktlichkeit war für Marie wesentlich, und das war bei Vertragsschluss klar. Das ist ein <strong>relatives Fixgeschäft</strong> – die Fristsetzung ist entbehrlich. (Für den Schadensersatz statt der Leistung führt §&nbsp;281 II über die „besonderen Umstände“ meist zum selben Ergebnis.)</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Und nachdem die Mutter die Blumen angenommen und sich gefreut hat?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Marie kann immer noch zurücktreten und den Kaufpreis zurückverlangen.</button>
+          <button class="quiz-opt" data-correct="1">Ein Rücktritt kommt nicht mehr in Betracht – die Leistung ist erbracht und angenommen. Denkbar bleibt nur Ersatz eines Verzögerungsschadens.</button>
+          <button class="quiz-opt" data-correct="0">Die Leistung ist unmöglich geworden, weil Muttertag vorbei ist.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Mit der Annahme der verspäteten Blumen ist der Anspruch erfüllt. Unmöglich war die Leistung nicht: Die Blumen haben ihren Zweck – der Mutter eine Freude zu machen – auch verspätet erfüllt. Deshalb nur <em>relatives</em>, kein absolutes Fixgeschäft.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+
+      <p style="margin-top:12px;"><strong>Jetzt ihr:</strong> Legt Maries Rechte juristisch
+      fundiert dar. Erörtert, ob die Händlerin sich mit den ausgegangenen Tulpen entlasten
+      kann.</p>
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="45"
+        data-keywords="termin, garantiert, wesentlich, fixgeschaeft, 323, entbehrlich, angenommen, erfuellt, verzoegerungsschaden, beschaffungsrisiko, gattung, vertreten"
+        data-required="5"
+        placeholder="Marie hätte nach § … ohne Frist zurücktreten können, weil … Da die Mutter die Blumen angenommen hat, … Die ausgegangenen Tulpen …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 45 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Pflichtverletzung:</strong> Die Blumen wurden trotz Möglichkeit und Fälligkeit
+        nicht bis zum vereinbarten <strong>Termin</strong> geliefert.<br>
+        <strong>Rücktritt:</strong> Vor der Lieferung hätte Marie ohne Fristsetzung zurücktreten
+        können: Der Termin war <strong>garantiert</strong> und für sie erkennbar
+        <strong>wesentlich</strong> (relatives <strong>Fixgeschäft</strong>, §&nbsp;<strong>323</strong>
+        II Nr.&nbsp;2 – Frist <strong>entbehrlich</strong>). Jetzt hat die Mutter die Blumen aber
+        <strong>angenommen</strong>; der Anspruch ist <strong>erfüllt</strong>, ein Rücktritt
+        scheidet aus. Abwägen: Ein absolutes Fixgeschäft (Leistung nach dem Termin sinnlos →
+        Unmöglichkeit) liegt nicht vor, denn die Blumen machen auch verspätet Freude.<br>
+        <strong>Schadensersatz:</strong> Statt der Leistung kommt nach Annahme nicht mehr in
+        Betracht. Denkbar wäre ein <strong>Verzögerungsschaden</strong> (§§&nbsp;280 I, II, 286;
+        Mahnung entbehrlich nach §&nbsp;286 II Nr.&nbsp;1) – ein messbarer Schaden ist aber nicht
+        ersichtlich.<br>
+        <strong>Vertretenmüssen:</strong> „Tulpen ausgegangen“ entlastet die Händlerin nicht.
+        Tulpen sind eine <strong>Gattung</strong>sschuld; wer so etwas verkauft, trägt das
+        <strong>Beschaffungsrisiko</strong> (§&nbsp;276 I) und hätte rechtzeitig vorsorgen
+        müssen. Sie hat die Verspätung daher zu <strong>vertreten</strong>.<br>
+        <strong>Praktisch:</strong> Der Fall bleibt wohl folgenlos – die Mutter hat sich gefreut.
+      </div>
+    </div>
+  </div>
+
+  <!-- Gruppe B · M5 -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Gruppe B · Lieferverzug beim Wohnmobil (M5)</div>
+        <div class="task-form group">Gruppenarbeit · Selbstcheck, dann darlegen und erörtern</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Kann Stefan sofort zurücktreten, weil er das Wohnmobil für seinen Urlaub braucht?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – der Urlaub macht die Lieferung zum Fixgeschäft.</button>
+          <button class="quiz-opt" data-correct="1">Nein – er muss eine angemessene Frist setzen, sobald die Übergabe fällig ist. Den Urlaub kannte das Autohaus nicht als wesentlichen Termin.</button>
+          <button class="quiz-opt" data-correct="0">Ja – der Rückruf zeigt, dass das Autohaus nicht liefern kann; das genügt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ohne vereinbarten Termin kann Stefan beim Verbrauchsgüterkauf die Übergabe nur unverzüglich verlangen; spätestens 30&nbsp;Tage nach dem Kauf muss das Autohaus übergeben (§&nbsp;475 I BGB) – also bis 27.03.2025. Eine Frist, die er vor der Fälligkeit setzt, wirkt nicht. Für §&nbsp;323 II Nr.&nbsp;2 hätte er dem Autohaus bei Vertragsschluss mitteilen müssen, dass der Termin für ihn wesentlich ist.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Muss das Autohaus die Verzögerung durch den Rückruf des Herstellers vertreten?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Wohl nicht – der Hersteller ist nicht Erfüllungsgehilfe des Händlers. Das bremst den Schadensersatz, nicht den Rücktritt.</button>
+          <button class="quiz-opt" data-correct="0">Ja – der Händler haftet immer für den Hersteller (§ 278 BGB).</button>
+          <button class="quiz-opt" data-correct="0">Egal – ohne Vertretenmüssen gibt es auch keinen Rücktritt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Der Händler schuldet die Übergabe des Fahrzeugs, nicht dessen Herstellung. Der Hersteller hilft ihm also nicht bei der Erfüllung seiner Pflicht gegenüber Stefan – kein Erfüllungsgehilfe (§&nbsp;278). Der Rücktritt hängt nicht vom Verschulden ab.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+
+      <div class="reflect" style="margin:12px 0;">
+        <div class="reflect-icon">
+          <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="6" width="24" height="24" rx="4" stroke="#475569" stroke-width="2.2" stroke-dasharray="4 3" fill="none"/>
+            <path d="M18 12v12M12 18h12" stroke="#475569" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="reflect-title">◇ Zusatz <span class="reflect-badge">nicht im Lehrplan</span></div>
+          <div class="reflect-text">
+            Versicherung und Zulassung hätte Stefan auch bei pünktlicher Lieferung bezahlt – sie
+            sind kein Schaden durch die Verspätung. Durch den Rücktritt werden sie aber
+            <strong>nutzlos</strong>. Für solche „vergeblichen Aufwendungen“ gibt es
+            <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__284.html" target="_blank">§&nbsp;284 BGB</a>
+            (Aufwendungsersatz anstelle des Schadensersatzes statt der Leistung). Er hat dieselben
+            Voraussetzungen wie §&nbsp;281 – also auch das Vertretenmüssen.
+          </div>
+        </div>
+      </div>
+
+      <p><strong>Jetzt ihr:</strong> Legt Stefans Rechte juristisch fundiert dar und gebt ihm
+      einen Rat, wie er jetzt vorgehen sollte.</p>
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="45"
+        data-keywords="frist, setzen, 323, faellig, 475, 30 tage, urlaub, wesentlich, hersteller, erfuellungsgehilfe, 278, vertreten, verschulden"
+        data-required="5"
+        placeholder="Die Leistung ist fällig, weil … Stefan muss zuerst … Ob er Schadensersatz bekommt, hängt davon ab, ob …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 45 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Pflichtverletzung:</strong> Ein wirksamer Kaufvertrag liegt vor (Verbrauchsgüterkauf).
+        Übergeben ist das Wohnmobil nicht – der Fahrzeugbrief allein ändert daran nichts. Ohne
+        vereinbarten Termin kann Stefan die Übergabe nur unverzüglich verlangen; spätestens
+        <strong>30 Tage</strong> nach dem Kauf, also am 27.03.2025, ist sie <strong>fällig</strong>
+        (§&nbsp;<strong>475</strong> I). Möglich bleibt sie, der Rückruf verzögert sie nur.<br>
+        <strong>Rücktritt (§&nbsp;323):</strong> Stefan muss eine angemessene
+        <strong>Frist setzen</strong> – wirksam erst ab Fälligkeit. Entbehrlich ist sie nicht: Der <strong>Urlaub</strong> wurde
+        dem Autohaus nicht als <strong>wesentlich</strong> mitgeteilt (kein §&nbsp;323 II Nr.&nbsp;2),
+        und ein bloßes Gespräch über einen „neuen Termin“ ist keine Fristsetzung. Läuft die Frist
+        erfolglos ab, kann er zurücktreten und den Kaufpreis zurückverlangen (§&nbsp;346 I) – egal,
+        ob das Autohaus etwas dafür kann.<br>
+        <strong>Schadensersatz:</strong> Scheitert sehr wahrscheinlich am Vertretenmüssen: Der
+        Rückruf geht vom <strong>Hersteller</strong> aus, und der ist nicht
+        <strong>Erfüllungsgehilfe</strong> des Händlers (§&nbsp;<strong>278</strong>). Ein eigenes
+        <strong>Verschulden</strong> des Händlers ist nicht ersichtlich – die Vermutung des
+        §&nbsp;280 I S.&nbsp;2 ist damit wohl widerlegt.<br>
+        <strong>Rat:</strong> Spätestens ab dem 27.03.2025 schriftlich eine angemessene Frist
+        setzen; nach erfolglosem Ablauf den Rücktritt erklären. Auf den Kosten für Versicherung und Zulassung bleibt Stefan voraussichtlich
+        sitzen (◇ §&nbsp;284 bräuchte ebenfalls das Vertretenmüssen).
+      </div>
+    </div>
+  </div>
+
+  <!-- Gruppe C · M6 -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/>
+          <circle cx="20" cy="5" r="4" fill="#7B1FA2"/>
+          <circle cx="20" cy="35" r="4" fill="#7B1FA2"/>
+          <circle cx="5" cy="20" r="4" fill="#7B1FA2"/>
+          <circle cx="35" cy="20" r="4" fill="#7B1FA2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Gruppe C · Weiterverkauf von Eintrittskarten (M6)</div>
+        <div class="task-form group">Gruppenarbeit · Selbstcheck, dann darlegen und erörtern</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Hat Julia eine Pflicht aus dem Kaufvertrag verletzt?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – die Karten sind zu spät angekommen.</button>
+          <button class="quiz-opt" data-correct="1">Nein – beim Versendungskauf schuldet sie nur das rechtzeitige Abschicken, und das hat sie getan.</button>
+          <button class="quiz-opt" data-correct="0">Ja – die Post ist ihre Erfüllungsgehilfin.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Beim Versendungskauf (Schickschuld) erbringt die Verkäuferin ihre Leistungshandlung mit dem Abschicken. Den Transport selbst schuldet sie nicht – die Post ist deshalb auch nicht ihre Erfüllungsgehilfin. Ohne Pflichtverletzung: weder Rücktritt noch Schadensersatz.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Muss Julia wenigstens den Kaufpreis zurückzahlen?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – der Käufer hat ja nichts von den Karten gehabt.</button>
+          <button class="quiz-opt" data-correct="1">Nein – mit der Übergabe an die Post ist die Gefahr auf den Käufer übergegangen (§ 447 I BGB).</button>
+          <button class="quiz-opt" data-correct="0">Nur die Hälfte – das Risiko wird geteilt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;447 I: Wer auf Verlangen des Käufers versendet, ist das Risiko des Transports los, sobald die Ware beim Versandunternehmen ist. Der Käufer bleibt zur Zahlung verpflichtet. Ganz anders beim Kauf <em>vom Unternehmer</em>: Beim Verbrauchsgüterkauf geht die Gefahr in der Regel erst mit der Ankunft über (§&nbsp;475 II BGB).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+
+      <p style="margin-top:12px;"><strong>Jetzt ihr:</strong> Beantwortet Julias Frage aus M6
+      juristisch fundiert. Erörtert, was sich ändern würde, wenn Julia ein Ticketshop wäre.</p>
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="45"
+        data-keywords="versendungskauf, schickschuld, abgeschickt, post, erfuellungsgehilfe, pflichtverletzung, 447, gefahr, privat, 475, verbrauchsgueterkauf, kaufpreis"
+        data-required="5"
+        placeholder="Julia hat ihre Pflicht … Die Post … Nach § 447 … Wäre Julia Unternehmerin, …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 45 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Rücktritt und Schadensersatz statt der Leistung</strong> setzen beide eine
+        <strong>Pflichtverletzung</strong> voraus. Daran fehlt es: Beim
+        <strong>Versendungskauf</strong> (<strong>Schickschuld</strong>) muss Julia die Karten
+        rechtzeitig und ordnungsgemäß <strong>abgeschickt</strong> haben – das hat sie getan,
+        sogar per Express. Die <strong>Post</strong> ist nicht ihre
+        <strong>Erfüllungsgehilfin</strong>, weil Julia den Transport nicht schuldet.<br>
+        <strong>Kaufpreis:</strong> Julia ist <strong>privat</strong>; mit der Übergabe an die
+        Post ist die <strong>Gefahr</strong> auf den Käufer übergegangen
+        (§&nbsp;<strong>447</strong> I). Er muss den <strong>Kaufpreis</strong> trotzdem zahlen,
+        Rückzahlung oder Mehrkosten für den Schwarzmarkt kann er nicht verlangen. Julias Antwort
+        auf die Drohung: Nein, sie ist nicht zum Schadensersatz verpflichtet.<br>
+        <strong>Abwägen:</strong> Anders wäre es, wenn Julia eine Ankunft bis zur Vorstellung
+        <em>zugesagt</em> hätte (dann schuldet sie mehr als das Abschicken) – oder wenn sie
+        Unternehmerin wäre: Beim <strong>Verbrauchsgüterkauf</strong> geht die Gefahr in der Regel
+        erst mit Ankunft beim Käufer über (§&nbsp;<strong>475</strong> II).
+      </div>
+    </div>
+  </div>
+
+  <!-- Zusatzkarte M3 (Aufgaben 4 & 5) -->
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <path d="M19 4c-5.5 0-10 4.3-10 9.7 0 3.4 1.8 6.3 4.4 8.1V27h11.2v-5.2c2.6-1.8 4.4-4.7 4.4-8.1C29 8.3 24.5 4 19 4z" stroke="#F59E0B" stroke-width="2.4" fill="#FEF3C7"/>
+          <path d="M14 31h10M15.5 35h7" stroke="#F59E0B" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Zusatz · Ever Given im Suezkanal: Ist ein blockierter Kanal höhere Gewalt? (M3 · Aufgaben 4 &amp; 5)</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzel- oder Partnerarbeit · für Schnelle</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Im März 2021 blockierte das Containerschiff <em>Ever Given</em> sechs Tage lang den
+      Suezkanal. Lies M3 und bearbeite:</p>
+      <ul style="margin:6px 0 10px 20px;font-size:14px;">
+        <li><strong>Aufgabe 4:</strong> Erkläre die Bedeutung pünktlicher Lieferungen für den Geschäftsverkehr.</li>
+        <li><strong>Aufgabe 5:</strong> Lege dar, inwiefern die Aussagen des Rechtsanwalts a) den dir bekannten Regeln des BGB entsprechen und b) zeigen, dass das Recht einer Auslegung bedarf.</li>
+      </ul>
+      <textarea class="answer-area gate-input" rows="7"
+        data-min-words="50"
+        data-keywords="planung, planen, lieferkette, produktion, arbeitsteilung, vertrauen, vertretenmuessen, hoehere gewalt, definiert, auslegung, einfluss, sorgfalt, bevorratung, vorrat, einzelfall"
+        data-required="5"
+        placeholder="Pünktliche Lieferungen sind wichtig, weil … Der Anwalt sagt, dass … Das entspricht § … Auslegungsbedürftig ist …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg>
+          </span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 50 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Aufgabe 4:</strong> In einer Wirtschaft mit internationaler
+        <strong>Arbeitsteilung</strong> hängen ganze <strong>Lieferketten</strong> voneinander ab:
+        Fällt eine Lieferung aus, stehen nachgelagerte Betriebe still (M3: sechs Tage Blockade mit
+        Folgen für den Welthandel). Pünktlichkeit gibt den Vertragspartnern
+        <strong>Planung</strong>ssicherheit und schafft <strong>Vertrauen</strong> in die
+        Verfügbarkeit von Waren.<br>
+        <strong>Aufgabe 5a:</strong> Wer haftet, richtet sich nach den Verträgen zwischen den
+        Beteiligten – jeder haftet seinem eigenen Vertragspartner (Recht der
+        Leistungsstörungen). Schadensersatz setzt <strong>Vertretenmüssen</strong> voraus; bei
+        <strong>höherer Gewalt</strong> fehlt es daran (§§&nbsp;280 I S.&nbsp;2, 276). Haftung
+        lässt sich vertraglich begrenzen, etwa über Lieferbedingungen – aber nicht grenzenlos.<br>
+        <strong>Aufgabe 5b:</strong> Höhere Gewalt ist im BGB nicht <strong>definiert</strong>.
+        Ob ein Ereignis von außen kam und die Beteiligten keinen <strong>Einfluss</strong> hatten,
+        muss im <strong>Einzelfall</strong> durch <strong>Auslegung</strong> bestimmt werden –
+        ebenso, welche <strong>Sorgfalt</strong> zumutbar war (z.&nbsp;B. ob eine
+        <strong>Bevorratung</strong> geboten gewesen wäre, um die Verzögerung abzufangen).
+      </div>
+    </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M3 „Haftungsfragen nach einem Schiffsunglück“: TB S.&nbsp;31 · M4 „Blumen zum Muttertag“, M5 „Lieferverzug bei einem Wohnmobil“: TB S.&nbsp;32 · M6 „Weiterverkauf von Eintrittskarten“ &amp; Aufgaben 4–6: TB S.&nbsp;33. Vorlagen Gutachtenstil: Mediencode 82024-114.</div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zu Aufgabe 6 und M3 (AL S. 33, korrigiert)
+    </div>
+    <p><strong>Organisation:</strong> Gruppen A/B/C arbeitsteilig (ca. 10 Min.), dann je
+    1 Min. Vorstellung des „Knackpunkts“. Die Zusatzkarte M3 ist für schnelle Gruppen; die AL
+    sieht für Aufgabe 6 keinen vollständigen Gutachtenstil vor – optional mit Vorlage
+    82024-114 an einem Fall.</p>
+    <p><strong>M4 – AL ergänzt:</strong> Die AL bleibt bei „relatives Fixgeschäft, Leistung noch
+    möglich“ stehen. Der juristische Ertrag fehlt: Gerade das relative Fixgeschäft macht die
+    Fristsetzung <strong>entbehrlich</strong> (§ 323 II Nr. 2). Nach Annahme der Blumen ist
+    erfüllt (§ 362) → kein Rücktritt mehr. Vertretenmüssen: Beschaffungsrisiko bei
+    Gattungsschuld (§ 276 I). Gegenposition „absolutes Fixgeschäft“ (Geschenk für <em>den</em>
+    Tag) ist diskutabel, scheitert aber daran, dass die Leistung ihren Zweck noch erfüllt hat.
+    Erörterungsanlass, kein Fehler, wenn Schüler das vertreten.</p>
+    <p><strong>M5 – AL falsch:</strong> Die AL ordnet Versicherungs-/Zulassungskosten als
+    „Schadensersatz <em>neben</em> der Leistung“ ein. Sie sind aber nicht durch die Verzögerung
+    entstanden (wären auch bei pünktlicher Lieferung angefallen) – sie werden erst durch den
+    Rücktritt <strong>nutzlos</strong> → vergebliche Aufwendungen, § 284 (als ◇ Zusatz
+    markiert). Außerdem löst die Stunde die offene Frage der AL auf: Hersteller ≠
+    Erfüllungsgehilfe des Händlers (st. Rspr.) → SE/§ 284 scheitern wohl am Vertretenmüssen;
+    der Rücktritt nicht. Fälligkeit über § 475 I: nur „unverzüglich“, spätestens nach 30 Tagen
+    (27.03.2025) – eine vorher gesetzte Frist wäre unwirksam (vgl. Korrektur 1.1.3, Fall
+    Albert). Urlaub ≠ § 323 II Nr. 2 (nicht mitgeteilt).
+    Die AL-Frage nach dem Gespräch über einen neuen Termin ist berechtigt: Eine bloße Anfrage
+    ist keine Fristsetzung.</p>
+    <p><strong>M6 – AL-Begründung präzisiert:</strong> Ergebnis der AL stimmt. § 447 regelt aber
+    die <em>Preisgefahr</em> (muss der Käufer zahlen?). Ob eine Pflichtverletzung vorliegt,
+    folgt aus der <strong>Schickschuld</strong>: Leistungshandlung = Abschicken; die Post ist
+    keine Erfüllungsgehilfin. § 475 II greift nicht (privat an privat) – guter Kontrast. Die
+    Ankunft war laut M6 nur nach Angabe des Paketshops erwartet, nicht von Julia zugesagt.</p>
+    <p><strong>M3 / Aufgabe 5a – AL ergänzt:</strong> „Haftungsausschluss über AGB“ nur mit
+    Grenze: § 309 Nr. 7 BGB (kein Ausschluss bei grobem Verschulden und bei Verletzung von
+    Leben, Körper, Gesundheit) – bei Nachfrage.</p>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li>Will die Käuferin die Leistung <strong>nicht mehr</strong>, hat sie zwei Wege: <strong>Rücktritt</strong> (§ 323) und <strong>Schadensersatz statt der Leistung</strong> (§§ 280 I, III, 281) – kombinierbar (§ 325).</li>
+      <li>Beide setzen grundsätzlich eine <strong>erfolglose angemessene Frist</strong> voraus – die letzte Chance zur Erfüllung. Ausnahmen: §§ 323 II, 281 II, z.&nbsp;B. beim <strong>relativen Fixgeschäft</strong>.</li>
+      <li>Nur der Schadensersatz verlangt <strong>Vertretenmüssen</strong> (vermutet, § 280 I S. 2). Der Rücktritt geht auch ohne Verschulden.</li>
+      <li>Rücktritt = <strong>Erklärung</strong> (§ 349) → empfangene Leistungen zurück (§ 346 I). Schaden beim Ersatzkauf nach der <strong>Differenzmethode</strong>: Mehrpreis.</li>
+      <li>Ohne <strong>Pflichtverletzung</strong> keine Rechte: Beim privaten Versendungskauf genügt rechtzeitiges Abschicken; das Transportrisiko trägt der Käufer (§ 447 I).</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+
+<!-- ═══════════════ STEP 6 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-6">
+<section class="section teacher-only" id="step6">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">6</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Hinweise zur Durchführung
+    </div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen zuerst,
+    dann zwei „mittlere“ Kompetenzen, abschließend Kreativität als offene Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <!-- ── Wissen ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#1E3A8A;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#1E3A8A" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#1E3A8A" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation / Wissen</div>
+        <div class="task-form" style="color:#1E3A8A;">Fachwissen abrufen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Theodor will die Küche nicht mehr. Nenne die beiden Rechte, ihre
+      Normen und die Prüfungspunkte. Worin unterscheiden sie sich?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Rücktritt, § 323:</strong> I. gegenseitiger Vertrag · II. Nichtleistung trotz
+        Möglichkeit und Fälligkeit · III. erfolgloser Ablauf einer angemessenen Frist oder
+        Entbehrlichkeit (§ 323 II) · IV. kein Ausschluss (§ 323 VI). Erklärung § 349, Rückgewähr
+        § 346 I.<br>
+        <strong>SE statt der Leistung, §§ 280 I, III, 281:</strong> I. Schuldverhältnis · II.
+        Pflichtverletzung · III. Frist oder Entbehrlichkeit (§ 281 II) · IV. Vertretenmüssen
+        (§§ 280 I S. 2, 276, 278) · V. kausaler Schaden (§§ 249 ff.).<br>
+        <strong>Unterschied:</strong> Vertretenmüssen nur beim SE; beides kombinierbar (§ 325).
+        Bestleistung: § 281 IV (Erfüllungsanspruch erlischt).
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kritisches Denken ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Zeitpunkt beurteilen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Angenommen, Theodor hätte die Ersatzküche schon am 15.10. gekauft
+      – eine Woche <em>vor</em> Fristablauf. Am 20.10. liefert das erste Möbelhaus doch noch.
+      Was nun?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Vor Fristablauf hat Theodor weder ein Rücktrittsrecht noch einen Anspruch auf SE statt
+        der Leistung. Das Möbelhaus liefert fristgerecht → Theodor muss die Küche
+        <strong>abnehmen</strong> (§ 433 II) und bleibt auf der zweiten Küche sitzen. Die
+        Mehrkosten sind kein ersatzfähiger Schaden.<br>
+        <strong>Lehre:</strong> Erst Frist ablaufen lassen, dann Rücktritt erklären bzw. SE
+        verlangen (§ 281 IV) – erst danach ist der Ersatzkauf risikolos. Gute Antwort nennt den
+        Zweck der Frist (letzte Chance) und die Reihenfolge.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kollaboration ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kollaboration</div>
+        <div class="task-form" style="color:#0d9488;">Perspektivenwechsel (M5)</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Versetze dich in das Autohaus aus M5: Stefan droht mit Rücktritt
+      und Schadensersatz. Was würdest du ihm antworten – und wo müsstest du ihm recht
+      geben?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        <strong>Autohaus:</strong> Der Rückruf kommt vom Hersteller, kein eigenes Verschulden,
+        Hersteller ist nicht Erfüllungsgehilfe → kein Schadensersatz; Urlaub war nicht
+        vereinbart → kein Fixgeschäft; sofortiger Rücktritt ohne Frist unwirksam.<br>
+        <strong>Recht geben:</strong> Spätestens 30 Tage nach dem Kauf ist die Übergabe fällig
+        (§ 475 I). Setzt Stefan dann eine angemessene Frist und läuft sie ab, kann er
+        zurücktreten – verschuldensunabhängig.
+        Kundenfreundlich: Ersatzfahrzeug oder Leihwagen anbieten.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Kreativität ── -->
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde einen Kauffall mit verspäteter Lieferung, in dem die
+      Käuferin <em>ohne</em> Fristsetzung zurücktreten darf, aber <em>keinen</em> Schadensersatz
+      bekommt. Begründe.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>:
+        <ul>
+          <li><strong>Frist entbehrlich:</strong> relatives Fixgeschäft (Termin bei Vertragsschluss als wesentlich mitgeteilt, § 323 II Nr. 2) oder ernsthafte, endgültige Verweigerung (Nr. 1).</li>
+          <li><strong>Kein SE:</strong> fehlendes Vertretenmüssen (Entlastung, z.&nbsp;B. unvorhersehbares Ereignis ohne Einfluss des Verkäufers) oder kein Schaden (Ersatz gleich teuer/billiger).</li>
+          <li><strong>Bestleistung:</strong> korrekte Normen (§§ 323, 280 I S. 2, 281) und Begründung, warum der Rücktritt trotzdem möglich ist.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+</main>
+
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(kw.includes(tk) && tk.length >= 3) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const container = ta.closest('.task-body') || ta.closest('.gstep-body');
+  const gate = container ? container.querySelector('.sol-gate') : null;
+  if(!gate) return;
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
+}
+
+// ═══════════════ Quiz (Sofort-Rückmeldung) ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const fb = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      opts.forEach(o=>o.disabled = true);
+      fb.classList.remove('ok','no');
+      if(opt.dataset.correct === '1'){
+        opt.classList.add('correct');
+        fb.textContent = '✓ Richtig.'; fb.classList.add('show','ok');
+      } else {
+        opt.classList.add('wrong');
+        fb.textContent = '✗ Leider falsch. Versuch es noch einmal.'; fb.classList.add('show','no');
+        if(retry) retry.style.display = 'inline-block';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{ o.disabled=false; o.classList.remove('correct','wrong'); });
+  const fb = q.querySelector('.quiz-feedback'); fb.classList.remove('show','ok','no'); fb.textContent='';
+  const ex = q.querySelector('.quiz-explain'); if(ex) ex.classList.remove('show');
+  btn.style.display = 'none';
+}
+
+// ═══════════════ 1.1.7: Quiz-Erklärung ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  q.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const ex = q.querySelector('.quiz-explain');
+      if(ex && opt.dataset.correct === '1') ex.classList.add('show');
+    });
+  });
+});
+
+// ═══════════════ 1.1.7: Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · 1.1.8 Rücktritt vom Vertrag und Ersatzkauf';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ cl.outerHTML = '<div class="p-closing"><h3>Das nimmst du mit</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#172E6E;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#172E6E;border-bottom:1.5pt solid #1E3A8A;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#172E6E;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #1E3A8A;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#1E3A8A;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep,.norm-box,.diff-chart{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe,.norm-box{border-left:4pt solid #1E3A8A;}'+
+  '.norm-title,.diff-title,.dc-label{font-weight:bold;}'+
+  '.dc-bar{display:inline-block;border:1pt solid #1E3A8A;padding:1pt 6pt;margin:1pt 2pt;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_1-1-8_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+</script>
+
+</body>
+</html>
