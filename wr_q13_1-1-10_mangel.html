@@ -1,0 +1,2998 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1.1.10 Mangel · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Olivgrün === */
+  --blue-900:#365314;
+  --blue-800:#3F6212;
+  --blue-700:#4D7C0F;   /* Primärfarbe */
+  --blue-600:#65A30D;
+  --blue-400:#84CC16;
+  --blue-100:#ECFCCB;
+  --blue-50: #F7FEE7;
+  --blue-grad: linear-gradient(135deg,#3F6212 0%,#4D7C0F 55%,#5B8C1A 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:#431407;
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#F7FEE7 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#D9F99D;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#D9F99D;font-style:normal;font-weight:800;}
+.norm-box a{color:#D9F99D;font-weight:700;text-decoration:none;border-bottom:1px dotted #D9F99D;}
+.norm-box a:hover{color:#ECFCCB;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
+@media print{
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+
+/* ─────────── Gutachten-Schritt (Prüfungsaufbau I–IV) ─────────── */
+.gstep{
+  border:1.5px solid var(--border);border-radius:var(--radius-md);
+  margin:12px 0;overflow:hidden;background:#fff;
+}
+.gstep-head{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.gstep-num{
+  background:var(--blue-700);color:#fff;flex-shrink:0;
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.gstep-title{font-weight:800;font-size:14px;color:var(--text);}
+.gstep-title .gnorm{display:block;font-size:11.5px;font-weight:700;color:var(--blue-700);margin-top:1px;}
+.gstep-body{padding:13px 14px;font-size:13.5px;line-height:1.55;}
+.gstep-body .glabel{font-weight:800;color:var(--blue-800);font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+.gstep-def{color:var(--text-2);margin:4px 0 10px;}
+/* Obersatz / Rechtsfolge Rahmenkarten */
+.gframe{
+  border-left:3px solid var(--blue-700);background:var(--blue-50);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;
+  font-size:14px;line-height:1.55;color:#431407;
+}
+.gframe .gframe-tag{
+  display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
+}
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#D9F99D;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(253,230,138,0.14);
+  border:1.5px dashed rgba(253,230,138,0.5);
+  color:#FEF3C7;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(253,230,138,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#2563EB;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(202,138,4,0.45);border-style:solid;border-color:#84CC16;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
+
+/* ─────────── 1.1.6: Brief, Schema, Halbzeit, Teil-Banner ─────────── */
+.fall-card.letter{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);
+  padding:14px 18px;margin:0 0 16px;font-size:14px;line-height:1.6;box-shadow:var(--shadow);}
+.letter-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border);
+  padding-bottom:7px;margin-bottom:9px;}
+.schema{border:1.5px solid var(--blue-100);background:var(--blue-50);border-radius:var(--radius-md);
+  padding:14px 16px;margin:16px 0;}
+.schema-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:10px;}
+.schema-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.schema-item{background:#fff;border:1.5px solid var(--blue-400);border-radius:8px;
+  padding:6px 10px;font-weight:800;font-size:13px;color:var(--text);text-align:center;line-height:1.2;}
+.schema-item small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);}
+.schema-plus{font-weight:900;color:var(--blue-700);font-size:16px;}
+.schema-result{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.pause-card{display:flex;gap:14px;align-items:center;margin:18px 0 4px;
+  border:1.5px dashed var(--slate);border-radius:var(--radius-md);padding:14px 18px;
+  color:var(--slate);background:var(--slate-50);}
+.pause-title{font-weight:900;font-size:16px;}
+.pause-text{font-size:13.5px;color:var(--text-2);}
+.step-chip.halftime{border-style:dashed;}
+.part-banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:12px 18px;
+  border-radius:var(--radius-lg);background:var(--blue-grad);color:#fff;box-shadow:var(--shadow);}
+.part-tag{background:rgba(255,255,255,0.22);padding:3px 11px;border-radius:14px;
+  font-size:12px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;}
+.part-title{font-weight:900;font-size:17px;}
+
+/* ─────────── 1.1.7: Fallkarten-Raster ─────────── */
+.fall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0 6px;}
+.fall-card{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;}
+.fall-card p{font-size:13.5px;margin:0;line-height:1.55;}
+.fall-card-tag{font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.3px;}
+
+/* ─────────── 1.1.7: Quiz-Erklärung nach richtiger Antwort ─────────── */
+.quiz-explain{display:none;margin-top:6px;font-size:13px;line-height:1.5;color:var(--text-2);
+  padding:8px 12px;border-radius:6px;background:var(--slate-50);border-left:3px solid var(--slate);}
+.quiz-explain.show{display:block;}
+
+/* ─────────── 1.1.7: Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── 1.1.7: Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#3F6212;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #4D7C0F;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #4D7C0F;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#4D7C0F !important;border:2px solid #4D7C0F;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #4D7C0F;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#4D7C0F;border:2px solid #4D7C0F;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#4D7C0F;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#4D7C0F;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#4D7C0F;border:2px solid #4D7C0F;}
+.p-doc .p-closing{border:2px solid #4D7C0F;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#4D7C0F;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#3F6212;border-bottom:2px solid #4D7C0F;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#3F6212;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+
+/* ─────────── 1.1.8: Gesetzestext-Kasten (aus 1.1.6) ─────────── */
+.norm-box{background:#0F172A;border-radius:var(--radius-md);padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;}
+.norm-box .norm-title{font-size:12px;font-weight:800;color:#D9F99D;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#D9F99D;font-style:normal;font-weight:800;}
+
+/* ─────────── 1.1.8: Differenzmethode (Balken) ─────────── */
+.diff-chart{margin:14px 0 18px;border:1.5px solid var(--blue-100);background:var(--blue-50);
+  border-radius:var(--radius-md);padding:14px 16px;}
+.diff-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:8px;}
+.dc-row{display:flex;align-items:center;gap:10px;margin:7px 0;}
+.dc-label{width:170px;flex-shrink:0;font-size:12.5px;font-weight:800;color:var(--text-2);line-height:1.25;}
+.dc-track{flex:1;display:flex;gap:2px;min-width:0;}
+.dc-bar{display:flex;align-items:center;justify-content:center;height:32px;border-radius:6px;
+  color:#fff;font-size:12px;font-weight:800;padding:0 6px;text-align:center;line-height:1.1;
+  overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.dc-a{background:var(--blue-700);}
+.dc-b{background:var(--blue-400);color:#365314;}
+.dc-c{background:#0d9488;min-width:52px;}
+@media (max-width:560px){
+  .dc-row{flex-direction:column;align-items:stretch;gap:3px;}
+  .dc-label{width:auto;}
+}
+
+/* ─────────── 1.1.8: Druckregeln für norm-box und Balken ─────────── */
+.p-doc .norm-box{background:#fff !important;color:#000;border:1px solid #999;border-left:4px solid #4D7C0F;box-shadow:none;}
+.p-doc .norm-box .norm-title{color:#4D7C0F;}
+.p-doc .norm-box .norm-text,.p-doc .norm-box .norm-text strong{color:#000;}
+.p-doc .diff-chart{background:#fff;border:1px solid #999;page-break-inside:avoid;}
+
+
+/* ─────────── 1.1.10: Verbraucher-Kennzeichnung, Neu-Kasten, Zusatzkarte ─────────── */
+.vgk-tag{display:inline-block;background:#FEF3C7;color:#78350F;border:1px solid #F59E0B;border-radius:6px;
+  font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:1px 7px;margin-right:4px;vertical-align:1px;}
+.vgk-line{border-top:1px dashed var(--border);padding-top:8px;margin-top:8px;}
+.vgk-box{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #F59E0B;border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;font-size:15px;line-height:1.6;}
+.neu-box{border:2px dotted var(--blue-700);border-radius:var(--radius-md);padding:12px 16px;margin:18px 0;background:#fff;}
+.neu-head{font-weight:900;color:var(--blue-800);font-size:13px;letter-spacing:.3px;margin-bottom:4px;}
+.neu-box p{margin:0;}
+.zusatz-card{border:2px dashed #94A3B8;border-radius:var(--radius-lg,14px);padding:12px 14px 2px;margin:20px 0;background:#F8FAFC;}
+.zusatz-head{font-weight:900;color:#475569;font-size:13px;letter-spacing:.3px;margin-bottom:4px;}
+/* ─────────── 1.1.10: Systematik-Raster (Tafelbild) ─────────── */
+.sysgrid{border:2px solid var(--blue-700);border-radius:var(--radius-md);padding:12px;margin:20px 0;background:#fff;}
+.sys-top{background:var(--blue-700);color:#fff;font-weight:800;text-align:center;border-radius:8px;padding:8px 10px;font-size:15px;}
+.sys-label{font-size:12px;font-weight:900;color:var(--blue-800);text-transform:uppercase;letter-spacing:.5px;margin:10px 2px 6px;}
+.sys-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sys-col{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:8px 10px;}
+.sys-h{font-weight:900;color:var(--blue-800);font-size:14px;}
+.sys-sub{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:4px;}
+.sys-col ul{margin:0;padding-left:16px;font-size:13px;line-height:1.45;}
+.sys-row{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:7px 10px;margin-top:8px;font-size:14px;text-align:center;}
+@media (max-width:700px){.sys-cols{grid-template-columns:1fr;}}
+/* ─────────── 1.1.10: Im BGB anstreichen ─────────── */
+.bgb-mark{border:1px solid var(--border);border-left:4px solid #334155;border-radius:var(--radius-md);background:#fff;
+  padding:14px 16px;margin:20px 0;box-shadow:var(--shadow);}
+.bm-head{display:flex;align-items:center;gap:8px;font-weight:900;color:#334155;font-size:15px;margin-bottom:4px;}
+.bm-intro{font-size:13px;color:var(--text-2);margin-bottom:8px;}
+.bm-row{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:7px 0;border-top:1px solid #EEF2F6;}
+.bm-norm{font-weight:900;color:#334155;font-size:13px;}
+.bm-text{font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:#1F2937;}
+.bm-text u,.bm-u{text-decoration:none;border-bottom:2px solid #334155;padding-bottom:1px;}
+.bm-rule{font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;}
+@media (max-width:600px){.bm-row{grid-template-columns:1fr;gap:2px;}}
+/* Druckfassung */
+.p-doc .p-part{font-size:15pt;font-weight:900;color:#3F6212;border:2px solid #4D7C0F;border-radius:8px;padding:6px 12px;margin:20px 0 6px;page-break-after:avoid;break-after:avoid;}
+.p-doc .vgk-box,.p-doc .neu-box,.p-doc .zusatz-card,.p-doc .bgb-mark,.p-doc .sysgrid{background:#fff;box-shadow:none;page-break-inside:avoid;break-inside:avoid;}
+.p-doc .sys-top{background:#fff;color:#000;border:1.5px solid #4D7C0F;}
+.p-doc .sys-col,.p-doc .sys-row{background:#fff;border:1px solid #999;}
+.p-doc .vgk-tag{background:#fff;border:1px solid #000;color:#000;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · 1.1.10</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Einstieg</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Frist &amp; Ausschluss</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Gruppenpuzzle</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Anwenden</div>
+  <div class="step-chip halftime" data-step="5" onclick="goStep(5)"><span class="n">5</span>Halbzeit</div>
+  <div class="step-chip" data-step="6" onclick="goStep(6)"><span class="n">6</span>Gefahrübergang</div>
+  <div class="step-chip" data-step="7" onclick="goStep(7)"><span class="n">7</span>Beweislast</div>
+  <div class="step-chip" data-step="8" onclick="goStep(8)"><span class="n">8</span>B-Ware &amp; Updates</div>
+  <div class="step-chip teacher-only" data-step="9" onclick="goStep(9)"><span class="n">9</span>Abfrage</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise und Abfrage sind nicht enthalten.</span>
+</div>
+
+<!-- ═══════════════ STEP 1 · EINSTIEG (M1 · AUFGABE 1) ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Stunden 11–12 (Doppelstunde)</span>
+  <h1>Wann hat eine Ware einen Mangel?</h1>
+  <p class="hero-sub">Undichtes Cabrio, rostender Sessel, falsche Setup-Datei: Wann ist eine Ware rechtlich mangelhaft – und zu welchem Zeitpunkt muss der Mangel vorliegen?</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du erkennst in konkreten Fällen <strong>mangelhafte Leistungen</strong> beim Kauf. Dazu
+        nutzt du die <strong>Systematik der Mangelfreiheit</strong> (subjektive und objektive
+        Anforderungen, Montage/Installation/Integration, Aliud) und bestimmst den maßgeblichen
+        Zeitpunkt (<strong>Gefahrübergang</strong> bzw. Bereitstellung).
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Ob Handy, Fahrrad oder App: Wenn etwas nicht passt, ist die erste Frage immer
+        „Ist das überhaupt ein Mangel?“. Erst dann geht es um Reparatur, Umtausch oder Geld zurück –
+        das kommt in den nächsten Stunden.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="part-banner">
+  <span class="part-tag">Teil A</span>
+  <span class="part-title">Was ist ein Mangel?</span>
+</div>
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Einstieg: Das undichte Cabrio (M1 · Aufgabe 1)</div>
+      <div class="section-meta">Plenum · dann Partnerarbeit</div>
+    </div>
+  </header>
+
+  <p>Familie Huber hat auf einem Rechtsportal eine Frage gestellt. Lies den Fall und entscheide
+  spontan: <strong>Müssen die Hubers für das Dach aufkommen?</strong> Merk dir deine Einschätzung –
+  aufgelöst wird in Schritt&nbsp;7.</p>
+
+  <div class="fall-card letter">
+    <div class="fall-card-tag">M1 · Frage von Familie Huber auf einem Rechtsportal</div>
+    <p>Die Hubers haben am <strong>28.04.2025</strong> ihren Oldtimer, ein Cabrio, an einen
+    Privatmann verkauft – <strong>privat</strong>, ohne die Gewährleistung auszuschließen. Bezahlt
+    wurde bar, abgeholt hat der Käufer das Auto eine Woche später. Die Hubers haben ausdrücklich auf
+    das <strong>Alter</strong> des Wagens hingewiesen. Der Käufer fragte <strong>gezielt nach dem
+    Dach</strong>. Die Antwort: Es habe nie Probleme gegeben. Tatsächlich stand das Auto in der Woche
+    vor dem Verkauf auch bei Regen draußen, Freunde hatten es im Vorjahr ohne Probleme gefahren, und
+    im Winter stand es in der Garage.</p>
+    <p>Am <strong>02.06.2025</strong> meldet sich der Käufer: Nach starkem Regen sei
+    <strong>Wasser ins Auto gelaufen</strong>, ein dauerhafter Schaden sei nicht entstanden. Er
+    verlangt, dass die Hubers das Dach reparieren – oder den Kauf rückgängig machen und den Preis
+    zurückzahlen.</p>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon moderation"><svg width="22" height="22" viewBox="0 0 40 36" fill="none"><path d="M2 14v6c0 1.2 1 2.2 2.2 2.2h3.3l2.2 8.6h4.3l-2.2-8.6L26 29V6L12 13H4.2C3 13 2 13.9 2 15z" fill="#E65100"/><path d="M30 8c2.7 2.2 2.7 11 0 13.2" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M34 3c4.4 4.4 4.4 17.6 0 22" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.6"/></svg></div>
+      <div>
+        <div class="task-title">Impuls · Daumen hoch oder runter?</div>
+        <div class="task-form moderation">Moderation · Plenum</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p style="font-style:italic;font-size:15px;color:var(--blue-800);font-weight:700;">
+        „Ein Oldtimer ist alt – darf da das Dach undicht sein? Und was spielt es für eine Rolle,
+        dass privat verkauft wurde?“</p>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 44 32" fill="none"><path d="M3 6c0-2 1.5-4 4-4h12c2.5 0 4 2 4 4v10c0 4-3 8-10 8S3 20 3 16V6z" stroke="#7B1FA2" stroke-width="2.2" fill="none"/><path d="M9 10c0-1 0.8-2 2-2s2 1 2 2" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/><path d="M17 10c0-1 0.8-2 2-2s2 1 2 2" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/><path d="M9 16c1 2 3 3 5 3s4-1 5-3" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/><path d="M21 10c0-2 1.5-4 4-4h12c2.5 0 4 2 4 4v10c0 4-3 8-10 8s-10-4-10-10V10z" stroke="#7B1FA2" stroke-width="2.2" fill="white"/><path d="M27 14c0 1 0.8 2 2 2s2-1 2-2" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/><path d="M35 14c0 1 0.8 2 2 2s2-1 2-2" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/><path d="M27 22c1-2 3-3 5-3s4 1 5 3" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 1 · Rollengespräch: Hubers gegen Käufer</div>
+        <div class="task-form partner">Partnerarbeit · erst sprechen, dann notieren</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Eine oder einer übernimmt <strong>Familie Huber</strong>, die oder der andere den
+      <strong>Käufer</strong>. Sucht zuerst in M1 die Argumente eurer Seite und spielt dann ein kurzes
+      Gespräch (ca. 2 Minuten). Notiert anschließend die zwei stärksten Argumente jeder Seite.</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="privat, alter, oldtimer, dach, nachgefragt, ehrlich, regen, garage, freunde, dicht, reparatur, ruecktritt, kaufpreis, ausschluss, probleme"
+        data-required="5"
+        placeholder="Hubers: Wir haben auf das Alter hingewiesen und … Käufer: Ich habe ausdrücklich nach dem Dach gefragt, und …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Familie Huber:</strong> Verkauf von <strong>privat</strong> an privat; ausdrücklich
+        auf das <strong>Alter</strong> des <strong>Oldtimer</strong>s hingewiesen; <strong>ehrlich</strong>
+        gesagt, dass es bisher keine <strong>Probleme</strong> mit dem Dach gab; das Auto stand vor dem
+        Verkauf im <strong>Regen</strong>, im Winter in der <strong>Garage</strong>, und die
+        <strong>Freunde</strong> können bezeugen, dass es <strong>dicht</strong> war; der Schaden
+        tauchte erst Wochen nach der Abholung auf. Sie zweifeln an, dass die Forderungen berechtigt sind.<br>
+        <strong>Käufer:</strong> Er hat ganz konkret <strong>nachgefragt</strong>, ob das Dach dicht
+        ist; ein dichtes Dach darf man auch bei einem Oldtimer erwarten; ein
+        Gewährleistungs<strong>ausschluss</strong> wurde nicht vereinbart; er verlangt die
+        <strong>Reparatur</strong> oder den <strong>Rücktritt</strong> mit Rückzahlung des
+        <strong>Kaufpreis</strong>es.
+      </div>
+    </div>
+  </div>
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M1 „Undichtes Autodach: ein Fall von Gewährleistung?“: TB S.&nbsp;38 · Aufgabe 1: TB S.&nbsp;41</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Moderationshilfe Einstieg (AL S. 41)</div>
+    <span class="tn-time">Zeitrahmen: ca. 10 Min.</span>
+    <ul>
+      <li>Stimmungsbild per Handzeichen, Ergebnis an der Tafel festhalten, <strong>nicht auflösen</strong> – Auflösung in Schritt 7 (Beweislast).</li>
+      <li>Aufgabe 1 im Buch: zwei Gruppen, dann Partnergespräch. Hier verkürzt als Rollengespräch in Partnerarbeit; die AL-Tabelle zur Interessenlage steckt in der Musterlösung.</li>
+      <li>Erwartbar: Viele meinen „Privatverkauf = keine Gewährleistung“. Genau das klärt Schritt 2 (Ausschluss muss <em>vereinbart</em> werden).</li>
+      <li>Dieser Fall kommt in 1.1.11–1.1.13 in Varianten wieder (laut DK bewusst: komplexe Fallbetrachtung).</li>
+    </ul>
+    <p><strong>Alternativer Einstieg (Zusatzmaterial „Pizza nach jedem Geschmack“):</strong>
+    Cartoon von Kaamran Hafeez (CartoonStock): Ein Gast hat „thin crust“ bestellt und bekommt eine
+    Pizza mit absurd dickem Boden. Das Bild ist aus urheberrechtlichen Gründen nicht eingebaut – bei
+    Bedarf aus dem Material zeigen. Die Pizza taucht als Zusatzkarte in Schritt 4 auf.</p>
+  </div>
+</section>
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Frist und Ausschluss →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+<!-- ═══════════════ STEP 2 · FRIST UND AUSSCHLUSS (M2, M3 · AUFGABE 2) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Wie lange haftet der Verkäufer – und kann man das ausschließen? (M2, M3 · Aufgabe 2)</div>
+      <div class="section-meta">Einzelarbeit · zuordnen, prüfen, erörtern</div>
+    </div>
+  </header>
+
+  <p>Bevor es um den Mangel selbst geht, zwei Vorfragen: <strong>Wie lange</strong> haftet der
+  Verkäufer für Mängel – und kann man diese Haftung <strong>ausschließen</strong>?</p>
+
+  <div class="info-box">
+    <strong>Gewährleistung ≠ Garantie.</strong> <strong>Gewährleistung</strong> ist die
+    <em>gesetzliche</em> Pflicht des Verkäufers, dafür einzustehen, dass die gelieferte Sache
+    mangelfrei ist – sie steht im BGB und gilt automatisch. Eine <strong>Garantie</strong> ist
+    dagegen eine <em>freiwillige</em> Zusage des Händlers oder Herstellers (§&nbsp;443 BGB) mit
+    eigenen Bedingungen und Fristen. Sie gilt <em>zusätzlich</em> – die gesetzlichen Rechte bleiben
+    unberührt.
+  </div>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">M2 · Die Gewährleistungsfrist</div>
+      <p>Gewährleistungsrechte können nur innerhalb einer bestimmten Zeit geltend gemacht werden:
+      grundsätzlich <strong>zwei Jahre ab Übergabe</strong> der Sache (§&nbsp;438 I Nr.&nbsp;3, II BGB).
+      Zwischen Privatleuten kann die Frist vertraglich verkürzt werden.</p>
+      <p class="vgk-line"><span class="vgk-tag">Verbraucher</span> Kauft ein Verbraucher bei einem
+      Unternehmer, ist eine Verkürzung bei <strong>neuen</strong> Sachen nicht möglich. Nur bei
+      <strong>gebrauchten</strong> Sachen geht es – höchstens auf <strong>ein Jahr</strong>, und nur,
+      wenn der Verbraucher vorher eigens darauf hingewiesen wurde und es ausdrücklich und gesondert
+      vereinbart ist (§&nbsp;476 II BGB).</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">M3 · Ausschluss der Gewährleistung</div>
+      <p>Wegen der <strong>Privatautonomie</strong> können Vertragspartner ihre Beziehungen
+      grundsätzlich selbst gestalten – auch so, dass das Gewährleistungsrecht <strong>ausgeschlossen</strong>
+      wird, etwa durch eine individuelle Absprache („gekauft wie gesehen“) oder durch AGB.</p>
+      <p class="vgk-line"><span class="vgk-tag">Verbraucher</span> Beim Verbrauchsgüterkauf geht das
+      nur sehr eingeschränkt: Nacherfüllung, Rücktritt und Minderung kann der Unternehmer
+      <strong>nicht</strong> ausschließen (§&nbsp;476 I BGB). Allenfalls Ansprüche auf
+      <strong>Schadensersatz</strong> lassen sich begrenzen – und auch das nur in den Grenzen des
+      AGB-Rechts (§&nbsp;476 III BGB).</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="7" fill="#1976D2"/><path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Gewährleistung oder Garantie?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="gg">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="GW">Gewährleistung</button>
+          <button class="assign-cat" data-cat="GA">Garantie</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Eintrag antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="GW"><span class="ai-key">a</span><span class="ai-text">ist im Bürgerlichen Gesetzbuch geregelt</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="GA"><span class="ai-key">b</span><span class="ai-text">beruht auf einer freiwilligen Erklärung des Herstellers oder Händlers</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="GW"><span class="ai-key">c</span><span class="ai-text">Verkäufer haftet zwei Jahre ab Übergabe, bei Gebrauchtware ggf. ein Jahr</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="GA"><span class="ai-key">d</span><span class="ai-text">„5 Jahre auf den Motor – gilt nur bei Wartung in unserer Vertragswerkstatt“</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="GW"><span class="ai-key">e</span><span class="ai-text">gilt automatisch, ohne dass etwas vereinbart werden muss</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="GA"><span class="ai-key">f</span><span class="ai-text">gilt zusätzlich und lässt die gesetzlichen Rechte unberührt</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Frist und Ausschluss</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Ein Autohändler verkauft einer Verbraucherin einen Gebrauchtwagen. In seinen AGB steht im Kleingedruckten: „Gewährleistung: 1 Jahr.“ Darauf angesprochen wurde sie nicht. Wie lange haftet der Händler?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ein Jahr – bei Gebrauchtwagen ist die Verkürzung erlaubt.</button>
+          <button class="quiz-opt" data-correct="1">Zwei Jahre – die Verkürzung ist unwirksam, weil sie nicht eigens mitgeteilt und gesondert vereinbart wurde.</button>
+          <button class="quiz-opt" data-correct="0">Gar nicht – bei Gebrauchtwaren gibt es keine Gewährleistung.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die Verkürzung auf ein Jahr ist bei gebrauchten Sachen zwar möglich, aber nur unter strengen Voraussetzungen: Die Verbraucherin muss vor Vertragsschluss <strong>eigens</strong> davon in Kenntnis gesetzt werden, und die Verkürzung muss <strong>ausdrücklich und gesondert</strong> vereinbart sein (§&nbsp;476 II). Kleingedrucktes in den AGB reicht nicht – es bleibt bei zwei Jahren.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Zwei Privatleute schreiben in ihren Kaufvertrag über ein gebrauchtes Fahrrad: „Gekauft wie gesehen, unter Ausschluss jeder Gewährleistung.“ Ist das wirksam?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Ja – zwischen Privatleuten ist der Ausschluss wegen der Privatautonomie möglich.</button>
+          <button class="quiz-opt" data-correct="0">Nein – Gewährleistung kann nie ausgeschlossen werden.</button>
+          <button class="quiz-opt" data-correct="0">Nur, wenn ein Notar den Vertrag beurkundet.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Zwischen Privatleuten gilt die Vertragsfreiheit: Der Ausschluss ist wirksam. Eine Grenze gibt es nur, wenn der Verkäufer einen Mangel <strong>arglistig verschwiegen</strong> hat (§&nbsp;444 BGB). Die strengen Regeln des §&nbsp;476 gelten nur beim Verbrauchsgüterkauf.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 40" fill="none"><path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/><path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 2 · Was bedeuten M2 und M3 für die Hubers?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Erörtere</strong>, inwiefern die Regeln aus M2 und M3 für den Fall der Hubers (M1) eine
+      Rolle spielen.</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="zwei jahre, frist, uebergabe, verkuerzung, ausschluss, vereinbart, privat, verbrauchsgueterkauf, nicht, juni, wochen, ein jahr"
+        data-required="5"
+        placeholder="M2: Die Frist beträgt … Der Mangel zeigte sich … M3: Ein Ausschluss wäre zwischen Privatleuten … aber …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>M2:</strong> Die Gewährleistungs<strong>frist</strong> beträgt <strong>zwei Jahre</strong>
+        ab <strong>Übergabe</strong> (Anfang Mai 2025). Der Käufer meldet sich schon am 02.06.2025, also
+        nach wenigen <strong>Wochen</strong> – die Frist ist unproblematisch gewahrt. Selbst eine
+        <strong>Verkürzung</strong> auf <strong>ein Jahr</strong> hätte keine Rolle gespielt (und sie
+        wurde auch <strong>nicht</strong> vereinbart).<br>
+        <strong>M3:</strong> Zwischen <strong>privat</strong>en Vertragspartnern hätten die Hubers die
+        Gewährleistung wirksam <strong>ausschließen</strong> können („gekauft wie gesehen“). Das haben sie
+        aber nicht <strong>vereinbart</strong> – also haften sie grundsätzlich für Mängel. Die
+        Sonderregeln für den <strong>Verbrauchsgüterkauf</strong> (§&nbsp;476) greifen nicht, weil
+        die Hubers keine Unternehmer sind.<br>
+        <strong>Zwischenergebnis:</strong> Am Gewährleistungsrecht scheitert der Käufer nicht. Offen ist,
+        ob überhaupt ein <strong>Mangel</strong> vorliegt – und ob er schon bei Übergabe da war.
+      </div>
+    </div>
+  </div>
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M2 „Die Gewährleistungsfrist“: TB S.&nbsp;38 · M3 „Ausschluss der Gewährleistung“: TB S.&nbsp;39 · Aufgabe 2: TB S.&nbsp;41 · Fachwissen „Gewährleistung vs. Garantie“ S.&nbsp;73</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise (AL S. 41)</div>
+    <span class="tn-time">Zeitrahmen: ca. 12 Min.</span>
+    <p><strong>Aufgabe 2:</strong> AL deckungsgleich (Frist kein Problem, Ausschluss möglich, aber nicht vereinbart, kein Verbrauchsgüterkauf).</p>
+    <p><strong>Präzisierungen gegenüber dem Buch:</strong></p>
+    <ul>
+      <li><strong>M2</strong> nennt als einzige Bedingung „Gebrauchtware“. Seit 2022 verlangt §&nbsp;476 II zusätzlich: vorher <em>eigens</em> informiert + <em>ausdrücklich und gesondert</em> vereinbart (so auch Fachwissen S.&nbsp;73). Deshalb in M2 ergänzt; Quizfrage 1 setzt genau daran an.</li>
+      <li><strong>M3</strong>: Auch der Schadensersatz-Ausschluss gegenüber Verbrauchern ist nur in den Grenzen der §§&nbsp;307–309 möglich (z.&nbsp;B. §&nbsp;309 Nr.&nbsp;7: nicht für Körperschäden und grobes Verschulden).</li>
+      <li>Grenze des Ausschlusses unter Privatleuten: Arglist (§&nbsp;444) – nur bei Nachfrage. Hinweis: Bei den Hubers spricht nichts für Arglist.</li>
+      <li>Die Verjährung beginnt mit der <em>Ablieferung</em> (§&nbsp;438 II); M2 spricht von „Übergabe“ – für die Schüler gleichbedeutend.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Gruppenpuzzle Mangel →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+<!-- ═══════════════ STEP 3 · GRUPPENPUZZLE MANGELBEGRIFF (M4 · AUFGABE 3) ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Gruppenpuzzle: Wann ist eine Ware mangelfrei? (M4 · Aufgabe 3)</div>
+      <div class="section-meta">Gruppenarbeit · Stammgruppe, dann Mischgruppe</div>
+    </div>
+  </header>
+
+  <p>Die Regeln zum Mangel stehen an <strong>drei Stellen</strong> im BGB – je nachdem, was gekauft
+  wird. Ihr teilt euch auf und schaut, ob dahinter <strong>ein gemeinsames System</strong> steckt.
+  Du musst dir <em>nicht</em> merken, welcher Paragraf für welche Ware gilt. Wichtig ist das
+  System dahinter.</p>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">Gruppe A · rein analoge Ware</div>
+      <p>z.&nbsp;B. ein Fahrrad ohne E-Antrieb<br><strong>§&nbsp;434 BGB</strong></p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">Gruppe B · digitales Produkt</div>
+      <p>z.&nbsp;B. ein App-Download<br><strong>§&nbsp;327e BGB</strong></p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">Gruppe C · Ware mit digitalen Elementen</div>
+      <p>z.&nbsp;B. ein smarter Kühlschrank<br><strong>§&nbsp;475b BGB</strong></p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Schritt 1 – Stammgruppen:</strong> Jede Gruppe bearbeitet ihren Paragrafen (unten A, B
+    oder C). <strong>Schritt 2 – Mischgruppen:</strong> Je eine Person aus A, B und C setzt sich
+    zusammen. Ihr vergleicht eure Ergebnisse und leitet ab, was der Mangelbegriff überall gemeinsam hat.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/><circle cx="20" cy="5" r="4" fill="#7B1FA2"/><path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="20" cy="35" r="4" fill="#7B1FA2"/><path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="4" fill="#7B1FA2"/><path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="35" cy="20" r="4" fill="#7B1FA2"/><path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Gruppe A · § 434 BGB</div>
+        <div class="task-form group">Gruppenarbeit (Stammgruppe) · erst sammeln, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Ware:</strong> rein analoge Ware (z.&nbsp;B. Fahrrad ohne E-Antrieb). Schlagt <strong>§ 434 BGB</strong> in eurem BGB nach und
+      analysiert ihn. Sammelt dann <strong>im Umkehrschluss</strong> Beispiele: Wann wäre so eine Ware
+      mangelhaft? Findet zu jeder Anforderung mindestens ein Beispiel.</p>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 434 BGB · Der Kern</div>
+    <div class="norm-text"><strong>Abs. 1:</strong> Die Sache ist frei von Sachmängeln, wenn sie bei Gefahrübergang den subjektiven Anforderungen, den objektiven Anforderungen und den Montageanforderungen dieser Vorschrift entspricht.<br>Abs. 2: subjektive Anforderungen · Abs. 3: objektive Anforderungen · Abs. 4: Montageanforderungen · <strong>Abs. 5:</strong> Einem Sachmangel steht es gleich, wenn der Verkäufer eine andere Sache als die vertraglich geschuldete Sache liefert.</div>
+  </div>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="subjektiv, objektiv, vereinbart, beschaffenheit, verwendung, zubehoer, anleitung, ueblich, gewoehnlich, haltbarkeit, sicherheit, werbung, montage, probe, muster, andere sache"
+        data-required="5"
+        placeholder="Subjektiv: Vereinbart war … geliefert wurde … Objektiv: … Montage: … Andere Sache: …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Subjektive Anforderungen (Abs. 2) – „nicht wie vereinbart“:</strong> rotes Rad
+        <strong>vereinbart</strong>, blaues geliefert (<strong>Beschaffenheit</strong>); als Rad für
+        Bergtouren gekauft, taugt aber nur für die Stadt (vertraglich vorausgesetzte
+        <strong>Verwendung</strong>); vereinbartes <strong>Zubehör</strong> (Gepäckträger) oder
+        <strong>Anleitung</strong> fehlt.<br>
+        <strong>Objektive Anforderungen (Abs. 3) – „nicht wie üblich“:</strong> Bremsen greifen nicht
+        (<strong>gewöhnlich</strong>e Verwendung, <strong>Sicherheit</strong>); Rahmen rostet nach
+        wenigen Wochen (<strong>Haltbarkeit</strong>, <strong>üblich</strong>e Beschaffenheit);
+        <strong>Werbung</strong> verspricht 10&nbsp;kg, das Rad wiegt 14&nbsp;kg; anders als das
+        Ausstellungs-<strong>Muster</strong> im Laden; Verpackung oder übliche Anleitung fehlt.<br>
+        <strong>Montageanforderungen (Abs. 4):</strong> Der Verkäufer schraubt den Lenker falsch an; der
+        Käufer montiert falsch, weil die <strong>Montage</strong>anleitung fehlerhaft ist.<br>
+        <strong>Andere Sache (Abs. 5, „Aliud“):</strong> Statt des bestellten Modells kommt ein ganz
+        anderes.
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/><circle cx="20" cy="5" r="4" fill="#7B1FA2"/><path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="20" cy="35" r="4" fill="#7B1FA2"/><path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="4" fill="#7B1FA2"/><path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="35" cy="20" r="4" fill="#7B1FA2"/><path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Gruppe B · § 327e BGB</div>
+        <div class="task-form group">Gruppenarbeit (Stammgruppe) · erst sammeln, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Ware:</strong> digitales Produkt (z.&nbsp;B. App-Download). Schlagt <strong>§ 327e BGB</strong> in eurem BGB nach und
+      analysiert ihn. Sammelt dann <strong>im Umkehrschluss</strong> Beispiele: Wann wäre so eine Ware
+      mangelhaft? Findet zu jeder Anforderung mindestens ein Beispiel.</p>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 327e BGB · Der Kern</div>
+    <div class="norm-text"><strong>Abs. 1 S. 1:</strong> Das digitale Produkt ist frei von Produktmängeln, wenn es zur maßgeblichen Zeit nach den Vorschriften dieses Untertitels den subjektiven Anforderungen, den objektiven Anforderungen und den Anforderungen an die Integration entspricht.<br>Abs. 2: subjektive Anforderungen · Abs. 3: objektive Anforderungen · Abs. 4: Integration</div>
+  </div>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="subjektiv, objektiv, vereinbart, funktionalitaet, kompatibilitaet, interoperabilitaet, aktualisierung, update, neueste version, ueblich, sicherheit, testversion, integration, anleitung, zugaenglichkeit, kontinuitaet"
+        data-required="5"
+        placeholder="Subjektiv: Vereinbart war … Objektiv: Üblich ist … Integration: …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Subjektive Anforderungen:</strong> <strong>vereinbart</strong>e Funktionen fehlen
+        (<strong>Funktionalität</strong>); die App läuft nicht auf dem vereinbarten Betriebssystem
+        (<strong>Kompatibilität</strong>); sie arbeitet nicht wie vereinbart mit anderer Software
+        zusammen (<strong>Interoperabilität</strong>); vereinbarte <strong>Aktualisierung</strong>en oder
+        Anleitungen fehlen.<br>
+        <strong>Objektive Anforderungen:</strong> Die App stürzt ständig ab (<strong>übliche</strong>
+        Funktionalität); <strong>Sicherheit</strong>slücken; nötige Sicherheits-<strong>Updates</strong>
+        bleiben aus oder es wird nicht darüber informiert; sie ist schlechter als die
+        <strong>Testversion</strong>; es ist nicht die <strong>neueste Version</strong> zum Zeitpunkt des
+        Vertragsschlusses, obwohl nichts anderes vereinbart war; eingeschränkte
+        <strong>Zugänglichkeit</strong> oder <strong>Kontinuität</strong> (Dienst fällt dauernd aus).<br>
+        <strong>Integration:</strong> Die App wird unsachgemäß in das System des Nutzers eingebunden –
+        durch den Unternehmer oder wegen einer fehlerhaften <strong>Anleitung</strong>.
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/><circle cx="20" cy="5" r="4" fill="#7B1FA2"/><path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="20" cy="35" r="4" fill="#7B1FA2"/><path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="4" fill="#7B1FA2"/><path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="35" cy="20" r="4" fill="#7B1FA2"/><path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Gruppe C · § 475b BGB</div>
+        <div class="task-form group">Gruppenarbeit (Stammgruppe) · erst sammeln, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Ware:</strong> Ware mit digitalen Elementen (z.&nbsp;B. smarter Kühlschrank). Schlagt <strong>§ 475b BGB</strong> in eurem BGB nach und
+      analysiert ihn. Sammelt dann <strong>im Umkehrschluss</strong> Beispiele: Wann wäre so eine Ware
+      mangelhaft? Findet zu jeder Anforderung mindestens ein Beispiel.</p>
+
+  <div class="norm-box">
+    <div class="norm-title">§ 475b BGB · Der Kern</div>
+    <div class="norm-text"><strong>Abs. 2:</strong> Eine Ware mit digitalen Elementen ist frei von Sachmängeln, wenn sie bei Gefahrübergang und in Bezug auf eine Aktualisierungspflicht auch während des Zeitraums nach Absatz 3 Nummer 2 und Absatz 4 Nummer 2 den subjektiven Anforderungen, den objektiven Anforderungen, den Montageanforderungen und den Installationsanforderungen entspricht.</div>
+  </div>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="subjektiv, objektiv, vereinbart, aktualisierung, update, zeitraum, erwarten, information, ueblich, verwendung, installation, montage, anleitung, digitale, app, sicherheit"
+        data-required="5"
+        placeholder="Subjektiv: Vereinbart war … Objektiv: Erwarten kann man … Aktualisierungen: … Installation: …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Subjektive Anforderungen:</strong> Die <strong>vereinbart</strong>e Steuerung per
+        <strong>App</strong> funktioniert nicht; vereinbarte <strong>Aktualisierungen</strong> werden
+        nicht geliefert; vereinbartes Zubehör fehlt.<br>
+        <strong>Objektive Anforderungen:</strong> Der Kühlschrank kühlt nicht richtig
+        (<strong>gewöhnliche Verwendung</strong>, <strong>übliche</strong> Beschaffenheit); für den
+        <strong>Zeitraum</strong>, den man <strong>erwarten</strong> kann, kommen keine nötigen
+        (<strong>Sicherheits</strong>-)<strong>Updates</strong>, oder der Käufer erhält keine
+        <strong>Information</strong> darüber.<br>
+        <strong>Montage- und Installationsanforderungen:</strong> Der Verkäufer schließt das Gerät
+        falsch an oder installiert die Software falsch; der Käufer installiert falsch, weil die
+        <strong>Anleitung</strong> fehlerhaft ist.<br>
+        <strong>Besonderheit:</strong> Bei den <strong>digitalen</strong> Elementen kommt es nicht nur
+        auf den Gefahrübergang an – die Aktualisierungspflicht läuft weiter.
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/><circle cx="20" cy="5" r="4" fill="#7B1FA2"/><path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="20" cy="35" r="4" fill="#7B1FA2"/><path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="4" fill="#7B1FA2"/><path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="35" cy="20" r="4" fill="#7B1FA2"/><path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 3b · Mischgruppe: Wohin gehört was?</div>
+        <div class="task-form group">Gruppenarbeit (Mischgruppe) · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="sys">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="S">subjektive Anforderungen</button>
+          <button class="assign-cat" data-cat="O">objektive Anforderungen</button>
+          <button class="assign-cat" data-cat="M">Montage / Installation / Integration</button>
+          <button class="assign-cat" data-cat="A">andere Sache (Aliud)</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Eintrag antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="S"><span class="ai-key">a</span><span class="ai-text">Die Ware hat nicht die vereinbarte Farbe, Menge oder Qualität.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="O"><span class="ai-key">b</span><span class="ai-text">Die Ware eignet sich nicht für die gewöhnliche Verwendung.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="S"><span class="ai-key">c</span><span class="ai-text">Die Ware eignet sich nicht für die im Vertrag vorausgesetzte Verwendung.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="O"><span class="ai-key">d</span><span class="ai-text">Die Ware ist nicht so haltbar oder sicher, wie es bei Sachen dieser Art üblich ist.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="O"><span class="ai-key">e</span><span class="ai-text">Die Ware entspricht nicht dem Muster oder der Probe, die der Verkäufer gezeigt hat.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="S"><span class="ai-key">f</span><span class="ai-text">Vereinbartes Zubehör oder vereinbarte Updates fehlen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="O"><span class="ai-key">g</span><span class="ai-text">Erwartbare Updates bleiben aus, oder der Käufer wird nicht darüber informiert.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="O"><span class="ai-key">h</span><span class="ai-text">Die gekaufte Software ist nicht die neueste Version, obwohl nichts anderes vereinbart war.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">i</span><span class="ai-text">Der Verkäufer baut den Schrank beim Kunden schief zusammen.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="M"><span class="ai-key">j</span><span class="ai-text">Der Käufer installiert falsch, weil die mitgelieferte Anleitung fehlerhaft ist.</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="A"><span class="ai-key">k</span><span class="ai-text">Bestellt sind Laufschuhe, geliefert werden Wanderschuhe.</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon group"><svg width="22" height="22" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="8" stroke="#7B1FA2" stroke-width="2" fill="none"/><circle cx="20" cy="5" r="4" fill="#7B1FA2"/><path d="M14 13c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="20" cy="35" r="4" fill="#7B1FA2"/><path d="M14 27c0 3.314 2.686 6 6 6s6-2.686 6-6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="5" cy="20" r="4" fill="#7B1FA2"/><path d="M13 14c-3.314 0-6 2.686-6 6s2.686 6 6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="35" cy="20" r="4" fill="#7B1FA2"/><path d="M27 14c3.314 0 6 2.686 6 6s-2.686 6-6 6" stroke="#7B1FA2" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 3b · Was haben alle drei Paragrafen gemeinsam?</div>
+        <div class="task-form group">Gruppenarbeit (Mischgruppe) · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Leitet aus euren Ergebnissen ab, was der <strong>Mangelbegriff</strong> in allen drei Fällen
+      gemeinsam hat. Denkt auch an den <strong>Zeitpunkt</strong>.</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="abweichung, soll, beschaffenheit, subjektiv, objektiv, montage, installation, integration, andere sache, aliud, gefahruebergang, bereitstellung, aktualisierung, zeitpunkt"
+        data-required="6"
+        placeholder="Ein Mangel ist immer eine Abweichung … Die Soll-Beschaffenheit ergibt sich aus … Außerdem … Maßgeblich ist der Zeitpunkt …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Überall gilt: Ein Mangel ist eine <strong>Abweichung</strong> der Ist- von der
+        <strong>Soll</strong>-<strong>Beschaffenheit</strong>. Die Soll-Beschaffenheit setzt sich aus
+        drei Bausteinen zusammen, die <em>alle</em> erfüllt sein müssen: <strong>subjektive</strong>
+        Anforderungen (was vereinbart ist), <strong>objektive</strong> Anforderungen (was üblich ist und
+        erwartet werden kann) und Anforderungen an <strong>Montage</strong>, <strong>Installation</strong>
+        bzw. <strong>Integration</strong>. Ein Mangel liegt auch vor, wenn eine <strong>andere
+        Sache</strong> geliefert wird (<strong>Aliud</strong>).<br>
+        Maßgeblicher <strong>Zeitpunkt</strong> ist der <strong>Gefahrübergang</strong> bzw. bei
+        digitalen Produkten die <strong>Bereitstellung</strong>. Ausnahme: Bei vereinbarten und
+        erwartbaren <strong>Aktualisierung</strong>en reicht die Pflicht darüber hinaus.
+      </div>
+    </div>
+  </div>
+
+  <div class="sysgrid">
+    <div class="sys-top">Mangel = Abweichung der <strong>Ist</strong>- von der <strong>Soll</strong>-Beschaffenheit</div>
+    <div class="sys-label">Soll-Beschaffenheit</div>
+    <div class="sys-cols">
+      <div class="sys-col"><div class="sys-h">subjektive Anforderungen</div><div class="sys-sub">„wie vereinbart“</div><ul><li>vereinbarte Beschaffenheit (Art, Menge, Qualität, Funktionalität, Kompatibilität, Interoperabilität …)</li><li>vertraglich vorausgesetzte Verwendung</li><li>vereinbartes Zubehör, Anleitungen, ggf. Kundendienst</li><li>vereinbarte Aktualisierungen</li></ul></div>
+      <div class="sys-col"><div class="sys-h">objektive Anforderungen</div><div class="sys-sub">„wie üblich und erwartbar“</div><ul><li>gewöhnliche Verwendung</li><li>übliche Beschaffenheit (u.&nbsp;a. Haltbarkeit, Funktionalität, Kompatibilität, Sicherheit)</li><li>wie Muster, Probe, Testversion</li><li>erwartbares Zubehör, Verpackung, Anleitungen</li><li>erwartbare Aktualisierungen + Information</li><li>digital: neueste Version bei Vertragsschluss</li></ul></div>
+      <div class="sys-col"><div class="sys-h">Montage, Installation, Integration</div><div class="sys-sub">„richtig eingebaut“</div><ul><li>sachgemäß durchgeführt</li><li>oder unsachgemäß, aber weder durch den Verkäufer noch durch eine fehlerhafte Anleitung</li></ul></div>
+    </div>
+    <div class="sys-row">Der vertraglich geschuldete Kaufgegenstand wird geliefert bzw. bereitgestellt – <strong>keine Aliud-Lieferung</strong></div>
+    <div class="sys-row">… bei <strong>Gefahrübergang</strong> bzw. <strong>Bereitstellung</strong> · Ausnahme: vereinbarte und erwartbare Aktualisierungen</div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M4 „Wann liegt ein Mangel vor?“: TB S.&nbsp;39 · Aufgabe 3: TB S.&nbsp;41 · Fachwissen „Mangelfreiheit bzw. der Begriff des Mangels im Umkehrschluss“ S.&nbsp;74&nbsp;f. · Gesetzestexte: <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__434.html" target="_blank">§&nbsp;434</a>, <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__327e.html" target="_blank">§&nbsp;327e</a>, <a class="para-link" href="https://www.gesetze-im-internet.de/bgb/__475b.html" target="_blank">§&nbsp;475b BGB</a></div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise Gruppenpuzzle (AL S. 41, DK 1.1.10)</div>
+    <span class="tn-time">Zeitrahmen: ca. 25 Min. (Schritt 1: 10 · Schritt 2: 12 · Sicherung: 3)</span>
+    <ul>
+      <li><strong>Didaktischer Kommentar:</strong> Eine Zuordnung zu den Regelkreisen mit durchgängiger Nennung der Paragrafen wird in (zentralen) Prüfungen <em>nicht</em> erwartet. Die Paragrafen sind „Spickzettel“, Ziel ist das <strong>Strukturwissen</strong> (Systematik). Gutachtenstil ist im Gewährleistungsrecht nicht gefordert.</li>
+      <li>Die Schüler haben das gedruckte BGB (Stand 22.06.2026): §§ 327e, 434, 475b stehen dort in der aktuellen Fassung – mit einer Ausnahme, siehe Schritt 4 („Reparierbarkeit“).</li>
+      <li>Gruppengröße: drei Stammgruppen, bei großen Kursen doppelt besetzen (A1/A2 …). Die Gates sind pro Stammgruppe; in der Mischgruppe folgen die Klick-Zuordnung und das Gate „Gemeinsamkeiten“.</li>
+      <li>Der Systematik-Kasten unter den Aufgaben entspricht dem Tafelbild/AB „Wann liegt ein (rechtlich relevanter) Mangel vor?“ – ggf. als Lückenversion austeilen.</li>
+      <li>Zuordnung Aufgabe 3b: S = a, c, f · O = b, d, e, g, h · M = i, j · A = k.</li>
+      <li>Typische Rückfrage: „Was ist, wenn etwas vereinbart ist, das schlechter als üblich ist?“ → Die Vereinbarung geht vor; gegenüber Verbrauchern aber nur unter strengen Voraussetzungen (Schritt 8, M6).</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Anwenden →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+<!-- ═══════════════ STEP 4 · ANWENDEN ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Anwenden: Welcher Baustein fehlt?</div>
+      <div class="section-meta">Einzelarbeit · Schnelltest, Zusatz in Partnerarbeit</div>
+    </div>
+  </header>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Schnelltest · Welcher Baustein fehlt?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Lena kauft eine Sportuhr. In der Werbung des Herstellers heißt es „wasserdicht bis 50 m“. Schon beim Händewaschen beschlägt das Display. Im Laden wurde über Wasserdichtigkeit nicht gesprochen.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Kein Mangel – über Wasserdichtigkeit wurde nichts vereinbart.</button>
+          <button class="quiz-opt" data-correct="1">Mangel – Abweichung von den objektiven Anforderungen: Die Werbung prägt, was man erwarten kann.</button>
+          <button class="quiz-opt" data-correct="0">Montagefehler – die Uhr wurde falsch zusammengebaut.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Auch ohne Vereinbarung muss die Ware die Beschaffenheit haben, die man erwarten kann – dazu zählen <strong>öffentliche Äußerungen</strong> des Verkäufers oder Herstellers, besonders in der <strong>Werbung</strong> (§&nbsp;434 III S.&nbsp;1 Nr.&nbsp;2 b).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Tim bestellt einen Kleiderschrank mit Aufbauservice. Der Monteur des Möbelhauses baut ihn auf – die Türen hängen schief und schließen nicht.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Mangel – die Montageanforderungen sind nicht erfüllt.</button>
+          <button class="quiz-opt" data-correct="0">Kein Mangel – der Schrank selbst ist ja in Ordnung.</button>
+          <button class="quiz-opt" data-correct="0">Aliud – es wurde ein anderer Schrank geliefert.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ist eine Montage geschuldet, muss sie <strong>sachgemäß</strong> durchgeführt sein. Baut der Verkäufer (bzw. sein Monteur) falsch auf, ist die Sache mangelhaft (§&nbsp;434 IV) – auch wenn alle Einzelteile einwandfrei sind.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">3. Aylin bestellt online Laufschuhe in Größe 40. Im Paket sind Wanderschuhe in Größe 40.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Kein Mangel – die Wanderschuhe sind ja einwandfrei.</button>
+          <button class="quiz-opt" data-correct="1">Mangel – Lieferung einer anderen Sache (Aliud) steht einem Sachmangel gleich.</button>
+          <button class="quiz-opt" data-correct="0">Nur ein Fall für den Widerruf, nicht für die Gewährleistung.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Wird etwas anderes als das Geschuldete geliefert, behandelt das Gesetz das wie einen Mangel (§&nbsp;434 V, „<strong>Aliud</strong>“). Ein Widerruf wäre beim Online-Kauf <em>zusätzlich</em> möglich und oft bequemer – das kommt in 1.1.14.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">4. Jonas kauft eine gebrauchte Konzertgitarre. Im Kaufvertrag mit dem Vorbesitzer (privat) steht: „Hals verzogen, nicht bespielbar, nur als Deko-Objekt.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Mangel – eine Gitarre muss bespielbar sein.</button>
+          <button class="quiz-opt" data-correct="1">Kein Mangel – vereinbart war eine Deko-Gitarre, und die hat Jonas bekommen.</button>
+          <button class="quiz-opt" data-correct="0">Mangel – die objektiven Anforderungen gehen immer vor.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die <strong>Vereinbarung</strong> bestimmt die Soll-Beschaffenheit. Wenn ausdrücklich eine unbespielbare Deko-Gitarre verkauft wird, weicht die Ist- nicht von der Soll-Beschaffenheit ab. Kauft ein Verbraucher bei einem Händler, gelten dafür aber strenge Regeln – siehe M6 in Schritt 8.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="neu-box">
+    <div class="neu-head">★ Neu seit 23.07.2026 · im Abitur 2027 noch nicht verlangt</div>
+    <p>Mit dem „Recht auf Reparatur“ zählt jetzt auch die <strong>Reparierbarkeit</strong> zur
+    üblichen Beschaffenheit (§&nbsp;434 III S.&nbsp;2 BGB: „… einschließlich ihrer Haltbarkeit,
+    <strong>Reparierbarkeit</strong>, Funktionalität, Kompatibilität und Sicherheit“). Lässt sich eine
+    Ware nicht so reparieren, wie es bei Waren dieser Art üblich ist, kann das ein Mangel sein. Gilt
+    für Verbraucherverträge ab dem 31.07.2026. <strong>Dein gedrucktes BGB (Stand 22.06.2026) enthält
+    das Wort noch nicht</strong> – das ist kein Fehler im Buch.</p>
+  </div>
+
+  <div class="zusatz-card">
+    <div class="zusatz-head">◇ Zusatz · Pizza nach jedem Geschmack</div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none"><rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/><path d="M6 19l-4 6 8-4" fill="#0d9488"/><rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/><path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/><path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="task-title">Zusatz · Ist die Pizza mangelhaft?</div>
+        <div class="task-form partner">Partnerarbeit · für Schnelle</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Ein Cartoon zeigt einen Restaurantgast, der eine Pizza „<strong>thin crust</strong>“ (extra
+      dünner Boden) bestellt hat. Serviert wird ihm eine Pizza mit einem <strong>absurd dicken
+      Boden</strong>. Bei einem Restaurantbesuch schließt man einen <strong>Bewirtungsvertrag</strong>,
+      der Elemente mehrerer Vertragstypen vereint (Kauf, Werk-, Dienst- und Mietvertrag). Geht mit dem
+      Essen etwas schief, gilt <strong>Kaufrecht</strong>.</p>
+      <p><strong>Analysiere</strong> mithilfe der Systematik, ob die Pizza mangelhaft ist.</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="20"
+        data-keywords="bestellt, vereinbart, subjektiv, objektiv, ueblich, abweichung, soll, boden, mangel, kaufrecht"
+        data-required="4"
+        placeholder="Soll-Beschaffenheit: … Ist-Beschaffenheit: … Abweichung von den subjektiven/objektiven Anforderungen, weil …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 20 Wörter · 0 von 4 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Mangel = Abweichung</strong> der Ist- von der <strong>Soll</strong>-Beschaffenheit.
+        <strong>Subjektiv:</strong> <strong>Bestellt</strong> und damit <strong>vereinbart</strong> war
+        „thin crust“ – geliefert wird ein dicker Boden. <strong>Objektiv:</strong> Ein derart dicker
+        Boden ist bei Pizzen völlig un<strong>üblich</strong>. Ergebnis: Die Pizza ist mangelhaft, es
+        gilt <strong>Kaufrecht</strong>.
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Zusatzmaterial „Pizza nach jedem Geschmack“ (Buchner, Lösungsvorschläge zu Aufgabe 2 und 4) · Fachwissen S.&nbsp;74&nbsp;f.</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise Anwenden</div>
+    <span class="tn-time">Zeitrahmen: ca. 5 Min. (Zusatz für Schnelle)</span>
+    <ul>
+      <li>Frage 4 (Deko-Gitarre) ist das Beispiel aus der AL zu Aufgabe 6 – bewusst als <em>Privat</em>kauf, damit die Vereinbarung ohne §&nbsp;476 I S.&nbsp;2 wirkt. Der Verbraucherfall folgt in Schritt 8.</li>
+      <li><strong>Reparierbarkeit (§&nbsp;434 III S.&nbsp;2 n.&nbsp;F.):</strong> RepRLAnpG, BGBl. 2026 I Nr. 212, für Verbraucherverträge ab 31.07.2026; zwischen Unternehmern erst für Verträge ab 2028. Das Schüler-BGB (22.06.2026) kennt das Merkmal noch nicht. Gekennzeichnet als „im Abitur 2027 noch nicht verlangt“.</li>
+      <li>Zusatzmaterial: Aufgabe 1 (Tischreservierung) und Aufgabe 3 (Kursumfrage) bewusst weggelassen – nicht lehrplanrelevant bzw. zeitintensiv. Die Umfrage passt gut als Hausaufgabe („Eigene Erfahrung mit einem Mangel – welcher Baustein?“).</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Halbzeit →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+<!-- ═══════════════ STEP 5 · HALBZEIT (Zwischencheck + Pause) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section halftime-section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Halbzeit: Zwischencheck &amp; Pause</div>
+      <div class="section-meta">Plenum · Fragen klären, dann kurz durchatmen</div>
+    </div>
+  </header>
+
+  <div class="reflect">
+    <div class="reflect-icon">
+      <svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg>
+    </div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">gemeinsam</span></div>
+      <div class="reflect-text">
+        Halbzeit! Kannst du die drei Bausteine der Soll-Beschaffenheit nennen – und den vierten Fall,
+        der einem Mangel gleichsteht? <strong>Jetzt ist Zeit für deine Fragen</strong> – danach gibt es
+        eine kurze Pause.
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Zwei kurze Fragen</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">Welche Aussage über die Soll-Beschaffenheit stimmt?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Es genügt, wenn die Ware die vereinbarte Beschaffenheit hat.</button>
+          <button class="quiz-opt" data-correct="1">Die Ware muss subjektive <em>und</em> objektive Anforderungen <em>und</em> ggf. die Montageanforderungen erfüllen.</button>
+          <button class="quiz-opt" data-correct="0">Die objektiven Anforderungen gelten nur, wenn nichts vereinbart wurde.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Seit 2022 stehen die Bausteine <strong>gleichrangig nebeneinander</strong>: Eine Ware ist nur mangelfrei, wenn sie alle erfüllt. Von den objektiven Anforderungen kann man nur durch eine wirksame Vereinbarung abweichen – gegenüber Verbrauchern nur unter strengen Voraussetzungen (Schritt 8).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">Eine Gewährleistungsfrist von zwei Jahren beginnt …</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">… mit Vertragsschluss.</button>
+          <button class="quiz-opt" data-correct="1">… mit der Übergabe (Ablieferung) der Sache.</button>
+          <button class="quiz-opt" data-correct="0">… sobald der Käufer den Mangel bemerkt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die Frist läuft ab der <strong>Ablieferung</strong> der Sache (§&nbsp;438 II) – egal, wann der Mangel auffällt.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+  <div class="bgb-mark">
+    <div class="bm-head"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Im BGB anstreichen · Teil A</span></div>
+    <div class="bm-intro">Wenn du magst, markiere dir diese Stellen in deinem BGB. <span class="bm-u">So unterstrichen</span> = anstreichen.</div>
+    <div class="bm-rows">
+      <div class="bm-row"><div class="bm-norm">§ 434 I</div><div class="bm-text">Die Sache ist frei von Sachmängeln, wenn sie <u>bei Gefahrübergang</u> den <u>subjektiven Anforderungen</u>, den <u>objektiven Anforderungen</u> und den <u>Montageanforderungen</u> dieser Vorschrift entspricht.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 434 II</div><div class="bm-text">… wenn sie 1. die <u>vereinbarte Beschaffenheit</u> hat, 2. sich für die nach dem Vertrag <u>vorausgesetzte Verwendung</u> eignet und 3. mit dem <u>vereinbarten Zubehör</u> …</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 434 III</div><div class="bm-text">… 1. sich für die <u>gewöhnliche Verwendung</u> eignet, 2. eine Beschaffenheit aufweist, die bei Sachen derselben Art <u>üblich</u> ist und die der Käufer <u>erwarten</u> kann …</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 434 V</div><div class="bm-text">Einem Sachmangel steht es gleich, wenn der Verkäufer eine <u>andere Sache</u> als die vertraglich geschuldete Sache liefert.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 438 I Nr. 3, II</div><div class="bm-text">… im Übrigen in <u>zwei Jahren</u>. · Die Verjährung beginnt … mit der <u>Ablieferung</u> der Sache.</div></div>
+    </div>
+    <div class="bm-rule">Eine Farbe, eine einfache Linie, nur Wörter des Gesetzestexts – keine Randnotizen, keine Verweise, kein Farbsystem.</div>
+  </div>
+
+  <div class="pause-card">
+    <svg width="34" height="34" viewBox="0 0 36 36" fill="none">
+      <path d="M7 14h18v9a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7v-9z" stroke="currentColor" stroke-width="2.4" fill="none"/>
+      <path d="M25 16h2.5a3.5 3.5 0 0 1 0 7H25" stroke="currentColor" stroke-width="2.4" fill="none"/>
+      <path d="M12 5c0 2 2 2 2 4M17 5c0 2 2 2 2 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="pause-title">Kurze Pause</div>
+      <div class="pause-text">Danach in Teil B: <strong>Wann muss der Mangel vorliegen – und wer muss das beweisen?</strong></div>
+    </div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Moderationshilfe Halbzeit</div>
+    <span class="tn-time">Zeitrahmen: 5 Min. Fragen + ca. 5 Min. Pause</span>
+    <p><strong>Ziel:</strong> Systematik sichern, bevor in Teil B der Zeitpunkt (Gefahrübergang) und die Beweislast kommen.</p>
+    <ul>
+      <li>Rückfrage: „Warum reicht ‚wie vereinbart‘ allein nicht?“ (gleichrangige Bausteine seit 2022)</li>
+      <li>Rückfrage: „Ist eine Falschlieferung ein Mangel oder gar keine Lieferung?“ (§ 434 V: Aliud = Mangel)</li>
+    </ul>
+    <p><strong>BGB-Markierungen:</strong> Freiwillig, eine Farbe, einfache Linie, nur Gesetzeswörter. Bitte auf die örtlich geltende Hilfsmittelregel achten (ISB-Erläuterungen zur Abiturprüfung: „Hervorhebungen und Verweisungen sind gestattet“, Kommentare nicht) – die strengere Linie hier ist bewusst gewählt.</p>
+    <p><strong>Ausstieg möglich:</strong> Muss die Doppelstunde geteilt werden, ist hier der natürliche Schnitt.</p>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(6)">Weiter: Teil B →</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+<!-- ═══════════════ STEP 6 · GEFAHRÜBERGANG (M5 · AUFGABE 4) ═══════════════ -->
+<section class="step" id="step-6">
+<div class="part-banner">
+  <span class="part-tag">Teil B</span>
+  <span class="part-title">Wann muss der Mangel vorliegen – und wer muss es beweisen?</span>
+</div>
+<section class="section" id="step6">
+  <header class="section-head">
+    <div class="section-num">6</div>
+    <div>
+      <div class="section-title">Wann geht die Gefahr über? (M5 · Aufgabe 4)</div>
+      <div class="section-meta">Partnerarbeit · zuordnen</div>
+    </div>
+  </header>
+
+  <p>Ein Mangel zählt nur, wenn er <strong>bei Gefahrübergang</strong> vorliegt (§&nbsp;434 I).
+  Geht die Ware <em>danach</em> kaputt, ist das das Risiko des Käufers. Aber wann geht die Gefahr
+  über?</p>
+
+  <div class="schema">
+    <div class="schema-title">Zeitpunkt des Gefahrübergangs</div>
+    <div class="schema-row">
+      <span class="schema-item">Grundsatz: Übergabe an den Käufer<small>§ 446 S. 1</small></span><span class="schema-plus">·</span>
+      <span class="schema-item">Versendungskauf: Übergabe an Post / Spedition<small>§ 447 I – Versand auf Verlangen des Käufers</small></span><span class="schema-plus">·</span>
+      <span class="schema-item">Verbraucher: trotz Versand erst Übergabe an ihn<small>§ 475 II – Ausnahme nur, wenn er selbst den Transporteur beauftragt, den der Händler nicht benannt hat</small></span><span class="schema-plus">·</span>
+      <span class="schema-item">Digitales Produkt: Bereitstellung<small>§§ 327b, 327e</small></span>
+    </div>
+  </div>
+
+  <div class="fall-grid">
+    <div class="fall-card"><div class="fall-card-tag">M1 · Hubers Cabrio</div><p>Privatverkauf; der Käufer holt das Auto eine Woche nach dem Kauf ab.</p></div>
+    <div class="fall-card"><div class="fall-card-tag">M5-1 · Tina · Outdoorsessel</div><p>Vor ca. <strong>14 Monaten</strong> in einem Möbelhaus in ihrer Stadt gekauft und mitgenommen. Der Sessel war als „<strong>rostfrei</strong>“ verkauft – jetzt zeigt das Metallgestell Rostspuren.</p></div>
+    <div class="fall-card"><div class="fall-card-tag">M5-2 · Mathilde · Kinderkleidung</div><p>Gebrauchte T-Shirts für ihre kleine Tochter, gekauft auf einem Online-Kleinanzeigenmarkt <strong>von privat</strong>. Auf ihre Bitte schickt die Verkäuferin die Sachen per Post. Daheim: größere Löcher.</p></div>
+    <div class="fall-card"><div class="fall-card-tag">M5-3 · Peter · Tennisschuhe</div><p>Online bei einem Händler bestellt. Der Shop bot <strong>mehrere Versandunternehmen zur Auswahl</strong>, Peter wählte seinen Favoriten. Das Paket kommt gequetscht und nass an, die Schuhe sind verfärbt.</p></div>
+    <div class="fall-card"><div class="fall-card-tag">M5-4 · Nina · Computerspiel</div><p>Online gekauft und heruntergeladen. Laut Beschreibung für ihr Betriebssystem geeignet – stimmt nicht. Die Hotline meint, es sei ein <strong>Benutzerfehler</strong>.</p></div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none"><rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/><path d="M6 19l-4 6 8-4" fill="#0d9488"/><rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/><path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/><path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 4 · Wann ging die Gefahr über?</div>
+        <div class="task-form partner">Partnerarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="gu">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="UK">Übergabe an den Käufer (§ 446)</button>
+          <button class="assign-cat" data-cat="UT">Übergabe an die Transportperson (§ 447 I)</button>
+          <button class="assign-cat" data-cat="UV">Übergabe an den Verbraucher trotz Versand (§ 475 II)</button>
+          <button class="assign-cat" data-cat="BR">Bereitstellung des digitalen Produkts</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Eintrag antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="UK"><span class="ai-key">M1</span><span class="ai-text">Hubers Cabrio: Abholung durch den Käufer</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="UK"><span class="ai-key">1</span><span class="ai-text">Tina: Mitnahme des Sessels im Möbelhaus</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="UT"><span class="ai-key">2</span><span class="ai-text">Mathilde: Die private Verkäuferin gibt das Paket bei der Post ab</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="UV"><span class="ai-key">3</span><span class="ai-text">Peter: Das Versandunternehmen übergibt ihm das Paket</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="BR"><span class="ai-key">4</span><span class="ai-text">Nina: Das Spiel wird ihr zum Download zugänglich gemacht</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Peters Paket</div>
+        <div class="task-form" style="color:var(--blue-700);">Partnerarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">Peter hat das Versandunternehmen doch selbst ausgesucht. Warum geht die Gefahr trotzdem erst bei Übergabe an ihn über?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Weil § 447 beim Online-Kauf nie gilt.</button>
+          <button class="quiz-opt" data-correct="1">Weil der Händler die Versandunternehmen zur Auswahl <em>benannt</em> hat – dann greift § 475 II zugunsten des Verbrauchers.</button>
+          <button class="quiz-opt" data-correct="0">Weil das Paket nass war.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Beim Verbrauchsgüterkauf geht die Gefahr beim Versand nur dann schon mit der Übergabe an den Transporteur über, wenn der Käufer ihn <strong>selbst beauftragt</strong> und der Händler ihn <strong>nicht zuvor benannt</strong> hat (§&nbsp;475 II). Wer nur aus der Liste des Shops auswählt, wählt einen benannten Transporteur. In der Praxis trägt deshalb fast immer der Händler das Transportrisiko.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M5 „Zeitpunkt des Gefahrübergangs“: TB S.&nbsp;40 · Aufgabe 4: TB S.&nbsp;41 · Fachwissen „Mangel bei Gefahrübergang“ S.&nbsp;73&nbsp;f.</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Aufgabe 4 (AL S. 41)</div>
+    <span class="tn-time">Zeitrahmen: ca. 10 Min.</span>
+    <ul>
+      <li>M1: Übergabe bei Abholung (Privatverkauf, § 446) · M5-1 Tina: Übergabe im Möbelhaus (Verbrauchsgüterkauf, § 446) · M5-2 Mathilde: Übergabe an die Post (Privatverkauf, Versendungskauf auf Verlangen, § 447 I) · M5-3 Peter: Übergabe an ihn (Verbrauchsgüterkauf, benanntes Versandunternehmen, § 475 II) · M5-4 Nina: Bereitstellung (Verbrauchervertrag über digitale Produkte).</li>
+      <li>AL deckungsgleich. Normtext §&nbsp;475 II am 28.10.2026 geprüft: durch das Recht auf Reparatur unverändert.</li>
+      <li>Merksatz für Schüler: „Der Verkäufer trägt das Risiko, bis die Gefahr übergeht – danach der Käufer.“ Begriff „Gefahr“ = Risiko des zufälligen Untergangs oder der zufälligen Verschlechterung.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(5)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(7)">Weiter: Wer muss beweisen? →</button>
+</nav>
+
+</section><!-- /step-6 -->
+
+<!-- ═══════════════ STEP 7 · BEWEISLAST (AUFGABE 5) + AUFLÖSUNG M1 ═══════════════ -->
+<section class="step" id="step-7">
+<section class="section" id="step7">
+  <header class="section-head">
+    <div class="section-num">7</div>
+    <div>
+      <div class="section-title">Wer muss den Mangel beweisen? (Aufgabe 5 · Auflösung M1)</div>
+      <div class="section-meta">Plenum · dann Einzelarbeit</div>
+    </div>
+  </header>
+
+  <div class="info-box">
+    <strong>Wer muss beweisen, dass der Mangel schon bei Gefahrübergang da war?</strong>
+    Grundsätzlich der <strong>Käufer</strong>, sobald er die Ware angenommen hat. Ein Mangel kann
+    aber auch schon „<strong>im Keim</strong>“ angelegt gewesen sein und erst später sichtbar werden –
+    etwa bei Konstruktions- oder Materialfehlern.
+  </div>
+  <div class="vgk-box">
+    <span class="vgk-tag">Verbraucher</span> <strong>Beweislastumkehr (§&nbsp;477 I BGB):</strong> Zeigt sich
+    der Mangel <strong>innerhalb eines Jahres</strong> seit Gefahrübergang, wird
+    <strong>vermutet</strong>, dass er schon bei Gefahrübergang vorlag – es sei denn, das passt nicht
+    zur Art der Ware oder des Mangels. Bei lebenden Tieren gilt das sechs Monate. Für digitale Produkte
+    gibt es dieselbe Jahresregel (§&nbsp;327k BGB). Dann muss der <strong>Unternehmer</strong> das
+    Gegenteil beweisen.
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon plenum"><svg width="22" height="22" viewBox="0 0 44 38" fill="none"><circle cx="22" cy="30" r="5" fill="#E65100"/><path d="M13 38c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="#E65100" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="7" cy="14" r="3.5" fill="#E65100" opacity="0.7"/><path d="M2 22c0-3.314 2.239-6 5-6s5 2.686 5 6" stroke="#E65100" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.7"/><circle cx="16" cy="10" r="3.5" fill="#E65100" opacity="0.75"/><path d="M11 18c0-3.314 2.239-6 5-6s5 2.686 5 6" stroke="#E65100" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.75"/><circle cx="28" cy="10" r="3.5" fill="#E65100" opacity="0.75"/><path d="M23 18c0-3.314 2.239-6 5-6s5 2.686 5 6" stroke="#E65100" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.75"/><circle cx="37" cy="14" r="3.5" fill="#E65100" opacity="0.7"/><path d="M32 22c0-3.314 2.239-6 5-6s5 2.686 5 6" stroke="#E65100" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.7"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 5 · War der Mangel bei Gefahrübergang da – und wer muss es beweisen?</div>
+        <div class="task-form plenum">Plenum · erst überlegen, dann klicken</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">M5-1 · Tina: Rost am „rostfreien“ Sessel nach ca. 14 Monaten.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Der Mangel wird vermutet – Tina muss nichts beweisen.</button>
+          <button class="quiz-opt" data-correct="1">Der Materialfehler war wohl schon „im Keim“ da – aber das Jahr ist vorbei: Tina muss ihn beweisen (z.&nbsp;B. per Gutachten).</button>
+          <button class="quiz-opt" data-correct="0">Kein Anspruch mehr – die Gewährleistung ist abgelaufen.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die Vermutung des §&nbsp;477 gilt nur ein <strong>Jahr</strong> – nach 14 Monaten greift sie nicht mehr. Der Rost spricht zwar für einen Materialfehler, der von Anfang an da war (nicht „rostfrei“ = Abweichung von der vereinbarten Beschaffenheit). Beweisen muss das aber Tina. Die Gewährleistungsfrist von zwei Jahren läuft dagegen noch.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">M5-2 · Mathilde: Löcher in den gebrauchten T-Shirts (Privatkauf).</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Vermutung nach § 477 – die Verkäuferin muss beweisen.</button>
+          <button class="quiz-opt" data-correct="1">Mathilde trägt die Beweislast. Größere Löcher entstehen kaum beim Postversand – sie lagen also wohl schon bei Übergabe an die Post vor.</button>
+          <button class="quiz-opt" data-correct="0">Kein Mangel, weil die Kleidung gebraucht ist.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Privatkauf, also keine Beweislastumkehr. Der Beweis dürfte Mathilde aber gelingen: Löcher entstehen nicht im Paket. Ob Löcher bei <em>gebrauchter</em> Kleidung ein Mangel sind, kann man diskutieren – wohl ja, weil klar war, dass die Tochter sie tragen soll.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">M5-3 · Peter: nasse, verfärbte Tennisschuhe.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Mangel bei Gefahrübergang – der Schaden entstand auf dem Transport, also vor der Übergabe an Peter.</button>
+          <button class="quiz-opt" data-correct="0">Kein Mangel – das Versandunternehmen ist schuld, nicht der Händler.</button>
+          <button class="quiz-opt" data-correct="0">Peter muss beweisen, dass die Schuhe vorher schon nass waren.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Die Gefahr ging erst bei Übergabe an Peter über (§&nbsp;475 II). Der Transportschaden lag also <strong>vor</strong> Gefahrübergang. Das zeigt schon das gequetschte, nasse Paket – zusätzlich hilft Peter die Vermutung des §&nbsp;477.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">M5-4 · Nina: „Benutzerfehler“, sagt die Hotline.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Nina muss beweisen, dass sie alles richtig gemacht hat.</button>
+          <button class="quiz-opt" data-correct="1">Zeigt sich der Mangel im ersten Jahr nach Bereitstellung, wird vermutet, dass das Spiel schon mangelhaft war – der Händler muss den Benutzerfehler beweisen.</button>
+          <button class="quiz-opt" data-correct="0">Bei Software gibt es keine Gewährleistung.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Für digitale Produkte gilt die Jahresvermutung des §&nbsp;327k. Dem Händler wird der Nachweis eines Benutzerfehlers schwerfallen – zumal die Beschreibung (Eignung für Ninas Betriebssystem) offenbar falsch war.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 40" fill="none"><path d="M6 6C6 4.343 7.343 3 9 3h14l8 8v26a2 2 0 01-2 2H9a3 3 0 01-3-3V6z" stroke="#1976D2" stroke-width="2.5" fill="none"/><path d="M23 3v8h8" stroke="#1976D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="18" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1976D2" font-family="Georgia, serif">§</text></svg></div>
+      <div>
+        <div class="task-title">Auflösung M1 · Müssen die Hubers zahlen?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p>Zurück zum Einstieg. <strong>Beurteile</strong>, ob die Hubers für das Dach einstehen
+      müssen. Vergleiche mit deiner Einschätzung vom Anfang.</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="35"
+        data-keywords="privat, verbrauchsgueterkauf, beweislast, kaeufer, beweisen, gefahruebergang, uebergabe, vermutung, regen, freunde, garage, dicht, schwer"
+        data-required="6"
+        placeholder="Weil die Hubers privat verkauft haben, … Der Käufer müsste beweisen, dass … Das wird schwer, denn …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 35 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Die Hubers haben <strong>privat</strong> verkauft – es ist <strong>kein
+        Verbrauchsgüterkauf</strong>, die <strong>Vermutung</strong> des §&nbsp;477 hilft dem Käufer
+        nicht. Die <strong>Beweislast</strong> liegt beim <strong>Käufer</strong>: Er müsste
+        <strong>beweisen</strong>, dass das Dach schon bei <strong>Gefahrübergang</strong>, also bei der
+        <strong>Übergabe</strong> (Abholung), undicht war. Das wird <strong>schwer</strong>: Das Auto
+        stand vorher im <strong>Regen</strong>, ohne dass Wasser eindrang, die <strong>Freunde</strong>
+        können bezeugen, dass es <strong>dicht</strong> war, und im Winter stand es in der
+        <strong>Garage</strong>. Ergebnis: Die Hubers müssen das Dach <strong>wohl nicht</strong>
+        reparieren und den Kaufpreis nicht zurückzahlen.<br>
+        <em>Ausblick:</em> Wäre der Käufer Verbraucher und die Hubers Händler, sähe es anders aus –
+        genau diese Variante kommt in 1.1.11.
+      </div>
+    </div>
+  </div>
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">Aufgabe 5: TB S.&nbsp;41 (Tipp: Randspalte zur Beweislastumkehr, §&nbsp;477 und §&nbsp;327k BGB) · Fachwissen S.&nbsp;74</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Aufgabe 5 (AL S. 41, korrigiert)</div>
+    <span class="tn-time">Zeitrahmen: ca. 12 Min.</span>
+    <p><strong>Korrektur der AL bei Tina (M5-1):</strong> Die AL schreibt „ja – es wird vermutet, dass die Ware schon bei Gefahrübergang mangelhaft war (Verbrauchsgüterkauf)“. Das ist <strong>falsch</strong>: Der Kauf liegt ca. <strong>14 Monate</strong> zurück, die Vermutung des §&nbsp;477 I gilt nur <strong>ein Jahr</strong>. Richtig: Der Materialfehler lag wohl schon „im Keim“ bei Übergabe vor (Randspalte TB S.&nbsp;40) – beweisen muss das aber Tina (z.&nbsp;B. Sachverständigengutachten). Die Verjährungsfrist (2 Jahre) läuft noch. Didaktisch wertvoll: einziger Fall außerhalb der Jahresfrist.</p>
+    <ul>
+      <li>M1: wohl kein Mangel bei Gefahrübergang nachweisbar – AL deckungsgleich.</li>
+      <li>M5-2: AL „ja“ (Löcher nicht durch Versand), Diskussion gebrauchte Kleidung – übernommen.</li>
+      <li>M5-3: AL begründet mit der Vermutung des §&nbsp;477. Genauer: Der Transportschaden entstand nachweislich vor Gefahrübergang (§&nbsp;475 II) – die Vermutung braucht es kaum.</li>
+      <li>M5-4: §&nbsp;327k I (Jahresvermutung ab Bereitstellung) – AL deckungsgleich.</li>
+      <li>§&nbsp;477 I S.&nbsp;1 Hs.&nbsp;2 („unvereinbar mit der Art der Ware oder des Mangels“) nur bei Nachfrage, z.&nbsp;B. typischer Verschleiß.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(6)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(8)">Weiter: B-Ware und Updates →</button>
+</nav>
+
+</section><!-- /step-7 -->
+
+<!-- ═══════════════ STEP 8 · B-WARE UND UPDATES (M6, M7 · AUFGABEN 6 & 7) ═══════════════ -->
+<section class="step" id="step-8">
+<section class="section" id="step8">
+  <header class="section-head">
+    <div class="section-num">8</div>
+    <div>
+      <div class="section-title">B-Ware und Updates (M6, M7 · Aufgaben 6 &amp; 7)</div>
+      <div class="section-meta">Partnerarbeit · dann Einzelarbeit</div>
+    </div>
+  </header>
+
+  <div class="fall-grid">
+    <div class="fall-card">
+      <div class="fall-card-tag">M6 · Ausstellungsstücke, Mängelexemplare, B-Ware</div>
+      <p>Wer etwa ein Sofa als Ausstellungsstück verkauft, muss den Käufer über die mindere Qualität
+      informieren und das dokumentieren – sonst gilt die Ware als mangelhaft.</p>
+      <p class="vgk-line"><span class="vgk-tag">Verbraucher</span> Ein allgemeiner Hinweis (in der
+      Produktbeschreibung, den AGB oder auf einem Schild) reicht <strong>nicht</strong>. Der Händler muss
+      den Verbraucher <strong>vor dem Kauf eigens</strong> darauf hinweisen, dass ein bestimmtes Merkmal
+      schlechter ist als üblich, und die Abweichung muss im Vertrag <strong>ausdrücklich und gesondert</strong>
+      vereinbart werden (§&nbsp;476 I S.&nbsp;2 BGB). Zum Beweis empfiehlt sich eine eigene Unterschrift.
+      Online muss die mindere Qualität beim Bestellen hervorgehoben werden – ein
+      <strong>vorangekreuztes Kästchen</strong> genügt nicht, der Käufer muss selbst aktiv bestätigen.</p>
+    </div>
+    <div class="fall-card">
+      <div class="fall-card-tag">M7 · Digitale Updates sind verpflichtend</div>
+      <p>Kauft man als Privatperson beim Händler eine <strong>Ware mit digitalen Elementen</strong>, etwa
+      ein Navi, muss der Verkäufer die nötigen <strong>Updates</strong> bereitstellen – für den
+      vereinbarten Zeitraum oder so lange, wie man es üblicherweise erwarten kann. Fehlen sie, ist das ein
+      Sachmangel. Bei <strong>dauerhafter</strong> Bereitstellung digitaler Elemente sind es mindestens
+      zwei Jahre.</p>
+      <p>Aber: Wer bereitgestellte Updates <strong>nicht installiert</strong>, obwohl der Verkäufer über
+      das Update und die Folgen informiert hat, kann den Verkäufer nicht haftbar machen (§&nbsp;475b V BGB).</p>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none"><rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/><path d="M6 19l-4 6 8-4" fill="#0d9488"/><rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/><path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/><path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 6 · Warum schützt das Gesetz Verbraucher bei B-Ware so streng?</div>
+        <div class="task-form partner">Partnerarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Erklärt</strong>, <strong>wie</strong> und <strong>warum</strong> der Gesetzgeber
+      Verbraucherinnen und Verbraucher bei Ausstellungsstücken, Mängelexemplaren und B-Ware besonders
+      schützt (M6).</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="40"
+        data-keywords="eigens, kenntnis, ausdruecklich, gesondert, vereinbart, agb, produktbeschreibung, kaestchen, klick, aktiv, umgehung, schutz, bewusst, informiert, gewaehrleistung"
+        data-required="6"
+        placeholder="Wie: Ein allgemeiner Hinweis reicht nicht, sondern … Online … Warum: Der Gesetzgeber will verhindern, dass …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 40 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn ihr nicht weiterkommt, fragt eure Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Wie?</strong> Ein allgemeiner Hinweis in <strong>AGB</strong>, in der
+        <strong>Produktbeschreibung</strong> oder auf einem Schild reicht nicht. Der Verbraucher muss vor
+        seiner Vertragserklärung <strong>eigens</strong> davon in <strong>Kenntnis</strong> gesetzt werden,
+        dass ein <em>bestimmtes</em> Merkmal von den objektiven Anforderungen abweicht (z.&nbsp;B.
+        Gebrauchsspuren), und die Abweichung muss <strong>ausdrücklich</strong> und
+        <strong>gesondert</strong> <strong>vereinbart</strong> werden. Online genügt kein vorangekreuztes
+        <strong>Kästchen</strong>; der Käufer muss per <strong>Klick</strong> selbst <strong>aktiv</strong>
+        bestätigen.<br>
+        <strong>Warum?</strong> Der Gesetzgeber will eine <strong>Umgehung</strong> der gesetzlichen
+        <strong>Gewährleistung</strong> zulasten des Verbrauchers verhindern: Sonst könnte jeder Händler
+        mit einem Satz im Kleingedruckten seine Haftung aushebeln. Der <strong>Schutz</strong> gleicht das
+        Informations- und Machtgefälle aus – der Verbraucher soll <strong>bewusst</strong> und
+        <strong>informiert</strong> entscheiden. Die hohen Hürden verbieten solche Käufe aber nicht:
+        B-Ware oder eine unbespielbare Gitarre als Deko-Objekt dürfen weiter verkauft werden.
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="7" fill="#1976D2"/><path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 7 · Wer muss was bei Updates?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Klick-Zuordnung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="assign" data-assign="upd">
+        <div class="assign-catbar">
+          <button class="assign-cat active" data-cat="V">Pflicht des Verkäufers</button>
+          <button class="assign-cat" data-cat="K">Sache des Käufers</button>
+        </div>
+        <div class="assign-hint">Kategorie oben wählen, dann den passenden Eintrag antippen. Nochmal tippen hebt die Zuordnung auf.</div>
+        <div class="assign-items">
+          <div class="assign-item" data-correct="V"><span class="ai-key">a</span><span class="ai-text">Updates bereitstellen, die nötig sind, damit die Ware vertragsgemäß bleibt</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">b</span><span class="ai-text">das so lange tun, wie vereinbart oder üblicherweise zu erwarten ist</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">c</span><span class="ai-text">über verfügbare Updates informieren</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">d</span><span class="ai-text">über die Folgen informieren, wenn ein Update nicht installiert wird</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="V"><span class="ai-key">e</span><span class="ai-text">eine korrekte Installationsanleitung mitliefern</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="K"><span class="ai-key">f</span><span class="ai-text">die Informationen des Verkäufers zu Updates lesen und beachten</span><span class="ai-chosen">—</span></div>
+          <div class="assign-item" data-correct="K"><span class="ai-key">g</span><span class="ai-text">bereitgestellte Updates sachgemäß installieren</span><span class="ai-chosen">—</span></div>
+        </div>
+        <div class="assign-actions">
+          <button class="btn btn-primary" onclick="checkAssign(this)">Prüfen</button>
+          <button class="btn btn-secondary" onclick="resetAssign(this)">Zurücksetzen</button>
+          <span class="assign-score"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Selbstcheck · Das Navi von Herrn K.</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <div class="quiz-q">
+        <div class="quiz-prompt">Herr K. bekommt für sein Navi mehrfach die Meldung „Wichtiges Update verfügbar – ohne Installation funktioniert die Kartenführung bald nicht mehr“. Er klickt sie weg. Drei Monate später fällt die Kartenführung aus. Hat er Gewährleistungsrechte?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – fehlende Aktualisierungen sind immer ein Mangel.</button>
+          <button class="quiz-opt" data-correct="1">Nein – der Verkäufer hat das Update bereitgestellt und über die Folgen informiert; für den Fehler haftet er nicht.</button>
+          <button class="quiz-opt" data-correct="0">Ja – aber nur gegenüber dem Hersteller.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Der Verkäufer hat seine Pflichten erfüllt: Update bereitgestellt, über Update <em>und</em> Folgen informiert. Unterlässt der Käufer die Installation, haftet der Verkäufer nicht für einen Mangel, der allein darauf beruht (§&nbsp;475b V). Anders wäre es, wenn die Installationsanleitung fehlerhaft gewesen wäre.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflect">
+    <div class="reflect-icon"><svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg></div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">bevor du gehst</span></div>
+      <div class="reflect-text">
+        Kannst du ohne Spickzettel erklären, warum Peters nasse Schuhe ein Mangel sind, Tina aber trotz
+        „rostfrei“ ein Beweisproblem hat? <strong>Jetzt ist Zeit für deine Fragen.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="bgb-mark">
+    <div class="bm-head"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Im BGB anstreichen · Teil B</span></div>
+    <div class="bm-intro">Wenn du magst, markiere dir auch diese Stellen. <span class="bm-u">So unterstrichen</span> = anstreichen.</div>
+    <div class="bm-rows">
+      <div class="bm-row"><div class="bm-norm">§ 446 S. 1</div><div class="bm-text">Mit der <u>Übergabe</u> der verkauften Sache geht die Gefahr … auf den Käufer über.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 447 I</div><div class="bm-text">Versendet der Verkäufer <u>auf Verlangen des Käufers</u> die verkaufte Sache … so geht die Gefahr auf den Käufer über, sobald der Verkäufer die Sache dem <u>Spediteur, dem Frachtführer</u> … ausgeliefert hat.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 475 II</div><div class="bm-text">… nur dann auf den Käufer übergeht, wenn der Käufer den Spediteur … <u>mit der Ausführung beauftragt</u> hat und der Unternehmer dem Käufer diese Person oder Anstalt <u>nicht zuvor benannt</u> hat.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 476 I S. 2</div><div class="bm-text">… wenn 1. der Verbraucher vor der Abgabe seiner Vertragserklärung <u>eigens davon in Kenntnis gesetzt</u> wurde … und 2. die Abweichung … im Vertrag <u>ausdrücklich und gesondert vereinbart</u> wurde.</div></div>
+      <div class="bm-row"><div class="bm-norm">§ 477 I</div><div class="bm-text">Zeigt sich <u>innerhalb eines Jahres seit Gefahrübergang</u> ein … abweichender Zustand der Ware, so <u>wird vermutet</u>, dass die Ware bereits bei Gefahrübergang mangelhaft war …</div></div>
+    </div>
+    <div class="bm-rule">Eine Farbe, eine einfache Linie, nur Wörter des Gesetzestexts – keine Randnotizen, keine Verweise, kein Farbsystem.</div>
+  </div>
+  <div class="book-ref">
+    <div class="book-ref-title">Buchverweis</div>
+    <div class="book-ref-text">M6 „Ausstellungsstücke, Mängelexemplare, B-Ware“: TB S.&nbsp;40 · M7 „Digitale Updates sind verpflichtend“: TB S.&nbsp;41 · Aufgaben 6 &amp; 7: TB S.&nbsp;41 · Fachwissen „Aktualisierungspflicht“ S.&nbsp;75&nbsp;f.</div>
+  </div>
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Aufgaben 6 und 7 (AL S. 41)</div>
+    <span class="tn-time">Zeitrahmen: ca. 12 Min. + 3 Min. Zwischencheck</span>
+    <ul>
+      <li><strong>Aufgabe 6:</strong> AL deckungsgleich (eigens in Kenntnis setzen, ausdrücklich und gesondert vereinbaren, kein vorangekreuztes Kästchen; Intention: keine Umgehung, Schutz, hohe Hürden, Käufe bleiben möglich). Normgrundlage: §&nbsp;476 I S.&nbsp;2 (BGB-HILFT im Buch: §&nbsp;476 I).</li>
+      <li><strong>Aufgabe 7:</strong> AL-Tabelle als Klick-Zuordnung: V = a–e, K = f, g. Rechtsgrundlagen: §&nbsp;475b III Nr.&nbsp;2, IV Nr.&nbsp;2, V (Ware mit digitalen Elementen), §§&nbsp;327e, 327f (digitale Produkte); Mindestzeitraum bei dauerhafter Bereitstellung: §&nbsp;475c (zwei Jahre).</li>
+      <li>Aufgabe 7 ist im Buch als fakultativ markiert (blaue Nummer). Bei Zeitnot: Klick-Zuordnung als Hausaufgabe, das Navi-Quiz im Plenum.</li>
+      <li>Aktualisierungspflicht trifft den <em>Verkäufer</em>, nicht zwingend den Hersteller (Fachwissen S.&nbsp;75).</li>
+    </ul>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Das nimmst du mit</div>
+    <ul>
+      <li><strong>Mangel = Abweichung der Ist- von der Soll-Beschaffenheit.</strong> Die Soll-Beschaffenheit verlangt <em>alle</em> drei Bausteine: <strong>subjektive</strong> Anforderungen (wie vereinbart), <strong>objektive</strong> Anforderungen (wie üblich und erwartbar) und ordnungsgemäße <strong>Montage / Installation / Integration</strong>.</li>
+      <li>Eine <strong>andere Sache</strong> zu liefern (Aliud) steht einem Mangel gleich.</li>
+      <li>Maßgeblich ist der <strong>Gefahrübergang</strong>: grundsätzlich die Übergabe; beim Versendungskauf die Übergabe an den Transporteur – beim Verbrauchsgüterkauf aber meist erst die Übergabe an den Verbraucher (§ 475 II). Digital: die Bereitstellung. Updates müssen auch danach geliefert werden.</li>
+      <li><strong>Beweislast:</strong> grundsätzlich der Käufer – beim Verbrauchsgüterkauf wird im <strong>ersten Jahr</strong> vermutet, dass der Mangel schon bei Gefahrübergang da war (§ 477).</li>
+      <li>Gewährleistung: <strong>zwei Jahre</strong> ab Übergabe. Gegenüber Verbrauchern kann der Händler sie weder ausschließen noch (außer bei Gebrauchtware, unter strengen Voraussetzungen) verkürzen; „schlechter als üblich“ geht nur mit <strong>eigenem Hinweis und gesonderter Vereinbarung</strong>.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(7)">← Zurück</button>
+</nav>
+
+</section><!-- /step-8 -->
+
+<!-- ═══════════════ STEP 9 · ABFRAGE (nur Lehrkraft) ═══════════════ -->
+<section class="step teacher-only" id="step-9">
+<section class="section teacher-only" id="step9">
+  <header class="section-head">
+    <div class="section-num" style="background:var(--amber-bd);color:var(--amber-tx);">9</div>
+    <div>
+      <div class="section-title" style="color:var(--amber-tx);">Mündliche Abfrage · 4K-Modell</div>
+      <div class="section-meta">Nur Lehrkraft · 1 Schüler · ca. 10 Min.</div>
+    </div>
+  </header>
+
+  <div class="teacher-note" style="display:block;margin-top:0;">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise zur Durchführung</div>
+    <p>Die vier Fragen decken jeweils einen 4K-Kompetenzbereich ab. Erwartungshorizonte
+    aufklappbar; Bewertung entlang der etablierten Notenskala. Empfehlung: Wissen zuerst,
+    dann zwei „mittlere“ Kompetenzen, abschließend Kreativität als offene Transferaufgabe.</p>
+    <p style="margin-top:8px;">
+      <button class="btn btn-secondary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;">
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Abfrage drucken
+      </button>
+    </p>
+  </div>
+
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#4D7C0F;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#4D7C0F" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#4D7C0F" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kommunikation / Wissen</div>
+        <div class="task-form" style="color:#4D7C0F;">Fachwissen abrufen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Wann ist eine Kaufsache frei von Sachmängeln? Nenne die Bausteine und den maßgeblichen Zeitpunkt.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Mangelfrei, wenn die Sache bei <strong>Gefahrübergang</strong> den <strong>subjektiven</strong>
+        (vereinbarte Beschaffenheit, vorausgesetzte Verwendung, vereinbartes Zubehör/Anleitungen),
+        den <strong>objektiven</strong> (gewöhnliche Verwendung, übliche und erwartbare Beschaffenheit,
+        Muster/Probe, erwartbares Zubehör) und ggf. den <strong>Montageanforderungen</strong> entspricht.
+        Einem Mangel steht die Lieferung einer <strong>anderen Sache</strong> gleich (Aliud).
+        Gefahrübergang: Übergabe (§ 446), Versendungskauf § 447, beim Verbrauchsgüterkauf § 475 II;
+        digital: Bereitstellung.<br>
+        <strong>Bestleistung:</strong> Mangel = Abweichung Ist/Soll; Bausteine gleichrangig;
+        Aktualisierungspflicht über den Gefahrübergang hinaus.
+      </div>
+    </div>
+  </div>
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#DC2626;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#DC2626" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kritisches Denken</div>
+        <div class="task-form" style="color:#DC2626;">Unterscheiden und begründen</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Tina (Sessel, 14 Monate) und Peter (Schuhe, nass geliefert) sind beide Verbraucher. Warum hat Peter es beim Beweis viel leichter als Tina?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Peter: Gefahr geht erst bei Übergabe an ihn über (§ 475 II, Versandunternehmen vom Händler
+        benannt) → Transportschaden liegt <em>vor</em> Gefahrübergang; zusätzlich Vermutung § 477
+        (innerhalb eines Jahres). Tina: Mangel zeigt sich erst nach 14 Monaten → keine Vermutung mehr;
+        sie muss beweisen, dass der Materialfehler schon „im Keim“ vorlag (Gutachten). Verjährung (2 Jahre)
+        läuft noch.<br>
+        <strong>Bewertung:</strong> Die Jahresgrenze ist ein Kompromiss – je länger eine Ware benutzt wird,
+        desto eher kommen Verschleiß oder falsche Behandlung als Ursache in Betracht.
+      </div>
+    </div>
+  </div>
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#0d9488;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#0d9488" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#0d9488" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kollaboration</div>
+        <div class="task-form" style="color:#0d9488;">Perspektivenwechsel</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Ein Elektronikmarkt will Ausstellungsgeräte mit Kratzern günstig an Privatkunden verkaufen. Du berätst ihn: Was muss er tun, damit die Kratzer später keinen Mangel darstellen?</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Erwartungshorizont</button>
+      <div class="solution">
+        Den Kunden <strong>vor</strong> dem Kauf <strong>eigens</strong> auf das konkrete Merkmal hinweisen
+        (Kratzer an der Front) und die Abweichung im Vertrag <strong>ausdrücklich und gesondert</strong>
+        vereinbaren (§ 476 I S. 2) – am besten mit eigener Unterschrift. Kein bloßes Schild „B-Ware“, kein
+        Satz in den AGB; online kein vorangekreuztes Kästchen. Die übrige Gewährleistung (z. B. für die
+        Elektronik) bleibt bestehen und kann nicht ausgeschlossen werden; Verkürzung auf ein Jahr nur unter
+        denselben strengen Voraussetzungen (§ 476 II).
+      </div>
+    </div>
+  </div>
+  <div class="task" style="border-color:#FBBF24;">
+    <div class="task-head" style="background:#FFFBEB;">
+      <div class="task-icon" style="border-color:#FF9800;">
+        <svg width="22" height="22" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="15" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+          <text x="19" y="25" text-anchor="middle" font-size="16" font-weight="900" fill="#FF9800" font-family="Nunito,sans-serif">K</text>
+        </svg>
+      </div>
+      <div>
+        <div class="task-title">Kreativität</div>
+        <div class="task-form" style="color:#FF9800;">Transfer / Fallkonstruktion</div>
+      </div>
+    </div>
+    <div class="task-body">
+      <p><strong>Frage:</strong> Erfinde zu einem Smartphone je einen Fall für einen Mangel wegen subjektiver Anforderungen, wegen objektiver Anforderungen, wegen fehlender Aktualisierung – und einen Fall, der trotz Defekt kein Mangel ist.</p>
+      <button class="btn-solution" onclick="toggleSol(this)">Bewertungskriterien</button>
+      <div class="solution">
+        Kein festes Ergebnis – bewertet wird die <strong>Qualität der Konstruktion</strong>:
+        <ul>
+          <li><strong>subjektiv:</strong> vereinbart 256 GB, geliefert 128 GB; vereinbarte Farbe fehlt.</li>
+          <li><strong>objektiv:</strong> Akku hält nur eine Stunde; Display bricht beim Einschalten (Haltbarkeit, Sicherheit).</li>
+          <li><strong>Aktualisierung:</strong> keine Sicherheitsupdates im erwartbaren Zeitraum.</li>
+          <li><strong>kein Mangel:</strong> Defekt entsteht erst nach Gefahrübergang (Sturz); Käufer ignoriert ein angekündigtes Update trotz Information (§ 475b V).</li>
+          <li><strong>Bestleistung:</strong> nennt den Zeitpunkt (Gefahrübergang) und die Beweislastumkehr im ersten Jahr.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(8)">← Zurück</button>
+</nav>
+
+</section><!-- /step-9 -->
+
+
+</main>
+
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(kw.includes(tk) && tk.length >= 3) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const container = ta.closest('.task-body') || ta.closest('.gstep-body');
+  const gate = container ? container.querySelector('.sol-gate') : null;
+  if(!gate) return;
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
+}
+
+// ═══════════════ Quiz (Sofort-Rückmeldung) ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const fb = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      opts.forEach(o=>o.disabled = true);
+      fb.classList.remove('ok','no');
+      if(opt.dataset.correct === '1'){
+        opt.classList.add('correct');
+        fb.textContent = '✓ Richtig.'; fb.classList.add('show','ok');
+      } else {
+        opt.classList.add('wrong');
+        fb.textContent = '✗ Leider falsch. Versuch es noch einmal.'; fb.classList.add('show','no');
+        if(retry) retry.style.display = 'inline-block';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{ o.disabled=false; o.classList.remove('correct','wrong'); });
+  const fb = q.querySelector('.quiz-feedback'); fb.classList.remove('show','ok','no'); fb.textContent='';
+  const ex = q.querySelector('.quiz-explain'); if(ex) ex.classList.remove('show');
+  btn.style.display = 'none';
+}
+
+// ═══════════════ 1.1.7: Quiz-Erklärung ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  q.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const ex = q.querySelector('.quiz-explain');
+      if(ex && opt.dataset.correct === '1') ex.classList.add('show');
+    });
+  });
+});
+
+
+// ═══════════════ 1.1.7: Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · 1.1.10 Wann hat eine Ware einen Mangel?';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 2b) Doppelstunde: Teil-Banner → Zwischenüberschrift, Pausenkarte entfällt
+  root.querySelectorAll('.part-banner').forEach(pb=>{
+    const tag = pb.querySelector('.part-tag'), t = pb.querySelector('.part-title');
+    pb.outerHTML = '<p class="p-part">'+(tag?tag.textContent.trim()+' · ':'')+(t?t.innerHTML:'')+'</p>';
+  });
+  rm('.pause-card');
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ cl.outerHTML = '<div class="p-closing"><h3>Das nimmst du mit</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#3F6212;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#3F6212;border-bottom:1.5pt solid #4D7C0F;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#3F6212;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #4D7C0F;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#4D7C0F;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep,.norm-box,.diff-chart{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe,.norm-box{border-left:4pt solid #4D7C0F;}'+
+  '.norm-title,.diff-title,.dc-label{font-weight:bold;}'+
+  '.dc-bar{display:inline-block;border:1pt solid #4D7C0F;padding:1pt 6pt;margin:1pt 2pt;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.p-part{font-size:15pt;font-weight:bold;color:#3F6212;border:1.5pt solid #4D7C0F;padding:4pt 8pt;margin:14pt 0 4pt;}'+
+  '.vgk-box,.neu-box,.zusatz-card,.bgb-mark,.sysgrid,.sys-col,.sys-row{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.neu-box{border:1.5pt dotted #4D7C0F;}.zusatz-card{border:1.5pt dashed #666;}.bgb-mark{border-left:4pt solid #334155;}'+
+  '.vgk-tag{font-weight:bold;border:1pt solid #000;padding:0 3pt;font-size:8pt;text-transform:uppercase;}'+
+  '.sys-top,.sys-h,.neu-head,.zusatz-head,.bm-head,.bm-norm{font-weight:bold;}'+
+  '.bm-text u{text-decoration:underline;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_1-1-10_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+</script>
+
+</body>
+</html>
