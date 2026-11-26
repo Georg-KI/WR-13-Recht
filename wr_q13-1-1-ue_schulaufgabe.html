@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Übung Schulaufgabe · WR Q13</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* === Primärfarbe: Rosé (Übungsstunde Schulaufgabe) === */
+  --blue-900:#831843;
+  --blue-800:#9D174D;
+  --blue-700:#BE185D;   /* Primärfarbe */
+  --blue-600:#DB2777;
+  --blue-400:#F472B6;
+  --blue-100:#FCE7F3;
+  --blue-50: #FDF2F8;
+  --blue-grad: linear-gradient(135deg,#831843 0%,#9D174D 50%,#BE185D 100%);
+
+  /* === Akzente === */
+  --teal:    #0d9488;
+  --teal-50: #ccfbf1;
+  --purple:  #7B1FA2;
+  --purple-50:#F3E5F5;
+  --orange:  #E65100;
+  --orange-50:#FFF3E0;
+  --red:     #DC2626;
+  --red-50:  #FEE2E2;
+  --green:   #16A34A;
+  --green-50:#DCFCE7;
+  --slate:   #475569;
+  --slate-50:#F1F5F9;
+  --amber-bg:#FFFBEB;
+  --amber-bd:#FBBF24;
+  --amber-tx:#92400E;
+
+  --text:#0F172A;
+  --text-2:#475569;
+  --muted:#94A3B8;
+  --border:#E2E8F0;
+  --bg-page:#F8FAFC;
+  --bg-card:#FFFFFF;
+
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --shadow:0 2px 8px rgba(15,23,42,0.06);
+  --shadow-lg:0 8px 28px rgba(15,23,42,0.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg-page);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────── Topbar ─────────── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--blue-700);
+  color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;height:56px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.topbar-logo{
+  font-weight:900;font-size:15px;color:#fff;text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.topbar-logo .ovr{color:var(--blue-100);font-weight:700;font-size:13px;}
+.topbar-chip{
+  background:rgba(255,255,255,0.18);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.5px;
+}
+.btn-teacher{
+  background:rgba(255,255,255,0.15);
+  color:#fff;border:1px solid rgba(255,255,255,0.3);
+  padding:6px 14px;border-radius:8px;font-size:12px;
+  font-family:inherit;font-weight:700;cursor:pointer;
+  transition:all 0.15s;
+}
+.btn-teacher:hover{background:rgba(255,255,255,0.25);}
+.btn-teacher.active{
+  background:#FBBF24;color:#7C2D12;border-color:#FBBF24;
+}
+
+/* ─────────── Progress ─────────── */
+.progress{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 18px;
+  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;
+}
+.step-chip{
+  display:flex;align-items:center;gap:6px;
+  padding:5px 11px;border-radius:18px;
+  background:var(--bg-page);
+  color:var(--text-2);
+  font-size:11px;font-weight:700;
+  border:1px solid var(--border);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.15s;
+}
+.step-chip:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.step-chip .n{
+  background:var(--blue-700);color:#fff;
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+}
+.step-chip.teacher-only{display:none;}
+body.version-b .step-chip.teacher-only{display:flex;}
+.step-chip.active{
+  background:var(--blue-50);
+  border-color:var(--blue-600);
+  color:var(--blue-700);
+}
+.step-chip.active .n{background:var(--blue-700);}
+
+main{
+  max-width:960px;margin:0 auto;
+  padding:24px 18px 80px;
+}
+
+/* ─────────── Hero ─────────── */
+.hero{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;color:#fff;
+  position:relative;overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow-lg);
+}
+.hero::before{
+  content:'§';
+  position:absolute;right:-12px;top:-40px;
+  font-size:240px;font-weight:900;
+  color:rgba(255,255,255,0.07);
+  font-family:Georgia,serif;line-height:1;
+}
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,0.22);
+  padding:4px 12px;border-radius:20px;
+  font-size:12px;font-weight:800;letter-spacing:0.6px;
+  margin-bottom:14px;
+}
+.hero h1{
+  font-size:32px;font-weight:900;line-height:1.15;
+  margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.hero-sub{
+  font-size:16px;font-weight:600;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:22px;
+  position:relative;z-index:1;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  position:relative;z-index:1;
+}
+.hero-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  backdrop-filter:blur(4px);
+}
+.hero-box-title{
+  font-size:11px;font-weight:800;letter-spacing:0.8px;
+  color:rgba(255,255,255,0.9);margin-bottom:5px;
+  text-transform:uppercase;
+}
+.hero-box-text{font-size:13.5px;color:rgba(255,255,255,0.95);line-height:1.5;}
+@media (max-width:640px){
+  .hero{padding:28px 22px;}
+  .hero h1{font-size:25px;}
+  .hero-grid{grid-template-columns:1fr;}
+}
+
+/* ─────────── Section / Card ─────────── */
+.section{
+  background:var(--bg-card);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border);
+  padding:28px 26px;
+  margin-bottom:22px;
+  box-shadow:var(--shadow);
+  animation:fadeUp 0.4s ease both;
+}
+.section-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-num{
+  background:var(--blue-700);color:#fff;
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+  flex-shrink:0;
+}
+.section-title{
+  font-size:21px;font-weight:800;color:var(--text);
+}
+.section-meta{
+  font-size:12px;font-weight:600;color:var(--muted);
+  margin-top:2px;
+}
+
+/* ─────────── Aufgaben-Box (Task) ─────────── */
+.task{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-md);
+  margin:18px 0;
+  overflow:hidden;
+}
+.task-head{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.task-icon{
+  background:#fff;
+  border:1.5px solid var(--blue-700);
+  border-radius:8px;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.task-icon.partner{border-color:var(--teal);}
+.task-icon.group{border-color:var(--purple);}
+.task-icon.plenum{border-color:var(--orange);}
+.task-icon.moderation{border-color:var(--orange);}
+.task-title{font-weight:800;font-size:15px;color:var(--text);}
+.task-form{
+  font-size:11px;font-weight:700;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;
+}
+.task-form.partner{color:var(--teal);}
+.task-form.group{color:var(--purple);}
+.task-form.plenum{color:var(--orange);}
+.task-form.moderation{color:var(--orange);}
+.task-body{padding:16px;}
+.task-body p{margin-bottom:10px;}
+.task-body p:last-child{margin-bottom:0;}
+
+/* ─────────── Textarea ─────────── */
+.answer-area{
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  resize:vertical;min-height:80px;
+  background:#fff;color:var(--text);
+  transition:border-color 0.15s;
+}
+.answer-area:focus{outline:none;border-color:var(--blue-700);}
+
+/* ─────────── Buttons ─────────── */
+.btn{
+  font-family:inherit;font-weight:700;
+  border:none;border-radius:var(--radius-sm);
+  cursor:pointer;padding:10px 18px;font-size:13px;
+  transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-primary{
+  background:var(--blue-700);color:#fff;
+}
+.btn-primary:hover{background:var(--blue-800);transform:translateY(-1px);}
+.btn-secondary{
+  background:#fff;color:var(--text);
+  border:1.5px solid var(--border);
+}
+.btn-secondary:hover{border-color:var(--blue-700);color:var(--blue-700);background:var(--blue-50);}
+.btn-solution{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:8px 14px;font-size:12px;font-weight:700;
+}
+.btn-solution:hover{border-color:var(--green);color:var(--green);background:var(--green-50);}
+
+/* ─────────── Musterlösung-Gate (NEU) ─────────── */
+.sol-gate{margin-top:12px;}
+.btn-solution.locked{
+  opacity:0.55;cursor:not-allowed;
+  border-style:dashed;
+}
+.btn-solution.locked:hover{
+  border-color:var(--border);color:var(--text-2);background:#fff;
+}
+.btn-solution .lock-ico{display:inline-flex;}
+.gate-status{
+  margin-top:8px;font-size:12px;font-weight:700;
+  color:var(--text-2);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.gate-status .bar{
+  flex:1;min-width:120px;height:6px;border-radius:3px;
+  background:var(--border);overflow:hidden;
+}
+.gate-status .bar > span{
+  display:block;height:100%;width:0%;
+  background:var(--blue-400);
+  transition:width 0.25s ease, background 0.25s ease;
+}
+.gate-status.ready{color:var(--green);}
+.gate-status.ready .bar > span{background:var(--green);}
+.gate-hint{
+  margin-top:6px;font-size:11.5px;color:var(--muted);
+  font-weight:600;font-style:italic;
+}
+
+/* ─────────── Musterlösung ─────────── */
+.solution{
+  background:var(--green-50);
+  border-left:3px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  color:#14532D;font-size:13.5px;
+  display:none;margin-top:10px;
+  line-height:1.6;
+}
+.solution.visible{display:block;animation:fadeUp 0.3s ease both;}
+.solution strong{color:#166534;}
+.solution ul{margin:6px 0 6px 18px;}
+.solution li{margin-bottom:4px;}
+
+/* ─────────── Buchverweis ─────────── */
+.book-ref{
+  background:#FAF5FF;
+  border:1.5px solid #D8B4FE;
+  border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;
+}
+.book-ref-title{
+  color:#6B21A8;font-weight:800;font-size:12px;
+  text-transform:uppercase;letter-spacing:0.5px;
+  margin-bottom:3px;
+}
+.book-ref-text{color:#581C87;font-size:13.5px;line-height:1.5;}
+
+/* ─────────── Lehrkraft-Hinweis ─────────── */
+.teacher-note{
+  background:var(--amber-bg);
+  border:1.5px solid var(--amber-bd);
+  border-radius:var(--radius-md);
+  padding:14px 16px;margin:14px 0;
+  display:none;
+}
+body.version-b .teacher-note{display:block;}
+.teacher-note-header{
+  font-weight:900;font-size:11px;color:var(--amber-tx);
+  text-transform:uppercase;letter-spacing:0.7px;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:6px;
+}
+.teacher-note p{color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note p + p{margin-top:6px;}
+.teacher-note ul{margin:6px 0 4px 20px;color:#78350F;font-size:13.5px;line-height:1.55;}
+.teacher-note li{margin-bottom:3px;}
+.tn-time{
+  display:inline-block;background:var(--amber-bd);color:#7C2D12;
+  font-size:11px;font-weight:900;letter-spacing:0.4px;
+  padding:2px 9px;border-radius:10px;margin-bottom:8px;
+}
+
+/* ─────────── Lehrkraft-Steps ─────────── */
+.section.teacher-only{display:none;}
+body.version-b .section.teacher-only{display:block;}
+
+/* ─────────── Info-Box (neutral) ─────────── */
+.info-box{
+  background:var(--blue-50);
+  border-left:3px solid var(--blue-600);
+  border-radius:0 8px 8px 0;
+  padding:12px 16px;
+  margin:14px 0;
+  font-size:14px;line-height:1.55;
+  color:var(--text);
+}
+.info-box strong{color:var(--blue-800);}
+
+/* ─────────── Zwischencheck / Reflexion (NEU) ─────────── */
+.reflect{
+  background:linear-gradient(135deg,#FDF2F8 0%,#F5F0FF 100%);
+  border:1.5px solid var(--blue-100);
+  border-radius:var(--radius-lg);
+  padding:18px 20px;margin:4px 0 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.reflect-icon{
+  flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--slate);
+  border-radius:10px;
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+}
+.reflect-title{
+  font-weight:900;font-size:15px;color:var(--slate);
+  display:flex;align-items:center;gap:8px;margin-bottom:5px;
+}
+.reflect-badge{
+  background:var(--slate-50);color:var(--slate);
+  font-size:10.5px;font-weight:800;letter-spacing:0.4px;
+  text-transform:uppercase;padding:2px 8px;border-radius:8px;
+}
+.reflect-text{font-size:14px;color:var(--text-2);line-height:1.55;}
+.reflect-text strong{color:var(--slate);}
+
+/* ─────────── §-Links ─────────── */
+a.para-link{
+  color:var(--blue-700);text-decoration:none;
+  border-bottom:1px dotted var(--blue-700);
+  font-weight:700;
+}
+a.para-link:hover{color:var(--blue-800);border-bottom-style:solid;}
+
+/* ─────────── Normtext-Box ─────────── */
+.norm-box{
+  background:#0F172A;
+  border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;
+}
+.norm-box .norm-title{
+  font-size:12px;font-weight:800;
+  color:#FBCFE8;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#FBCFE8;font-style:normal;font-weight:800;}
+.norm-box a{color:#FBCFE8;font-weight:700;text-decoration:none;border-bottom:1px dotted #FBCFE8;}
+.norm-box a:hover{color:#FCE7F3;}
+
+/* ─────────── Quiz ─────────── */
+.quiz-q{margin-bottom:18px;}
+.quiz-q:last-child{margin-bottom:0;}
+.quiz-prompt{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--text);}
+.quiz-opts{display:flex;flex-direction:column;gap:6px;}
+.quiz-opt{
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:11px 14px;
+  background:#fff;
+  font-size:13.5px;font-weight:600;
+  cursor:pointer;text-align:left;
+  font-family:inherit;color:var(--text);
+  transition:all 0.15s;
+}
+.quiz-opt:hover{border-color:var(--blue-600);background:var(--blue-50);}
+.quiz-opt.correct{
+  border-color:var(--green);background:var(--green-50);color:#14532D;
+  font-weight:700;
+}
+.quiz-opt.wrong{
+  border-color:var(--red);background:var(--red-50);color:#7F1D1D;
+}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{
+  margin-top:8px;font-size:13px;
+  padding:8px 12px;border-radius:6px;
+  display:none;line-height:1.5;
+}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.ok{background:var(--green-50);color:#14532D;border-left:3px solid var(--green);}
+.quiz-feedback.no{background:var(--red-50);color:#7F1D1D;border-left:3px solid var(--red);}
+.btn-retry{
+  background:#fff;color:var(--text-2);
+  border:1.5px solid var(--border);
+  padding:6px 12px;font-size:11px;font-weight:700;
+  margin-top:8px;font-family:inherit;cursor:pointer;
+  border-radius:var(--radius-sm);display:none;
+}
+.btn-retry:hover{border-color:var(--blue-600);color:var(--blue-700);}
+
+/* ─────────── Closing Box ─────────── */
+.closing{
+  background:var(--blue-grad);
+  border-radius:var(--radius-lg);
+  padding:24px 24px;color:#fff;
+  margin-top:22px;
+  box-shadow:var(--shadow-lg);
+}
+.closing-head{
+  font-weight:900;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.8px;
+  margin-bottom:12px;
+  color:rgba(255,255,255,0.9);
+}
+.closing ul{list-style:none;padding:0;}
+.closing li{
+  padding:6px 0 6px 26px;position:relative;
+  font-size:14px;line-height:1.5;
+}
+.closing li::before{
+  content:'✓';position:absolute;left:0;top:6px;
+  background:rgba(255,255,255,0.25);
+  width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;color:#fff;
+}
+
+/* ─────────── PIN Modal ─────────── */
+.pin-modal{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,0.6);
+  display:none;align-items:center;justify-content:center;
+  z-index:100;padding:18px;
+}
+.pin-modal.show{display:flex;}
+.pin-card{
+  background:#fff;border-radius:var(--radius-lg);
+  padding:28px 26px;width:100%;max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.pin-title{font-weight:900;font-size:18px;margin-bottom:6px;color:var(--text);}
+.pin-sub{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.pin-dots{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+.pin-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--border);transition:all 0.15s;
+}
+.pin-dot.filled{background:var(--blue-700);}
+.pin-modal.error .pin-dots{animation:shake 0.4s;}
+.pin-modal.error .pin-dot.filled{background:var(--red);}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pin-key{
+  background:var(--bg-page);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 0;
+  font-family:inherit;font-weight:800;font-size:18px;
+  color:var(--text);cursor:pointer;transition:all 0.1s;
+}
+.pin-key:hover{background:var(--blue-50);border-color:var(--blue-600);}
+.pin-key:active{transform:scale(0.96);}
+.pin-actions{display:flex;justify-content:space-between;margin-top:14px;}
+.pin-actions button{
+  background:none;border:none;
+  color:var(--text-2);font-family:inherit;
+  font-weight:700;font-size:13px;cursor:pointer;padding:6px 10px;
+}
+.pin-actions button:hover{color:var(--blue-700);}
+
+/* ─────────── Step-Mechanik ─────────── */
+.step{display:none;}
+.step.active{display:block;}
+body:not(.version-b) .step.teacher-only{display:none !important;}
+.nav-btns{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;flex-wrap:wrap;margin-top:24px;
+}
+.nav-btns.end{justify-content:flex-end;}
+
+/* ─────────── Animations ─────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%,60%{transform:translateX(-8px);}
+  40%,80%{transform:translateX(8px);}
+}
+
+/* ─────────── Print ─────────── */
+/* (a) Standard: „Abfrage drucken“ (Step 6) – wie bisher */
+@media print{
+  body:not(.printing) .topbar, body:not(.printing) .progress, body:not(.printing) .nav-btns,
+  body:not(.printing) .btn-teacher, body:not(.printing) .pin-modal, body:not(.printing) .print-bar,
+  body:not(.printing) .section-num, body:not(.printing) .hero, body:not(.printing) .closing{display:none !important;}
+  body:not(.printing) .step{display:none !important;}
+  body:not(.printing) .step.teacher-only{display:block !important;}
+  body:not(.printing) .section:not(.teacher-only){display:none !important;}
+  body:not(.printing) .section.teacher-only{display:block !important;page-break-inside:avoid;
+    border:none;box-shadow:none;padding:0;}
+  body{background:#fff;}
+  main{max-width:none;padding:0;}
+  /* (b) Druckfassung der Stunde (Button „Drucken / PDF“) */
+  body.printing > *:not(#printRoot){display:none !important;}
+  body.printing #printRoot{display:block !important;}
+  .p-doc, .p-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{margin:15mm 14mm;}
+}
+
+/* ─────────── Zuordnungs-Widget (Klick-Matching) ─────────── */
+.assign{margin:16px 0;}
+.assign-catbar{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.assign-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;
+}
+.assign-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.assign-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.assign-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;font-style:italic;}
+.assign-items{display:flex;flex-direction:column;gap:8px;}
+.assign-item{
+  display:flex;align-items:flex-start;gap:12px;
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:11px 14px;background:#fff;cursor:pointer;
+  transition:all 0.15s;font-size:13.5px;line-height:1.45;
+}
+.assign-item:hover{border-color:var(--blue-400);background:var(--blue-50);}
+.assign-item .ai-key{
+  flex-shrink:0;background:var(--slate-50);color:var(--slate);
+  width:24px;height:24px;border-radius:6px;font-weight:900;font-size:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.assign-item .ai-chosen{
+  margin-left:auto;flex-shrink:0;font-size:11px;font-weight:800;
+  padding:3px 9px;border-radius:8px;letter-spacing:0.3px;
+  background:var(--bg-page);color:var(--muted);white-space:nowrap;
+}
+.assign-item.has-choice .ai-chosen{background:var(--blue-50);color:var(--blue-700);}
+.assign-item.correct{border-color:var(--green);background:var(--green-50);}
+.assign-item.correct .ai-chosen{background:var(--green);color:#fff;}
+.assign-item.wrong{border-color:var(--red);background:var(--red-50);}
+.assign-item.wrong .ai-chosen{background:var(--red);color:#fff;}
+.assign-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center;}
+.assign-score{font-size:13px;font-weight:800;color:var(--text-2);}
+.assign-score.done{color:var(--green);}
+
+/* ─────────── Gutachten-Schritt (Prüfungsaufbau I–IV) ─────────── */
+.gstep{
+  border:1.5px solid var(--border);border-radius:var(--radius-md);
+  margin:12px 0;overflow:hidden;background:#fff;
+}
+.gstep-head{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;background:var(--blue-50);
+  border-bottom:1.5px solid var(--border);
+}
+.gstep-num{
+  background:var(--blue-700);color:#fff;flex-shrink:0;
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;
+}
+.gstep-title{font-weight:800;font-size:14px;color:var(--text);}
+.gstep-title .gnorm{display:block;font-size:11.5px;font-weight:700;color:var(--blue-700);margin-top:1px;}
+.gstep-body{padding:13px 14px;font-size:13.5px;line-height:1.55;}
+.gstep-body .glabel{font-weight:800;color:var(--blue-800);font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+.gstep-def{color:var(--text-2);margin:4px 0 10px;}
+/* Obersatz / Rechtsfolge Rahmenkarten */
+.gframe{
+  border-left:3px solid var(--blue-700);background:var(--blue-50);
+  border-radius:0 8px 8px 0;padding:12px 15px;margin:12px 0;
+  font-size:14px;line-height:1.55;color:var(--text);
+}
+.gframe .gframe-tag{
+  display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--blue-700);margin-bottom:4px;
+}
+
+/* ─────────── Normtext-Marker-Zuordnung (§-Passagen → TBM) ─────────── */
+.nmark{margin:16px 0;}
+.nmark-law{
+  background:#0F172A;border-radius:var(--radius-md);
+  padding:18px 20px;color:#E2E8F0;margin-bottom:16px;
+  font-size:15px;line-height:2.1;
+}
+.nmark-law .nlaw-title{
+  font-size:12px;font-weight:800;color:#FBCFE8;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:12px;line-height:1.4;
+}
+.nmark-law .nabs{font-style:italic;color:#F1F5F9;}
+.nmark-law .nsatz{color:#94A3B8;font-weight:800;font-style:normal;font-size:12px;margin:0 4px;}
+/* anklickbare Passage im Normtext */
+.npass{
+  font-style:normal;cursor:pointer;border-radius:6px;
+  padding:2px 7px;margin:0 1px;font-weight:700;
+  background:rgba(253,230,138,0.14);
+  border:1.5px dashed rgba(253,230,138,0.5);
+  color:#FEF3C7;transition:all 0.12s;white-space:normal;
+  display:inline;position:relative;
+}
+.npass:hover{background:rgba(253,230,138,0.28);border-style:solid;}
+.npass .npass-tag{
+  display:none;margin-left:6px;font-size:10.5px;font-weight:900;
+  letter-spacing:0.3px;padding:1px 6px;border-radius:6px;
+  background:#2563EB;color:#fff;font-style:normal;vertical-align:middle;
+}
+.npass.has-choice .npass-tag{display:inline-block;}
+.npass.has-choice{background:rgba(202,138,4,0.45);border-style:solid;border-color:#F472B6;}
+.npass.correct{background:rgba(22,163,74,0.30) !important;border-color:#4ADE80 !important;color:#DCFCE7 !important;}
+.npass.correct .npass-tag{background:#16A34A;}
+.npass.wrong{background:rgba(220,38,38,0.30) !important;border-color:#F87171 !important;color:#FEE2E2 !important;}
+.npass.wrong .npass-tag{background:#DC2626;}
+/* Kategorie-Leiste (wie assign-cat, hier eigene Klasse) */
+.nmark-catbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nmark-cat{
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:9px 14px;background:#fff;font-family:inherit;
+  font-size:13px;font-weight:800;color:var(--text-2);cursor:pointer;
+  transition:all 0.15s;text-align:left;line-height:1.3;
+}
+.nmark-cat:hover{border-color:var(--blue-600);color:var(--blue-700);}
+.nmark-cat.active{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.nmark-cat .nc-sub{display:block;font-size:10.5px;font-weight:700;opacity:0.85;margin-top:1px;}
+.nmark-hint{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:10px;font-style:italic;}
+
+/* ─────────── 1.1.6: Brief, Schema, Halbzeit, Teil-Banner ─────────── */
+.fall-card.letter{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);
+  padding:14px 18px;margin:0 0 16px;font-size:14px;line-height:1.6;box-shadow:var(--shadow);}
+.letter-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border);
+  padding-bottom:7px;margin-bottom:9px;}
+.schema{border:1.5px solid var(--blue-100);background:var(--blue-50);border-radius:var(--radius-md);
+  padding:14px 16px;margin:16px 0;}
+.schema-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:10px;}
+.schema-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;}
+.schema-item{background:#fff;border:1.5px solid var(--blue-400);border-radius:8px;
+  padding:6px 10px;font-weight:800;font-size:13px;color:var(--text);text-align:center;line-height:1.2;}
+.schema-item small{display:block;font-size:10.5px;font-weight:700;color:var(--muted);}
+.schema-plus{font-weight:900;color:var(--blue-700);font-size:16px;}
+.schema-result{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+.pause-card{display:flex;gap:14px;align-items:center;margin:18px 0 4px;
+  border:1.5px dashed var(--slate);border-radius:var(--radius-md);padding:14px 18px;
+  color:var(--slate);background:var(--slate-50);}
+.pause-title{font-weight:900;font-size:16px;}
+.pause-text{font-size:13.5px;color:var(--text-2);}
+.step-chip.halftime{border-style:dashed;}
+.part-banner{display:flex;align-items:center;gap:12px;margin:0 0 18px;padding:12px 18px;
+  border-radius:var(--radius-lg);background:var(--blue-grad);color:#fff;box-shadow:var(--shadow);}
+.part-tag{background:rgba(255,255,255,0.22);padding:3px 11px;border-radius:14px;
+  font-size:12px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;}
+.part-title{font-weight:900;font-size:17px;}
+
+/* ─────────── 1.1.7: Fallkarten-Raster ─────────── */
+.fall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:18px 0 6px;}
+.fall-card{border:1.5px solid var(--border);background:#fff;border-radius:var(--radius-md);padding:14px 16px;}
+.fall-card p{font-size:13.5px;margin:0;line-height:1.55;}
+.fall-card-tag{font-weight:900;font-size:12px;color:var(--blue-700);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:0.3px;}
+
+/* ─────────── 1.1.7: Quiz-Erklärung nach richtiger Antwort ─────────── */
+.quiz-explain{display:none;margin-top:6px;font-size:13px;line-height:1.5;color:var(--text-2);
+  padding:8px 12px;border-radius:6px;background:var(--slate-50);border-left:3px solid var(--slate);}
+.quiz-explain.show{display:block;}
+
+/* ─────────── 1.1.7: Druckleiste (nur Lehrkraft) ─────────── */
+.print-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--amber-bg);border:1.5px solid var(--amber-bd);border-radius:var(--radius-md);
+  padding:10px 14px;margin:0 0 18px;}
+body.version-b .print-bar{display:flex;}
+.print-bar-title{display:flex;align-items:center;gap:6px;font-weight:900;font-size:12px;
+  color:var(--amber-tx);text-transform:uppercase;letter-spacing:0.6px;}
+.print-check{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#78350F;cursor:pointer;}
+.print-check input{width:16px;height:16px;accent-color:var(--blue-700);}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.print-bar-hint{flex-basis:100%;font-size:11.5px;color:#92400E;font-weight:600;}
+
+/* ─────────── 1.1.7: Druckfassung (#printRoot) ─────────── */
+#printRoot{display:none;}
+.p-doc{font-family:'Nunito',Arial,sans-serif;color:#000;font-size:11pt;line-height:1.45;}
+.p-doc h1{font-size:17pt;margin:4px 0 4px;color:#9D174D;}
+.p-doc .p-badge{font-size:9pt;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+.p-doc .p-hero{border:2px solid #BE185D;border-radius:10px;padding:10px 14px;margin-bottom:12px;}
+.p-doc .p-hero p{margin:4px 0;}
+.p-doc .p-step{margin:0 0 6px;}
+.p-doc .section{border:none;box-shadow:none;padding:0;margin:0 0 14px;animation:none;}
+.p-doc .section-head{border-bottom:2px solid #BE185D;margin:14px 0 8px;padding-bottom:4px;}
+.p-doc .section-num{background:#fff !important;color:#BE185D !important;border:2px solid #BE185D;}
+.p-doc .section-meta{color:#555;}
+.p-doc .task{border:1px solid #999;margin:10px 0;page-break-inside:auto;}
+.p-doc .task-head{background:#fff;border-bottom:1px solid #999;padding:6px 10px;}
+.p-doc .task-icon{width:30px;height:30px;}
+.p-doc .task-icon svg{width:16px;height:16px;}
+.p-doc .task-body{padding:8px 10px;}
+.p-doc .info-box,.p-doc .gframe{background:#fff;border:1px solid #999;border-left:4px solid #BE185D;color:#000;}
+.p-doc .reflect{background:#fff;border:1px solid #999;}
+.p-doc .reflect-icon{display:none;}
+.p-doc .book-ref{background:#fff;border:1px dashed #999;}
+.p-doc .book-ref-title,.p-doc .book-ref-text{color:#000;}
+.p-doc .fall-card,.p-doc .fall-card.letter{box-shadow:none;border:1px solid #999;}
+.p-doc .gstep{border:1px solid #999;page-break-inside:avoid;}
+.p-doc .gstep-head{background:#fff;border-bottom:1px solid #999;}
+.p-doc .gstep-num{background:#fff;color:#BE185D;border:2px solid #BE185D;}
+.p-doc .p-norm{background:#fff;color:#000;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.7;}
+.p-doc .p-norm .nlaw-title{color:#BE185D;font-weight:800;font-size:9.5pt;text-transform:uppercase;margin:6px 0 2px;}
+.p-doc .p-norm .nsatz{font-weight:800;color:#555;margin-right:4px;}
+.p-doc .p-norm u{text-decoration:underline;text-decoration-thickness:1.5px;}
+.p-doc .p-norm sup{font-weight:900;color:#BE185D;}
+.p-doc .schema{background:#fff;border:1px solid #999;}
+.p-doc .schema-item{border:1px solid #666;}
+.p-doc .schema-result{background:#fff;color:#BE185D;border:2px solid #BE185D;}
+.p-doc .p-closing{border:2px solid #BE185D;border-radius:10px;padding:8px 14px;margin-top:12px;}
+.p-doc .p-closing h3{font-size:11pt;color:#BE185D;text-transform:uppercase;margin:2px 0 4px;}
+.p-doc .p-cats{margin:6px 0;font-size:10.5pt;}
+.p-doc .p-list{margin:4px 0 8px 22px;}
+.p-doc .p-list li{margin:5px 0;}
+.p-doc .p-blank{display:inline-block;min-width:150px;border-bottom:1px solid #000;}
+.p-doc .p-fill{font-weight:800;color:#166534;}
+.p-doc .p-opt{margin:3px 0 3px 10px;}
+.p-doc .p-lines{margin:6px 0 8px;}
+.p-doc .p-line{border-bottom:1px solid #888;height:24px;margin:0;}
+.p-doc .p-sol{border:1px solid #16A34A;border-left:4px solid #16A34A;padding:6px 10px;margin:6px 0;
+  background:#F0FDF4;font-size:10.5pt;}
+.p-doc .p-sol-tag{font-weight:900;color:#166534;text-transform:uppercase;font-size:9pt;display:block;}
+.p-doc .p-explain{font-size:10pt;color:#333;margin:2px 0 6px 10px;font-style:italic;}
+.p-doc a{color:#000;text-decoration:none;border:none;}
+.p-doc .p-foot{margin-top:16px;font-size:8.5pt;color:#666;border-top:1px solid #ccc;padding-top:4px;}
+.p-doc .p-h2{font-size:14pt;color:#9D174D;border-bottom:2px solid #BE185D;margin:18px 0 2px;padding-bottom:2px;}
+.p-doc .p-h3{font-size:11.5pt;margin:10px 0 0;}
+.p-doc .p-h4{font-size:11pt;margin:8px 0 2px;color:#9D174D;}
+.p-doc .p-meta{font-size:9pt;color:#666;margin:0 0 4px;font-weight:600;}
+.p-doc .p-item{margin:4px 0 4px 6px;}
+
+.p-doc .p-h2,.p-doc .p-h3,.p-doc .p-h4,.p-doc .p-meta,.p-doc .p-cats{page-break-after:avoid;break-after:avoid;}
+.p-doc .p-item{page-break-inside:avoid;break-inside:avoid;}
+
+/* ─────────── 1.1.8: Gesetzestext-Kasten (aus 1.1.6) ─────────── */
+.norm-box{background:#0F172A;border-radius:var(--radius-md);padding:18px 20px;color:#E2E8F0;
+  margin:14px 0;font-size:14px;line-height:1.65;}
+.norm-box .norm-title{font-size:12px;font-weight:800;color:#FBCFE8;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;}
+.norm-box .norm-text{font-style:italic;color:#F1F5F9;}
+.norm-box .norm-text strong{color:#FBCFE8;font-style:normal;font-weight:800;}
+
+/* ─────────── 1.1.8: Differenzmethode (Balken) ─────────── */
+.diff-chart{margin:14px 0 18px;border:1.5px solid var(--blue-100);background:var(--blue-50);
+  border-radius:var(--radius-md);padding:14px 16px;}
+.diff-title{font-size:11.5px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--blue-800);margin-bottom:8px;}
+.dc-row{display:flex;align-items:center;gap:10px;margin:7px 0;}
+.dc-label{width:170px;flex-shrink:0;font-size:12.5px;font-weight:800;color:var(--text-2);line-height:1.25;}
+.dc-track{flex:1;display:flex;gap:2px;min-width:0;}
+.dc-bar{display:flex;align-items:center;justify-content:center;height:32px;border-radius:6px;
+  color:#fff;font-size:12px;font-weight:800;padding:0 6px;text-align:center;line-height:1.1;
+  overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.dc-a{background:var(--blue-700);}
+.dc-b{background:var(--blue-400);color:#831843;}
+.dc-c{background:#0d9488;min-width:52px;}
+@media (max-width:560px){
+  .dc-row{flex-direction:column;align-items:stretch;gap:3px;}
+  .dc-label{width:auto;}
+}
+
+/* ─────────── 1.1.8: Druckregeln für norm-box und Balken ─────────── */
+.p-doc .norm-box{background:#fff !important;color:#000;border:1px solid #999;border-left:4px solid #BE185D;box-shadow:none;}
+.p-doc .norm-box .norm-title{color:#BE185D;}
+.p-doc .norm-box .norm-text,.p-doc .norm-box .norm-text strong{color:#000;}
+.p-doc .diff-chart{background:#fff;border:1px solid #999;page-break-inside:avoid;}
+
+
+/* ─────────── 1.1.10: Verbraucher-Kennzeichnung, Neu-Kasten, Zusatzkarte ─────────── */
+.vgk-tag{display:inline-block;background:#FEF3C7;color:#78350F;border:1px solid #F59E0B;border-radius:6px;
+  font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:1px 7px;margin-right:4px;vertical-align:1px;}
+.vgk-line{border-top:1px dashed var(--border);padding-top:8px;margin-top:8px;}
+.vgk-box{background:#FFFBEB;border:1px solid #FCD34D;border-left:4px solid #F59E0B;border-radius:var(--radius-md);
+  padding:12px 16px;margin:14px 0;font-size:15px;line-height:1.6;}
+.neu-box{border:2px dotted var(--blue-700);border-radius:var(--radius-md);padding:12px 16px;margin:18px 0;background:#fff;}
+.neu-head{font-weight:900;color:var(--blue-800);font-size:13px;letter-spacing:.3px;margin-bottom:4px;}
+.neu-box p{margin:0;}
+.zusatz-card{border:2px dashed #94A3B8;border-radius:var(--radius-lg,14px);padding:12px 14px 2px;margin:20px 0;background:#F8FAFC;}
+.zusatz-head{font-weight:900;color:#475569;font-size:13px;letter-spacing:.3px;margin-bottom:4px;}
+/* ─────────── 1.1.10: Systematik-Raster (Tafelbild) ─────────── */
+.sysgrid{border:2px solid var(--blue-700);border-radius:var(--radius-md);padding:12px;margin:20px 0;background:#fff;}
+.sys-top{background:var(--blue-700);color:#fff;font-weight:800;text-align:center;border-radius:8px;padding:8px 10px;font-size:15px;}
+.sys-label{font-size:12px;font-weight:900;color:var(--blue-800);text-transform:uppercase;letter-spacing:.5px;margin:10px 2px 6px;}
+.sys-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sys-col{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:8px 10px;}
+.sys-h{font-weight:900;color:var(--blue-800);font-size:14px;}
+.sys-sub{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:4px;}
+.sys-col ul{margin:0;padding-left:16px;font-size:13px;line-height:1.45;}
+.sys-row{background:var(--blue-50);border:1px solid var(--blue-100);border-radius:8px;padding:7px 10px;margin-top:8px;font-size:14px;text-align:center;}
+@media (max-width:700px){.sys-cols{grid-template-columns:1fr;}}
+/* ─────────── 1.1.10: Im BGB anstreichen ─────────── */
+.bgb-mark{border:1px solid var(--border);border-left:4px solid #334155;border-radius:var(--radius-md);background:#fff;
+  padding:14px 16px;margin:20px 0;box-shadow:var(--shadow);}
+.bm-head{display:flex;align-items:center;gap:8px;font-weight:900;color:#334155;font-size:15px;margin-bottom:4px;}
+.bm-intro{font-size:13px;color:var(--text-2);margin-bottom:8px;}
+.bm-row{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:7px 0;border-top:1px solid #EEF2F6;}
+.bm-norm{font-weight:900;color:#334155;font-size:13px;}
+.bm-text{font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:#1F2937;}
+.bm-text u,.bm-u{text-decoration:none;border-bottom:2px solid #334155;padding-bottom:1px;}
+.bm-rule{font-size:12px;color:var(--muted);margin-top:8px;font-style:italic;}
+@media (max-width:600px){.bm-row{grid-template-columns:1fr;gap:2px;}}
+/* Druckfassung */
+.p-doc .p-part{font-size:15pt;font-weight:900;color:#9D174D;border:2px solid #BE185D;border-radius:8px;padding:6px 12px;margin:20px 0 6px;page-break-after:avoid;break-after:avoid;}
+.p-doc .vgk-box,.p-doc .neu-box,.p-doc .zusatz-card,.p-doc .bgb-mark,.p-doc .sysgrid{background:#fff;box-shadow:none;page-break-inside:avoid;break-inside:avoid;}
+.p-doc .sys-top{background:#fff;color:#000;border:1.5px solid #BE185D;}
+.p-doc .sys-col,.p-doc .sys-row{background:#fff;border:1px solid #999;}
+.p-doc .vgk-tag{background:#fff;border:1px solid #000;color:#000;}
+
+/* ═══ Übungsstunde SA: Aufgabe im Prüfungsformat + Bewertungsraster ═══ */
+.sa-task{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1.5px solid var(--blue-700);
+  border-radius:var(--radius-md);padding:12px 16px;margin:12px 0;font-size:14.5px;line-height:1.5;}
+.sa-nr{flex-shrink:0;font-weight:900;color:#fff;background:var(--blue-700);border-radius:6px;padding:1px 9px;font-size:13px;margin-top:1px;}
+.sa-text{flex:1;font-weight:700;}
+.sa-be{flex-shrink:0;font-weight:900;color:var(--blue-800);font-size:13px;white-space:nowrap;margin-top:1px;}
+.be-raster{margin:14px 0 4px;}
+.be-title{font-weight:900;color:var(--blue-800);font-size:13px;margin-bottom:6px;}
+.be-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;}
+.be-table th,.be-table td{border:1px solid var(--border);padding:5px 8px;text-align:left;vertical-align:top;}
+.be-table th{background:var(--blue-50);color:var(--blue-800);font-weight:800;}
+.be-table td:first-child{font-weight:700;white-space:nowrap;}
+.be-table .be{text-align:center;width:44px;font-weight:800;}
+.be-table .be-sum td{font-weight:900;background:var(--blue-50);}
+@media(max-width:600px){ .sa-task{flex-wrap:wrap;} .be-table td:first-child{white-space:normal;} .be-table{font-size:12px;} }
+.p-doc .sa-task{border:1.5px solid #BE185D;break-inside:avoid;page-break-inside:avoid;}
+.p-doc .sa-nr{background:#fff;color:#BE185D;border:1.5px solid #BE185D;}
+.p-doc .be-table th,.p-doc .be-table .be-sum td{background:#fff;}
+.p-doc .be-table th,.p-doc .be-table td{border:1px solid #999;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <path d="M5 12h14M5 12l5-5M5 12l5 5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>WR <span class="ovr">&amp; Recht</span></span>
+  </a>
+  <div class="topbar-chip">Q13 · Übung SA</div>
+  <button id="teacherBtn" class="btn-teacher" onclick="toggleTeacher()">Lehrkraft</button>
+</header>
+
+<!-- ═══════════════ PROGRESS ═══════════════ -->
+<nav class="progress" aria-label="Stundenverlauf">
+  <div class="step-chip active" data-step="1" onclick="goStep(1)"><span class="n">1</span>Operatoren</div>
+  <div class="step-chip" data-step="2" onclick="goStep(2)"><span class="n">2</span>Gutachten</div>
+  <div class="step-chip" data-step="3" onclick="goStep(3)"><span class="n">3</span>Zurückweisen &amp; E-Mail</div>
+  <div class="step-chip" data-step="4" onclick="goStep(4)"><span class="n">4</span>Austausch</div>
+  <div class="step-chip" data-step="5" onclick="goStep(5)"><span class="n">5</span>Zusatz</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════ DRUCKLEISTE (nur Lehrkraft) ═══════════════ -->
+<div class="print-bar">
+  <div class="print-bar-title">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Druckfassung der Stunde
+  </div>
+  <label class="print-check"><input type="checkbox" id="printWithSol"> mit Musterlösungen</label>
+  <button class="btn btn-secondary btn-sm" onclick="printLesson()">Drucken / PDF</button>
+  <button class="btn btn-secondary btn-sm" onclick="downloadWord()">Als Word herunterladen</button>
+  <span class="print-bar-hint">Alle Steps untereinander, Übungen als Schreib- und Ankreuzflächen. Lehrkraft-Hinweise sind nicht enthalten.</span>
+</div>
+
+<!-- ═══════════════ STEP 1 · FORMATE (AUFGABE 1) ═══════════════ -->
+<section class="step active" id="step-1">
+
+<div class="hero">
+  <span class="hero-badge">LB 1 Recht · 1.1 Zivilrecht · Übungsstunde zur Schulaufgabe</span>
+  <h1>Fit für die Schulaufgabe: Aufgabenformate im Zivilrecht</h1>
+  <p class="hero-sub">Ein Objektiv, das im Lager liegt, eine Mahngebühr zu viel, ein Saugroboter mit Riss: Vier Formate, die du im Abitur wiedersiehst – an neuen Fällen geübt.</p>
+
+  <div class="hero-grid">
+    <div class="hero-box">
+      <div class="hero-box-title">Das kannst du danach</div>
+      <div class="hero-box-text">
+        Du erkennst am <strong>Operator</strong>, was eine Aufgabe von dir verlangt, prüfst einen Anspruch
+        sauber im <strong>Gutachtenstil</strong>, weist eine Forderung <strong>aus der Sicht einer Partei</strong>
+        zurück und schreibst eine <strong>Beratungs-E-Mail</strong>, die alle juristisch relevanten Punkte enthält.
+      </div>
+    </div>
+    <div class="hero-box">
+      <div class="hero-box-title">Warum relevant?</div>
+      <div class="hero-box-text">
+        Wer den Stoff kann, aber das Format verfehlt, verschenkt Punkte: ein fehlender Obersatz, keine
+        Zwischenergebnisse, eine neutrale Abwägung statt einer klaren Zurückweisung. Heute übst du genau das.
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section" id="step1">
+  <header class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <div class="section-title">Was will die Aufgabe von mir? (Operatoren-Check)</div>
+      <div class="section-meta">Einzelarbeit · Sofort-Rückmeldung</div>
+    </div>
+  </header>
+
+  <p>In der Schulaufgabe – wie im Abitur – steuert der <strong>Operator</strong>, wie deine Antwort aussehen
+  muss. Ordne zuerst zu, was jeweils erwartet wird.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 1 · Vier Operatoren, vier Antworttypen</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <p>Lies die Aufgabenstellung und wähle, was eine volle Antwort ausmacht.</p>
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. „<strong>Prüfen Sie im Gutachtenstil</strong>, ob A von B … verlangen kann!“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ergebnis voranstellen und kurz begründen („A kann … verlangen, weil …“).</button>
+          <button class="quiz-opt" data-correct="1"><strong>Obersatz</strong> im Konjunktiv („A könnte … aus §§&nbsp;… haben“), dann <strong>jede Voraussetzung</strong>: Voraussetzung nennen – Definition – Subsumtion am Fall – <strong>Zwischenergebnis</strong>; am Ende das <strong>Ergebnis</strong>. Normen angeben.</button>
+          <button class="quiz-opt" data-correct="0">Die Interessen von A und B gegenüberstellen und eine eigene Meinung bilden.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Das ist der <strong>Gutachtenstil</strong>: Die Frage wird zuerst als Möglichkeit formuliert und erst am Ende beantwortet. Bewertet werden auch der Stil und die Zwischenergebnisse – nicht nur das Ergebnis.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. „<strong>Erklären Sie, auf welcher Grundlage</strong> B die Forderung von A <strong>zurückweisen könnte</strong>!“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Du argumentierst <strong>aus der Sicht von B</strong>: Welche Anspruchs- bzw. Rechtsgrundlage steckt hinter der Forderung, und <strong>welche Voraussetzung fehlt</strong>? Unstrittiges kurz zugestehen, den Schwerpunkt auf das fehlende Merkmal legen, Normen angeben, Folgerung ziehen.</button>
+          <button class="quiz-opt" data-correct="0">Du wägst neutral ab, wer recht hat, und lässt das Ergebnis offen.</button>
+          <button class="quiz-opt" data-correct="0">Du prüfst den Anspruch von A vollständig im Gutachtenstil.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Gefragt ist eine <strong>zielgerichtete</strong> Argumentation: Die Rechtsgrundlage der Forderung wird benannt, dann wird gezeigt, woran sie scheitert. Ein komplettes Gutachten kostet Zeit und bringt keine Extrapunkte.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">3. „<strong>Verfassen Sie eine Antwort</strong> auf die Frage von C, die die juristisch relevanten Aspekte beinhaltet! Eine Angabe der Normen ist <strong>nicht verlangt</strong>.“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Normen sind nicht verlangt – also reicht eine kurze, freundliche Einschätzung ohne juristische Details.</button>
+          <button class="quiz-opt" data-correct="1">Ein Text an C: <strong>Anrede</strong>, Situation und Frage aufgreifen, <strong>alle juristisch relevanten Punkte</strong> verständlich erklären (Voraussetzungen erfüllt/nicht erfüllt, ggf. <strong>fehlende Informationen</strong> benennen), <strong>Ergebnis und Handlungsempfehlung</strong>, <strong>Verabschiedung</strong>.</button>
+          <button class="quiz-opt" data-correct="0">Ein Gutachten im Konjunktiv, nur ohne Paragrafen.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ohne Normen heißt <strong>nicht</strong> ohne Recht: Bewertet wird, ob alle juristisch relevanten Aspekte stimmen – in einer Sprache, die C versteht, und in der Form des verlangten Textes (Forum, E-Mail, Brief).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">4. „<strong>Erläutern Sie, inwiefern</strong> die gesetzliche Regelung zu … einen <strong>Ausgleich zwischen den Interessen</strong> von Käufer und Verkäufer herstellt!“</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="1">Die Interessen <strong>beider</strong> Seiten benennen, jeweils zeigen, <strong>welcher Teil der Regelung</strong> sie schützt, und mit einem begründeten <strong>Fazit</strong> schließen.</button>
+          <button class="quiz-opt" data-correct="0">Nur die Verbraucherrechte aufzählen – das Gesetz will ja den Käufer schützen.</button>
+          <button class="quiz-opt" data-correct="0">Den Gesetzestext abschreiben und markieren.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Interessenausgleich heißt: <strong>Beide</strong> Seiten bekommen etwas. Wer nur die Käuferseite darstellt, beantwortet die Hälfte der Frage.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Drei Regeln für jede Rechtsaufgabe</strong><br>
+    ① <strong>Normen angeben</strong> – sie werden bewertet, außer die Aufgabe sagt ausdrücklich etwas anderes.<br>
+    ② <strong>Fallbezug</strong> – jede Voraussetzung am Sachverhalt belegen (Namen, Daten, Beträge), nicht nur abstrakt.<br>
+    ③ <strong>Teilpunkte zählen</strong> – eine halb fertige Prüfung bringt mehr als ein leeres Blatt. Die BE-Angabe zeigt dir, wie viel Raum eine Aufgabe verdient.
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise Step 1</div>
+    <span class="tn-time">Zeitrahmen: ca. 4 Min.</span>
+<ul>
+      <li>Quiz in Einzelarbeit, kurze Sicherung im Plenum. Grundlage: ISB „Häufig verwendete Operatoren in Recht“ (Vorgehensweisen zu <em>im Gutachtenstil prüfen</em>, <em>erklären</em>, <em>Texte aus Sicht einer beratenden Person verfassen</em>, <em>erläutern</em>).</li>
+      <li>Alle Fälle der Stunde sind <strong>eigene Fälle</strong> (kein Buchbezug). Hinweis: Lehrkraft-Notizen stehen im öffentlichen Quelltext – deshalb hier bewusst kein Bezug auf Inhalte der Schulaufgabe.</li>
+      <li>Bei Nachfrage zur Zeit: Faustregel aus dem Abitur – die BE zeigen die Gewichtung; wer an einer Teilaufgabe hängt, macht weiter und kommt später zurück.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns end">
+  <button class="btn btn-primary" onclick="goStep(2)">Weiter: Gutachten →</button>
+</nav>
+
+</section><!-- /step-1 -->
+
+<!-- ═══════════════ STEP 2 · GUTACHTEN (FALL A · AUFGABE 2) ═══════════════ -->
+<section class="step" id="step-2">
+<section class="section" id="step2">
+  <header class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <div class="section-title">Format 1: Prüfen im Gutachtenstil (Fall A)</div>
+      <div class="section-meta">Einzelarbeit · dann Partnerkorrektur mit Bewertungsraster</div>
+    </div>
+  </header>
+
+
+  <div class="fall-card letter">
+    <div class="fall-card-tag">Fall A · Das Objektiv im Lager</div>
+    <p><strong>Paul Seidl</strong> (24) fotografiert in seiner Freizeit. Am <strong>Dienstag, 01.09.2026</strong>,
+    kauft er im Fachgeschäft <strong>Fotohaus Kaiser e.&nbsp;K.</strong> (Inhaber: Martin Kaiser) ein Teleobjektiv für
+    <strong>890&nbsp;€</strong> und bezahlt sofort. Das Objektiv ist nicht vorrätig. Im Kaufvertrag steht: „Versand an
+    die Adresse des Kunden. <strong>Lieferzeit ca. 2–3 Wochen</strong> (unverbindlich).“</p>
+    <p>Am Wochenende <strong>19./20.09.</strong> will Paul im Allgäu Vögel fotografieren. Weil das Objektiv noch nicht da
+    ist, leiht er sich bei einem Kameraverleih ein vergleichbares Objektiv für <strong>40&nbsp;€</strong>.</p>
+    <p>Am <strong>Freitag, 25.09.</strong>, schreibt Paul eine E-Mail an Herrn Kaiser: „Ich fordere Sie auf, mir das
+    Objektiv jetzt umgehend zu liefern.“ Die E-Mail geht noch am selben Tag ein. Am <strong>26./27.09.</strong>
+    fotografiert Paul die Hochzeit seiner Schwester und leiht dafür erneut ein Objektiv, diesmal für
+    <strong>65&nbsp;€</strong>.</p>
+    <p>Am <strong>Montag, 28.09.</strong>, ruft Herr Kaiser an und entschuldigt sich: Das Objektiv sei schon am 14.09.
+    vom Großhändler gekommen. Er habe das Paket selbst ins Lager gestellt und dann schlicht vergessen. Paul erhält
+    das Objektiv am 01.10. Er verlangt von Herrn Kaiser die Mietkosten von insgesamt <strong>105&nbsp;€</strong>.</p>
+  </div>
+  <p style="margin-top:14px;">So steht die Aufgabe in einer Prüfung:</p>
+
+  <div class="sa-task"><span class="sa-nr">A</span><span class="sa-text">Prüfen Sie im Gutachtenstil, ob Paul von Martin Kaiser Ersatz der Mietkosten in Höhe von 105&nbsp;€ verlangen kann!</span><span class="sa-be">18&nbsp;BE</span></div>
+
+  <div class="schema">
+    <div class="schema-title">Prüfschema · Schadensersatz neben der Leistung wegen Verzugs (§§&nbsp;280 I, II, 286 BGB)</div>
+    <div class="schema-row">
+      <span class="schema-item">I. Schuldverhältnis<small>§&nbsp;433</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">II. Pflichtverletzung<small>Nichtleistung trotz Möglichkeit und Fälligkeit</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">III. Mahnung<small>oder entbehrlich §&nbsp;286 II</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">IV. Vertretenmüssen<small>vermutet §§&nbsp;280 I 2, 286 IV</small></span><span class="schema-plus">+</span>
+      <span class="schema-item">V. kausaler Schaden<small>§§&nbsp;249 ff.</small></span><span class="schema-plus">=</span>
+      <span class="schema-item schema-result">Anspruch</span>
+    </div>
+  </div>
+  <p style="margin-top:14px;"><strong>Aufgabe 2:</strong> Schreib das Gutachten Schritt für Schritt. Erst wenn
+  dein Text lang genug ist und die Kernbegriffe enthält, kannst du die Musterlösung öffnen und vergleichen.</p>
+
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">OS</div>
+      <div class="gstep-title">Obersatz<span class="gnorm">Anspruchsteller · Anspruchsgegner · Ziel · Anspruchsgrundlage</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Obersatz – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Wer will was von wem woraus? Konjunktiv!</p>
+      <textarea class="answer-area gate-input" rows="2"
+        data-min-words="15"
+        data-keywords="paul, kaiser, koennte, anspruch, schadensersatz, neben der leistung, 105, 280, 286"
+        data-required="5"
+        placeholder="Paul könnte gegen … einen Anspruch auf … in Höhe von … aus §§&nbsp;… haben."></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 15 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Paul</strong> <strong>könnte</strong> gegen Martin <strong>Kaiser</strong> einen
+        <strong>Anspruch</strong> auf <strong>Schadensersatz neben der Leistung</strong> (Ersatz des
+        Verzögerungsschadens) in Höhe von <strong>105</strong>&nbsp;€ aus §§&nbsp;<strong>280</strong> I, II,
+        <strong>286</strong> BGB haben.
+      </div>
+    </div>
+  </div>
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">I</div>
+      <div class="gstep-title">Schuldverhältnis<span class="gnorm">§&nbsp;280 I S. 1 BGB → wirksamer Kaufvertrag (§&nbsp;433 BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Muster</span>
+      <div class="gstep-def" style="margin-bottom:0;">Es müsste ein Schuldverhältnis bestehen. Dieses könnte durch einen Kaufvertrag begründet sein, der durch zwei übereinstimmende Willenserklärungen (Antrag und Annahme) zustande kommt. Paul und Kaiser haben sich am 01.09.2026 über den Kauf des Objektivs für 890&nbsp;€ geeinigt. Ein wirksamer Kaufvertrag liegt vor. ✔ Schuldverhältnis (+)</div>
+    </div>
+  </div>
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">II</div>
+      <div class="gstep-title">Pflichtverletzung<span class="gnorm">Nichtleistung trotz Möglichkeit und Fälligkeit (§§&nbsp;286 I S. 1, 271 BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Darüber hinaus müsste eine Pflichtverletzung vorliegen. Diese könnte in der Verzögerung der Leistung liegen, d.&nbsp;h. in der Nichtleistung trotz Möglichkeit und Fälligkeit.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Hat Kaiser geliefert? Ist die Lieferung noch möglich? Wann wurde sie fällig – was bedeutet „ca. 2–3 Wochen“?</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="433, nicht geliefert, moeglich, faellig, 2 3 wochen, 22 09, unverbindlich, lieferzeit, pflichtverletzung"
+        data-required="5"
+        placeholder="Kaiser hat das Objektiv bis zum … nicht … Die Lieferung ist noch möglich, weil … Fällig ist sie, weil …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Kaiser ist aus dem Kaufvertrag (§&nbsp;<strong>433</strong> I BGB) verpflichtet, das Objektiv zu übergeben und zu
+        übereignen. Bis zum 01.10. hat er <strong>nicht geliefert</strong>. Die Lieferung ist weiterhin
+        <strong>möglich</strong> – das Objektiv liegt ja in seinem Lager. <strong>Fällig</strong> ist die Lieferung
+        nach der vereinbarten <strong>Lieferzeit</strong>: Auch eine <strong>unverbindlich</strong>e Angabe von
+        „ca. <strong>2–3 Wochen</strong>“ legt fest, wann Paul spätestens mit der Lieferung rechnen darf; drei Wochen
+        nach dem 01.09. ist das der <strong>22.09.</strong> (§&nbsp;271 I BGB). Spätestens ab dann liegt eine
+        Nichtleistung trotz Möglichkeit und Fälligkeit vor. ✔ <strong>Pflichtverletzung</strong> (+)
+      </div>
+    </div>
+  </div>
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">III</div>
+      <div class="gstep-title">Mahnung<span class="gnorm">§&nbsp;286 I S. 1 BGB oder Entbehrlichkeit (§&nbsp;286 II BGB)</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Als zusätzliche Voraussetzung des Verzugs müsste eine Mahnung vorliegen oder entbehrlich sein. Eine Mahnung ist die eindeutige und bestimmte Aufforderung des Gläubigers an den Schuldner, die geschuldete Leistung zu erbringen.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Gibt es einen Termin nach dem Kalender? Was ist die E-Mail vom 25.09.? Ab wann ist Kaiser in Verzug?</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="30"
+        data-keywords="kein kalender, ca, 286 ii, nicht entbehrlich, mahnung, e mail, 25 09, aufforderung, nach faelligkeit, verzug"
+        data-required="5"
+        placeholder="Ein Termin nach dem Kalender ist nicht bestimmt, weil … §&nbsp;286 II … Am 25.09. … Paul ist also seit … in Verzug."></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 30 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Die Leistungszeit ist <strong>nicht</strong> nach dem <strong>Kalender</strong> bestimmt: „<strong>ca.</strong>
+        2–3 Wochen (unverbindlich)“ nennt keinen festen Termin. Die Mahnung ist daher <strong>nicht entbehrlich</strong>
+        (§&nbsp;<strong>286 II</strong> Nr. 1 BGB greift nicht; auch eine Verweigerung, Nr. 3, liegt nicht vor). Mit der
+        <strong>E-Mail</strong> vom <strong>25.09.</strong> fordert Paul Kaiser eindeutig und bestimmt zur Lieferung auf –
+        das ist eine <strong>Mahnung</strong> (eine Form ist nicht vorgeschrieben). Sie erfolgt
+        <strong>nach Fälligkeit</strong> (22.09.) und geht am selben Tag zu. Kaiser ist damit seit dem 25.09. in
+        <strong>Verzug</strong>. ✔ Mahnung (+)
+      </div>
+    </div>
+  </div>
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">IV</div>
+      <div class="gstep-title">Vertretenmüssen<span class="gnorm">§§&nbsp;280 I S. 2, 286 IV, 276 BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Außerdem müsste der Schuldner die Verzögerung zu vertreten haben, d.&nbsp;h. vorsätzlich oder fahrlässig gehandelt haben.</div>
+      <span class="glabel">Subsumtion – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Wer muss hier was beweisen? Wer hat das Paket vergessen – und was folgt daraus?</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="25"
+        data-keywords="vermutet, 280 i s 2, 286 iv, selbst, vergessen, fahrlaessig, 276, sorgfalt, nicht entlastet"
+        data-required="5"
+        placeholder="Kaiser müsste die Verzögerung zu vertreten haben. Das wird … Er hat … selbst …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 25 Wörter · 0 von 5 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Kaiser müsste die Verzögerung zu vertreten haben. Das wird <strong>vermutet</strong> (§§&nbsp;<strong>280 I S. 2</strong>,
+        <strong>286 IV</strong> BGB). Entlasten kann er sich nicht – im Gegenteil: Er hat das Paket
+        <strong>selbst</strong> ins Lager gestellt und <strong>vergessen</strong>. Damit hat er die im Verkehr
+        erforderliche <strong>Sorgfalt</strong> außer Acht gelassen, also <strong>fahrlässig</strong> gehandelt
+        (§&nbsp;<strong>276</strong> I, II BGB). Die Vermutung ist <strong>nicht</strong> widerlegt, Kaiser ist
+        <strong>nicht entlastet</strong>. ✔ Vertretenmüssen (+)
+      </div>
+    </div>
+  </div>
+  <div class="gstep">
+    <div class="gstep-head">
+      <div class="gstep-num">V</div>
+      <div class="gstep-title">Kausaler Schaden und Ergebnis<span class="gnorm">§&nbsp;280 I S. 1, §§&nbsp;249 ff. BGB</span></div>
+    </div>
+    <div class="gstep-body">
+      <span class="glabel">Definition</span>
+      <div class="gstep-def">Durch die Pflichtverletzung müsste ein ersatzfähiger Schaden entstanden sein. Nach §&nbsp;249 I ist der Zustand herzustellen, der ohne das schädigende Ereignis bestünde.</div>
+      <span class="glabel">Subsumtion und Ergebnis – <em>jetzt du!</em></span>
+      <p style="font-size:13.5px;margin:4px 0 8px;">Prüf die beiden Mietbeträge getrennt: Wann sind sie jeweils entstanden – vor oder nach Verzugsbeginn?</p>
+      <textarea class="answer-area gate-input" rows="5"
+        data-min-words="40"
+        data-keywords="schaden, 65, kausal, rechtzeitig, 249, 40, vor verzug, 19 09, nicht ersatzfaehig, ergebnis, 280"
+        data-required="6"
+        placeholder="Hätte Kaiser rechtzeitig geliefert, … Die 65 € … Die 40 € dagegen … Ergebnis: …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 40 Wörter · 0 von 6 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        Paul hat Mietkosten aufgewendet; ein <strong>Schaden</strong> liegt vor. Ersatzfähig ist aber nur, was
+        <strong>durch den Verzug</strong> entsteht (§&nbsp;<strong>249</strong> I BGB: Zustand ohne die Verzögerung).<br>
+        <strong>65&nbsp;€ (26./27.09.):</strong> Kaiser war seit dem 25.09. in Verzug. Hätte er
+        <strong>rechtzeitig</strong> – spätestens nach der Mahnung – geliefert, hätte Paul für die Hochzeit kein Objektiv
+        mieten müssen. Der Schaden ist <strong>kausal</strong> und ersatzfähig.<br>
+        <strong>40&nbsp;€ (19./20.09.):</strong> An diesem Wochenende war die Lieferung noch nicht einmal fällig (erst am
+        22.09.), und gemahnt hatte Paul auch noch nicht. Die Kosten entstanden <strong>vor</strong> dem
+        <strong>Verzug</strong> und sind <strong>nicht ersatzfähig</strong>.<br>
+        <strong>Ergebnis:</strong> Paul hat gegen Kaiser einen Anspruch auf Schadensersatz neben der Leistung aus
+        §§&nbsp;<strong>280</strong> I, II, 286 BGB in Höhe von <strong>65&nbsp;€</strong>, nicht in Höhe von 105&nbsp;€.
+  <div class="be-raster">
+    <div class="be-title">Partnerkorrektur · Bewertungsraster Fall A (Beispiel, 18 BE)</div>
+    <table class="be-table">
+      <thead><tr><th>Prüfpunkt</th><th>Das sollte drinstehen</th><th class="be">BE</th></tr></thead>
+      <tbody>
+      <tr><td>Obersatz</td><td>Paul – Kaiser – 105&nbsp;€ – Konjunktiv</td><td class="be">1</td></tr>
+      <tr><td>Obersatz</td><td>Anspruchsgrundlage §§&nbsp;280 I, II, 286 BGB</td><td class="be">1</td></tr>
+      <tr><td>I. Schuldverhältnis</td><td>Kaufvertrag (§&nbsp;433 BGB) vom 01.09.</td><td class="be">1</td></tr>
+      <tr><td>II. Möglichkeit</td><td>nicht geliefert, Lieferung noch möglich</td><td class="be">1</td></tr>
+      <tr><td>II. Fälligkeit</td><td>„ca. 2–3 Wochen“ → spätestens 22.09. (§&nbsp;271 I BGB)</td><td class="be">1</td></tr>
+      <tr><td>III. Mahnung nötig</td><td>kein Termin nach dem Kalender, §&nbsp;286 II Nr. 1 BGB (–)</td><td class="be">2</td></tr>
+      <tr><td>III. Mahnung</td><td>E-Mail 25.09. = Mahnung nach Fälligkeit → Verzug ab 25.09.</td><td class="be">1</td></tr>
+      <tr><td>IV. Vermutung</td><td>§§&nbsp;280 I S. 2, 286 IV BGB</td><td class="be">1</td></tr>
+      <tr><td>IV. Fahrlässigkeit</td><td>Kaiser hat selbst vergessen (§&nbsp;276 II BGB), keine Entlastung</td><td class="be">1</td></tr>
+      <tr><td>V. 65&nbsp;€</td><td>während des Verzugs entstanden, kausal</td><td class="be">1</td></tr>
+      <tr><td>V. 40&nbsp;€</td><td>vor Fälligkeit und Mahnung → nicht ersatzfähig</td><td class="be">2</td></tr>
+      <tr><td>Ergebnis</td><td>Anspruch auf 65&nbsp;€ aus §§&nbsp;280 I, II, 286 BGB</td><td class="be">1</td></tr>
+      <tr><td>Darstellung: Stil</td><td>Gutachtenstil durchgehalten (Obersatz – Voraussetzung – Subsumtion – Folgerung)</td><td class="be">2</td></tr>
+      <tr><td>Darstellung</td><td>nach jedem Prüfpunkt ein Zwischenergebnis</td><td class="be">2</td></tr>
+      <tr class="be-sum"><td colspan="2">Summe</td><td class="be">18</td></tr>
+      </tbody>
+    </table>
+  </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon partner"><svg width="22" height="22" viewBox="0 0 44 38" fill="none"><rect x="2" y="3" width="22" height="16" rx="4" fill="#0d9488"/><path d="M6 19l-4 6 8-4" fill="#0d9488"/><rect x="20" y="18" width="22" height="16" rx="4" fill="#0d9488" opacity="0.7"/><path d="M38 34l4 4-8-2" fill="#0d9488" opacity="0.7"/><path d="M7 9h12M7 13h8" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M25 24h12M25 28h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div>
+        <div class="task-title">Partnerkorrektur · Wie viele BE hättest du bekommen?</div>
+        <div class="task-form partner">Partnerarbeit · Raster</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <p>Unter der Musterlösung zu Schritt V steht ein <strong>Bewertungsraster</strong>. Tauscht eure Texte. Hakt im Raster ab, was eure Partnerin bzw. euer Partner geschrieben hat, und zählt
+      die BE. Sprecht über die Punkte, die gefehlt haben: Lag es am <strong>Wissen</strong>, an der
+      <strong>Norm</strong> oder an der <strong>Darstellung</strong>?</p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Typische Punktverluste im Gutachten</strong><br>
+    • Obersatz ohne Betrag oder ohne Anspruchsgrundlage · • Voraussetzung nur behauptet („Es liegt eine Mahnung vor.“) statt am Fall belegt ·
+    • kein Zwischenergebnis · • Verzugsbeginn nicht datiert – dann lässt sich der Schaden nicht sauber abgrenzen ·
+    • im Ergebnis die geforderte Summe übernommen, obwohl ein Teil nicht ersatzfähig ist.
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Fall A</div>
+    <span class="tn-time">Zeitrahmen: ca. 18 Min. (Schreiben ca. 12, Partnerkorrektur ca. 6)</span>
+<ul>
+      <li>Eigener Fall. Bewusst <strong>mit</strong> Mahnung (unverbindliche Lieferzeit) und <strong>ohne</strong> Erfüllungsgehilfen: Kaiser ist Einzelkaufmann und hat selbst gehandelt – eigenes Verschulden nach §&nbsp;276, kein §&nbsp;278 (bei einer GmbH käme die Organhaftung ins Spiel, deshalb e.&nbsp;K.).</li>
+      <li>Fälligkeit: „ca. 2–3 Wochen (unverbindlich)“ ist eine vereinbarte, aber unbestimmte Leistungszeit. Vertretbar ist, die Fälligkeit nach Ablauf der Höchstfrist (22.09.) anzunehmen; wer „spätestens am 25.09.“ schreibt, verliert nichts. Ein kalendermäßig bestimmter Termin (§&nbsp;286 II Nr. 1) ist es nicht.</li>
+      <li>Kernpunkt der Abgrenzung: Die 40&nbsp;€ fallen <strong>vor Fälligkeit</strong> an – erst recht vor Verzug. Wer sie mit „Paul hätte das Objektiv sonst gehabt“ zuspricht, hat Verzugsbeginn und Kausalität nicht getrennt.</li>
+      <li>Mahnung per E-Mail ist formfrei wirksam; sie enthält keine Frist, Verzug daher mit Zugang am 25.09.</li>
+      <li>Das Raster ist ein <strong>Übungsraster</strong> (18 BE) im Stil eines Erwartungshorizonts; es soll zeigen, wofür es Punkte gibt (Normen, Fallbezug, Darstellung).</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(1)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(3)">Weiter: Zurückweisen &amp; E-Mail →</button>
+</nav>
+
+</section><!-- /step-2 -->
+
+<!-- ═══════════════ STEP 3 · ZURÜCKWEISEN & E-MAIL (FALL B, C · AUFGABE 3) ═══════════════ -->
+<section class="step" id="step-3">
+<section class="section" id="step3">
+  <header class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <div class="section-title">Format 2 und 3: Zurückweisen · Beratungs-E-Mail (Fall B oder C)</div>
+      <div class="section-meta">Arbeitsteilig · eine Hälfte Fall B, die andere Fall C</div>
+    </div>
+  </header>
+
+  <p>Die eine Hälfte des Kurses bearbeitet <strong>Fall B</strong>, die andere <strong>Fall C</strong>. Im nächsten
+  Schritt stellt ihr euch die Fälle gegenseitig vor. Die jeweils andere Aufgabe kannst du als Zusatz bearbeiten.</p>
+  <div class="part-banner" style="margin-top:22px;"><span class="part-tag">Hälfte B</span><span class="part-title">Eine Forderung zurückweisen</span></div>
+
+  <div class="fall-card letter">
+    <div class="fall-card-tag">Fall B · Die Rechnung für den Fernseher</div>
+    <p><strong>Lea Brunner</strong> kauft am <strong>12.10.2026</strong> für ihre Wohnung bei der
+    <strong>Elektro Wimmer OHG</strong> einen Fernseher für <strong>1.200&nbsp;€</strong>. Vereinbart wird
+    „Kauf auf Rechnung“. Der Fernseher wird am <strong>15.10.</strong> geliefert, die Rechnung liegt bei. Darauf steht
+    nur: „Zahlbar innerhalb von 14 Tagen.“ Einen Hinweis auf die Folgen einer verspäteten Zahlung enthält die
+    Rechnung nicht. Lea legt die Rechnung zur Seite und vergisst sie.</p>
+    <p>Am <strong>17.11.</strong> erhält sie ein Schreiben von Elektro Wimmer: „<strong>1. Mahnung.</strong> Wir fordern
+    Sie auf, den offenen Betrag von 1.200&nbsp;€ zu zahlen. Für diese Mahnung berechnen wir eine
+    <strong>Mahngebühr von 10&nbsp;€</strong>. Da Sie seit dem 30.10. in Verzug sind, verlangen wir außerdem
+    <strong>Verzugszinsen ab dem 30.10.</strong>“ Lea will den Kaufpreis sofort überweisen – die Mahngebühr und die
+    Zinsen aber nicht zahlen.</p>
+  </div>
+
+  <div class="sa-task"><span class="sa-nr">B</span><span class="sa-text">Erklären Sie, auf welcher Grundlage Lea die Forderungen der Elektro Wimmer OHG nach der Mahngebühr und den Verzugszinsen zurückweisen könnte!</span><span class="sa-be">10&nbsp;BE</span></div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="7" fill="#1976D2"/><path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 3 (Hälfte B) · Aus Leas Sicht zurückweisen</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <p><strong>So gehst du vor:</strong> ① Rechtsgrundlage der beiden Forderungen benennen · ② Unstrittiges kurz
+      zugestehen · ③ die fehlende Voraussetzung ausführlich begründen · ④ Folgerung für Lea ziehen. Normen angeben!</p>
+      <textarea class="answer-area gate-input" rows="7"
+        data-min-words="70"
+        data-keywords="verzug, mahnung, 17 11, 286 ii, kalender, einseitig, rechnung, 286 iii, hinweis, verbraucher, 288, zinsen, erst ab, mahngebuehr, erste, verzugsbegruendend, kausal, 280, zahlen"
+        data-required="8"
+        placeholder="Aus Leas Sicht: Die Forderungen stützen sich auf … Beides setzt Verzug voraus. Verzug ist aber erst … eingetreten, weil … Deshalb …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 70 Wörter · 0 von 8 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Grundlage der Forderungen:</strong> Die Mahngebühr wäre ein Verzögerungsschaden nach
+        §§&nbsp;<strong>280</strong> I, II, 286 BGB, die Zinsen wären Verzugszinsen nach §&nbsp;<strong>288</strong> I BGB.
+        Beides setzt voraus, dass Lea in <strong>Verzug</strong> ist – und zwar für die Zeit, für die gefordert wird.<br>
+        <strong>Unstrittig:</strong> Lea schuldet 1.200&nbsp;€ (§&nbsp;433 II BGB). Beim Kauf auf Rechnung war die Zahlung mit
+        Zugang der Rechnung am 15.10. fällig; gezahlt hat sie nicht.<br>
+        <strong>Aber keine Mahnung vor dem 17.11.:</strong> Verzug tritt grundsätzlich erst durch eine
+        <strong>Mahnung</strong> ein (§&nbsp;286 I BGB). Entbehrlich war sie nicht: Die „14 Tage“ stehen nur
+        <strong>einseitig</strong> in der <strong>Rechnung</strong>; eine nach dem <strong>Kalender</strong> bestimmte
+        Leistungszeit wurde nicht vereinbart (§&nbsp;<strong>286 II</strong> Nr. 1 BGB). Auch die 30-Tage-Regel
+        (§&nbsp;<strong>286 III</strong> BGB) greift nicht: Gegenüber einem <strong>Verbraucher</strong> – Lea kauft privat –
+        gilt sie nur, wenn die Rechnung auf diese Folge <strong>hinweist</strong>. Das tut sie nicht.<br>
+        <strong>Folgerungen:</strong> Lea ist erst mit Zugang der Mahnung am <strong>17.11.</strong> in Verzug geraten.
+        <strong>Zinsen</strong> ab dem 30.10. kann Wimmer nicht verlangen, allenfalls <strong>erst ab</strong> Verzug.
+        Die <strong>Mahngebühr</strong> betrifft die <strong>erste</strong>, also die <strong>verzugsbegründend</strong>e
+        Mahnung: Diese Kosten sind nicht durch einen Verzug entstanden – der Verzug beginnt ja erst mit ihr. Sie sind
+        nicht <strong>kausal</strong> auf eine Pflichtverletzung zurückzuführen und deshalb nicht zu ersetzen.<br>
+        <strong>Ergebnis:</strong> Lea kann beide Zusatzforderungen zurückweisen. Sie sollte die 1.200&nbsp;€ aber
+        sofort <strong>zahlen</strong> – sonst laufen ab dem 17.11. tatsächlich Verzugszinsen (5 Prozentpunkte über dem
+        Basiszinssatz, §&nbsp;288 I S. 2 BGB); dass sie die Rechnung vergessen hat, entlastet sie nicht.
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Fall B</div>
+    <span class="tn-time">Zeitrahmen: ca. 13 Min. (Fall B und C parallel)</span>
+<ul>
+      <li>Eigener Fall zum Zahlungsverzug (Stoff 1.1.9). Bewusst ein anderes Rechtsgebiet als im Gutachten, damit das <em>Format</em> „zurückweisen“ trainiert wird und nicht nur der Inhalt.</li>
+      <li>Fälligkeit beim Kauf auf Rechnung: mit Zugang der Rechnung (15.10.). Ein in der Rechnung einseitig gesetztes Zahlungsziel ist <strong>kein</strong> §&nbsp;286 II Nr. 1 (wie Udo in 1.1.9).</li>
+      <li>Falle: 30 Tage nach Rechnungszugang (14.11.) sind am 17.11. vorbei – §&nbsp;286 III gilt gegenüber Verbrauchern aber nur mit Hinweis in der Rechnung.</li>
+      <li>Kosten der verzugsbegründenden Erstmahnung sind kein Verzugsschaden (vgl. 1.1.7, M2). Ob eine Pauschale von 10&nbsp;€ für eine <em>spätere</em> Mahnung angemessen wäre, ist hier nicht gefragt.</li>
+      <li>Zinsen: nur für die Dauer des Verzugs; genaue Berechnung (Beginn am Tag nach Zugang, §&nbsp;187 I analog) nicht verlangt. Vertretenmüssen wird vermutet; „vergessen“ entlastet nicht – deshalb sofort zahlen.</li>
+      <li>Raster (Vorschlag, 10 BE): Grundlage §§&nbsp;280 I, II, 286 / §&nbsp;288 I (1) · Verzug als gemeinsame Voraussetzung (1) · Fälligkeit/Nichtzahlung zugestanden (1) · keine Mahnung vor 17.11. (1) · §&nbsp;286 II Nr. 1 (–), einseitiges Zahlungsziel (1) · §&nbsp;286 III (–), Verbraucherin ohne Hinweis (2) · Zinsen erst ab Verzug (1) · Erstmahnung nicht ersatzfähig (1) · Darstellung aus Leas Sicht mit Folgerung (1).</li>
+    </ul>
+  </div>
+  <div class="part-banner" style="margin-top:22px;"><span class="part-tag">Hälfte C</span><span class="part-title">Als beratende Person antworten</span></div>
+
+  <div class="fall-card letter">
+    <div class="fall-card-tag">Fall C · E-Mail an die Verbraucherzentrale</div>
+    <p><em>Von: Sabine Haas · Betreff: Saugroboter kaputt geliefert – muss ich das so hinnehmen?</em></p>
+    <p>Sehr geehrte Damen und Herren,</p>
+    <p>ich habe am <strong>02.11.2026</strong> im Onlineshop der <strong>Smarthome-Profi GmbH</strong> für unseren Haushalt
+    einen Saugroboter für <strong>449&nbsp;€</strong> bestellt. Er kam am <strong>05.11.</strong> per Paketdienst. Der Karton
+    war an einer Ecke eingedrückt, das <strong>Gehäuseoberteil ist gerissen</strong>, der Deckel hält nicht mehr richtig
+    und der Roboter bleibt deshalb ständig unter Möbeln hängen. Sonst funktioniert er.</p>
+    <p>Ich habe den Shop sofort informiert und ein neues Gerät verlangt. Die Antwort:</p>
+    <p>1. „Für <strong>Transportschäden</strong> sind wir nicht verantwortlich. Ab der Übergabe an den Paketdienst
+    reist die Ware auf Ihr Risiko. Wenden Sie sich an den Paketdienst.“<br>
+    2. „<strong>Ein neues Gerät gibt es nicht.</strong> Das Gehäuseoberteil auszutauschen kostet uns rund
+    <strong>40&nbsp;€</strong>, ein neues Gerät dagegen über <strong>300&nbsp;€</strong> – das steht in keinem Verhältnis.“<br>
+    3. „Schicken Sie den Roboter <strong>auf Ihre Kosten</strong> an unsere Werkstatt. Für die Rücksendung berechnen
+    wir <strong>9,90&nbsp;€</strong>.“</p>
+    <p>Ich hätte lieber ein neues Gerät. Muss ich mich darauf einlassen?</p>
+    <p>Viele Grüße<br>Sabine Haas</p>
+  </div>
+
+  <div class="sa-task"><span class="sa-nr">C</span><span class="sa-text">Verfassen Sie als Mitarbeiterin bzw. Mitarbeiter der Verbraucherzentrale eine Antwort-E-Mail an Sabine Haas, die die juristisch relevanten Aspekte beinhaltet! Eine Angabe der Normen des BGB ist nicht verlangt.</span><span class="sa-be">16&nbsp;BE</span></div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="7" fill="#1976D2"/><path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 3 (Hälfte C) · Beratungs-E-Mail an Sabine Haas</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <p><strong>So gehst du vor:</strong> Anrede · Frage aufgreifen · rechtliche Einordnung (Vertrag, wer ist
+      Verbraucher/Unternehmer, Mangel) · <strong>jede der drei Aussagen</strong> des Shops prüfen · strittige Punkte offen
+      ansprechen · Ergebnis und Rat · Gruß. Keine Paragrafen nötig – aber alle juristischen Inhalte!</p>
+      <textarea class="answer-area gate-input" rows="10"
+        data-min-words="110"
+        data-keywords="sehr geehrte, verbraucherin, unternehmer, mangel, gerissen, transport, risiko, ankommt, uebergabe, shop, nicht paketdienst, wahl, neues geraet, reparatur, verweigern, unverhaeltnismaessig, 40, 300, kosten, versand, 9 90, frist, unannehmlichkeiten, gruessen"
+        data-required="10"
+        placeholder="Sehr geehrte Frau Haas, vielen Dank für Ihre Nachricht … Zum Transportschaden: … Zur Frage „neues Gerät oder Reparatur“: … Zu den Kosten: … Mein Rat: … Mit freundlichen Grüßen …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 110 Wörter · 0 von 10 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <em>Betreff: Ihr Saugroboter – Ihre Rechte gegenüber dem Shop</em><br>
+        <strong>Sehr geehrte</strong> Frau Haas,<br>
+        vielen Dank für Ihre Nachricht. Kurz gesagt: Mit zwei der drei Aussagen müssen Sie sich nicht abfinden, mit
+        einer vermutlich schon.<br>
+        <strong>Ihre Lage:</strong> Sie haben einen Kaufvertrag über den Roboter geschlossen – als
+        <strong>Verbraucherin</strong> (privat, für Ihren Haushalt) bei einem <strong>Unternehmer</strong>. Für diesen
+        Fall gelten besondere Schutzregeln. Ein <strong>gerissen</strong>es Gehäuse, durch das der Roboter hängen
+        bleibt, ist ein <strong>Mangel</strong>: So ist ein neues Gerät nicht vereinbart und auch nicht üblich.<br>
+        <strong>1. Transportschaden:</strong> Das stimmt so nicht. Beim Kauf von einem Unternehmer trägt der
+        Verkäufer das <strong>Risiko</strong> des <strong>Transport</strong>s, bis die Ware bei Ihnen
+        <strong>ankommt</strong>. Entscheidend ist die <strong>Übergabe</strong> an Sie. Der Schaden ist vorher
+        entstanden, also war der Roboter bei Übergabe mangelhaft. Ihr Ansprechpartner ist der
+        <strong>Shop</strong>, <strong>nicht</strong> der <strong>Paketdienst</strong>.<br>
+        <strong>2. Neues Gerät oder Reparatur:</strong> Zunächst können Sie verlangen, dass der Mangel behoben wird.
+        Dabei haben Sie die <strong>Wahl</strong> zwischen einem <strong>neuen Gerät</strong> und einer
+        <strong>Reparatur</strong>. Der Shop darf die gewählte Art aber <strong>verweigern</strong>, wenn sie nur mit
+        <strong>unverhältnismäßig</strong>en Kosten möglich ist. Hier stehen rund <strong>40</strong>&nbsp;€ für die
+        Reparatur über <strong>300</strong>&nbsp;€ für ein neues Gerät gegenüber; der Riss lässt sich durch den Tausch des
+        Oberteils vollständig beheben, und das Gerät funktioniert sonst. Der Shop darf Sie deshalb wohl auf die
+        Reparatur verweisen. Anders wäre es nur, wenn die Reparatur für Sie mit erheblichen Nachteilen verbunden wäre.<br>
+        <strong>3. Kosten:</strong> Die Reparatur muss für Sie <strong>kostenlos</strong> sein. Der Shop trägt alle
+        <strong>Kosten</strong>, auch den <strong>Versand</strong> hin und zurück – die <strong>9,90</strong>&nbsp;€ müssen
+        Sie nicht zahlen. Sie können verlangen, dass der Shop Ihnen ein Versandetikett schickt oder die Portokosten
+        vorab übernimmt. Außerdem muss er innerhalb einer angemessenen <strong>Frist</strong> und ohne erhebliche
+        <strong>Unannehmlichkeiten</strong> für Sie reparieren.<br>
+        <strong>Mein Rat:</strong> Stimmen Sie der Reparatur schriftlich zu, verlangen Sie ein kostenloses
+        Versandetikett und setzen Sie für die Reparatur eine Frist von etwa zwei Wochen. Klappt die Reparatur nicht,
+        haben Sie weitere Rechte – dazu beraten wir Sie gern.<br>
+        Mit freundlichen <strong>Grüßen</strong><br>
+        Ihre Verbraucherzentrale
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Lösung &amp; Hinweise Fall C</div>
+<ul>
+      <li>Eigener Fall (Stoff 1.1.10/1.1.11): Gefahrübergang beim Verbrauchsgüterkauf (§&nbsp;475 II, §&nbsp;447 I nicht anwendbar), Mangel (§&nbsp;434), Wahlrecht (§&nbsp;439 I), Verweigerung bei unverhältnismäßigen Kosten (§&nbsp;439 IV), Kosten (§&nbsp;439 II), Frist und Unannehmlichkeiten (§&nbsp;475 V a.&nbsp;F. / VI n.&nbsp;F.).</li>
+      <li><strong>Strittiger Punkt mit Absicht:</strong> Aussage 2 ist wohl berechtigt (relative Unverhältnismäßigkeit: 40&nbsp;€ zu über 300&nbsp;€, Mangel vollständig behebbar, keine erheblichen Nachteile). Volle Punktzahl auch für die Gegenansicht, wenn sie mit §&nbsp;439 IV S. 2 argumentiert (Bedeutung des Mangels, Nachteile für Sabine). Wer pauschal „Sie haben das Wahlrecht, also neues Gerät“ schreibt, übersieht die Verweigerung.</li>
+      <li>Versandkosten: Der Verkäufer trägt sie (§&nbsp;439 II); Vorschuss nach §&nbsp;475 IV a.&nbsp;F. (Schüler-BGB) bzw. V n.&nbsp;F.</li>
+      <li>◇ Neues Recht (Vertrag nach dem 31.07.2026, im Abitur 2027 noch nicht verlangt): Der Shop hätte vor der Nacherfüllung über das Wahlrecht informieren müssen (§&nbsp;475 IV n.&nbsp;F.).</li>
+      <li>Rücktritt/Minderung nach gescheiterter Nacherfüllung sind Stoff von 1.1.13 – als Ausblick in einem Satz erlaubt, nicht verlangt.</li>
+      <li>Raster (Vorschlag, 16 BE): Form/Anrede/Gruß (1) · Adressatenbezug (1) · Kaufvertrag, Verbraucherin/Unternehmer (2) · Mangel (1) · Aussage 1: Gefahr erst bei Übergabe an Sabine, Shop zuständig (3) · Aussage 2: Wahlrecht (1), Verweigerung bei unverhältnismäßigen Kosten mit Zahlen begründet (3) · Aussage 3: Kosten inkl. Versand beim Shop (2) · Frist/Unannehmlichkeiten (1) · Ergebnis und Rat (1).</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(2)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(4)">Weiter: Austausch →</button>
+</nav>
+
+</section><!-- /step-3 -->
+
+<!-- ═══════════════ STEP 4 · AUSTAUSCH (AUFGABE 4) ═══════════════ -->
+<section class="step" id="step-4">
+<section class="section" id="step4">
+  <header class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <div class="section-title">Austausch: Was hat die andere Hälfte herausgefunden?</div>
+      <div class="section-meta">Plenum · dann Selbstcheck</div>
+    </div>
+  </header>
+
+  <p>Jede Hälfte stellt ihren Fall in zwei Minuten vor: Was wollte der Gegner – und woran scheitert er? Prüf danach,
+  ob du den Fall der anderen Hälfte verstanden hast.</p>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" stroke="#E53935" stroke-width="2.5" fill="none"/><path d="M14 14c0-2.761 2.239-5 5-5s5 2.239 5 5c0 2-1.5 3-3 4s-2 2.5-2 3.5" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="19" cy="28" r="1.8" fill="#E53935"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 4 · Kurzcheck zu beiden Fällen</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · Sofort-Rückmeldung</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <div class="quiz-q">
+        <div class="quiz-prompt">1. Fall B: Ab wann ist Lea in Verzug?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Seit dem 30.10. – die 14 Tage aus der Rechnung waren abgelaufen.</button>
+          <button class="quiz-opt" data-correct="0">Seit dem 14.11. – 30 Tage nach Zugang der Rechnung.</button>
+          <button class="quiz-opt" data-correct="1">Erst seit dem 17.11. – mit Zugang der Mahnung.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Das Zahlungsziel stand nur einseitig in der Rechnung (kein §&nbsp;286 II Nr. 1), und die 30-Tage-Regel gilt gegenüber Verbrauchern nur mit Hinweis (§&nbsp;286 III). Bleibt die Mahnung (§&nbsp;286 I).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">2. Fall B: Warum muss Lea die 10&nbsp;€ Mahngebühr nicht zahlen?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Weil Mahngebühren gegenüber Verbrauchern immer verboten sind.</button>
+          <button class="quiz-opt" data-correct="1">Weil die erste Mahnung den Verzug erst auslöst – ihre Kosten sind keine Folge des Verzugs.</button>
+          <button class="quiz-opt" data-correct="0">Weil Lea den Kaufpreis sofort zahlt.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Ersatzfähig ist nur ein Schaden, der <em>durch</em> den Verzug entsteht. Spätere Mahnungen während des Verzugs könnten dagegen ein Verzögerungsschaden sein.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">3. Fall C: Wer trägt das Risiko, dass der Saugroboter auf dem Transport beschädigt wird?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Sabine – ab der Übergabe an den Paketdienst.</button>
+          <button class="quiz-opt" data-correct="1">Der Shop – beim Verbrauchsgüterkauf erst mit der Übergabe an Sabine.</button>
+          <button class="quiz-opt" data-correct="0">Der Paketdienst – er hat den Schaden ja verursacht.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">Beim Verbrauchsgüterkauf geht die Gefahr erst über, wenn die Ware beim Verbraucher ankommt (§&nbsp;475 II, §&nbsp;447 I nicht anwendbar). Ob der Shop sich beim Paketdienst schadlos hält, ist seine Sache.</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+      <div class="quiz-q">
+        <div class="quiz-prompt">4. Fall C: Muss der Shop Sabine ein neues Gerät liefern, weil sie es so gewählt hat?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="0">Ja – das Wahlrecht des Käufers geht immer vor.</button>
+          <button class="quiz-opt" data-correct="1">Wohl nein – er darf die gewählte Art verweigern, wenn sie nur mit unverhältnismäßigen Kosten möglich ist; dann bleibt die Reparatur, und zwar kostenlos.</button>
+          <button class="quiz-opt" data-correct="0">Nein – bei einem Transportschaden gibt es nur Geld vom Paketdienst.</button>
+        </div>
+        <div class="quiz-feedback"></div>
+        <div class="quiz-explain">§&nbsp;439 IV: Verweigerung bei unverhältnismäßigen Kosten – hier 40&nbsp;€ gegenüber über 300&nbsp;€ bei einem vollständig behebbaren Mangel. Sabine behält den Anspruch auf die andere Art der Nacherfüllung; Kosten trägt der Shop (§&nbsp;439 II).</div>
+        <button class="btn-retry" onclick="retryQuiz(this)">↩ Nochmal versuchen</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reflect">
+    <div class="reflect-icon"><svg width="24" height="24" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="#475569" stroke-width="2.4" fill="none"/>
+        <rect x="13" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+        <rect x="19.6" y="12" width="3.4" height="12" rx="1.7" fill="#475569"/>
+      </svg></div>
+    <div>
+      <div class="reflect-title">Zwischencheck <span class="reflect-badge">deine Fragen</span></div>
+      <div class="reflect-text">Welches Format liegt dir am wenigsten – Gutachten, Zurückweisen oder Beratungstext? Woran lag es heute: am <strong>Wissen</strong>, an der <strong>Norm</strong> oder an der <strong>Form</strong>? <strong>Jetzt ist Zeit für deine Fragen.</strong></div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <div class="closing-head">Checkliste für die Schulaufgabe</div>
+    <ul>
+      <li>Operator zuerst lesen: <strong>Gutachten</strong> (Obersatz – Voraussetzungen mit Zwischenergebnis – Ergebnis), <strong>Zurückweisen</strong> (Grundlage nennen – fehlende Voraussetzung begründen – Folgerung), <strong>Beratungstext</strong> (Anrede – alle Aspekte – offene Punkte – Rat – Gruß), <strong>Interessenausgleich</strong> (beide Seiten – Regelung zuordnen – Fazit).</li>
+      <li><strong>Normen</strong> angeben, außer die Aufgabe sagt ausdrücklich „nicht verlangt“ – dann trotzdem alle juristischen Inhalte.</li>
+      <li>Jede Voraussetzung mit dem <strong>Fall</strong> belegen: Namen, Daten, Beträge.</li>
+      <li>Beim Verzug immer <strong>datieren</strong>: Fälligkeit – Mahnung oder Entbehrlichkeit – Verzugsbeginn. Nur was danach entsteht, ist Verzögerungsschaden.</li>
+      <li>Fehlende oder strittige Informationen <strong>benennen</strong> statt sie wegzulassen.</li>
+      <li>Nicht hängen bleiben: Teilpunkte sichern, weitermachen, später zurückkommen.</li>
+    </ul>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise Step 4</div>
+    <span class="tn-time">Zeitrahmen: ca. 5 Min.</span>
+<ul>
+      <li>Je Hälfte ein Sprecher (2 Min.), Quiz als Kontrolle für die jeweils andere Hälfte.</li>
+      <li>Die Checkliste ersetzt hier „Das nimmst du mit“ und erscheint auch in der Druckfassung.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(3)">← Zurück</button>
+  <button class="btn btn-primary" onclick="goStep(5)">Weiter: Zusatz →</button>
+</nav>
+
+</section><!-- /step-4 -->
+
+<!-- ═══════════════ STEP 5 · ZUSATZ (AUFGABE 5) ═══════════════ -->
+<section class="step" id="step-5">
+<section class="section" id="step5">
+  <header class="section-head">
+    <div class="section-num">5</div>
+    <div>
+      <div class="section-title">Zusatz / Hausaufgabe: Interessenausgleich</div>
+      <div class="section-meta">Einzelarbeit · zu Hause oder wer früher fertig ist</div>
+    </div>
+  </header>
+
+
+  <div class="sa-task"><span class="sa-nr">Z</span><span class="sa-text">Erläutern Sie, inwiefern die Regelung zur Beweislast beim Verbrauchsgüterkauf einen Ausgleich zwischen den Interessen von Käufer und Verkäufer herstellt!</span><span class="sa-be">7&nbsp;BE</span></div>
+
+  <div class="task">
+    <div class="task-head">
+      <div class="task-icon"><svg width="22" height="22" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="7" fill="#1976D2"/><path d="M4 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#1976D2" stroke-width="3" stroke-linecap="round" fill="none"/></svg></div>
+      <div>
+        <div class="task-title">Aufgabe 5 · Wer muss was beweisen – und warum ist das fair?</div>
+        <div class="task-form" style="color:var(--blue-700);">Einzelarbeit · erst formulieren, dann prüfen</div>
+      </div>
+    </div>
+    <div class="task-body">
+
+      <p>Nenne die Interessen <strong>beider</strong> Seiten, ordne jeweils zu, welcher Teil der Regelung sie schützt,
+      und schließe mit einem begründeten Fazit.</p>
+      <textarea class="answer-area gate-input" rows="6"
+        data-min-words="60"
+        data-keywords="kaeufer, verkaeufer, interesse, beweis, schwierig, technisch, vermutet, ein jahr, widerlegen, gegenbeweis, begrenzt, danach, art der sache, ausgleich, fazit, 477"
+        data-required="7"
+        placeholder="Käuferinteresse: … Das Gesetz hilft ihm, indem … Verkäuferinteresse: … Geschützt wird er dadurch, dass … Fazit: …"></textarea>
+      <div class="sol-gate">
+        <button class="btn-solution locked" onclick="toggleSol(this)" disabled>
+          <span class="lock-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm0 2a3 3 0 0 1 3 3v3H9V6a3 3 0 0 1 3-3z"/></svg></span>
+          Musterlösung freischalten
+        </button>
+        <div class="gate-status">
+          <span class="gate-label">Noch 60 Wörter · 0 von 7 Kernbegriffen erkannt</span>
+          <span class="bar"><span></span></span>
+        </div>
+        <div class="gate-hint">Wenn du nicht weiterkommst, frag deine Lehrkraft.</div>
+      </div>
+      <div class="solution">
+        <strong>Interesse des Käufers:</strong> Ein Verbraucher kann kaum <strong>beweis</strong>en, dass ein Mangel schon
+        bei der Übergabe angelegt war – ihm fehlen <strong>technisch</strong>es Wissen und Mittel, der Beweis ist für ihn
+        oft unmöglich oder sehr teuer. Das Gesetz hilft ihm: Zeigt sich ein Mangel innerhalb von
+        <strong>einem Jahr</strong> nach Gefahrübergang, wird <strong>vermutet</strong>, dass er schon bei Übergabe vorlag
+        (§&nbsp;<strong>477</strong> I S. 1 BGB). Er muss nur den Mangel selbst zeigen.<br>
+        <strong>Interesse des Verkäufers:</strong> Er will nicht für Schäden haften, die erst durch den Gebrauch beim
+        Käufer entstehen. Deshalb ist die Vermutung <strong>widerleg</strong>bar – der Verkäufer kann den
+        <strong>Gegenbeweis</strong> führen, wofür er als Fachhändler auch besser gerüstet ist. Sie ist zeitlich
+        <strong>begrenzt</strong>: <strong>Danach</strong> trägt wieder der Käufer die Beweislast. Und sie gilt nicht, wenn
+        sie mit der <strong>Art der Sache</strong> oder des Mangels unvereinbar ist (z.&nbsp;B. typische Abnutzung).<br>
+        <strong>Fazit:</strong> Die Regel verteilt das Beweisrisiko nach Sachnähe: Im ersten Jahr trägt es der
+        Verkäufer, der die Ware kennt, danach der Käufer. Beide Seiten werden berücksichtigt – ein
+        <strong>Ausgleich</strong> der Interessen.
+      </div>
+    </div>
+  </div>
+  <div class="zusatz-card">
+    <div class="zusatz-head">◇ Noch mehr Übung</div>
+    <p>Bearbeite den Fall der <strong>anderen Hälfte</strong> aus Schritt 3 (Fall B oder C) – mit Musterlösung zum
+    Vergleich.</p>
+  </div>
+
+  <div class="teacher-note">
+    <div class="teacher-note-header"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l8 14H4L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg> Hinweise Step 5</div>
+<ul>
+      <li>Interessenausgleich bewusst an der Beweislastumkehr (§&nbsp;477, Stoff 1.1.10) – nicht an einem anderen Regelungsbereich.</li>
+      <li>Raster (Vorschlag, 7 BE): Käuferinteresse + Vermutung 1 Jahr (2) · Käufer muss nur den Mangel zeigen (1) · Verkäuferinteresse + Widerlegbarkeit (2) · zeitliche Grenze / Ausnahme Art der Sache (1) · Fazit (1).</li>
+      <li>Ergänzung bei Nachfrage: Der Händler kann beim Lieferanten Rückgriff nehmen (§§&nbsp;445a, 478) – nicht verlangt.</li>
+    </ul>
+  </div>
+</section>
+<nav class="nav-btns">
+  <button class="btn btn-secondary" onclick="goStep(4)">← Zurück</button>
+</nav>
+
+</section><!-- /step-5 -->
+
+</main>
+
+
+
+<!-- ═══════════════ PIN MODAL ═══════════════ -->
+<div class="pin-modal" id="pinModal">
+  <div class="pin-card">
+    <div class="pin-title">Lehrkraft-Modus</div>
+    <div class="pin-sub">8-stelliger PIN zum Freischalten</div>
+    <div class="pin-dots" id="pinDots">
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+      <div class="pin-dot"></div><div class="pin-dot"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinIn(1)">1</button>
+      <button class="pin-key" onclick="pinIn(2)">2</button>
+      <button class="pin-key" onclick="pinIn(3)">3</button>
+      <button class="pin-key" onclick="pinIn(4)">4</button>
+      <button class="pin-key" onclick="pinIn(5)">5</button>
+      <button class="pin-key" onclick="pinIn(6)">6</button>
+      <button class="pin-key" onclick="pinIn(7)">7</button>
+      <button class="pin-key" onclick="pinIn(8)">8</button>
+      <button class="pin-key" onclick="pinIn(9)">9</button>
+      <button class="pin-key" style="visibility:hidden;"></button>
+      <button class="pin-key" onclick="pinIn(0)">0</button>
+      <button class="pin-key" onclick="pinDel()" style="font-size:14px;">⌫</button>
+    </div>
+    <div class="pin-actions">
+      <button onclick="closePin()">Abbrechen</button>
+      <button onclick="pinReset()">Zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ Step-Navigation ═══════════════
+function goStep(n){
+  const target = document.getElementById('step-'+n);
+  if(!target) return;
+  if(target.classList.contains('teacher-only') && !document.body.classList.contains('version-b')) return;
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  target.classList.add('active');
+  document.querySelectorAll('.step-chip').forEach(p=>{
+    p.classList.toggle('active', p.dataset.step == n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════ TEACHER PIN (8-stellig) ═══════════════
+// PIN liegt nur als PBKDF2-Hash vor (kein Klartext im Quelltext)
+const PIN_SALT = '43066a513f33aca360c23f2c6d07493f';
+const PIN_ITER = 150000;
+const PIN_HASH = '28cdac74bf228153f7f8df4b70e9e3edb564d3ec76e05237f2f0e7516f42bb37';
+async function verifyPin(pin){
+  try{
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt:enc.encode(PIN_SALT), iterations:PIN_ITER}, key, 256);
+    const hex = Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    return hex === PIN_HASH;
+  }catch(e){ return false; }
+}
+let pinBuffer = '';
+function toggleTeacher(){
+  if(document.body.classList.contains('version-b')){
+    document.body.classList.remove('version-b');
+    document.getElementById('teacherBtn').classList.remove('active');
+    document.getElementById('teacherBtn').textContent = 'Lehrkraft';
+    refreshGates();
+  } else {
+    document.getElementById('pinModal').classList.add('show');
+    pinReset();
+  }
+}
+function closePin(){
+  document.getElementById('pinModal').classList.remove('show');
+  pinReset();
+}
+function pinIn(d){
+  if(pinBuffer.length >= 8) return;
+  pinBuffer += d;
+  renderDots();
+  if(pinBuffer.length === 8) setTimeout(checkPin, 120);
+}
+function pinDel(){ pinBuffer = pinBuffer.slice(0,-1); renderDots(); }
+function pinReset(){
+  pinBuffer = '';
+  renderDots();
+  document.getElementById('pinModal').classList.remove('error');
+}
+function renderDots(){
+  document.querySelectorAll('#pinDots .pin-dot').forEach((d,i)=>{
+    d.classList.toggle('filled', i < pinBuffer.length);
+  });
+}
+async function checkPin(){
+  if(await verifyPin(pinBuffer)){
+    document.body.classList.add('version-b');
+    document.getElementById('teacherBtn').classList.add('active');
+    document.getElementById('teacherBtn').textContent = '✓ Lehrkraft';
+    document.getElementById('pinModal').classList.remove('show');
+    pinReset();
+    refreshGates();
+  } else {
+    const m = document.getElementById('pinModal');
+    m.classList.add('error');
+    setTimeout(()=>{ m.classList.remove('error'); pinReset(); }, 500);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('pinModal').classList.contains('show')) return;
+  if(e.key >= '0' && e.key <= '9') pinIn(parseInt(e.key));
+  else if(e.key === 'Backspace') pinDel();
+  else if(e.key === 'Escape') closePin();
+  else if(e.key === 'Enter' && pinBuffer.length === 8) checkPin();
+});
+
+// ═══════════════ Musterlösung Toggle ═══════════════
+function toggleSol(btn){
+  if(btn.classList.contains('locked')) return;
+  const gate = btn.closest('.sol-gate');
+  const sol = gate ? gate.nextElementSibling : btn.nextElementSibling;
+  if(!sol || !sol.classList.contains('solution')) return;
+  const open = sol.classList.toggle('visible');
+  if(open && !btn.dataset.openText){
+    btn.dataset.closedHTML = btn.innerHTML;
+    // gated Buttons (mit Schloss-Icon) → generisches Label; sonst Button-Text + " verbergen"
+    btn.textContent = btn.querySelector('.lock-ico')
+      ? 'Musterlösung verbergen'
+      : (btn.textContent.trim() + ' verbergen');
+    btn.dataset.openText = '1';
+  } else if(!open && btn.dataset.openText){
+    btn.innerHTML = btn.dataset.closedHTML;
+    delete btn.dataset.openText;
+  }
+}
+
+// ═══════════════ Keyword-Gate für Musterlösungen ═══════════════
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,i)=>i), curr=new Array(n+1);
+  for(let i=1;i<=m;i++){
+    curr[0]=i;
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      curr[j]=Math.min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost);
+    }
+    [prev,curr]=[curr,prev];
+  }
+  return prev[n];
+}
+function tol(len){ if(len<=4) return 0; if(len<=7) return 1; return 2; }
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[.,;:!?()"„“”»«\-\/§€]/g,' ')
+    .replace(/ß/g,'ss')
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function countWords(s){
+  const t=normalize(s);
+  return t ? t.split(' ').length : 0;
+}
+function keywordHit(keyword, tokens){
+  const kw=normalize(keyword);
+  const parts=kw.split(' ');
+  if(parts.length===1){
+    return tokens.some(tk=>{
+      // Komposita/Flexion: Token enthält das Keyword (z. B. „fahrlässigkeit“ ⊃ „fahrlässig“)
+      if(kw.length >= 4 && tk.includes(kw)) return true;
+      if(Math.abs(tk.length-kw.length)>2) return false;
+      if(kw.includes(tk) && tk.length >= 3) return true;
+      return levenshtein(tk,kw) <= tol(kw.length);
+    });
+  }
+  return parts.every(p => tokens.some(tk => tk.includes(p) || levenshtein(tk,p) <= tol(p.length)));
+}
+function evalGate(ta){
+  const minWords = parseInt(ta.dataset.minWords||'20',10);
+  const keywords = (ta.dataset.keywords||'').split(',').map(k=>k.trim()).filter(Boolean);
+  const required = parseInt(ta.dataset.required||'0',10);
+  const text = ta.value;
+  const words = countWords(text);
+  const tokens = normalize(text).split(' ').filter(Boolean);
+  let hits=0;
+  keywords.forEach(kw=>{ if(keywordHit(kw,tokens)) hits++; });
+  const wordsOk = words >= minWords;
+  const kwOk = hits >= required;
+  const teacher = document.body.classList.contains('version-b');
+  const ready = teacher || (wordsOk && kwOk);
+  const container = ta.closest('.task-body') || ta.closest('.gstep-body');
+  const gate = container ? container.querySelector('.sol-gate') : null;
+  if(!gate) return;
+  const btn = gate.querySelector('.btn-solution');
+  const status = gate.querySelector('.gate-status');
+  const label = gate.querySelector('.gate-label');
+  const bar = gate.querySelector('.bar > span');
+  const wordsLeft = Math.max(0, minWords - words);
+  const wordPart = wordsOk
+    ? '✓ Länge ausreichend'
+    : ('○ noch ' + wordsLeft + ' ' + (wordsLeft===1?'Wort':'Wörter'));
+  const kwPart = kwOk
+    ? ('✓ ' + hits + ' von ' + required + ' Kernbegriffen')
+    : ('○ ' + hits + ' von ' + required + ' Kernbegriffen');
+  label.textContent = teacher
+    ? 'Lehrkraft-Modus · Musterlösung freigeschaltet'
+    : (wordPart + '  ·  ' + kwPart);
+  const wProg = Math.min(1, words/minWords);
+  const kProg = required>0 ? Math.min(1, hits/required) : 1;
+  bar.style.width = teacher ? '100%' : (Math.round((wProg*0.5 + kProg*0.5)*100) + '%');
+  if(ready){
+    btn.classList.remove('locked');
+    btn.disabled = false;
+    status.classList.add('ready');
+    if(!btn.dataset.openText){
+      btn.querySelector('.lock-ico').innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v3h2V6a3 3 0 0 1 6 0v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5z"/></svg>';
+    }
+  } else {
+    const sol = gate.nextElementSibling;
+    if(!(sol && sol.classList.contains('visible'))){
+      btn.classList.add('locked');
+      btn.disabled = true;
+      status.classList.remove('ready');
+    }
+  }
+}
+document.querySelectorAll('.gate-input').forEach(ta=>{
+  ta.addEventListener('input', ()=>evalGate(ta));
+  evalGate(ta);
+});
+// Alle Gates neu bewerten (z. B. beim Wechsel des Lehrkraft-Modus)
+function refreshGates(){ document.querySelectorAll('.gate-input').forEach(ta=>evalGate(ta)); }
+
+// ═══════════════ Zuordnungs-Widget (Klick-Matching) ═══════════════
+document.querySelectorAll('.assign').forEach(box=>{
+  let active = box.querySelector('.assign-cat.active').dataset.cat;
+  const catLabel = {};
+  box.querySelectorAll('.assign-cat').forEach(c=>{ catLabel[c.dataset.cat]=c.textContent; });
+  box.querySelectorAll('.assign-cat').forEach(c=>{
+    c.addEventListener('click', ()=>{
+      box.querySelectorAll('.assign-cat').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    it.addEventListener('click', ()=>{
+      const chosen = it.querySelector('.ai-chosen');
+      it.classList.remove('correct','wrong');
+      if(it.dataset.chosen === active){
+        // gleiche Kategorie nochmal → aufheben
+        delete it.dataset.chosen;
+        it.classList.remove('has-choice');
+        chosen.textContent = '—';
+      } else {
+        it.dataset.chosen = active;
+        it.classList.add('has-choice');
+        chosen.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.assign-score');
+      if(score) score.textContent = '';
+    });
+  });
+});
+function checkAssign(btn){
+  const box = btn.closest('.assign');
+  const items = box.querySelectorAll('.assign-item');
+  let correct=0, total=items.length;
+  items.forEach(it=>{
+    it.classList.remove('correct','wrong');
+    if(it.dataset.chosen === it.dataset.correct){
+      it.classList.add('correct'); correct++;
+    } else {
+      it.classList.add('wrong');
+    }
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = correct + ' von ' + total + ' richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetAssign(btn){
+  const box = btn.closest('.assign');
+  box.querySelectorAll('.assign-item').forEach(it=>{
+    delete it.dataset.chosen;
+    it.classList.remove('has-choice','correct','wrong');
+    it.querySelector('.ai-chosen').textContent = '—';
+  });
+  const score = box.querySelector('.assign-score');
+  score.textContent = ''; score.classList.remove('done');
+}
+
+// ═══════════════ Normtext-Marker-Zuordnung (§-Passagen → TBM) ═══════════════
+document.querySelectorAll('.nmark').forEach(box=>{
+  const catBtns = box.querySelectorAll('.nmark-cat');
+  let active = catBtns.length ? catBtns[0].dataset.cat : null;
+  const catLabel = {};
+  catBtns.forEach(c=>{ catLabel[c.dataset.cat] = c.dataset.short || c.textContent.trim(); });
+  catBtns.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      catBtns.forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      active = c.dataset.cat;
+    });
+  });
+  box.querySelectorAll('.npass').forEach(p=>{
+    const tag = p.querySelector('.npass-tag');
+    p.addEventListener('click', ()=>{
+      p.classList.remove('correct','wrong');
+      if(p.dataset.chosen === active){
+        delete p.dataset.chosen; p.classList.remove('has-choice'); tag.textContent='';
+      } else {
+        p.dataset.chosen = active; p.classList.add('has-choice'); tag.textContent = catLabel[active];
+      }
+      const score = box.querySelector('.nmark-score');
+      if(score){ score.textContent=''; score.classList.remove('done'); }
+    });
+  });
+});
+function checkNmark(btn){
+  const box = btn.closest('.nmark');
+  const passes = box.querySelectorAll('.npass');
+  let correct=0, total=passes.length;
+  passes.forEach(p=>{
+    p.classList.remove('correct','wrong');
+    if(p.dataset.chosen === p.dataset.correct){ p.classList.add('correct'); correct++; }
+    else { p.classList.add('wrong'); }
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent = correct + ' von ' + total + ' Passagen richtig';
+  score.classList.toggle('done', correct===total);
+}
+function resetNmark(btn){
+  const box = btn.closest('.nmark');
+  box.querySelectorAll('.npass').forEach(p=>{
+    delete p.dataset.chosen;
+    p.classList.remove('has-choice','correct','wrong');
+    const tag=p.querySelector('.npass-tag'); if(tag) tag.textContent='';
+  });
+  const score = box.querySelector('.nmark-score');
+  score.textContent=''; score.classList.remove('done');
+}
+
+// ═══════════════ Quiz (Sofort-Rückmeldung) ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  const opts = q.querySelectorAll('.quiz-opt');
+  const fb = q.querySelector('.quiz-feedback');
+  const retry = q.querySelector('.btn-retry');
+  opts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.disabled) return;
+      opts.forEach(o=>o.disabled = true);
+      fb.classList.remove('ok','no');
+      if(opt.dataset.correct === '1'){
+        opt.classList.add('correct');
+        fb.textContent = '✓ Richtig.'; fb.classList.add('show','ok');
+      } else {
+        opt.classList.add('wrong');
+        fb.textContent = '✗ Leider falsch. Versuch es noch einmal.'; fb.classList.add('show','no');
+        if(retry) retry.style.display = 'inline-block';
+      }
+    });
+  });
+});
+function retryQuiz(btn){
+  const q = btn.closest('.quiz-q');
+  q.querySelectorAll('.quiz-opt').forEach(o=>{ o.disabled=false; o.classList.remove('correct','wrong'); });
+  const fb = q.querySelector('.quiz-feedback'); fb.classList.remove('show','ok','no'); fb.textContent='';
+  const ex = q.querySelector('.quiz-explain'); if(ex) ex.classList.remove('show');
+  btn.style.display = 'none';
+}
+
+// ═══════════════ 1.1.7: Quiz-Erklärung ═══════════════
+document.querySelectorAll('.quiz-q').forEach(q=>{
+  q.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const ex = q.querySelector('.quiz-explain');
+      if(ex && opt.dataset.correct === '1') ex.classList.add('show');
+    });
+  });
+});
+
+
+// ═══════════════ 1.1.7: Druckfassung (Drucken / PDF + Word) ═══════════════
+// Eine Quelle: Beide Ausgaben werden immer frisch aus dem aktuellen <main> erzeugt.
+const LESSON_LABEL = 'WR Q13 · Übungsstunde: Fit für die Schulaufgabe (Zivilrecht)';
+const BLANK = '<span class="p-blank">____________________</span>';
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildPrintDoc(withSol){
+  const root = document.querySelector('main').cloneNode(true);
+  const rm = sel => root.querySelectorAll(sel).forEach(e=>e.remove());
+
+  // 1) Was in der Druckfassung nie vorkommt
+  rm('.step.teacher-only'); rm('.print-bar'); rm('.teacher-note'); rm('.nav-btns');
+
+  // 2) Hero → schlichter Kopf
+  const hero = root.querySelector('.hero');
+  if(hero){
+    let h = '<div class="p-hero">';
+    const badge = hero.querySelector('.hero-badge'); if(badge) h += '<p class="p-badge">'+badge.innerHTML+'</p>';
+    h += '<h1>'+hero.querySelector('h1').innerHTML+'</h1>';
+    const sub = hero.querySelector('.hero-sub'); if(sub) h += '<p><em>'+sub.innerHTML+'</em></p>';
+    hero.querySelectorAll('.hero-box').forEach(b=>{
+      h += '<p><strong>'+b.querySelector('.hero-box-title').textContent.trim()+':</strong> '+b.querySelector('.hero-box-text').innerHTML.trim()+'</p>';
+    });
+    h += '</div>';
+    hero.outerHTML = h;
+  }
+
+  // 2b) Doppelstunde: Teil-Banner → Zwischenüberschrift, Pausenkarte entfällt
+  root.querySelectorAll('.part-banner').forEach(pb=>{
+    const tag = pb.querySelector('.part-tag'), t = pb.querySelector('.part-title');
+    pb.outerHTML = '<p class="p-part">'+(tag?tag.textContent.trim()+' · ':'')+(t?t.innerHTML:'')+'</p>';
+  });
+  rm('.pause-card');
+
+  // 3) Kopfzeilen von Sections, Aufgaben, Prüfschritten → Überschriften
+  root.querySelectorAll('.section-head').forEach(sh=>{
+    const num = sh.querySelector('.section-num'), t = sh.querySelector('.section-title'), m = sh.querySelector('.section-meta');
+    sh.outerHTML = '<h2 class="p-h2">'+(num?num.textContent.trim()+' · ':'')+t.innerHTML+'</h2>'+(m?'<p class="p-meta">'+m.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.task-head').forEach(th=>{
+    const t = th.querySelector('.task-title'), f = th.querySelector('.task-form');
+    th.outerHTML = '<h3 class="p-h3">'+t.innerHTML+'</h3>'+(f?'<p class="p-meta">'+f.innerHTML+'</p>':'');
+  });
+  root.querySelectorAll('.gstep-head').forEach(gh=>{
+    const n = gh.querySelector('.gstep-num'), t = gh.querySelector('.gstep-title');
+    const norm = t.querySelector('.gnorm'); const normTxt = norm ? norm.innerHTML : ''; if(norm) norm.remove();
+    gh.outerHTML = '<h4 class="p-h4">'+(n?n.textContent.trim()+'. ':'')+t.innerHTML.trim()+(normTxt?' <span class="p-meta">('+normTxt+')</span>':'')+'</h4>';
+  });
+
+  // 4) Antwortfelder → linierte Schreibflächen
+  root.querySelectorAll('textarea').forEach(ta=>{
+    const n = Math.max(3, (parseInt(ta.getAttribute('rows'),10)||3) + 1);
+    const d = document.createElement('div'); d.className = 'p-lines';
+    d.innerHTML = '<p class="p-line">&nbsp;</p>'.repeat(n);
+    ta.replaceWith(d);
+  });
+
+  // 5) Klick-Zuordnung → Liste mit „→ ______“
+  root.querySelectorAll('.assign').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.assign-cat').forEach(c=>{ const s=c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    let h = '<p class="p-cats"><strong>Ordne zu – Kategorien:</strong> '+names.join(' · ')+'</p>';
+    box.querySelectorAll('.assign-item').forEach(it=>{
+      const key = it.querySelector('.ai-key').textContent.trim();
+      const fill = withSol ? '<span class="p-fill">'+cats[it.dataset.correct]+'</span>' : BLANK;
+      h += '<p class="p-item"><strong>'+key+')</strong> '+it.querySelector('.ai-text').innerHTML+' → '+fill+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-assign'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 6) Normtext-Marker → nummerierte, unterstrichene Passagen + Zuordnungszeilen
+  root.querySelectorAll('.nmark').forEach(box=>{
+    const cats = {}, names = [];
+    box.querySelectorAll('.nmark-cat').forEach(c=>{ const s=c.dataset.short||c.textContent.trim(); cats[c.dataset.cat]=s; names.push(s); });
+    const law = box.querySelector('.nmark-law');
+    const items = [];
+    law.querySelectorAll('.npass').forEach((p,i)=>{
+      const tag = p.querySelector('.npass-tag'); if(tag) tag.remove();
+      const t = p.textContent.replace(/\s+/g,' ').trim();
+      items.push({n:i+1, t:t, c:p.dataset.correct});
+      const s = document.createElement('span');
+      s.innerHTML = '<u>'+escHTML(t)+'</u><sup>('+(i+1)+')</sup>';
+      p.replaceWith(s);
+    });
+    law.className = 'p-norm';
+    let h = '<p class="p-cats"><strong>Ordne den nummerierten Passagen ein Merkmal zu:</strong> '+names.join(' · ')+'</p>'+law.outerHTML;
+    items.forEach(it=>{
+      h += '<p class="p-item">('+it.n+') „'+escHTML(it.t)+'“ → '+(withSol ? '<span class="p-fill">'+cats[it.c]+'</span>' : BLANK)+'</p>';
+    });
+    const d = document.createElement('div'); d.className = 'p-nmark'; d.innerHTML = h;
+    box.replaceWith(d);
+  });
+
+  // 7) Quiz → Ankreuzoptionen
+  root.querySelectorAll('.quiz-q').forEach(q=>{
+    q.querySelectorAll('.quiz-opt').forEach(o=>{
+      const ok = o.dataset.correct === '1';
+      const p = document.createElement('p'); p.className = 'p-opt';
+      p.innerHTML = (withSol && ok) ? '☒ <strong>'+o.innerHTML+'</strong>' : '☐ '+o.innerHTML;
+      o.replaceWith(p);
+    });
+    const ex = q.querySelector('.quiz-explain');
+    if(ex){ if(withSol) ex.className = 'p-explain'; else ex.remove(); }
+  });
+
+  // 8) Musterlösungen: weg oder sichtbar mit Etikett
+  root.querySelectorAll('.solution').forEach(s=>{
+    if(withSol){ s.className = 'p-sol'; s.insertAdjacentHTML('afterbegin','<span class="p-sol-tag">Musterlösung</span>'); }
+    else s.remove();
+  });
+
+  // 9) Closing-Box → schlichter Kasten
+  const cl = root.querySelector('.closing');
+  if(cl){ const ch = cl.querySelector('.closing-head'); cl.outerHTML = '<div class="p-closing"><h3>'+(ch?ch.textContent.trim():'Das nimmst du mit')+'</h3><ul>'+cl.querySelector('ul').innerHTML+'</ul></div>'; }
+
+  // 10) Interaktive Reste entfernen, Steps aufklappen
+  rm('.sol-gate'); rm('.btn-retry'); rm('.quiz-feedback'); rm('.assign-actions'); rm('.assign-hint'); rm('.nmark-hint'); rm('button');
+  root.querySelectorAll('.step').forEach(s=>{ s.className = 'p-step'; });
+  root.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));
+  root.querySelectorAll('[onclick]').forEach(e=>e.removeAttribute('onclick'));
+
+  return '<div class="p-doc">'+root.innerHTML+
+    '<p class="p-foot">'+LESSON_LABEL+' · Druckfassung'+(withSol?' mit Musterlösungen':'')+'</p></div>';
+}
+
+function printLesson(){
+  const withSol = document.getElementById('printWithSol').checked;
+  let pr = document.getElementById('printRoot'); if(pr) pr.remove();
+  pr = document.createElement('div'); pr.id = 'printRoot';
+  pr.innerHTML = buildPrintDoc(withSol);
+  document.body.appendChild(pr);
+  document.body.classList.add('printing');
+  window.print();
+}
+window.addEventListener('afterprint', ()=>{
+  document.body.classList.remove('printing');
+  const pr = document.getElementById('printRoot'); if(pr) pr.remove();
+});
+
+const WORD_CSS =
+  'body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#000;}'+
+  'h1{font-size:17pt;color:#9D174D;margin:4pt 0;}'+
+  'h2.p-h2{font-size:14pt;color:#9D174D;border-bottom:1.5pt solid #BE185D;margin:16pt 0 2pt;}'+
+  'h3.p-h3{font-size:12pt;margin:10pt 0 0;}'+
+  'h4.p-h4{font-size:11pt;margin:8pt 0 2pt;color:#9D174D;}'+
+  '.p-meta{font-size:9pt;color:#666;margin:0 0 4pt;}'+
+  '.p-badge{font-size:9pt;color:#666;text-transform:uppercase;margin:0;}'+
+  '.p-hero,.p-closing{border:1.5pt solid #BE185D;padding:6pt 10pt;margin:6pt 0;}'+
+  '.p-line{border-bottom:1pt solid #888;margin:0;line-height:22pt;}'+
+  '.p-sol{border:1pt solid #16A34A;border-left:4pt solid #16A34A;padding:4pt 8pt;background:#F0FDF4;margin:4pt 0;}'+
+  '.p-sol-tag{font-weight:bold;color:#166534;font-size:9pt;text-transform:uppercase;}'+
+  '.p-fill{font-weight:bold;color:#166534;}'+
+  '.p-norm{border:1pt solid #333;padding:6pt 10pt;margin:6pt 0;}'+
+  '.nlaw-title{font-weight:bold;color:#BE185D;font-size:9.5pt;text-transform:uppercase;}'+
+  '.info-box,.gframe,.reflect,.book-ref,.fall-card,.schema,.gstep,.norm-box,.diff-chart{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.info-box,.gframe,.norm-box{border-left:4pt solid #BE185D;}'+
+  '.norm-title,.diff-title,.dc-label{font-weight:bold;}'+
+  '.dc-bar{display:inline-block;border:1pt solid #BE185D;padding:1pt 6pt;margin:1pt 2pt;}'+
+  '.reflect-title,.book-ref-title,.schema-title,.gframe-tag,.glabel,.fall-card-tag{font-weight:bold;}'+
+  '.reflect-badge{font-weight:normal;color:#666;font-size:9pt;}'+
+  '.p-part{font-size:15pt;font-weight:bold;color:#9D174D;border:1.5pt solid #BE185D;padding:4pt 8pt;margin:14pt 0 4pt;}'+
+  '.vgk-box,.neu-box,.zusatz-card,.bgb-mark,.sysgrid,.sys-col,.sys-row{border:1pt solid #999;padding:4pt 8pt;margin:6pt 0;}'+
+  '.sa-task{border:1.5pt solid #BE185D;padding:4pt 8pt;margin:6pt 0;}.sa-nr,.sa-be{font-weight:bold;}.be-table{border-collapse:collapse;}.be-table td,.be-table th{border:1pt solid #999;padding:2pt 4pt;}'+
+  '.neu-box{border:1.5pt dotted #BE185D;}.zusatz-card{border:1.5pt dashed #666;}.bgb-mark{border-left:4pt solid #334155;}'+
+  '.vgk-tag{font-weight:bold;border:1pt solid #000;padding:0 3pt;font-size:8pt;text-transform:uppercase;}'+
+  '.sys-top,.sys-h,.neu-head,.zusatz-head,.bm-head,.bm-norm{font-weight:bold;}'+
+  '.bm-text u{text-decoration:underline;}'+
+  '.p-foot{font-size:8pt;color:#666;border-top:1pt solid #ccc;margin-top:14pt;}';
+
+function downloadWord(){
+  const withSol = document.getElementById('printWithSol').checked;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = buildPrintDoc(withSol);
+  tmp.querySelectorAll('svg, .task-icon, .reflect-icon').forEach(e=>e.remove());
+  const html =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+    '<head><meta charset="utf-8"><title>'+LESSON_LABEL+'</title>'+
+    '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+    '<style>'+WORD_CSS+'</style></head><body>'+tmp.innerHTML+'</body></html>';
+  const blob = new Blob(['﻿', html], {type:'application/msword'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wr_q13_uebung_schulaufgabe_druckfassung'+(withSol?'_mit_loesungen':'')+'.doc';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+</script>
+
+</body>
+</html>
